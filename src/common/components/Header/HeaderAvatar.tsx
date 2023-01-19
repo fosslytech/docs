@@ -26,22 +26,17 @@ const HeaderAvatar = () => {
       </Menu.Target>
 
       <Menu.Dropdown>
-        <Menu.Label>Email</Menu.Label>
+        <Menu.Label>Username</Menu.Label>
         <Menu.Item style={{ overflow: 'hidden' }} disabled>
           <Text lineClamp={1} style={{ overflow: 'hidden' }}>
-            {user.email}
+            {user.username}
           </Text>
         </Menu.Item>
 
         <Menu.Divider />
 
         <Menu.Label>Actions</Menu.Label>
-        <Menu.Item
-          icon={<TicketDiagonalFilled fontSize={18} />}
-          onClick={() => router.push('/tickets')}
-        >
-          My Tickets
-        </Menu.Item>
+
         <Menu.Item
           color="yellow"
           icon={<SignOutFilled fontSize={18} />}
