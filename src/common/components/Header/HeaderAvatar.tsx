@@ -11,17 +11,18 @@ import { Avatar, Menu, Text } from '@mantine/core';
 import { useRouter } from 'next/router';
 
 import React from 'react';
-import useGlobalState from 'src/store/global/use-global-state';
+import useGlobalCtx from 'src/store/global/use-global-ctx';
 
 const HeaderAvatar = () => {
-  const { user, logOut } = useGlobalState();
+  const { user, logOut } = useGlobalCtx();
   const router = useRouter();
 
   return (
     <Menu shadow="md" width={200} position="bottom-end" withArrow>
       <Menu.Target>
-        <Avatar radius="lg" style={{ cursor: 'pointer' }}>
-          <PersonFilled fontSize={24} />
+        <Avatar radius="xl" style={{ cursor: 'pointer' }} color="blue">
+          {/* <PersonFilled fontSize={24} /> */}
+          {user.username.substring(0, 2)}
         </Avatar>
       </Menu.Target>
 

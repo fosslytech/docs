@@ -11,10 +11,10 @@
         "EN": "Open"
       },
       "button2": {
-        "EN": "New .ODT"
+        "EN": "New"
       },
       "badge": {
-        "EN": "Alpha!"
+        "EN": "Alpha"
       }
     },
     {
@@ -28,10 +28,44 @@
         "EN": "Open"
       },
       "button2": {
-        "EN": "New .ODS"
+        "EN": "New"
       },
       "badge": {
-        "EN": "Alpha!"
+        "EN": "Shouldn't exist"
+      }
+    },
+    {
+      "title": {
+        "EN": "Impress"
+      },
+      "description": {
+        "EN": "LibreOffice Impress presentation"
+      },
+      "button1": {
+        "EN": "Open"
+      },
+      "button2": {
+        "EN": "New"
+      },
+      "badge": {
+        "EN": "fml"
+      }
+    },
+    {
+      "title": {
+        "EN": "Math"
+      },
+      "description": {
+        "EN": "LibreOffice Math formula"
+      },
+      "button1": {
+        "EN": "Open"
+      },
+      "button2": {
+        "EN": "New"
+      },
+      "badge": {
+        "EN": "Math???"
       }
     }
   ]

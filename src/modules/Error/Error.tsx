@@ -3,7 +3,7 @@ import { Title, Text, Button, Container, Group } from '@mantine/core';
 import useStyles from './Error.styles';
 
 import content from '@content/error/error.json';
-import useGlobalState from 'src/store/global/use-global-state';
+import useGlobalCtx from 'src/store/global/use-global-ctx';
 import Link from 'next/link';
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const ErrorPage: React.FC<Props> = ({ code }) => {
-  const { translate } = useGlobalState();
+  const { translate } = useGlobalCtx();
   const { classes } = useStyles();
 
   return (

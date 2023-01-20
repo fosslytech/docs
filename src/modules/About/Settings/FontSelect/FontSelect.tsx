@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { UnstyledButton, Menu, Image, Group } from '@mantine/core';
-import { IAppTheme } from '@ts/global.types';
-import useStyles from './ThemeSelect.styles';
+import { IAppFont } from '@ts/global.types';
+import useStyles from './FontSelect.styles';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
-import { ChevronDownRegular } from '@fluentui/react-icons';
+import { ChevronDownRegular, TextFontFilled } from '@fluentui/react-icons';
 
 import logoMantine from '@icons/logos/mantine.png';
 import logoMaterial from '@icons/logos/material.png';
@@ -11,35 +11,29 @@ import logoCatppuccin from '@icons/logos/catppuccin.png';
 
 interface ILangData {
   label: string;
-  value: IAppTheme;
-  image: string;
+  value: IAppFont;
 }
 
-const getLangData = (): ILangData[] => [
-  { label: 'Mantine', value: 'Mantine', image: logoMantine.src },
-  { label: 'Material', value: 'Material', image: logoMaterial.src },
-  { label: 'Catppuccin', value: 'Catppuccin', image: logoCatppuccin.src },
+const getFontData = (): ILangData[] => [
+  { label: 'Inter', value: 'Inter' },
+  { label: 'Roboto', value: 'Roboto' },
+  { label: 'Montserrat', value: 'Montserrat' },
+  { label: 'Source Code Pro', value: 'Source Code Pro' },
 ];
 
 const ThemeSelect = () => {
-  const data = getLangData();
+  const data = getFontData();
 
-  const { appTheme, changeTheme } = useGlobalCtx();
+  const { appFont, changeFont } = useGlobalCtx();
 
   const [opened, setOpened] = useState<boolean>(false);
 
   const { classes } = useStyles({ opened });
 
-  const selected = data.find((l) => l.value === appTheme);
+  const selected = data.find((l) => l.value === appFont);
 
   const items = data.map((item) => (
-    <Menu.Item
-      icon={<Image src={item.image} width={18} height={18} />}
-      onClick={() => changeTheme(item.value)}
-      key={item.label}
-      pt={10}
-      pb={10}
-    >
+    <Menu.Item onClick={() => changeFont(item.value)} key={item.label} pt={10} pb={10}>
       {item.label}
     </Menu.Item>
   ));
@@ -49,7 +43,8 @@ const ThemeSelect = () => {
       <Menu.Target>
         <UnstyledButton className={classes.control}>
           <Group spacing="xs">
-            <Image src={selected.image} width={22} height={22} />
+            {/* <Image src={selected.image} width={22} height={22} /> */}
+            <TextFontFilled fontSize={22} />
 
             <span className={classes.label}>{selected.label}</span>
           </Group>

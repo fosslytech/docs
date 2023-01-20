@@ -1,24 +1,25 @@
 import React, { useReducer } from 'react';
-import { Global_Context } from '@ts/global.types';
+import { Doc_Context } from '@ts/doc.types';
 import { initialState, globalReducer } from './Reducer';
+
 import useCachedContext from '@hooks/use-cached-context';
 
-export const GlobalContext = React.createContext<Global_Context>(initialState);
+export const DocContext = React.createContext<Doc_Context>(initialState);
 
-export const GlobalCTXProvider = ({ children }) => {
+export const DocCTXProvider = ({ children }) => {
   const [state, dispatch] = useReducer(globalReducer, initialState);
 
   // Save/Init state from localStorage
-  useCachedContext('ctx_global', state, dispatch);
+  // useCachedContext('ctx_doc', state, dispatch);
 
   return (
-    <GlobalContext.Provider
+    <DocContext.Provider
       value={{
         ...state,
         dispatch,
       }}
     >
       {children}
-    </GlobalContext.Provider>
+    </DocContext.Provider>
   );
 };

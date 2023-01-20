@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { UnstyledButton, Menu, Image, Group } from '@mantine/core';
 import { ILang } from '@ts/global.types';
 import useStyles from './LanguageSelect.styles';
-import useGlobalState from 'src/store/global/use-global-state';
+import useGlobalCtx from 'src/store/global/use-global-ctx';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 
 import FlagEN from '@icons/flags/FlagEN';
@@ -18,7 +18,7 @@ const getLangData = (): ILangData[] => [{ label: 'English', value: 'EN', icon: F
 const LanguageSelect = () => {
   const data = getLangData();
 
-  const { language, changeLanguage } = useGlobalState();
+  const { language, changeLanguage } = useGlobalCtx();
 
   const [opened, setOpened] = useState<boolean>(false);
 
@@ -39,12 +39,7 @@ const LanguageSelect = () => {
   ));
 
   return (
-    <Menu
-      onOpen={() => setOpened(true)}
-      onClose={() => setOpened(false)}
-      radius="md"
-      width="target"
-    >
+    <Menu onOpen={() => setOpened(true)} onClose={() => setOpened(false)} radius="md" width="target">
       <Menu.Target>
         <UnstyledButton className={classes.control}>
           <Group spacing="xs">

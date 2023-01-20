@@ -1,8 +1,11 @@
 import { ColorScheme, MantineThemeOverride } from '@mantine/core';
+import { IAppFont } from '@ts/global.types';
 
-export const THEME_CATPPUCCIN = (colorScheme: ColorScheme): MantineThemeOverride => ({
+export const THEME_CATPPUCCIN = (colorScheme: ColorScheme, appFont: IAppFont): MantineThemeOverride => ({
   /** Put your mantine theme override here */
   colorScheme,
+  fontFamily: `${appFont}, sans-serif`,
+
   colors: {
     blue: [
       '#89b4fa',
@@ -173,5 +176,4 @@ export const THEME_CATPPUCCIN = (colorScheme: ColorScheme): MantineThemeOverride
       '#1e1e2e',
     ],
   },
-  // fontFamily: 'Inter, sans-serif',
 });

@@ -1,47 +1,38 @@
-import { useEffect, useState } from 'react';
-
-import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
-
-import { getMantineTheme } from '@utils/resources/mantineTheme';
-import { BaseStyles } from '@styles/Base';
-import { Fonts } from '@styles/Fonts';
-import NProgress from '@module/NProgress/NProgress';
-import { GlobalCTXProvider } from 'src/store/global/CTX';
-import { ModalsProvider } from '@mantine/modals';
-import { NotificationsProvider } from '@mantine/notifications';
+import { useEffect } from 'react';
 import Head from 'next/head';
+
+import 'src/styles/fonts.css';
+
+import { ColorSchemeProvider, MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
+import { ModalsProvider } from '@mantine/modals';
+import NProgress from '@module/NProgress/NProgress';
+
 import { logConsoleCat } from '@utils/functions/consoleCat';
-import useGlobalState from 'src/store/global/use-global-state';
+import { getMantineTheme } from '@utils/resources/mantineTheme';
+import useGlobalCtx from 'src/store/global/use-global-ctx';
+import JoinedCTXProvider from 'src/store/CTX';
 
 const App = ({ Component, pageProps }) => {
-  // Handle color scheme
-  const [colorScheme, setColorScheme] = useState<ColorScheme>('dark');
-  const toggleColorScheme = (value?: ColorScheme) =>
-    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
-
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page) => page);
 
   useEffect(() => logConsoleCat(), []);
 
   const Root = () => {
-    const { appTheme } = useGlobalState();
+    const { appTheme, appFont, appColorScheme, toggleColorScheme } = useGlobalCtx();
 
     return (
-      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+      <ColorSchemeProvider colorScheme={appColorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider
           withGlobalStyles
           withNormalizeCSS
-          theme={getMantineTheme(colorScheme, appTheme)}
+          theme={getMantineTheme(appColorScheme, appTheme, appFont)}
         >
           <ModalsProvider>
             <NotificationsProvider>
               {/* Route transition */}
               <NProgress />
-
-              {/* Global styles */}
-              <BaseStyles />
-              <Fonts />
 
               <Head>
                 <title>Collab</title>
@@ -58,9 +49,9 @@ const App = ({ Component, pageProps }) => {
   };
 
   return (
-    <GlobalCTXProvider>
+    <JoinedCTXProvider>
       <Root />
-    </GlobalCTXProvider>
+    </JoinedCTXProvider>
   );
 };
 

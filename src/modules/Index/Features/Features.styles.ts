@@ -13,11 +13,4 @@ export default createStyles((theme) => ({
     maxWidth: 600,
     margin: 'auto',
   },
-
-  card: {
-    maxWidth: 350,
-    border: `1px solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1]
-    }`,
-  },
 }));

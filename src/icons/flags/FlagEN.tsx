@@ -6,7 +6,6 @@ const FlagEN = (props) => {
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       width="512px"
-      height="auto"
       viewBox="0 0 512 512"
       {...props}
       style={{

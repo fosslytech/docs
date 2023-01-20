@@ -1,9 +1,10 @@
 import { GlobalContext } from './CTX';
 import { useContext } from 'react';
-import { IAppTheme, ILang, IUser } from '@ts/global.types';
+import { IAppFont, IAppTheme, ILang, IUser } from '@ts/global.types';
+import { ColorScheme } from '@mantine/core';
 
-const useGlobalState = () => {
-  const { dispatch, user, language, appTheme } = useContext(GlobalContext);
+const useGlobalCtx = () => {
+  const { dispatch, user, language, appTheme, appFont, appColorScheme } = useContext(GlobalContext);
 
   const logIn = (user: IUser) => dispatch({ type: 'SET_USER', payload: user });
   const logOut = () => dispatch({ type: 'SET_USER', payload: null });
@@ -12,6 +13,10 @@ const useGlobalState = () => {
   const translate = (obj: any) => obj[language] || '<-- untranslated -->';
 
   const changeTheme = (theme: IAppTheme) => dispatch({ type: 'SET_THEME', payload: theme });
+
+  const changeFont = (font: IAppFont) => dispatch({ type: 'SET_FONT', payload: font });
+
+  const toggleColorScheme = (scheme: ColorScheme) => dispatch({ type: 'SET_COLOR_SCHEME', payload: scheme });
 
   return {
     user,
@@ -22,7 +27,11 @@ const useGlobalState = () => {
     translate,
     appTheme,
     changeTheme,
+    appFont,
+    changeFont,
+    appColorScheme,
+    toggleColorScheme,
   };
 };
 
-export default useGlobalState;
+export default useGlobalCtx;

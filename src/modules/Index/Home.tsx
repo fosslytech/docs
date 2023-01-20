@@ -1,9 +1,9 @@
-import Cards from './Cards/Cards';
+import Features from './Features/Features';
 
 const Home = () => {
   return (
     <>
-      <Cards />
+      <Features />
     </>
   );
 };
