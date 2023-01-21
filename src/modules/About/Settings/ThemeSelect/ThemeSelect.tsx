@@ -34,7 +34,7 @@ const ThemeSelect = () => {
 
   const items = data.map((item) => (
     <Menu.Item
-      icon={<Image src={item.image} width={18} height={18} />}
+      icon={<Image src={item.image} width={18} height={18} alt={item.label + ' logo'} />}
       onClick={() => changeTheme(item.value)}
       key={item.label}
       pt={10}
@@ -49,7 +49,7 @@ const ThemeSelect = () => {
       <Menu.Target>
         <UnstyledButton className={classes.control}>
           <Group spacing="xs">
-            <Image src={selected.image} width={22} height={22} />
+            <Image src={selected.image} width={22} height={22} alt={selected.label + ' logo'} />
 
             <span className={classes.label}>{selected.label}</span>
           </Group>

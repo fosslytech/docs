@@ -2,6 +2,7 @@
   "name": "libreoffice-collab",
   "version": "1.0.0",
   "private": false,
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "dev": "next dev",
     "start": "next start",

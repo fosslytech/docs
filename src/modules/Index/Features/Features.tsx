@@ -24,13 +24,7 @@ const Features = () => {
   const { translate } = useGlobalCtx();
   const { classes } = useStyles();
 
-  const features = FEATURES_DATA.map((feature, i) => (
-    // <Grid.Col key={i} sm={12} md={6} lg={6} xl={4}>
-    //   <Center>
-    <Feature {...feature} />
-    //   </Center>
-    // </Grid.Col>
-  ));
+  const features = FEATURES_DATA.map((feature, i) => <Feature key={i} {...feature} />);
 
   return (
     <Container size="lg" py="xl" mt={120} mb={120}>
@@ -38,9 +32,6 @@ const Features = () => {
         Start collaborating
       </Title>
 
-      {/* <Grid gutter="xl" justify="center" columns={12} mt={50}>
-        {features}
-      </Grid> */}
       <Flex mt={50} gap="md" justify="center" align="center" direction="row" wrap="wrap">
         {features}
       </Flex>

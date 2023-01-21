@@ -10,7 +10,7 @@ const useCachedContext = <IState extends Base_Context<Base_Action>>(
   useEffect(() => {
     const parsed = JSON.parse(localStorage.getItem(key));
     dispatch({ type: 'INIT', payload: parsed });
-  }, []);
+  }, [key, dispatch]);
 
   useNonInitialEffect(() => {
     const globalState = { ...state };
@@ -20,7 +20,7 @@ const useCachedContext = <IState extends Base_Context<Base_Action>>(
     if (localStorage.getItem(key) !== stringified) {
       localStorage.setItem(key, stringified);
     }
-  }, [state, dispatch]);
+  }, [state, dispatch, key]);
 };
 
 export default useCachedContext;
