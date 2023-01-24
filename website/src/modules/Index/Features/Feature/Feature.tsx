@@ -1,6 +1,7 @@
 import { AddFilled, ArrowUploadFilled } from '@fluentui/react-icons';
 import { Badge, Button, Card, Divider, FileButton, Flex, Text } from '@mantine/core';
 import { IFeature } from '@utils/resources/featuresData';
+import { useRouter } from 'next/router';
 import React from 'react';
 import useDocCtx from 'src/store/doc/use-doc-ctx';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
@@ -8,8 +9,8 @@ import useStyles from './Feature.styles';
 
 const Feature: React.FC<IFeature> = (feature) => {
   const { translate } = useGlobalCtx();
-  const { uploadDoc, createNewDoc, isUploading } = useDocCtx();
   const { classes, theme } = useStyles();
+  const router = useRouter();
 
   return (
     <Card shadow="md" radius="md" className={classes.card} p="xl">
@@ -34,13 +35,13 @@ const Feature: React.FC<IFeature> = (feature) => {
       </Text>
 
       <Flex justify="end" mt="lg">
-        <FileButton onChange={uploadDoc} accept={feature.accept}>
+        <FileButton onChange={() => {}} accept={feature.accept}>
           {(props) => (
             <Button
               variant="default"
               leftIcon={<ArrowUploadFilled fontSize={16} />}
               onClick={() => {}}
-              loading={isUploading}
+              loading={false}
               {...props}
             >
               {translate(feature.button1)}
@@ -52,7 +53,7 @@ const Feature: React.FC<IFeature> = (feature) => {
           variant="filled"
           ml={10}
           leftIcon={<AddFilled fontSize={16} />}
-          onClick={() => createNewDoc()}
+          onClick={() => router.push('/doc/odt/123')}
           color={feature.color}
         >
           {translate(feature.button2)}

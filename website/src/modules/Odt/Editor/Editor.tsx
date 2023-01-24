@@ -18,17 +18,20 @@ import { Color } from '@tiptap/extension-color';
 import Controls from './Controls';
 import BubbleMenu from './PopupMenu';
 
-import * as Y from 'yjs';
-import { WebrtcProvider } from 'y-webrtc';
-import { GET_ODT_LABELS } from './labels';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
+import { useRouter } from 'next/router';
 
-const ydoc = new Y.Doc();
-const provider = new WebrtcProvider('example-document2', ydoc);
+import { GET_ODT_LABELS } from './labels';
+import { useYWebRtc } from '@hooks/yjs/use-y-webrtc';
 
 const EditorComp = () => {
   const { translate } = useGlobalCtx();
   const theme = useMantineTheme();
+  const router = useRouter();
+
+  // const { ydoc, provider } = useY(('123311323213132' + router.query.session) as string);
+
+  const { doc, provider } = useYWebRtc('counter-example-y-react');
 
   const editor = useEditor({
     extensions: [
@@ -36,7 +39,7 @@ const EditorComp = () => {
         history: false,
       }),
       Collaboration.configure({
-        document: ydoc,
+        document: doc,
       }),
       CollaborationCursor.configure({
         provider: provider,

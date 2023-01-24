@@ -1,22 +1,29 @@
-import React, { useReducer } from 'react';
-import { Doc_Context } from '@ts/doc.types';
-import { initialState, globalReducer } from './Reducer';
+import React from 'react';
+import { Doc_Context, Provider } from '@ts/doc.types';
+import * as Y from 'yjs';
 
-import useCachedContext from '@hooks/use-cached-context';
-
-export const DocContext = React.createContext<Doc_Context>(initialState);
+export const DocContext = React.createContext<Doc_Context>({
+  doc: null,
+  providers: null,
+});
 
 export const DocCTXProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(globalReducer, initialState);
+  const providers = React.useRef<Map<new (...args: any[]) => Provider, Map<string, Provider>>>(new Map());
 
-  // Save/Init state from localStorage
-  // useCachedContext('ctx_doc', state, dispatch);
+  React.useEffect(
+    () => () => {
+      providers.current.forEach((map) => {
+        map.forEach((provider) => provider.destroy());
+      });
+    },
+    []
+  );
 
   return (
     <DocContext.Provider
       value={{
-        ...state,
-        dispatch,
+        doc: new Y.Doc(),
+        providers: providers.current,
       }}
     >
       {children}
