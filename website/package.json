@@ -1,0 +1,52 @@
+{
+  "name": "odf-collab",
+  "version": "1.0.0",
+  "private": false,
+  "author": "CUFTA22",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "dev": "next dev",
+    "start": "next start",
+    "lint": "next lint",
+    "build": "next build"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/server": "^11.10.0",
+    "@fluentui/react-icons": "^2.0.192",
+    "@mantine/core": "^5.10.1",
+    "@mantine/hooks": "^5.10.1",
+    "@mantine/modals": "^5.10.1",
+    "@mantine/next": "^5.10.1",
+    "@mantine/notifications": "^5.10.1",
+    "@mantine/nprogress": "^5.10.1",
+    "@mantine/tiptap": "^5.10.1",
+    "@tabler/icons": "^1.119.0",
+    "@tiptap/extension-collaboration": "^2.0.0-beta.209",
+    "@tiptap/extension-collaboration-cursor": "^2.0.0-beta.209",
+    "@tiptap/extension-color": "^2.0.0-beta.209",
+    "@tiptap/extension-highlight": "^2.0.0-beta.209",
+    "@tiptap/extension-link": "^2.0.0-beta.209",
+    "@tiptap/extension-subscript": "^2.0.0-beta.209",
+    "@tiptap/extension-superscript": "^2.0.0-beta.209",
+    "@tiptap/extension-text-align": "^2.0.0-beta.209",
+    "@tiptap/extension-text-style": "^2.0.0-beta.209",
+    "@tiptap/extension-underline": "^2.0.0-beta.209",
+    "@tiptap/react": "^2.0.0-beta.209",
+    "@tiptap/starter-kit": "^2.0.0-beta.209",
+    "dayjs": "^1.11.7",
+    "eslint": "8.32.0",
+    "eslint-config-next": "13.1.4",
+    "next": "13.1.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "4.9.4",
+    "y-webrtc": "^10.2.4",
+    "yjs": "^13.5.44"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10"
+  }
+}

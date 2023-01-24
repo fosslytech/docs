@@ -1,0 +1,75 @@
+{
+  "title": {
+    "EN": "New document"
+  },
+  "cards": [
+    {
+      "title": {
+        "EN": "Writer"
+      },
+      "description": {
+        "EN": "Create .ODT document"
+      },
+      "button1": {
+        "EN": "Open"
+      },
+      "button2": {
+        "EN": "New"
+      },
+      "badge": {
+        "EN": "Alpha"
+      }
+    },
+    {
+      "title": {
+        "EN": "Calc"
+      },
+      "description": {
+        "EN": "Create .ODS spreadsheet"
+      },
+      "button1": {
+        "EN": "Open"
+      },
+      "button2": {
+        "EN": "New"
+      },
+      "badge": {
+        "EN": "Shouldn't exist"
+      }
+    },
+    {
+      "title": {
+        "EN": "Impress"
+      },
+      "description": {
+        "EN": "Impress presentation"
+      },
+      "button1": {
+        "EN": "Open"
+      },
+      "button2": {
+        "EN": "New"
+      },
+      "badge": {
+        "EN": "fml"
+      }
+    },
+    {
+      "title": {
+        "EN": "Math"
+      },
+      "description": {
+        "EN": "Math formula"
+      },
+      "button1": {
+        "EN": "Open"
+      },
+      "button2": {
+        "EN": "New"
+      },
+      "badge": {
+        "EN": "Math???"
+      }
+    }
+  ]
+}
