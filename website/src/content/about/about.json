@@ -61,11 +61,17 @@
     "description": {
       "EN": "Free & Open source online document collaboration tool."
     },
+    "changelog": {
+      "EN": "Open changelog"
+    },
     "buttonSource": {
       "EN": "Source code"
     },
     "buttonBug": {
       "EN": "Report a bug"
+    },
+    "buttonChangelog": {
+      "EN": "View changelog"
     }
   },
   "timeline": {
