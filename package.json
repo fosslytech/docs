@@ -2,7 +2,7 @@
   "name": "odf-collab",
   "private": false,
   "author": "CUFTA22",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "scripts": {
     "dev": "cd website/ && npm run dev"
   }

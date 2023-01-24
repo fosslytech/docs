@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": false,
   "author": "CUFTA22",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "start": "next start",
