@@ -11,8 +11,8 @@ Page.getLayout = (page: React.ReactElement) => {
 };
 
 export const getStaticProps = async () => {
-  const data = await fetch(process.env.NEXT_PUBLIC_URL + '/api/read-changelog');
-  const changelog = await data.json();
+  const data = await fetch('https://raw.githubusercontent.com/CUFTA22/odf-collab/master/CHANGELOG.md');
+  const changelog = await data.text();
 
   return { props: { data: changelog } };
 };
