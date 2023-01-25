@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Skeleton, useMantineTheme } from '@mantine/core';
 import { RichTextEditor, Link } from '@mantine/tiptap';
@@ -23,15 +23,19 @@ import { useRouter } from 'next/router';
 
 import { GET_ODT_LABELS } from './labels';
 import { useYWebRtc } from '@hooks/yjs/use-y-webrtc';
+import useNonInitialEffect from '@hooks/use-non-initial-effect';
+import useDocContentCtx from 'src/store/doc-content/use-doc-content-ctx';
 
 const EditorComp = () => {
-  const { translate } = useGlobalCtx();
-  const theme = useMantineTheme();
   const router = useRouter();
+  const theme = useMantineTheme();
+  const { translate } = useGlobalCtx();
+
+  const { initialDocContent, setInitialContent } = useDocContentCtx();
 
   // const { ydoc, provider } = useY(('123311323213132' + router.query.session) as string);
 
-  const { doc, provider } = useYWebRtc('counter-example-y-react');
+  const { doc, provider } = useYWebRtc(router.query.session as string);
 
   const editor = useEditor({
     extensions: [
@@ -57,8 +61,13 @@ const EditorComp = () => {
       TextStyle,
       TextAlign.configure({ types: ['heading', 'paragraph'] }),
     ],
-    content: '',
+    content: initialDocContent || '',
   });
+
+  // Remove initial content
+  useNonInitialEffect(() => {
+    if (initialDocContent.length) setInitialContent('');
+  }, [initialDocContent]);
 
   return (
     <RichTextEditor editor={editor} labels={GET_ODT_LABELS(translate)}>

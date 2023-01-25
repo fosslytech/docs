@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import { Global_Context } from '@ts/global.types';
-import { initialState, globalReducer } from './Reducer';
+import { initialState, globalReducer } from './reducer';
 import useCachedContext from '@hooks/use-cached-context';
 
 export const GlobalContext = React.createContext<Global_Context>(initialState);

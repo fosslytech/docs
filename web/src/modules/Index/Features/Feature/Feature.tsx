@@ -1,16 +1,15 @@
-import { AddFilled, ArrowUploadFilled } from '@fluentui/react-icons';
-import { Badge, Button, Card, Divider, FileButton, Flex, Text } from '@mantine/core';
+import { Badge, Card, Divider, Flex, Text } from '@mantine/core';
 import { IFeature } from '@utils/resources/featuresData';
-import { useRouter } from 'next/router';
-import React from 'react';
-import useDocCtx from 'src/store/doc/use-doc-ctx';
+
 import useGlobalCtx from 'src/store/global/use-global-ctx';
+import ButtonNew from './ButtonNew';
+import ButtonUpload from './ButtonUpload';
 import useStyles from './Feature.styles';
 
 const Feature: React.FC<IFeature> = (feature) => {
-  const { translate } = useGlobalCtx();
   const { classes, theme } = useStyles();
-  const router = useRouter();
+
+  const { translate } = useGlobalCtx();
 
   return (
     <Card shadow="md" radius="md" className={classes.card} p="xl">
@@ -35,29 +34,9 @@ const Feature: React.FC<IFeature> = (feature) => {
       </Text>
 
       <Flex justify="end" mt="lg">
-        <FileButton onChange={() => {}} accept={feature.accept}>
-          {(props) => (
-            <Button
-              variant="default"
-              leftIcon={<ArrowUploadFilled fontSize={16} />}
-              onClick={() => {}}
-              loading={false}
-              {...props}
-            >
-              {translate(feature.button1)}
-            </Button>
-          )}
-        </FileButton>
+        <ButtonUpload {...feature} />
 
-        <Button
-          variant="filled"
-          ml={10}
-          leftIcon={<AddFilled fontSize={16} />}
-          onClick={() => router.push('/doc/odt/123')}
-          color={feature.color}
-        >
-          {translate(feature.button2)}
-        </Button>
+        <ButtonNew {...feature} />
       </Flex>
     </Card>
   );

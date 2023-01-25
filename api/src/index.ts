@@ -9,7 +9,7 @@ const init = async () => {
     host: 'localhost',
     routes: {
       cors: {
-        origin: ['*'],
+        origin: ['http://localhost:3000', 'https://odf-collab.vercel.app', 'https://odfcollab.com'],
       },
     },
   });

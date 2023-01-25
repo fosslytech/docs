@@ -20,7 +20,7 @@ const init = () => __awaiter(void 0, void 0, void 0, function* () {
         host: 'localhost',
         routes: {
             cors: {
-                origin: ['*'],
+                origin: ['http://localhost:3000', 'https://odf-collab.vercel.app', 'https://odfcollab.com'],
             },
         },
     });

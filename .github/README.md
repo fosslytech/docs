@@ -20,11 +20,13 @@
 
 ## Structure
 
-| Codebase           |     Description      |
-| :----------------- | :------------------: |
-| [website](website) | Next.js main web app |
-| [api](api)         |     Node.js API      |
-| [design](design)   |  All project assets  |
+| Codebase   |     Description      |                     Domain                     |
+| :--------- | :------------------: | :--------------------------------------------: |
+| [web](web) | Next.js main web app |     [odfcollab.com](https://odfcollab/com)     |
+| [api](api) |     Node.js API      | [api.odfcollab.com](https://api.odfcollab/com) |
+
+<!-- | [design](design) |  All project assets  |   /   | -->
+<!-- | [mobile](mobile) |  Mobile app  |   /   | -->
 
 ## Getting Started
 

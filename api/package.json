@@ -13,8 +13,10 @@
   },
   "dependencies": {
     "@hapi/hapi": "^21.2.0",
+    "@types/uuid": "^9.0.0",
     "libreoffice-convert": "^1.4.1",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",

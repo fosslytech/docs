@@ -1,9 +1,8 @@
-import { Base_Action, Base_Context } from './global.types';
 import * as Y from 'yjs';
 import { WebrtcProvider } from 'y-webrtc';
 
 // -----------------------------------------------------------------
-// For global context
+// For doc context
 // -----------------------------------------------------------------
 
 export interface Doc_Context {
