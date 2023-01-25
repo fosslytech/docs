@@ -62,7 +62,7 @@
       "EN": "Free & Open source online document collaboration tool."
     },
     "changelog": {
-      "EN": "Open changelog"
+      "EN": "View other project resources"
     },
     "buttonSource": {
       "EN": "Source code"
@@ -71,7 +71,10 @@
       "EN": "Report a bug"
     },
     "buttonChangelog": {
-      "EN": "View changelog"
+      "EN": "Changelog"
+    },
+    "buttonTaiga": {
+      "EN": "Project board"
     }
   },
   "timeline": {

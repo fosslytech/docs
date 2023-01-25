@@ -1,15 +1,19 @@
 import { useRouter } from 'next/router';
 
-import { Button, Group, Paper, Text } from '@mantine/core';
+import { Button, ButtonProps, Group, Paper, Text, useMantineTheme } from '@mantine/core';
 
 import { BugFilled, CodeFilled, EditFilled } from '@fluentui/react-icons';
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
 import content from '@content/about/about.json';
+import Taiga from '@icons/logos/Taiga';
+import GitHub from '@icons/logos/GitHub';
 
 const InfoSection = () => {
   const { translate } = useGlobalCtx();
+
+  const theme = useMantineTheme();
   const router = useRouter();
 
   return (
@@ -25,7 +29,7 @@ const InfoSection = () => {
           onClick={() => {
             window.open('https://github.com/CUFTA22/odf-collab', '_blank');
           }}
-          leftIcon={<CodeFilled fontSize={22} />}
+          leftIcon={<GitHub width={22} fill="" />}
           size="md"
           color="blue"
           variant="light"
@@ -49,16 +53,30 @@ const InfoSection = () => {
         {translate(content.info.changelog)}
       </Text>
 
-      <Button
-        onClick={() => {
-          router.push('/changelog');
-        }}
-        leftIcon={<EditFilled fontSize={22} />}
-        size="md"
-        variant="light"
-      >
-        {translate(content.info.buttonChangelog)}
-      </Button>
+      <Group align="start">
+        <Button
+          onClick={() => {
+            router.push('/changelog');
+          }}
+          leftIcon={<EditFilled fontSize={22} />}
+          size="md"
+          variant="light"
+        >
+          {translate(content.info.buttonChangelog)}
+        </Button>
+
+        <Button
+          onClick={() => {
+            window.open('https://tree.taiga.io/project/cufta22-odf-collab/kanban', '_blank');
+          }}
+          leftIcon={<Taiga width={22} fill="" />}
+          size="md"
+          variant="light"
+          color="green"
+        >
+          {translate(content.info.buttonTaiga)}
+        </Button>
+      </Group>
     </Paper>
   );
 };

@@ -41,18 +41,18 @@ const AppHeader = () => {
         <div style={{ flex: 1 }}></div>
 
         <Link href="/about">
-          <Button size="sm" leftIcon={<StarFilled fontSize={16} />} mr={20} variant="subtle">
+          <Button size="sm" leftIcon={<StarFilled fontSize={16} />} variant="subtle">
             {translate(content.about)}
           </Button>
         </Link>
 
-        {user ? (
+        {/* {user ? (
           <HeaderAvatar />
         ) : (
           <Button size="sm" onClick={() => openModal({ title: 'Log in', children: <UserModal /> })}>
             {translate(content.signIn)}
           </Button>
-        )}
+        )} */}
       </div>
     </Header>
   );

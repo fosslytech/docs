@@ -2,15 +2,6 @@ import React from 'react';
 
 const Logo2: React.FC<{ width: number; fill: string }> = ({ width, fill }) => {
   return (
-    // <svg
-    //   xmlns="http://www.w3.org/2000/svg"
-    //   xmlnsXlink="http://www.w3.org/1999/xlink"
-    //   version="1.1"
-    //   viewBox="103.82845639118375 54.07476737832485 432.3430872176325 531.8504652433503"
-    //   xmlSpace="preserve"
-    //   width={width}
-    //   style={{ fill: fill }}
-    // >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
