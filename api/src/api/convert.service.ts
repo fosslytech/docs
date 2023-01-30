@@ -1,4 +1,4 @@
-import { Request, ResponseToolkit } from '@hapi/hapi';
+import { Request } from '@hapi/hapi';
 import { v4 as uuidv4 } from 'uuid';
 
 import path from 'path';
@@ -17,31 +17,33 @@ const convertAsync = util.promisify(libre.convert);
 // Universal convert function
 // ------------------------------------------------------------------------------------------
 
-const universalConvertFunction = async (req: Request, extOut: string) => {
-  const { file } = req.payload as any;
+const universalConvertFunction = async (req: Request) => {
+  const { file } = req.payload as { file: any };
+  const { to: extOut } = req.query as { to: string };
+
+  if (!file || !extOut) return 'Invalid request';
 
   const uuid = uuidv4();
 
-  // const inputPath = path.join(process.cwd(), `/docs/${uuid}.${extIn}`);
-  const outputPath = path.join(process.cwd(), `/docs/${uuid}.${extOut}`);
+  const outputPath = path.join(process.cwd(), `/temp/${uuid}.${extOut}`);
 
-  // ------------------------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------------------
   // Read and convert to given format
-  // ------------------------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------------------
 
-  let convertBuff2 = await convertAsync(file, extOut, undefined);
+  let convertBuff = await convertAsync(file, extOut, undefined);
 
-  await writeFileAsync(outputPath, convertBuff2);
+  await writeFileAsync(outputPath, convertBuff);
 
-  // ------------------------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------------------
   // Read and convert to given format
-  // ------------------------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------------------
 
   const outputFile = await readFileAsync(outputPath);
 
-  // ------------------------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------------------
   // Remove input and output files
-  // ------------------------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------------------
 
   fs.unlinkSync(outputPath);
 
@@ -52,19 +54,14 @@ const universalConvertFunction = async (req: Request, extOut: string) => {
 };
 
 // ------------------------------------------------------------------------------------------
-// Convert any file ( if possible ) to .html
+// Convert any file ( if possible ) to any file ( if possible )
 // ------------------------------------------------------------------------------------------
-export const convert2Html = (req: Request) => universalConvertFunction(req, 'html');
-
-// ------------------------------------------------------------------------------------------
-// Convert any file ( if possible ) to .odt
-// ------------------------------------------------------------------------------------------
-export const convert2Odt = (req: Request) => universalConvertFunction(req, 'odt');
+export const convert = (req: Request) => universalConvertFunction(req);
 
 // ------------------------------------------------------------------------------------------
 // Get new doc
 // ------------------------------------------------------------------------------------------
-export const getNewDoc = (req: Request) => {
+export const getNewDoc = () => {
   const uuid = uuidv4();
 
   return {

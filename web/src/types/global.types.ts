@@ -48,3 +48,6 @@ export type ILang = 'EN';
 export type IAppTheme = 'Mantine' | 'Catppuccin' | 'Material';
 
 export type IAppFont = 'Roboto' | 'Source Code Pro' | 'Inter' | 'Montserrat';
+
+export type ISupportedInputExtensions = 'html' | 'txt' | 'odt';
+export type ISupportedOutputExtensions = 'html' | 'txt' | 'odt' | 'pdf';

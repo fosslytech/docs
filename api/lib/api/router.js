@@ -24,6 +24,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const convertSvc = __importStar(require("./convert.service"));
+const downloadSvc = __importStar(require("./download.service"));
 const ROUTES = [
     {
         method: 'GET',
@@ -32,9 +33,10 @@ const ROUTES = [
             return 'Hello World!';
         },
     },
+    // Convert API
     {
         method: 'POST',
-        path: '/convert/to-html',
+        path: '/convert',
         options: {
             payload: {
                 parse: true,
@@ -42,24 +44,23 @@ const ROUTES = [
                 multipart: { output: 'data' },
             },
         },
-        handler: convertSvc.convert2Html,
-    },
-    {
-        method: 'POST',
-        path: '/convert/to-odt',
-        options: {
-            payload: {
-                parse: true,
-                allow: 'multipart/form-data',
-                multipart: { output: 'data' },
-            },
-        },
-        handler: convertSvc.convert2Odt,
+        handler: convertSvc.convert,
     },
     {
         method: 'GET',
-        path: '/convert/new-doc',
+        path: '/new-doc',
         handler: convertSvc.getNewDoc,
+    },
+    // Download API
+    {
+        method: 'POST',
+        path: '/prepare-download',
+        handler: downloadSvc.prepareDownload,
+    },
+    {
+        method: 'GET',
+        path: '/download',
+        handler: downloadSvc.download,
     },
 ];
 exports.default = (server) => {

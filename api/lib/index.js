@@ -21,9 +21,19 @@ const init = () => __awaiter(void 0, void 0, void 0, function* () {
         routes: {
             cors: {
                 origin: ['http://localhost:3000', 'https://odf-collab.vercel.app', 'https://odfcollab.com'],
+                exposedHeaders: [
+                    'Content-Type',
+                    'Access-Control-Allow-Headers',
+                    'Access-Control-Expose-Headers',
+                    'Content-Disposition',
+                    'Authorization',
+                    'X-Requested-With',
+                ],
             },
         },
     });
+    // Plugins
+    yield server.register(require('@hapi/inert'));
     // Routes
     (0, router_1.default)(server);
     yield server.start();

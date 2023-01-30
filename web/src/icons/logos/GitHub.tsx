@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GitHub: React.FC<{ width: number; fill: string }> = ({ width, fill }) => {
+const GitHub: React.FC<{ width: number }> = ({ width }) => {
   return (
     <svg
       xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -9,7 +9,6 @@ const GitHub: React.FC<{ width: number; fill: string }> = ({ width, fill }) => {
       viewBox="0 0 16 16"
       version="1.1"
       width={width}
-      style={{ fill: fill }}
     >
       <path
         fillRule="evenodd"

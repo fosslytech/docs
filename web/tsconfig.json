@@ -13,7 +13,8 @@
       "@hooks/*": ["src/hooks/*"],
       "@utils/*": ["src/utils/*"],
       "@icons/*": ["src/icons/*"],
-      "@ts/*": ["src/types/*"]
+      "@ts/*": ["src/types/*"],
+      "@core/*": ["../core/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,

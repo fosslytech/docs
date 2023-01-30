@@ -8,9 +8,11 @@
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
-    "build": "next build"
+    "build": "next build",
+    "postbuild": "next-sitemap --config next-sitemap.config.js"
   },
   "dependencies": {
+    "@cufta22/odf-collab-core": "^1.0.1",
     "@emotion/react": "^11.10.5",
     "@emotion/server": "^11.10.0",
     "@fluentui/react-icons": "^2.0.192",
@@ -38,6 +40,8 @@
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.5",
     "next": "13.1.4",
+    "next-seo": "^5.15.0",
+    "next-sitemap": "^3.1.48",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "swr": "^2.0.1",

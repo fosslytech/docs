@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getNewDoc = exports.convert2Odt = exports.convert2Html = void 0;
+exports.getNewDoc = exports.convert = void 0;
 const uuid_1 = require("uuid");
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
@@ -24,23 +24,25 @@ const convertAsync = util_1.default.promisify(libreoffice_convert_1.default.conv
 // ------------------------------------------------------------------------------------------
 // Universal convert function
 // ------------------------------------------------------------------------------------------
-const universalConvertFunction = (req, extOut) => __awaiter(void 0, void 0, void 0, function* () {
+const universalConvertFunction = (req) => __awaiter(void 0, void 0, void 0, function* () {
     const { file } = req.payload;
+    const { to: extOut } = req.query;
+    if (!file || !extOut)
+        return 'Invalid request';
     const uuid = (0, uuid_1.v4)();
-    // const inputPath = path.join(process.cwd(), `/docs/${uuid}.${extIn}`);
-    const outputPath = path_1.default.join(process.cwd(), `/docs/${uuid}.${extOut}`);
-    // ------------------------------------------------------------------------------------------
+    const outputPath = path_1.default.join(process.cwd(), `/temp/${uuid}.${extOut}`);
+    // ----------------------------------------------------------------------------------------
     // Read and convert to given format
-    // ------------------------------------------------------------------------------------------
-    let convertBuff2 = yield convertAsync(file, extOut, undefined);
-    yield writeFileAsync(outputPath, convertBuff2);
-    // ------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------
+    let convertBuff = yield convertAsync(file, extOut, undefined);
+    yield writeFileAsync(outputPath, convertBuff);
+    // ----------------------------------------------------------------------------------------
     // Read and convert to given format
-    // ------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------
     const outputFile = yield readFileAsync(outputPath);
-    // ------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------
     // Remove input and output files
-    // ------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------
     fs_1.default.unlinkSync(outputPath);
     return {
         roomName: uuid,
@@ -48,19 +50,14 @@ const universalConvertFunction = (req, extOut) => __awaiter(void 0, void 0, void
     };
 });
 // ------------------------------------------------------------------------------------------
-// Convert any file ( if possible ) to .html
+// Convert any file ( if possible ) to any file ( if possible )
 // ------------------------------------------------------------------------------------------
-const convert2Html = (req) => universalConvertFunction(req, 'html');
-exports.convert2Html = convert2Html;
-// ------------------------------------------------------------------------------------------
-// Convert any file ( if possible ) to .odt
-// ------------------------------------------------------------------------------------------
-const convert2Odt = (req) => universalConvertFunction(req, 'odt');
-exports.convert2Odt = convert2Odt;
+const convert = (req) => universalConvertFunction(req);
+exports.convert = convert;
 // ------------------------------------------------------------------------------------------
 // Get new doc
 // ------------------------------------------------------------------------------------------
-const getNewDoc = (req) => {
+const getNewDoc = () => {
     const uuid = (0, uuid_1.v4)();
     return {
         roomName: uuid,

@@ -4,6 +4,6 @@
   "author": "CUFTA22",
   "license": "MIT",
   "scripts": {
-    "dev": "cd website/ && npm run dev"
+    "dev": "cd web/ && npm run dev"
   }
 }

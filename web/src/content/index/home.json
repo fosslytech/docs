@@ -1,75 +1,59 @@
 {
-  "title": {
-    "EN": "New document"
-  },
-  "cards": [
-    {
-      "title": {
-        "EN": "Writer"
-      },
-      "description": {
-        "EN": "Create .ODT document"
-      },
-      "button1": {
-        "EN": "Open"
-      },
-      "button2": {
-        "EN": "New"
-      },
-      "badge": {
-        "EN": "Alpha"
-      }
+  "hero": {
+    "title1": {
+      "EN": "A"
     },
-    {
-      "title": {
-        "EN": "Calc"
-      },
-      "description": {
-        "EN": "Create .ODS spreadsheet"
-      },
-      "button1": {
-        "EN": "Open"
-      },
-      "button2": {
-        "EN": "New"
-      },
-      "badge": {
-        "EN": "Shouldn't exist"
-      }
+    "title2": {
+      "EN": "modern"
     },
-    {
-      "title": {
-        "EN": "Impress"
-      },
-      "description": {
-        "EN": "Impress presentation"
-      },
-      "button1": {
-        "EN": "Open"
-      },
-      "button2": {
-        "EN": "New"
-      },
-      "badge": {
-        "EN": "fml"
-      }
+    "title3": {
+      "EN": "FOSS"
     },
-    {
-      "title": {
-        "EN": "Math"
-      },
-      "description": {
-        "EN": "Math formula"
-      },
-      "button1": {
-        "EN": "Open"
-      },
-      "button2": {
-        "EN": "New"
-      },
-      "badge": {
-        "EN": "Math???"
-      }
+    "title4": {
+      "EN": "collaboration tool"
+    },
+    "description": {
+      "EN": "Work together in real-time to create, edit, and share documents. The goal of the website is to provide a seamless and efficient way for teams and individuals to collaborate on projects, no matter where they are located."
+    },
+    "gettingStarted": {
+      "EN": "Getting started"
+    },
+    "sourceCode": {
+      "EN": "Source code"
     }
-  ]
+  },
+  "cards": {
+    "title": {
+      "EN": "Your Go-To Destination for FOSS Document Collaboration"
+    },
+    "description": {
+      "EN": "Whether you're working on a team project or a personal document, our platform makes document collaboration effortless and efficient."
+    },
+    "cards": [
+      {
+        "title": {
+          "EN": "Open standard"
+        },
+        "description": {
+          "EN": "By supporitng only open standard document formats ( ODF, HTML, PDF... ) we ensure that files from our app can be used with any other app that supports said standards"
+        }
+      },
+      {
+        "title": {
+          "EN": "Free & Open source"
+        },
+        "description": {
+          "EN": "ODF Collab is and will always be 'Free as in Freedom', this allows you to always view the source code and, if you feel like you have the necessary skills, contribute to the project"
+        }
+      },
+      {
+        "title": {
+          "EN": "Community driven"
+        },
+        "description": {
+          "EN": "We listen to all community feedback and are always open to suggestions, you can help in many ways like reporting bugs, joining discussions, working on code, etc..."
+        }
+      }
+    ]
+  }
 }

@@ -7,7 +7,8 @@ import {
   DocumentRibbonFilled,
   DocumentTableFilled,
 } from '@fluentui/react-icons';
-import content from 'src/content/index/home.json';
+
+import content from 'src/content/doc/doc.json';
 
 export interface IFeature {
   title: {};

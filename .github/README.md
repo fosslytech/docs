@@ -20,13 +20,15 @@
 
 ## Structure
 
-| Codebase   |     Description      |                     Domain                     |
-| :--------- | :------------------: | :--------------------------------------------: |
-| [web](web) | Next.js main web app |     [odfcollab.com](https://odfcollab/com)     |
-| [api](api) |     Node.js API      | [api.odfcollab.com](https://api.odfcollab/com) |
+| Codebase     |   Description   |                                  Domain                                  |
+| :----------- | :-------------: | :----------------------------------------------------------------------: |
+| [api](api)   |   Node.js API   |              [api.odfcollab.com](https://api.odfcollab/com)              |
+| [web](web)   | Next.js web app | [prod](https://odfcollab/com) / [staging](https://staging.odfcollab/com) |
+| [core](core) |   Shared code   |                                    /                                     |
 
-<!-- | [design](design) |  All project assets  |   /   | -->
-<!-- | [mobile](mobile) |  Mobile app  |   /   | -->
+<!-- | [design](design)   |  All project assets  |   /   | -->
+<!-- | [mobile](mobile)   |  Mobile app          |   /   | -->
+<!-- | [desktop](desktop) |  Desktop app         |   /   | -->
 
 ## Getting Started
 
@@ -38,7 +40,8 @@ npm i
 npm run dev
 
 # API
-# NOTE: For running the API convert functions locally you'll need LibreOffice installed, I suggest you use hosted api
+# NOTE: For running the API convert functions locally
+# you'll need LibreOffice installed, I suggest you use hosted api
 npm i
 npm run dev
 
@@ -68,3 +71,11 @@ I recommend creating an issue or message me on discord [ cufta22#8160 ] to let m
 ## Code of Conduct
 
 Please read [CODE_OF_CONDUCT.md](https://github.com/CUFTA22/odf-collab/blob/master/CODE_OF_CONDUCT.md) for details on our code of conduct.
+
+## How it Works
+
+Convert API is only used to convert documents to desired formats and doesn't store anything on the server, it works by using the libreoffice --convert-to API through a Node.js wrapper library.
+
+<p align="center">
+<img height="" src="./assets/howitworks_v1_0_0.png"/>
+</p>

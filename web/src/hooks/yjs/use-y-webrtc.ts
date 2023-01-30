@@ -1,9 +1,7 @@
 import React from 'react';
 import * as Y from 'yjs';
 
-import { WebrtcProvider } from 'y-webrtc';
-
-import { Awareness } from 'y-protocols/awareness';
+import { ProviderOptions, WebrtcProvider } from 'y-webrtc';
 
 import { useYDoc } from './use-y-doc';
 import { useYProviders } from './use-y-provider';
@@ -12,14 +10,7 @@ import { useYProviders } from './use-y-provider';
 
 export const useYWebRtc = (
   room: string,
-  options: {
-    signaling?: string[];
-    password?: string;
-    awareness?: Awareness;
-    maxConns?: number;
-    filterBcConns?: boolean;
-    peerOpts?: any;
-  } = {}
+  options: ProviderOptions = {}
 ): {
   doc: Y.Doc;
   provider: WebrtcProvider;
@@ -33,18 +24,7 @@ export const useYWebRtc = (
     if (existingProvider !== undefined) {
       return { doc, provider: existingProvider };
     } else {
-      const provider = new WebrtcProvider(
-        room,
-        doc,
-        options as {
-          signaling: string[];
-          password: string | null;
-          awareness: Awareness;
-          maxConns: number;
-          filterBcConns: boolean;
-          peerOpts: any;
-        }
-      );
+      const provider = new WebrtcProvider(room, doc, options);
 
       if (!providers.has(WebrtcProvider)) {
         providers.set(WebrtcProvider, new Map());

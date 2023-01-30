@@ -1,0 +1,60 @@
+{
+  "timeline": [
+    {
+      "version": {
+        "EN": "v1.0.x"
+      },
+      "title": {
+        "EN": "ODF Writer"
+      },
+      "description": {
+        "EN": "Initial release for text documents ( .ODT files )"
+      },
+      "date": {
+        "EN": "10.02.2023"
+      }
+    },
+    {
+      "version": {
+        "EN": "v1.1.x"
+      },
+      "title": {
+        "EN": "@supabase"
+      },
+      "description": {
+        "EN": "Add DB & Auth to persist documents if user chooses to sign in"
+      },
+      "date": {
+        "EN": "01.03.2023"
+      }
+    },
+    {
+      "version": {
+        "EN": "v1.2.x"
+      },
+      "title": {
+        "EN": "ODF Calc"
+      },
+      "description": {
+        "EN": "Add spreadsheet editor ( .ODS files )"
+      },
+      "date": {
+        "EN": "--.--.2023"
+      }
+    },
+    {
+      "version": {
+        "EN": "v1.3.x"
+      },
+      "title": {
+        "EN": "ODF Math"
+      },
+      "description": {
+        "EN": "Add editor for math formula ( .ODF & .MML files )"
+      },
+      "date": {
+        "EN": "--.--.2023"
+      }
+    }
+  ]
+}

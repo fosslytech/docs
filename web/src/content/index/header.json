@@ -2,8 +2,11 @@
   "appName": {
     "EN": "ODF Collab"
   },
-  "about": {
-    "EN": "About"
+  "useOnline": {
+    "EN": "Use online"
+  },
+  "settings": {
+    "EN": "Settings"
   },
   "signIn": {
     "EN": "Sign in"

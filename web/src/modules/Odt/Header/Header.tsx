@@ -1,33 +1,32 @@
-import { ArrowDownloadFilled, PersonFilled, ShareAndroidFilled } from '@fluentui/react-icons';
-import useToast from '@hooks/use-toast';
-import { Avatar, Button, Group, Header, Paper } from '@mantine/core';
-import { useClipboard } from '@mantine/hooks';
-import { useRouter } from 'next/router';
+import { ShareAndroidFilled } from '@fluentui/react-icons';
+import { useWebShare } from '@hooks/use-web-share';
+import { Button, Group, Header, Paper } from '@mantine/core';
+import { Editor } from '@tiptap/react';
 import React from 'react';
-import useGlobalCtx from 'src/store/global/use-global-ctx';
-import AvatarGroup from './AvatarGroup';
-import DownloadButton from './DownloadButton';
-import SaveButton from './SaveButton';
+import AvatarGroup from './components/AvatarGroup';
+import DownloadButton from './components/DownloadButton';
+import SaveButton from './components/SaveButton';
 
-const OdtHeader = () => {
-  const { user } = useGlobalCtx();
-  const clipboard = useClipboard();
-  const toast = useToast();
+interface Props {
+  editor: Editor;
+}
 
-  const copyUrl = () => {
-    clipboard.copy(window.location.toString());
-    toast.send('Link copied!', 'Send this link to anyone you want to collab with');
-  };
+const OdtHeader: React.FC<Props> = ({ editor }) => {
+  const { handleShare } = useWebShare();
 
   return (
     <Paper w="100%" p="sm" mb="md">
       <Group position="apart">
         <Group>
-          <Button variant="subtle" leftIcon={<ShareAndroidFilled fontSize={22} />} onClick={copyUrl}>
+          <Button
+            variant="subtle"
+            leftIcon={<ShareAndroidFilled fontSize={22} />}
+            onClick={() => handleShare(window.location.toString())}
+          >
             Share
           </Button>
 
-          <DownloadButton />
+          <DownloadButton editor={editor} />
 
           {/* <SaveButton /> */}
         </Group>

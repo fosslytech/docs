@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import Head from 'next/head';
 
 import 'src/styles/fonts.css';
+import 'src/styles/base.css';
 
 import { ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
@@ -12,6 +12,7 @@ import { logConsoleCat } from '@utils/functions/consoleCat';
 import { getMantineTheme } from '@utils/resources/mantineTheme';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 import JoinedCTXProvider from 'src/store/CTX';
+import GlobalSEO from '@module/SEO/GlobalSEO';
 
 const App = ({ Component, pageProps }) => {
   // Use the layout defined at the page level, if available
@@ -34,11 +35,7 @@ const App = ({ Component, pageProps }) => {
               {/* Route transition */}
               <NProgress />
 
-              <Head>
-                <title>Collab</title>
-                <meta name="description" content="FlightBooker description" />
-                <link rel="icon" href="/favicon.ico" />
-              </Head>
+              <GlobalSEO />
 
               {getLayout(<Component {...pageProps} />)}
             </NotificationsProvider>

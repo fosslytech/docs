@@ -1,0 +1,39 @@
+{
+  "name": "@cufta22/odf-collab-core",
+  "version": "1.0.1",
+  "description": "ODF Collab shared code",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.es.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CUFTA22/odf-collab.git"
+  },
+  "author": "CUFTA22",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CUFTA22/odf-collab/issues"
+  },
+  "homepage": "https://github.com/CUFTA22/odf-collab#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.18.6",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.4.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "babel-loader": "^9.1.2",
+    "rollup": "^2.79.1",
+    "rollup-plugin-dts": "^5.1.1",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.4"
+  }
+}

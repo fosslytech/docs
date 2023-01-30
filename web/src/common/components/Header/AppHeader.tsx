@@ -4,10 +4,16 @@ import { useRouter } from 'next/router';
 import { Header, Button, Text, Flex, useMantineTheme, useMantineColorScheme, Badge } from '@mantine/core';
 import { openModal } from '@mantine/modals';
 
-import { StarFilled } from '@fluentui/react-icons';
+import {
+  ArrowRight12Filled,
+  ArrowRightFilled,
+  BookFilled,
+  SettingsFilled,
+  StarFilled,
+} from '@fluentui/react-icons';
 
 import HeaderAvatar from './HeaderAvatar';
-import UserModal from './UserModal';
+
 import Logo from '@icons/Logo';
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
@@ -40,11 +46,25 @@ const AppHeader = () => {
 
         <div style={{ flex: 1 }}></div>
 
-        <Link href="/about">
-          <Button size="sm" leftIcon={<StarFilled fontSize={16} />} variant="subtle">
-            {translate(content.about)}
+        {/* <Link href="/getting-started">
+          <Button size="sm" mr="md" leftIcon={<BookFilled fontSize={16} />} variant="subtle">
+            {translate(content.gettingStarted)}
+          </Button>
+        </Link> */}
+
+        <Link href="/settings">
+          <Button size="sm" leftIcon={<SettingsFilled fontSize={16} />} variant="subtle">
+            {translate(content.settings)}
           </Button>
         </Link>
+
+        {router.pathname === '/' && (
+          <Link href="/doc">
+            <Button size="sm" ml="lg" rightIcon={<ArrowRightFilled fontSize={16} />}>
+              {translate(content.useOnline)}
+            </Button>
+          </Link>
+        )}
 
         {/* {user ? (
           <HeaderAvatar />

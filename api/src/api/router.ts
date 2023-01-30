@@ -1,5 +1,6 @@
 import { Server, ServerRoute } from '@hapi/hapi';
 import * as convertSvc from './convert.service';
+import * as downloadSvc from './download.service';
 
 const ROUTES: ServerRoute[] = [
   {
@@ -9,9 +10,11 @@ const ROUTES: ServerRoute[] = [
       return 'Hello World!';
     },
   },
+
+  // Convert API
   {
     method: 'POST',
-    path: '/convert/to-html',
+    path: '/convert',
     options: {
       payload: {
         parse: true,
@@ -19,24 +22,24 @@ const ROUTES: ServerRoute[] = [
         multipart: { output: 'data' },
       },
     },
-    handler: convertSvc.convert2Html,
-  },
-  {
-    method: 'POST',
-    path: '/convert/to-odt',
-    options: {
-      payload: {
-        parse: true,
-        allow: 'multipart/form-data',
-        multipart: { output: 'data' },
-      },
-    },
-    handler: convertSvc.convert2Odt,
+    handler: convertSvc.convert,
   },
   {
     method: 'GET',
-    path: '/convert/new-doc',
+    path: '/new-doc',
     handler: convertSvc.getNewDoc,
+  },
+
+  // Download API
+  {
+    method: 'POST',
+    path: '/prepare-download',
+    handler: downloadSvc.prepareDownload,
+  },
+  {
+    method: 'GET',
+    path: '/download',
+    handler: downloadSvc.download,
   },
 ];
 

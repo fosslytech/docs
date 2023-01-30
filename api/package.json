@@ -12,14 +12,18 @@
     "dev": "run-p dev:*"
   },
   "dependencies": {
+    "@cufta22/odf-collab-core": "^1.0.1",
     "@hapi/hapi": "^21.2.0",
-    "@types/uuid": "^9.0.0",
+    "@hapi/inert": "^7.0.0",
     "libreoffice-convert": "^1.4.1",
+    "node-unoconv": "^1.0.5",
     "ts-node": "^10.9.1",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@types/hapi__inert": "^5.2.4",
     "@types/node": "^18.11.18",
+    "@types/uuid": "^9.0.0",
     "nodemon": "^2.0.20",
     "npm-run-all": "^4.1.5",
     "typescript": "^4.9.4"
