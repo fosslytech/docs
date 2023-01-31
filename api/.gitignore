@@ -4,7 +4,11 @@
 # production
 /build
 
-/lib
+# /dist
+/dist/*
+
+# env
+.env
 
 # debug
 npm-debug.log*

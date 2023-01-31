@@ -7,16 +7,16 @@
   "description": "ODF Collab document converting API",
   "main": "./src/index.ts",
   "scripts": {
-    "dev:tsc": "tsc --watch -p .",
-    "dev:serve": "nodemon -e js -w lib lib/index.js",
-    "dev": "run-p dev:*"
+    "dev": "npx nodemon",
+    "build": "rimraf ./dist && tsc",
+    "start": "npm run build && node dist/index.js"
   },
   "dependencies": {
     "@cufta22/odf-collab-core": "^1.0.1",
     "@hapi/hapi": "^21.2.0",
     "@hapi/inert": "^7.0.0",
+    "dotenv": "^16.0.3",
     "libreoffice-convert": "^1.4.1",
-    "node-unoconv": "^1.0.5",
     "ts-node": "^10.9.1",
     "uuid": "^9.0.0"
   },
@@ -25,7 +25,7 @@
     "@types/node": "^18.11.18",
     "@types/uuid": "^9.0.0",
     "nodemon": "^2.0.20",
-    "npm-run-all": "^4.1.5",
+    "rimraf": "^4.1.2",
     "typescript": "^4.9.4"
   }
 }

@@ -2,6 +2,9 @@
 
 import Hapi, { Server } from '@hapi/hapi';
 import router from './api/router';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const init = async () => {
   const server: Server = Hapi.server({
