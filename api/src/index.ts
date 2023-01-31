@@ -9,7 +9,8 @@ dotenv.config();
 const init = async () => {
   const server: Server = Hapi.server({
     port: process.env.PORT || 4000,
-    host: 'localhost',
+    // host: 'localhost',
+    host: '0.0.0.0',
     routes: {
       cors: {
         origin: ['http://localhost:3000', 'https://odf-collab.vercel.app', 'https://odfcollab.com'],
