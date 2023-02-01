@@ -7,7 +7,7 @@ const ROUTES: ServerRoute[] = [
     method: 'GET',
     path: '/',
     handler: () => {
-      return 'Hello World!';
+      return 'I run on Arch, btw!';
     },
   },
 
