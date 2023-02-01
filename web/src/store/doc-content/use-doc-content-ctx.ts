@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { useRouter } from 'next/router';
 import useDocApi from 'src/api/doc/use-doc-api';
 
-import { formatHtmlResponse } from '../../../../core/src/formatHtmlResponse';
+import { formatHtmlResponse } from '@cufta22/odf-collab-core';
 import { ISupportedInputExtensions, ISupportedOutputExtensions } from '@ts/global.types';
 import { Editor } from '@tiptap/react';
 import useDownload from '@hooks/use-download';
