@@ -65,12 +65,18 @@ const downloadFunction = async (req: Request, h: ResponseToolkit) => {
 // Download document
 // ------------------------------------------------------------------------------------------
 
-export const prepareDownload = (req: Request) => prepareDownloadFunction(req);
+export const prepareDownload = (req: Request) => {
+  try {
+    return prepareDownloadFunction(req);
+  } catch (error) {
+    return error || 'Error has occurred';
+  }
+};
 
 export const download = (req: Request, h: ResponseToolkit) => {
   try {
     return downloadFunction(req, h);
   } catch (error) {
-    return 'Error has occurred';
+    return error || 'Error has occurred';
   }
 };

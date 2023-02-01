@@ -56,7 +56,13 @@ const universalConvertFunction = async (req: Request) => {
 // ------------------------------------------------------------------------------------------
 // Convert any file ( if possible ) to any file ( if possible )
 // ------------------------------------------------------------------------------------------
-export const convert = (req: Request) => universalConvertFunction(req);
+export const convert = (req: Request) => {
+  try {
+    return universalConvertFunction(req);
+  } catch (error) {
+    return error || 'Error has occurred';
+  }
+};
 
 // ------------------------------------------------------------------------------------------
 // Get new doc
