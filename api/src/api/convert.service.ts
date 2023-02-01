@@ -60,6 +60,8 @@ export const convert = (req: Request) => {
   try {
     return universalConvertFunction(req);
   } catch (error) {
+    console.log(error);
+
     return error || 'Error has occurred';
   }
 };
