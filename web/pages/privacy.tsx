@@ -48,7 +48,7 @@ const Page: NextPageWithLayout = () => {
         </Flex>
 
         <List withPadding my="md" size="lg">
-          <List.Item>We don't 🙂</List.Item>
+          <List.Item>We don&apos;t 🙂</List.Item>
         </List>
 
         <Divider my="md" />
@@ -82,7 +82,7 @@ const Page: NextPageWithLayout = () => {
         <Text ml="xl">By default we use no cookies on our website</Text>
 
         <List withPadding my="md" size="lg">
-          <List.Item>If you're signed in session id is saved in a cookie</List.Item>
+          <List.Item>If you&apos;re signed in session id is saved in a cookie</List.Item>
         </List>
 
         <Divider my="md" />
