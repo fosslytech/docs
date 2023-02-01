@@ -58,7 +58,7 @@ const AppHeader = () => {
           </Button>
         </Link>
 
-        {router.pathname === '/' && (
+        {['/', '/settings'].includes(router.pathname) && (
           <Link href="/doc">
             <Button size="sm" ml="lg" rightIcon={<ArrowRightFilled fontSize={16} />}>
               {translate(content.useOnline)}

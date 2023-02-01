@@ -10,7 +10,7 @@ const init = async () => {
   const server: Server = Hapi.server({
     port: process.env.PORT || 4000,
     // host: 'localhost',
-    host: '0.0.0.0',
+    host: '0.0.0.0', // This is needed for prod
     routes: {
       cors: {
         origin: ['http://localhost:3000', 'https://odf-collab.vercel.app', 'https://odfcollab.com'],

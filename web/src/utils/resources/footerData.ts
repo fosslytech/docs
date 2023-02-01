@@ -6,8 +6,8 @@ export const footerData_index: AppFooterProps = {
       title: 'About',
       links: [
         { label: 'Home', link: '/' },
-        { label: 'Download', link: '/download' },
         { label: 'Settings', link: '/settings' },
+        { label: 'Privacy', link: '/privacy' },
       ],
     },
     {
