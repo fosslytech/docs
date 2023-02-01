@@ -26,6 +26,7 @@ const universalConvertFunction = async (req: Request) => {
   const uuid = uuidv4();
 
   const outputPath = path.join(process.cwd(), `/temp/${uuid}.${extOut}`);
+  console.log(outputPath);
 
   // ----------------------------------------------------------------------------------------
   // Read and convert to given format
@@ -60,8 +61,6 @@ export const convert = (req: Request) => {
   try {
     return universalConvertFunction(req);
   } catch (error) {
-    console.log(error);
-
     return error || 'Error has occurred';
   }
 };
