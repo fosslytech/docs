@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CUFTA22/odf-collab.git"
+    "url": "git+https://github.com/cufta22/odf-collab.git"
   },
-  "author": "CUFTA22",
+  "author": "cufta22",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CUFTA22/odf-collab/issues"
+    "url": "https://github.com/cufta22/odf-collab/issues"
   },
-  "homepage": "https://github.com/CUFTA22/odf-collab#readme",
+  "homepage": "https://github.com/cufta22/odf-collab#readme",
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",

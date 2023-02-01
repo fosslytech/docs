@@ -2,7 +2,7 @@
   "name": "odf-collab",
   "version": "1.0.0",
   "private": false,
-  "author": "CUFTA22",
+  "author": "cufta22",
   "license": "MIT",
   "scripts": {
     "dev": "next dev",

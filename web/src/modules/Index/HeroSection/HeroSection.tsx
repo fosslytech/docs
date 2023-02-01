@@ -35,7 +35,7 @@ const HeroSection = () => {
                   {translate(content.hero.gettingStarted)}
                 </Button>
               </Link>
-              <Link href="https://github.com/play-bnw/website" target="_blank">
+              <Link href="https://github.com/cufta22/odf-collab" target="_blank">
                 <Button
                   variant="default"
                   radius="lg"

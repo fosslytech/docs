@@ -43,12 +43,12 @@ If you're working on an **issue**, create an issue branch - [ fix/issue-\* ] ( e
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/CUFTA22/odf-collab/blob/master/CONTRIBUTING.md) for all details.
+See [CONTRIBUTING.md](https://github.com/cufta22/odf-collab/blob/master/CONTRIBUTING.md) for all details.
 
-Also check out the [Project Board](https://tree.taiga.io/project/cufta22-odf-collab/kanban) for all available and future tasks
+Also check out the [Project Board]() for all available and future tasks
 
 I recommend creating an issue or message me on discord [ cufta22#8160 ] to let me know what you are working on first that way we don't overwrite each other.
 
 ## Code of Conduct
 
-Please read [CODE_OF_CONDUCT.md](https://github.com/CUFTA22/odf-collab/blob/master/CODE_OF_CONDUCT.md) for details on our code of conduct.
+Please read [CODE_OF_CONDUCT.md](https://github.com/cufta22/odf-collab/blob/master/CODE_OF_CONDUCT.md) for details on our code of conduct.

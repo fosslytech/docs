@@ -128,7 +128,7 @@ const Page: NextPageWithLayout = () => {
         <Divider my="md" />
 
         <Text align="center" ml="xl">
-          Contact us @
+          Contact us - <a href="mailto:contact@odfcollab.com">contact@odfcollab.com</a>
         </Text>
       </Paper>
     </Container>
