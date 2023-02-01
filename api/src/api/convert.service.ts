@@ -25,8 +25,9 @@ const universalConvertFunction = async (req: Request) => {
 
   const uuid = uuidv4();
 
-  const outputPath = path.join(process.cwd(), `/temp/${uuid}.${extOut}`);
-  console.log(outputPath);
+  // Breaks with pm2
+  // const outputPath = path.join(process.cwd(), `/temp/${uuid}.${extOut}`);
+  const outputPath = path.join(__dirname, `/../../temp/${uuid}.${extOut}`);
 
   // ----------------------------------------------------------------------------------------
   // Read and convert to given format

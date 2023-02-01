@@ -24,7 +24,9 @@ const prepareDownloadFunction = async (req: Request) => {
 
   const uuid = uuidv4();
 
-  const outputPath = path.join(process.cwd(), `/temp/${uuid}.${extOut}`);
+  // Breaks with pm2
+  // const outputPath = path.join(process.cwd(), `/temp/${uuid}.${extOut}`);
+  const outputPath = path.join(__dirname, `/../../temp/${uuid}.${extOut}`);
 
   // ----------------------------------------------------------------------------------------
   // Convert to given format
@@ -46,7 +48,9 @@ const downloadFunction = async (req: Request, h: ResponseToolkit) => {
 
   if (!uuid || !extOut) return 'Invalid request';
 
-  const filePath = path.join(process.cwd(), `/temp/${uuid}.${extOut}`);
+  // Breaks with pm2
+  // const filePath = path.join(process.cwd(), `/temp/${uuid}.${extOut}`);
+  const filePath = path.join(__dirname, `/../../temp/${uuid}.${extOut}`);
 
   // ----------------------------------------------------------------------------------------
   // Remove file after it's sent
