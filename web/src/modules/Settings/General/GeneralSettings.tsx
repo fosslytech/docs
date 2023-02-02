@@ -10,8 +10,11 @@ import useGlobalCtx from 'src/store/global/use-global-ctx';
 import content from '@content/settings/settings.json';
 import { SettingsFilled } from '@fluentui/react-icons';
 
+import useStyles from './GeneralSettings.theme';
+
 const Settings = () => {
   const { translate } = useGlobalCtx();
+  const { classes } = useStyles();
 
   return (
     <Paper radius="md" p="xl" withBorder>
@@ -24,21 +27,21 @@ const Settings = () => {
       </Flex>
 
       <Group align="start">
-        <Flex direction="column">
+        <Flex direction="column" className={classes.container}>
           <Text size="md" weight={400} mb={6}>
             {translate(content.settings.selectLang)}
           </Text>
           <LanguageSelect />
         </Flex>
 
-        <Flex direction="column">
+        <Flex direction="column" className={classes.container}>
           <Text size="md" weight={400} mb={6}>
             {translate(content.settings.selectTheme)}
           </Text>
           <ThemeSelect />
         </Flex>
 
-        <Flex direction="column">
+        <Flex direction="column" className={classes.container}>
           <Text size="md" weight={400} mb={6}>
             {translate(content.settings.selectFont)}
           </Text>

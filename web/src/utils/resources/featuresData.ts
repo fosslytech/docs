@@ -9,6 +9,7 @@ import {
 } from '@fluentui/react-icons';
 
 import content from 'src/content/doc/doc.json';
+import { getContentType } from '@cufta22/odf-collab-core';
 
 export interface IFeature {
   title: {};
@@ -29,7 +30,7 @@ export const FEATURES_DATA: IFeature[] = [
     button1: content.cards[0].button1,
     button2: content.cards[0].button2,
     icon: DocumentBulletListFilled,
-    accept: 'application/vnd.oasis.opendocument.text',
+    accept: `${getContentType('odt')}`,
     badge: content.cards[0].badge,
   },
   // {

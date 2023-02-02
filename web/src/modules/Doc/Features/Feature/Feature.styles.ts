@@ -5,5 +5,9 @@ export default createStyles((theme) => ({
     minWidth: 350,
     maxWidth: 350,
     border: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1]}`,
+
+    [theme.fn.smallerThan('xs')]: {
+      minWidth: '100%',
+    },
   },
 }));

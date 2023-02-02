@@ -8,9 +8,7 @@ export default createStyles((theme, { opened }: { opened: boolean }) => ({
     alignItems: 'center',
     padding: '10px 15px',
     borderRadius: theme.radius.md,
-    border: `1px solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[2]
-    }`,
+    border: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[2]}`,
     transition: 'background-color 150ms ease',
     backgroundColor:
       theme.colorScheme === 'dark'
@@ -21,6 +19,10 @@ export default createStyles((theme, { opened }: { opened: boolean }) => ({
 
     '&:hover': {
       backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[0],
+    },
+
+    [theme.fn.smallerThan('xs')]: {
+      width: '100%',
     },
   },
 

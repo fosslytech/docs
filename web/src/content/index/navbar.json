@@ -1,0 +1,15 @@
+{
+  "navbar": [
+    {
+      "text": {
+        "EN": "Home"
+      }
+    },
+
+    {
+      "text": {
+        "EN": "Settings"
+      }
+    }
+  ]
+}
