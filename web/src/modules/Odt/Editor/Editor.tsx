@@ -19,7 +19,7 @@ const EditorComp: React.FC<Props> = ({ editor }) => {
 
   return (
     <RichTextEditor editor={editor} labels={GET_ODT_LABELS(translate)}>
-      <RichTextEditor.Toolbar sticky stickyOffset={60}>
+      <RichTextEditor.Toolbar sticky stickyOffset={60} w="100%">
         <Controls />
       </RichTextEditor.Toolbar>
 

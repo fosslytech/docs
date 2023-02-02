@@ -1,14 +1,18 @@
 import { AppShell } from '@mantine/core';
 
 import AppHeader from '@components/Header/AppHeader';
+import AppNavbar from '@components/Navbar/AppNavbar';
+
 import { IFC } from '@ts/global.types';
-import useGlobalCtx from 'src/store/global/use-global-ctx';
+import { useState } from 'react';
 
 interface Props extends IFC {
   withHeader?: boolean;
 }
 
 const AppLayout: React.FC<Props> = ({ children, withHeader = true }) => {
+  const [opened, setOpened] = useState(false);
+
   return (
     <AppShell
       styles={(theme) => ({
@@ -23,8 +27,10 @@ const AppLayout: React.FC<Props> = ({ children, withHeader = true }) => {
           // overflow: 'hidden',
         },
       })}
+      navbarOffsetBreakpoint={69000}
       padding={0}
-      header={withHeader && <AppHeader />}
+      header={withHeader && <AppHeader opened={opened} setOpened={setOpened} />}
+      navbar={<AppNavbar opened={opened} />}
     >
       {children}
     </AppShell>

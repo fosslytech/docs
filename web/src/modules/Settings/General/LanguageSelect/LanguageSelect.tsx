@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { UnstyledButton, Menu, Group } from '@mantine/core';
 import { ChevronDownRegular } from '@fluentui/react-icons';
-import useStyles from './LanguageSelect.styles';
+import useStyles from '../Select.styles';
 
 import { ILang } from '@ts/global.types';
 import useGlobalCtx from 'src/store/global/use-global-ctx';

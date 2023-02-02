@@ -1,13 +1,4 @@
-import {
-  CodeFilled,
-  LeafOneFilled,
-  LockOpenFilled,
-  LockOpenRegular,
-  PeopleFilled,
-  PeopleRegular,
-  PhoneDesktopFilled,
-  PhoneDesktopRegular,
-} from '@fluentui/react-icons';
+import { LeafOneFilled, LockOpenFilled, PeopleFilled } from '@fluentui/react-icons';
 import { CardsSectionProps } from '@module/Index/CardsSection/CardsSection';
 
 import content from '@content/index/home.json';

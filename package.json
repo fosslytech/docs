@@ -1,9 +1,0 @@
-{
-  "name": "odf-collab",
-  "private": false,
-  "author": "cufta22",
-  "license": "MIT",
-  "scripts": {
-    "dev": "cd web/ && npm run dev"
-  }
-}

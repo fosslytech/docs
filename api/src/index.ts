@@ -13,14 +13,12 @@ const init = async () => {
     host: '0.0.0.0', // This is needed for prod
     routes: {
       cors: {
-        origin: ['http://localhost:3000', 'https://odf-collab.vercel.app', 'https://odfcollab.com'],
-        exposedHeaders: [
-          'Content-Type',
-          'Access-Control-Allow-Headers',
-          'Access-Control-Expose-Headers',
-          'Content-Disposition',
-          'Authorization',
-          'X-Requested-With',
+        origin: [
+          'http://localhost:3000',
+          'https://odf-collab.vercel.app',
+          'https://odfcollab.com',
+          'https://www.odfcollab.com',
+          'https://staging.odfcollab.com',
         ],
       },
     },
