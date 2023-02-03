@@ -22,11 +22,11 @@
 
 ## Structure
 
-| Codebase     |   Description   |                     Domain                     |
-| :----------- | :-------------: | :--------------------------------------------: |
-| [api](api)   |   Node.js API   | [api.odfcollab.com](https://api.odfcollab/com) |
-| [web](web)   | Next.js web app |     [odfcollab.com](https://odfcollab/com)     |
-| [core](core) |   Shared code   |                       /                        |
+| Codebase        |   Description   |                     Domain                     |
+| :-------------- | :-------------: | :--------------------------------------------: |
+| [api](../api)   |   Node.js API   | [api.odfcollab.com](https://api.odfcollab.com) |
+| [web](../web)   | Next.js web app |     [odfcollab.com](https://odfcollab.com)     |
+| [core](../core) |   Shared code   |                       /                        |
 
 <!-- | [design](design)   |  All project assets  |   /   | -->
 <!-- | [mobile](mobile)   |  Mobile app          |   /   | -->

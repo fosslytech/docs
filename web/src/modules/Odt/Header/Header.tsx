@@ -1,37 +1,29 @@
-import { ShareAndroidFilled } from '@fluentui/react-icons';
-import { useWebShare } from '@hooks/use-web-share';
-import { Button, Group, Header, Paper } from '@mantine/core';
+import { Group, Paper } from '@mantine/core';
 import { Editor } from '@tiptap/react';
+import { IYConn } from '@ts/global.types';
 import React from 'react';
 import AvatarGroup from './components/AvatarGroup';
 import DownloadButton from './components/DownloadButton';
-import SaveButton from './components/SaveButton';
+import ShareButton from './components/ShareButton';
 
 interface Props {
   editor: Editor;
+  connectedUsers: IYConn[];
 }
 
-const OdtHeader: React.FC<Props> = ({ editor }) => {
-  const { handleShare } = useWebShare();
-
+const OdtHeader: React.FC<Props> = ({ editor, connectedUsers }) => {
   return (
     <Paper w="100%" p="sm" mb="md">
       <Group position="apart">
         <Group>
-          <Button
-            variant="subtle"
-            leftIcon={<ShareAndroidFilled fontSize={22} />}
-            onClick={() => handleShare(window.location.toString())}
-          >
-            Share
-          </Button>
+          <ShareButton />
 
           <DownloadButton editor={editor} />
 
           {/* <SaveButton /> */}
         </Group>
 
-        <AvatarGroup />
+        <AvatarGroup connectedUsers={connectedUsers} />
       </Group>
     </Paper>
   );

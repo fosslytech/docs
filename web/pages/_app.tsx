@@ -21,14 +21,14 @@ const App = ({ Component, pageProps }) => {
   useEffect(() => logConsoleCat(), []);
 
   const Root = () => {
-    const { appTheme, appFont, appColorScheme, toggleColorScheme } = useGlobalCtx();
+    const { appTheme, appFont, appColorScheme, appPrimaryColor, toggleColorScheme } = useGlobalCtx();
 
     return (
       <ColorSchemeProvider colorScheme={appColorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider
           withGlobalStyles
           withNormalizeCSS
-          theme={getMantineTheme(appColorScheme, appTheme, appFont)}
+          theme={getMantineTheme(appColorScheme, appPrimaryColor, appTheme, appFont)}
         >
           <ModalsProvider>
             <NotificationsProvider>

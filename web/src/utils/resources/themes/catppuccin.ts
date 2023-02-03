@@ -1,9 +1,14 @@
-import { ColorScheme, MantineThemeOverride } from '@mantine/core';
+import { ColorScheme, DefaultMantineColor, MantineThemeOverride } from '@mantine/core';
 import { IAppFont } from '@ts/global.types';
 
-export const THEME_CATPPUCCIN = (colorScheme: ColorScheme, appFont: IAppFont): MantineThemeOverride => ({
+export const THEME_CATPPUCCIN = (
+  colorScheme: ColorScheme,
+  primaryColor: DefaultMantineColor,
+  appFont: IAppFont
+): MantineThemeOverride => ({
   /** Put your mantine theme override here */
   colorScheme,
+  primaryColor,
   fontFamily: `${appFont}, sans-serif`,
 
   colors: {

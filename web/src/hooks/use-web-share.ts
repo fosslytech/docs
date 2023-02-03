@@ -18,7 +18,8 @@ export const useWebShare = () => {
             url,
           });
         } catch (err) {
-          toast.send('Error while sharing', 'Something went wrong', 'red');
+          // This fires when user just cancels the share on mobile
+          // toast.send('Error while sharing', 'Something went wrong', 'red');
         }
         break;
 

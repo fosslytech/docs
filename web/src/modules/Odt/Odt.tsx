@@ -6,13 +6,13 @@ import StateConnecting from './StateConnecting';
 import { useOdtEditor } from './use-odt-editor';
 
 const Home = () => {
-  const { editor, isConnected } = useOdtEditor();
+  const { editor, isConnected, connectedUsers } = useOdtEditor();
 
   if (!isConnected) return <StateConnecting />;
 
   return (
     <>
-      <Header editor={editor} />
+      <Header editor={editor} connectedUsers={connectedUsers} />
 
       <Container size="lg" py="xl" mt={40} mb={40}>
         <Editor editor={editor} />
