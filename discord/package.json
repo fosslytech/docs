@@ -1,0 +1,28 @@
+{
+  "name": "odf-collab-bot",
+  "version": "1.0.0",
+  "description": "ODF Collab discord bot",
+  "main": "./src/bot.ts",
+  "scripts": {
+    "dev": "npx nodemon",
+    "commands": "ts-node ./src/register-commands.ts",
+    "build": "rimraf ./dist && tsc",
+    "start": "npm run build && node dist/index.js"
+  },
+  "author": "cufta22",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/rest": "^1.5.0",
+    "chalk": "^5.2.0",
+    "discord-api-types": "^0.37.31",
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "nodemon": "^2.0.20",
+    "rimraf": "^4.1.2",
+    "typescript": "^4.9.5"
+  }
+}
