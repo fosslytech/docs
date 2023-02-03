@@ -41,8 +41,6 @@ const useDocContentCtx = () => {
   const handleUploadDocument = async (file: File) => {
     dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingUpload', value: true } });
 
-    console.log(file.type);
-
     const data = await doc_uploadFile(file, 'html');
 
     const formattedHtml = formatHtmlResponse(data.output);

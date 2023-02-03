@@ -14,7 +14,6 @@ import React from 'react';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
 const HeaderAvatar = () => {
-  const { user, logOut } = useGlobalCtx();
   const router = useRouter();
 
   return (
@@ -22,7 +21,7 @@ const HeaderAvatar = () => {
       <Menu.Target>
         <Avatar radius="xl" style={{ cursor: 'pointer' }} color="blue">
           {/* <PersonFilled fontSize={24} /> */}
-          {user.username.substring(0, 2)}
+          {/* {user.username.substring(0, 2)} */}
         </Avatar>
       </Menu.Target>
 
@@ -30,7 +29,7 @@ const HeaderAvatar = () => {
         <Menu.Label>Username</Menu.Label>
         <Menu.Item style={{ overflow: 'hidden' }} disabled>
           <Text lineClamp={1} style={{ overflow: 'hidden' }}>
-            {user.username}
+            {/* {user.username} */}
           </Text>
         </Menu.Item>
 
@@ -42,7 +41,7 @@ const HeaderAvatar = () => {
           color="yellow"
           icon={<SignOutFilled fontSize={18} />}
           onClick={() => {
-            logOut();
+            // logOut();
           }}
         >
           Sign out

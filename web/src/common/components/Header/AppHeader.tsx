@@ -38,7 +38,7 @@ interface Props {
 }
 
 const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
-  const { user, translate } = useGlobalCtx();
+  const { translate } = useGlobalCtx();
   const theme = useMantineTheme();
   const colorScheme = useMantineColorScheme();
   const router = useRouter();

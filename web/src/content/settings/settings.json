@@ -25,6 +25,29 @@
         "EN": "Catppuccin"
       }
     },
+    "selectPrimaryColor": {
+      "EN": "Primary color"
+    },
+    "selectPrimaryColorOptions": {
+      "blue": {
+        "EN": "Blue"
+      },
+      "red": {
+        "EN": "Red"
+      },
+      "green": {
+        "EN": "Green"
+      },
+      "yellow": {
+        "EN": "Yellow"
+      },
+      "pink": {
+        "EN": "Pink"
+      },
+      "teal": {
+        "EN": "Teal"
+      }
+    },
     "selectFont": {
       "EN": "Font select"
     },

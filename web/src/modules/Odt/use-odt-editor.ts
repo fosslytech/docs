@@ -11,18 +11,21 @@ import SubScript from '@tiptap/extension-subscript';
 import TextStyle from '@tiptap/extension-text-style';
 import { Color } from '@tiptap/extension-color';
 import { useEditor } from '@tiptap/react';
-import { useMantineTheme } from '@mantine/core';
+import { MANTINE_COLORS, useMantineTheme } from '@mantine/core';
 import useDocContentCtx from 'src/store/doc-content/use-doc-content-ctx';
 import { useYWebRtc } from '@hooks/yjs/use-y-webrtc';
 import { useRouter } from 'next/router';
 import useNonInitialEffect from '@hooks/use-non-initial-effect';
+import { getRandomInt } from '@utils/functions/randomNumber';
 
 export const useOdtEditor = () => {
   const router = useRouter();
   const theme = useMantineTheme();
   const { initialDocContent, setInitialContent } = useDocContentCtx();
 
-  const { doc, provider } = useYWebRtc(router.query.session as string, { maxConns: 10 });
+  const { doc, provider } = useYWebRtc(router.query.session as string, { maxConns: 2, filterBcConns: true });
+
+  const userColor = MANTINE_COLORS[getRandomInt(0, 13)];
 
   const editor = useEditor({
     extensions: [
@@ -36,7 +39,8 @@ export const useOdtEditor = () => {
         provider: provider,
         user: {
           name: 'Anon',
-          color: theme.colors.blue[6],
+          color: theme.colors[userColor][6],
+          colorName: userColor,
         },
       }),
       Underline,
@@ -59,6 +63,7 @@ export const useOdtEditor = () => {
   const connectedUsers = Array.from(provider.awareness.getStates(), ([id, { cursor, user }]) => ({
     name: user?.name || 'Anon',
     color: user?.color || theme.colors.blue[6],
+    colorName: user?.colorName || 'blue',
   }));
 
   return { editor, connectedUsers, isConnected: provider.connected };

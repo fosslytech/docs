@@ -4,6 +4,7 @@ import LanguageSelect from './LanguageSelect/LanguageSelect';
 import ThemeSelect from './ThemeSelect/ThemeSelect';
 import FontSelect from './FontSelect/FontSelect';
 import ColorSchemeSwitch from './ColorThemeSwitch/ColorThemeSwitch';
+import PrimaryColorSelect from './PrimaryColorSelect/PrimaryColorSelect';
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
@@ -39,6 +40,13 @@ const Settings = () => {
             {translate(content.settings.selectTheme)}
           </Text>
           <ThemeSelect />
+        </Flex>
+
+        <Flex direction="column" className={classes.container}>
+          <Text size="md" weight={400} mb={6}>
+            {translate(content.settings.selectPrimaryColor)}
+          </Text>
+          <PrimaryColorSelect />
         </Flex>
 
         <Flex direction="column" className={classes.container}>

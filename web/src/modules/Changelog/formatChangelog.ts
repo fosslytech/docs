@@ -1,5 +1,3 @@
-import dayjs from 'dayjs';
-
 export const formatChangelog = (data: string): { title: string; content: string }[] => {
   let array = [];
   let objCounter = 0;
@@ -11,8 +9,7 @@ export const formatChangelog = (data: string): { title: string; content: string 
     if (!found) array.push({ title: '', content: '' });
 
     if (str.substring(0, 3) === '## ') {
-      array[objCounter].title =
-        'v' + str.substring(4, 9) + ' - ' + dayjs(str.substring(13)).format('DD.MM.YYYY');
+      array[objCounter].title = 'v' + str.substring(4, 9) + ' - ' + str.substring(13);
     } else {
       array[objCounter].content = array[objCounter].content + '\n' + str;
     }

@@ -6,6 +6,7 @@ import {
   DocumentPdfFilled,
   TextDescriptionFilled,
 } from '@fluentui/react-icons';
+import { useResponsive } from '@hooks/use-responsive';
 import { Button, Menu, useMantineTheme } from '@mantine/core';
 import { Editor } from '@tiptap/react';
 import React from 'react';
@@ -19,14 +20,16 @@ const DownloadButton: React.FC<Props> = ({ editor }) => {
   const theme = useMantineTheme();
   const { handleDownloadDocument, isLoadingDownload } = useDocContentCtx();
 
+  const isXs = useResponsive('max', 'xs');
+
   return (
     <Menu transition="fade" position="bottom-start" width={180} withinPortal>
       <Menu.Target>
         <Button
-          leftIcon={<ArrowDownloadFilled fontSize={22} />}
+          leftIcon={!isXs && <ArrowDownloadFilled fontSize={22} />}
           rightIcon={<ChevronDownFilled fontSize={18} />}
           pr={12}
-          // loading={isLoadingDownload}
+          loading={isLoadingDownload}
         >
           Download
         </Button>

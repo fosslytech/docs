@@ -1,4 +1,4 @@
-import { ColorScheme } from '@mantine/core';
+import { ColorScheme, DefaultMantineColor, MantineColor } from '@mantine/core';
 import { NextPage } from 'next';
 import React, { Dispatch } from 'react';
 
@@ -8,18 +8,18 @@ import React, { Dispatch } from 'react';
 
 export type Global_Context_Action =
   | Base_Action
-  | { type: 'SET_USER'; payload: IUser }
   | { type: 'SET_LANGUAGE'; payload: ILang }
   | { type: 'SET_THEME'; payload: IAppTheme }
   | { type: 'SET_FONT'; payload: IAppFont }
-  | { type: 'SET_COLOR_SCHEME'; payload: ColorScheme };
+  | { type: 'SET_COLOR_SCHEME'; payload: ColorScheme }
+  | { type: 'SET_PRIMARY_COLOR'; payload: DefaultMantineColor };
 
 export interface Global_Context extends Base_Context<Global_Context_Action> {
-  user: IUser;
   language: ILang;
   appTheme: IAppTheme;
   appFont: IAppFont;
   appColorScheme: ColorScheme;
+  appPrimaryColor: DefaultMantineColor;
 }
 
 // -----------------------------------------------------------------
@@ -39,8 +39,10 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
 };
 
-export interface IUser {
-  username: string;
+export interface IYConn {
+  name: string;
+  color: string;
+  colorName: MantineColor;
 }
 
 export type ILang = 'EN';
