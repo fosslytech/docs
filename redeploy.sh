@@ -1,15 +1,19 @@
 #!/bin/bash
 
-git fetch origin master
 git pull origin master
 
-pm2 stop index
-pm2 stop bot
+pm2 stop all
 
+# Build api
+cd api
 npm i
 npm run build
 
-pm2 start index
-pm2 start bot
+# Build discord bot
+cd ../discord
+npm i
+npm run build
+
+pm2 start all
 
 systemctl restart nginx
