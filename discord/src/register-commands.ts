@@ -8,6 +8,8 @@ import {
   slashCommandResume,
   slashCommandSkip,
 } from './handler/player';
+import { slashCommandNeofetch } from './handler/shell/neofetch';
+import { slashCommandCowsay } from './handler/shell/cowsay';
 
 dotenv.config();
 
@@ -16,12 +18,14 @@ dotenv.config();
 const commands = [
   {
     name: 'hi',
-    description: 'Replies with hey!',
+    description: 'Replies with Hey!',
   },
-  {
-    name: 'neofetch',
-    description: 'Neofetch',
-  },
+
+  // Shell
+  slashCommandNeofetch.toJSON(),
+  slashCommandCowsay.toJSON(),
+
+  // Music
   slashCommandPlay.toJSON(),
   slashCommandPause.toJSON(),
   slashCommandExit.toJSON(),

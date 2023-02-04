@@ -1,5 +1,6 @@
 import { Player } from 'discord-player';
 import { Interaction } from 'discord.js';
+import { formatTime, getLinuxDistro } from '../utils';
 import {
   handleCommandExit,
   handleCommandPause,
@@ -8,6 +9,8 @@ import {
   handleCommandResume,
   handleCommandSkip,
 } from './player';
+import { handleCommandCowsay } from './shell/cowsay';
+import { handleCommandNeofetch } from './shell/neofetch';
 
 export const handleInteractionCreate = async (int: Interaction, player: Player) => {
   if (!int.isChatInputCommand()) return;
@@ -17,12 +20,14 @@ export const handleInteractionCreate = async (int: Interaction, player: Player) 
       int.reply('Hey!');
       break;
 
-    case 'neofetch':
-      int.reply(`
-      Row 1,
+    // Shell
 
-      Row 3
-      `);
+    case 'neofetch':
+      handleCommandNeofetch(int);
+      break;
+
+    case 'cowsay':
+      handleCommandCowsay(int);
       break;
 
     // Music player
