@@ -3,29 +3,21 @@ import { EmbedBuilder, Interaction, SlashCommandBuilder } from 'discord.js';
 
 export const slashCommandPlay = new SlashCommandBuilder()
   .setName('play')
-  .setDescription('play a song from YouTube.')
+  .setDescription('play a song from [REDACTED].')
   .addSubcommand((subcommand) =>
     subcommand
-      .setName('search')
-      .setDescription('Searches for a song and plays it')
+      .setName('song')
+      .setDescription('Plays a single song from [REDACTED]')
       .addStringOption((option) =>
-        option.setName('searchterms').setDescription('search keywords').setRequired(true)
+        option.setName('query').setDescription('search for the song').setRequired(true)
       )
   )
   .addSubcommand((subcommand) =>
     subcommand
       .setName('playlist')
-      .setDescription('Plays a playlist from YT')
+      .setDescription('Plays a playlist from [REDACTED]')
       .addStringOption((option) =>
         option.setName('url').setDescription("the playlist's url").setRequired(true)
-      )
-  )
-  .addSubcommand((subcommand) =>
-    subcommand
-      .setName('song')
-      .setDescription('Plays a single song from YT')
-      .addStringOption((option) =>
-        option.setName('url').setDescription("the song's url").setRequired(true)
       )
   );
 
@@ -47,17 +39,18 @@ export const handleCommandPlay = async (int: Interaction, player: Player) => {
   let embedBuilder = new EmbedBuilder();
 
   // Switch for the subcommand
-  // song || playlist || search
+  // song || playlist
   switch (int.options.getSubcommand()) {
     case 'song':
-      let url1 = int.options.getString('url');
+      const query = int.options.getString('query');
+      const isLink = query?.includes('http');
 
-      if (!url1) return int.reply('No url');
+      if (!query) return int.reply('No query');
 
       // Search for the song using the discord-player
-      const res1 = await player.search(url1, {
+      const res1 = await player.search(query, {
         requestedBy: int.user,
-        searchEngine: QueryType.YOUTUBE_VIDEO,
+        searchEngine: isLink ? QueryType.YOUTUBE_VIDEO : QueryType.AUTO,
       });
 
       // finish if no tracks were found
@@ -96,31 +89,6 @@ export const handleCommandPlay = async (int: Interaction, player: Player) => {
           `**${res2.tracks.length} songs from [${playlist?.title}](${playlist?.url})** have been added to the Queue`
         )
         .setThumbnail(playlist?.thumbnail || '');
-
-      break;
-
-    case 'search':
-      // Search for the song using the discord-player
-      let url3 = int.options.getString('searchterms');
-
-      if (!url3) return int.reply('No url');
-
-      const result = await player.search(url3, {
-        requestedBy: int.user,
-        searchEngine: QueryType.AUTO,
-      });
-
-      // finish if no tracks were found
-      if (result.tracks.length === 0) return int.editReply('No results');
-
-      // Add the track to the queue
-      const song3 = result.tracks[0];
-
-      await queue.addTrack(song3);
-      embedBuilder
-        .setDescription(`**[${song3.title}](${song3.url})** has been added to the Queue`)
-        .setThumbnail(song3.thumbnail)
-        .setFooter({ text: `Duration: ${song3.duration}` });
 
       break;
 
