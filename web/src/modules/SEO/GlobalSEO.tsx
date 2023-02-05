@@ -40,6 +40,12 @@ const GlobalSEO: React.FC<IFC> = ({ children }) => {
         maxImagePreview: 'none',
         maxVideoPreview: -1,
       }}
+      additionalLinkTags={[
+        {
+          rel: 'manifest',
+          href: '/manifest.json',
+        },
+      ]}
     />
   );
 };
