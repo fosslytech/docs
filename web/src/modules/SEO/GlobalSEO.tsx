@@ -45,6 +45,11 @@ const GlobalSEO: React.FC<IFC> = ({ children }) => {
           rel: 'manifest',
           href: '/manifest.json',
         },
+        // <link rel="apple-touch-icon" href="/example.png">
+        {
+          rel: 'apple-touch-icon',
+          href: '/icons/192x192.png',
+        },
       ]}
     />
   );
