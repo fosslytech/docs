@@ -32,4 +32,15 @@ client.on('messageCreate', (msg) => handleMessageCreate(msg));
 
 client.on('interactionCreate', (int) => handleInteractionCreate(int, player));
 
+client.on('guildMemberAdd', (member) => {
+  const { user, guild } = member;
+  const welcomeChannel = guild.channels.cache.get('1071885432649945108');
+  const welcomeMessage = `Welcome ${user} to the Free Software club!`;
+
+  if (!welcomeChannel) return;
+
+  // @ts-ignore
+  welcomeChannel.send(welcomeMessage);
+});
+
 client.login(process.env.CLIENT_TOKEN);
