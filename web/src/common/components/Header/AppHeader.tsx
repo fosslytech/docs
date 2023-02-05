@@ -59,7 +59,7 @@ const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
         </MediaQuery>
 
         <Flex align="center" onClick={() => router.push('/')} style={{ cursor: 'pointer' }}>
-          <Logo width={28} fill={logoColor} />
+          <Logo width={28} fill={theme.colors[theme.primaryColor][6]} />
 
           <MediaQuery smallerThan="xs" styles={{ display: 'none' }}>
             <Text ml={12} fw={700} size={20} color={logoColor}>

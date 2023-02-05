@@ -1,18 +1,23 @@
-import { Text, Container, Group } from '@mantine/core';
+import Logo from '@icons/Logo';
+import { Text, Container, Group, useMantineTheme, Flex } from '@mantine/core';
 import Link from 'next/link';
+import useGlobalCtx from 'src/store/global/use-global-ctx';
 import useStyles from './AppFooter.styles';
 
 export interface AppFooterProps {
   data: {
-    title: string;
-    links: { label: string; link: string }[];
+    title: {};
+    links: { label: {}; link: string }[];
   }[];
 }
 
 const AppFooter: React.FC<AppFooterProps> = ({ data }) => {
   const { classes } = useStyles();
+  const { translate } = useGlobalCtx();
 
-  const groups = data.map((group) => {
+  const theme = useMantineTheme();
+
+  const groups = data.map((group, i) => {
     const links = group.links.map((link, index) => {
       if (link.link.includes('http')) {
         return (
@@ -24,21 +29,21 @@ const AppFooter: React.FC<AppFooterProps> = ({ data }) => {
             target="_blank"
             // onClick={(event) => event.preventDefault()}
           >
-            {link.label}
+            {translate(link.label)}
           </Text>
         );
       }
 
       return (
         <Link key={index} className={classes.link} href={link.link}>
-          {link.label}
+          {translate(link.label)}
         </Link>
       );
     });
 
     return (
-      <div className={classes.wrapper} key={group.title}>
-        <Text className={classes.title}>{group.title}</Text>
+      <div className={classes.wrapper} key={i}>
+        <Text className={classes.title}>{translate(group.title)}</Text>
         {links}
       </div>
     );
@@ -48,7 +53,14 @@ const AppFooter: React.FC<AppFooterProps> = ({ data }) => {
     <footer className={classes.footer}>
       <Container size="lg" className={classes.inner}>
         <div className={classes.logo}>
-          Logo
+          <Flex align="center" mb="md">
+            <Logo width={22} fill={theme.colors[theme.primaryColor][6]} />
+
+            <Text ml={12} fw={600} size={16}>
+              ODF Collab
+            </Text>
+          </Flex>
+
           <Text size="xs" color="dimmed" className={classes.description}>
             Build fully functional accessible web applications faster than ever
           </Text>

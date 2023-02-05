@@ -6,8 +6,8 @@ const GlobalSEO: React.FC<IFC> = ({ children }) => {
   return (
     <DefaultSeo
       title="ODF Collab"
-      description="ODF Collab allows you to collaborate with others on OpenDocument Format supported documents"
-      themeColor="#25262B"
+      description="Collaborate with others on OpenDocument Format files"
+      themeColor="#25262b"
       // canonical="https://www.canonical.ie/"
       openGraph={{
         type: 'website',
@@ -15,25 +15,15 @@ const GlobalSEO: React.FC<IFC> = ({ children }) => {
         url: process.env.NEXT_PUBLIC_HOST,
         siteName: 'ODF Collab',
         title: 'ODF Collab',
-        description:
-          'ODF Collab allows you to collaborate with others on OpenDocument Format supported documents',
+        description: 'Collaborate with others on OpenDocument Format files',
         images: [
           {
-            url: 'https://www.example.ie/og-image-01.jpg',
-            width: 800,
+            url: 'https://odfcollab.com/images/og.png',
+            width: 1200,
             height: 600,
-            alt: 'Og Image Alt',
-            type: 'image/jpeg',
+            alt: 'ODF Collab og image',
+            type: 'image/png',
           },
-          {
-            url: 'https://www.example.ie/og-image-02.jpg',
-            width: 900,
-            height: 800,
-            alt: 'Og Image Alt Second',
-            type: 'image/jpeg',
-          },
-          { url: 'https://www.example.ie/og-image-03.jpg' },
-          { url: 'https://www.example.ie/og-image-04.jpg' },
         ],
       }}
       //   twitter={{
