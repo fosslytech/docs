@@ -1,29 +1,30 @@
 import { AppFooterProps } from '@components/Footer/AppFooter';
 
+import content from '@content/index/footer.json';
+
 export const footerData_index: AppFooterProps = {
   data: [
     {
-      title: 'About',
+      title: content.links[0].title,
       links: [
-        { label: 'Home', link: '/' },
-        { label: 'Settings', link: '/settings' },
-        { label: 'Privacy', link: '/privacy' },
+        { label: content.links[0].links[0], link: '/' },
+        { label: content.links[0].links[1], link: '/settings' },
+        { label: content.links[0].links[2], link: '/privacy' },
       ],
     },
     {
-      title: 'Project',
+      title: content.links[1].title,
       links: [
-        { label: 'Contribute', link: 'https://github.com/cufta22/odf-collab' },
-        { label: 'Changelog', link: '/changelog' },
-        { label: 'Releases', link: '/download' },
+        { label: content.links[1].links[0], link: 'https://github.com/cufta22/odf-collab' },
+        { label: content.links[1].links[1], link: '/changelog' },
+        { label: content.links[1].links[2], link: '/download' },
       ],
     },
     {
-      title: 'Community',
+      title: content.links[2].title,
       links: [
-        { label: 'Join Discord', link: '/' },
-        { label: 'GitHub Discussion', link: 'https://github.com/cufta22/odf-collab' },
-        // { label: 'Follow on Twitter', link: '/' },
+        { label: content.links[2].links[0], link: '/' },
+        { label: content.links[2].links[1], link: 'https://github.com/cufta22/odf-collab' },
       ],
     },
   ],

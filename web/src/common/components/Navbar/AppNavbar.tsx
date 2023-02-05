@@ -18,9 +18,9 @@ const AppNavbar: React.FC<Props> = ({ opened }) => {
         {navbarData.map((item, i) => (
           <Link href={item.href} key={i}>
             <Flex p="sm" my="xs" align="center">
-              <item.icon fontSize={32} color={theme.colors.blue[5]} />
+              <item.icon fontSize={32} color={theme.colors[theme.primaryColor][5]} />
 
-              <Text ml="md" size={26} fw={500} color={theme.colors.blue[5]}>
+              <Text ml="md" size={26} fw={500} color={theme.colors[theme.primaryColor][5]}>
                 {translate(item.text)}
               </Text>
             </Flex>

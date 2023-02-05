@@ -1,0 +1,57 @@
+{
+  "text": {
+    "appName": {
+      "EN": "ODF Collab"
+    },
+    "description": {
+      "EN": "Collaborate with others on OpenDocument Format files"
+    }
+  },
+  "links": [
+    {
+      "title": {
+        "EN": "About"
+      },
+      "links": [
+        {
+          "EN": "Home"
+        },
+        {
+          "EN": "Settings"
+        },
+        {
+          "EN": "Privacy"
+        }
+      ]
+    },
+    {
+      "title": {
+        "EN": "Project"
+      },
+      "links": [
+        {
+          "EN": "Contribute"
+        },
+        {
+          "EN": "Changelog"
+        },
+        {
+          "EN": "Releases"
+        }
+      ]
+    },
+    {
+      "title": {
+        "EN": "Community"
+      },
+      "links": [
+        {
+          "EN": "Join Discord"
+        },
+        {
+          "EN": "GitHub Discussion"
+        }
+      ]
+    }
+  ]
+}
