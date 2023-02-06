@@ -18,12 +18,17 @@ import { useRouter } from 'next/router';
 import useNonInitialEffect from '@hooks/use-non-initial-effect';
 import { getRandomInt } from '@utils/functions/randomNumber';
 
+export const MAX_CONNS_ODT = 2;
+
 export const useOdtEditor = () => {
   const router = useRouter();
   const theme = useMantineTheme();
   const { initialDocContent, setInitialContent } = useDocContentCtx();
 
-  const { doc, provider } = useYWebRtc(router.query.session as string, { maxConns: 2, filterBcConns: true });
+  const { doc, provider } = useYWebRtc(router.query.session as string, {
+    maxConns: MAX_CONNS_ODT,
+    filterBcConns: true,
+  });
 
   const userColor = MANTINE_COLORS[getRandomInt(0, 13)];
 
@@ -66,5 +71,10 @@ export const useOdtEditor = () => {
     colorName: user?.colorName || 'blue',
   }));
 
-  return { editor, connectedUsers, isConnected: provider.connected };
+  return {
+    editor,
+    connectedUsers,
+    isConnected: provider.connected,
+    isFull: connectedUsers?.length > MAX_CONNS_ODT,
+  };
 };

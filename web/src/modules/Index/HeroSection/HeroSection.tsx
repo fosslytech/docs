@@ -30,9 +30,9 @@ const HeroSection = () => {
             </Text>
 
             <Group mt={30}>
-              <Link href="/doc">
+              <Link href="/download">
                 <Button radius="lg" size="lg" className={classes.control}>
-                  {translate(content.hero.gettingStarted)}
+                  {translate(content.hero.downloadBtn)}
                 </Button>
               </Link>
               <Link href="https://github.com/cufta22/odf-collab" target="_blank">

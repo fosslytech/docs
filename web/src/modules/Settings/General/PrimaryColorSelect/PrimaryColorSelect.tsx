@@ -1,22 +1,9 @@
 import { useState } from 'react';
-import {
-  UnstyledButton,
-  Menu,
-  Image,
-  Group,
-  DefaultMantineColor,
-  ColorSwatch,
-  useMantineTheme,
-} from '@mantine/core';
+import { UnstyledButton, Menu, Group, DefaultMantineColor, ColorSwatch } from '@mantine/core';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 import useStyles from '../Select.styles';
 
-import { IAppTheme } from '@ts/global.types';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
-
-import logoMantine from '@icons/logos/mantine.png';
-import logoMaterial from '@icons/logos/material.png';
-import logoCatppuccin from '@icons/logos/catppuccin.png';
 
 import content from '@content/settings/settings.json';
 
@@ -36,11 +23,10 @@ const getLangData = (): IColorData[] => [
 
 const PrimaryColorSelect = () => {
   const data = getLangData();
-  const theme = useMantineTheme();
   const { appPrimaryColor, changePrimaryColor, translate } = useGlobalCtx();
 
   const [opened, setOpened] = useState<boolean>(false);
-  const { classes } = useStyles({ opened });
+  const { classes, theme } = useStyles({ opened });
 
   const selected = data.find((l) => l.value === appPrimaryColor);
 

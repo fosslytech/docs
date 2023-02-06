@@ -35,5 +35,18 @@
     "unsetColorControlLabel": { "EN": "Unset color" },
 
     "colorControlLabel": { "EN": "Set text color" }
+  },
+  "stateConnecting": {
+    "title": {
+      "EN": "Connetcing to the room"
+    }
+  },
+  "stateFull": {
+    "title": {
+      "EN": "Room full"
+    },
+    "button": {
+      "EN": "Take me back"
+    }
   }
 }
