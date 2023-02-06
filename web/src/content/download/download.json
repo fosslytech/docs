@@ -1,0 +1,34 @@
+{
+  "title": {
+    "EN": "Download the app"
+  },
+  "description": {
+    "EN": "Here you'll find all available download options, you have to be online in order to install the app on your device"
+  },
+  "online": {
+    "EN": "Online"
+  },
+  "offline": {
+    "EN": "Offline"
+  },
+  "optionPWA": {
+    "description": {
+      "EN": "Download as Progressive Web Application"
+    },
+    "buttonLM": {
+      "EN": "Learn more"
+    },
+    "buttonOffline": {
+      "EN": "Offline"
+    },
+    "buttonInstalled": {
+      "EN": "Installed"
+    },
+    "buttonUnavailable": {
+      "EN": "Unavailable"
+    },
+    "buttonInstall": {
+      "EN": "Install"
+    }
+  }
+}

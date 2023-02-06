@@ -1,5 +1,5 @@
 import Logo from '@icons/Logo';
-import { Text, Container, Group, useMantineTheme, Flex } from '@mantine/core';
+import { Text, Container, Group, Flex } from '@mantine/core';
 import Link from 'next/link';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 import useStyles from './AppFooter.styles';
@@ -12,10 +12,8 @@ export interface AppFooterProps {
 }
 
 const AppFooter: React.FC<AppFooterProps> = ({ data }) => {
-  const { classes } = useStyles();
+  const { classes, theme } = useStyles();
   const { translate } = useGlobalCtx();
-
-  const theme = useMantineTheme();
 
   const groups = data.map((group, i) => {
     const links = group.links.map((link, index) => {

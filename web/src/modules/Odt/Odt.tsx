@@ -3,12 +3,17 @@ import { Container } from '@mantine/core';
 import Editor from './Editor/Editor';
 import Header from './Header/Header';
 import StateConnecting from './StateConnecting';
+import StateRoomFull from './StateRoomFull';
 import { useOdtEditor } from './use-odt-editor';
 
 const Home = () => {
-  const { editor, isConnected, connectedUsers } = useOdtEditor();
+  const { editor, connectedUsers, isConnected, isFull } = useOdtEditor();
 
+  // State: Connecting to the room
   if (!isConnected) return <StateConnecting />;
+
+  // State: Room is full
+  // if (isFull) return <StateRoomFull />;
 
   return (
     <>
