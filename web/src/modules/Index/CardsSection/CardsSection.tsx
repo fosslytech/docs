@@ -3,22 +3,13 @@ import { Title, Text, Card, SimpleGrid, Container } from '@mantine/core';
 import useStyles from './CardsSection.styles';
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
+import { getCardsData } from '@utils/resources/cardsData';
 
-import content from '@content/index/home.json';
-
-export interface CardsSectionProps {
-  data: {
-    title: {};
-    description: {};
-    icon: React.FC<FluentIconsProps>;
-  }[];
-}
-
-const CardsSection: React.FC<CardsSectionProps> = ({ data }) => {
-  const { translate } = useGlobalCtx();
+const CardsSection = () => {
+  const { translate, content } = useGlobalCtx();
   const { classes, theme } = useStyles();
 
-  const features = data.map((feature, i) => (
+  const features = getCardsData(content).map((feature, i) => (
     <Card key={i} shadow="md" radius="md" className={classes.card} p="xl">
       <feature.icon fontSize={50} color={theme.fn.primaryColor()} />
 
@@ -35,11 +26,11 @@ const CardsSection: React.FC<CardsSectionProps> = ({ data }) => {
   return (
     <Container size="lg" py="xl">
       <Title order={2} className={classes.title} align="center" mt="sm">
-        {translate(content.cards.title)}
+        {translate(content.pages.home.cards.title)}
       </Title>
 
       <Text color="dimmed" className={classes.description} align="center" mt="md">
-        {translate(content.cards.description)}
+        {translate(content.pages.home.cards.description)}
       </Text>
 
       <SimpleGrid cols={3} spacing="xl" mt={50} breakpoints={[{ maxWidth: 'md', cols: 1 }]}>

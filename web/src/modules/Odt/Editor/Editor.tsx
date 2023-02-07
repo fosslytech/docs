@@ -8,7 +8,7 @@ import BubbleMenu from './PopupMenu';
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
-import { GET_ODT_LABELS } from './labels';
+import { getOdtLabels } from './labels';
 import { useOs } from '@mantine/hooks';
 import { useResponsive } from '@hooks/use-responsive';
 
@@ -17,7 +17,7 @@ interface Props {
 }
 
 const EditorComp: React.FC<Props> = ({ editor }) => {
-  const { translate } = useGlobalCtx();
+  const { translate, content } = useGlobalCtx();
 
   const isSm = useResponsive('max', 'sm');
   const isMd = useResponsive('max', 'md');
@@ -28,7 +28,7 @@ const EditorComp: React.FC<Props> = ({ editor }) => {
   const editorFontSize = isSm && os !== 'ios' ? 14 : 16;
 
   return (
-    <RichTextEditor editor={editor} labels={GET_ODT_LABELS(translate)}>
+    <RichTextEditor editor={editor} labels={getOdtLabels(translate, content)}>
       <RichTextEditor.Toolbar sticky stickyOffset={isMd ? 60 : 70} w="100%">
         <Controls />
       </RichTextEditor.Toolbar>

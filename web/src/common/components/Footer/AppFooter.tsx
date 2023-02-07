@@ -4,11 +4,13 @@ import Link from 'next/link';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 import useStyles from './AppFooter.styles';
 
+export interface AppFooterData {
+  title: string;
+  links: { label: string; link: string }[];
+}
+
 export interface AppFooterProps {
-  data: {
-    title: {};
-    links: { label: {}; link: string }[];
-  }[];
+  data: AppFooterData[];
 }
 
 const AppFooter: React.FC<AppFooterProps> = ({ data }) => {

@@ -5,10 +5,8 @@ import { useCallback } from 'react';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 import useStyles from './Sections.styles';
 
-import content from '@content/download/download.json';
-
 const SectPWA = () => {
-  const { translate } = useGlobalCtx();
+  const { translate, content } = useGlobalCtx();
 
   const { classes, theme } = useStyles();
 
@@ -31,7 +29,7 @@ const SectPWA = () => {
       <Divider size={2} color={theme.colors[theme.primaryColor][6]} w={70} my={20} />
 
       <Text size="sm" color="dimmed" mt="sm">
-        {translate(content.optionPWA.description)}
+        {translate(content.pages.download.optionPWA.description)}
       </Text>
 
       <Flex justify="end" align="center" mt="lg">
@@ -40,17 +38,17 @@ const SectPWA = () => {
           variant="outline"
           mr="md"
         >
-          {translate(content.optionPWA.buttonLM)}
+          {translate(content.pages.download.optionPWA.buttonLM)}
         </Button>
 
         <Button onClick={handleInstallPrompt} disabled={isOffline || isInstalled || isStandalone}>
           {isOffline
-            ? translate(content.optionPWA.buttonOffline)
+            ? translate(content.pages.download.optionPWA.buttonOffline)
             : isInstalled
-            ? translate(content.optionPWA.buttonInstalled)
+            ? translate(content.pages.download.optionPWA.buttonInstalled)
             : isStandalone
-            ? translate(content.optionPWA.buttonUnavailable)
-            : translate(content.optionPWA.buttonInstall)}
+            ? translate(content.pages.download.optionPWA.buttonUnavailable)
+            : translate(content.pages.download.optionPWA.buttonInstall)}
         </Button>
       </Flex>
     </Card>

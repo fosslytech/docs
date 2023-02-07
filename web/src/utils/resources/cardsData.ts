@@ -1,24 +1,26 @@
-import { LeafOneFilled, LockOpenFilled, PeopleFilled } from '@fluentui/react-icons';
-import { CardsSectionProps } from '@module/Index/CardsSection/CardsSection';
+import { FluentIconsProps, LeafOneFilled, LockOpenFilled, PeopleFilled } from '@fluentui/react-icons';
+import { ITranslations } from '@ts/global.types';
 
-import content from '@content/index/home.json';
+interface CardsSectionProps {
+  title: string;
+  description: string;
+  icon: React.FC<FluentIconsProps>;
+}
 
-export const cardsData: CardsSectionProps = {
-  data: [
-    {
-      title: content.cards.cards[0].title,
-      description: content.cards.cards[0].description,
-      icon: LeafOneFilled,
-    },
-    {
-      title: content.cards.cards[1].title,
-      description: content.cards.cards[1].description,
-      icon: LockOpenFilled,
-    },
-    {
-      title: content.cards.cards[2].title,
-      description: content.cards.cards[2].description,
-      icon: PeopleFilled,
-    },
-  ],
-};
+export const getCardsData = (content: ITranslations): CardsSectionProps[] => [
+  {
+    title: content.pages.home.cards.cards[0].title,
+    description: content.pages.home.cards.cards[0].description,
+    icon: LeafOneFilled,
+  },
+  {
+    title: content.pages.home.cards.cards[1].title,
+    description: content.pages.home.cards.cards[1].description,
+    icon: LockOpenFilled,
+  },
+  {
+    title: content.pages.home.cards.cards[2].title,
+    description: content.pages.home.cards.cards[2].description,
+    icon: PeopleFilled,
+  },
+];

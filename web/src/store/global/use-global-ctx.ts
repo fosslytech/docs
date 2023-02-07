@@ -1,14 +1,12 @@
 import { GlobalContext } from './CTX';
 import { useContext } from 'react';
-import { IAppFont, IAppTheme, ILang } from '@ts/global.types';
+import { IAppFont, IAppTheme } from '@ts/global.types';
 import { ColorScheme, DefaultMantineColor } from '@mantine/core';
 
 const useGlobalCtx = () => {
-  const { dispatch, language, appTheme, appFont, appColorScheme, appPrimaryColor } =
-    useContext(GlobalContext);
+  const { dispatch, content, appTheme, appFont, appColorScheme, appPrimaryColor } = useContext(GlobalContext);
 
-  const changeLanguage = (lang: ILang) => dispatch({ type: 'SET_LANGUAGE', payload: lang });
-  const translate = (obj: any) => obj[language] || '<-- untranslated -->';
+  const translate = (content: string) => content || '<-- untranslated -->';
 
   const toggleColorScheme = (scheme: ColorScheme) => dispatch({ type: 'SET_COLOR_SCHEME', payload: scheme });
 
@@ -17,8 +15,7 @@ const useGlobalCtx = () => {
   const changeFont = (font: IAppFont) => dispatch({ type: 'SET_FONT', payload: font });
 
   return {
-    language,
-    changeLanguage,
+    content,
     translate,
     appTheme,
     changeTheme,

@@ -4,29 +4,29 @@ import { ChevronDownRegular } from '@fluentui/react-icons';
 import useStyles from '../Select.styles';
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
-
-import content from '@content/settings/settings.json';
+import { ITranslations } from '@ts/global.types';
 
 interface IColorData {
-  label: {};
+  label: string;
   value: DefaultMantineColor;
 }
 
-const getLangData = (): IColorData[] => [
-  { label: content.settings.selectPrimaryColorOptions.blue, value: 'blue' },
-  { label: content.settings.selectPrimaryColorOptions.red, value: 'red' },
-  { label: content.settings.selectPrimaryColorOptions.green, value: 'green' },
-  { label: content.settings.selectPrimaryColorOptions.yellow, value: 'yellow' },
-  { label: content.settings.selectPrimaryColorOptions.pink, value: 'pink' },
-  { label: content.settings.selectPrimaryColorOptions.teal, value: 'teal' },
+const getLangData = (content: ITranslations): IColorData[] => [
+  { label: content.pages.settings.selectPrimaryColorOptions.blue, value: 'blue' },
+  { label: content.pages.settings.selectPrimaryColorOptions.red, value: 'red' },
+  { label: content.pages.settings.selectPrimaryColorOptions.green, value: 'green' },
+  { label: content.pages.settings.selectPrimaryColorOptions.yellow, value: 'yellow' },
+  { label: content.pages.settings.selectPrimaryColorOptions.pink, value: 'pink' },
+  { label: content.pages.settings.selectPrimaryColorOptions.teal, value: 'teal' },
 ];
 
 const PrimaryColorSelect = () => {
-  const data = getLangData();
-  const { appPrimaryColor, changePrimaryColor, translate } = useGlobalCtx();
+  const { appPrimaryColor, content, changePrimaryColor, translate } = useGlobalCtx();
 
   const [opened, setOpened] = useState<boolean>(false);
   const { classes, theme } = useStyles({ opened });
+
+  const data = getLangData(content);
 
   const selected = data.find((l) => l.value === appPrimaryColor);
 
@@ -47,7 +47,7 @@ const PrimaryColorSelect = () => {
       <Menu.Target>
         <UnstyledButton className={classes.control}>
           <Group spacing="xs">
-            <ColorSwatch color={theme.colors[selected.value][6]} size={18} />
+            <ColorSwatch color={theme.colors[selected.value][6]} size={20} />
 
             <span className={classes.label}> {translate(selected.label)}</span>
           </Group>

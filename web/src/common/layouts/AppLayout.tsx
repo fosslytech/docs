@@ -1,4 +1,4 @@
-import { AppShell } from '@mantine/core';
+import { AppShell, Center, Loader } from '@mantine/core';
 
 import AppHeader from '@components/Header/AppHeader';
 import AppNavbar from '@components/Navbar/AppNavbar';
@@ -6,11 +6,7 @@ import AppNavbar from '@components/Navbar/AppNavbar';
 import { IFC } from '@ts/global.types';
 import { useState } from 'react';
 
-interface Props extends IFC {
-  withHeader?: boolean;
-}
-
-const AppLayout: React.FC<Props> = ({ children, withHeader = true }) => {
+const AppLayout: React.FC<IFC> = ({ children }) => {
   const [opened, setOpened] = useState(false);
 
   return (
@@ -29,7 +25,7 @@ const AppLayout: React.FC<Props> = ({ children, withHeader = true }) => {
       })}
       navbarOffsetBreakpoint={69000}
       padding={0}
-      header={withHeader && <AppHeader opened={opened} setOpened={setOpened} />}
+      header={<AppHeader opened={opened} setOpened={setOpened} />}
       navbar={<AppNavbar opened={opened} />}
     >
       {children}

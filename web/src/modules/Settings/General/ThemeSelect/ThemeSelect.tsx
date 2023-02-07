@@ -3,33 +3,35 @@ import { UnstyledButton, Menu, Image, Group } from '@mantine/core';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 import useStyles from '../Select.styles';
 
-import { IAppTheme } from '@ts/global.types';
+import { IAppTheme, ITranslations } from '@ts/global.types';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
-import logoMantine from '@icons/logos/mantine.png';
-import logoMaterial from '@icons/logos/material.png';
-import logoCatppuccin from '@icons/logos/catppuccin.png';
-
-import content from '@content/settings/settings.json';
-
 interface ILangData {
-  label: {};
+  label: string;
   value: IAppTheme;
   image: string;
 }
 
-const getLangData = (): ILangData[] => [
-  { label: content.settings.selectThemeOptions.mantine, value: 'Mantine', image: logoMantine.src },
-  // { label: content.settings.selectThemeOptions.material, value: 'Material', image: logoMaterial.src },
-  { label: content.settings.selectThemeOptions.catppuccin, value: 'Catppuccin', image: logoCatppuccin.src },
+const getLangData = (content: ITranslations): ILangData[] => [
+  {
+    label: content.pages.settings.selectThemeOptions.mantine,
+    value: 'Mantine',
+    image: '/assets/mantine.png',
+  },
+  {
+    label: content.pages.settings.selectThemeOptions.catppuccin,
+    value: 'Catppuccin',
+    image: '/assets/catppuccin.png',
+  },
 ];
 
 const ThemeSelect = () => {
-  const data = getLangData();
-  const { appTheme, changeTheme, translate } = useGlobalCtx();
+  const { appTheme, content, changeTheme, translate } = useGlobalCtx();
 
   const [opened, setOpened] = useState<boolean>(false);
   const { classes } = useStyles({ opened });
+
+  const data = getLangData(content);
 
   const selected = data.find((l) => l.value === appTheme);
 
@@ -50,7 +52,7 @@ const ThemeSelect = () => {
       <Menu.Target>
         <UnstyledButton className={classes.control}>
           <Group spacing="xs">
-            <Image src={selected.image} width={22} height={22} alt={selected.label + ' logo'} />
+            <Image src={selected.image} width={20} height={20} alt={selected.label + ' logo'} />
 
             <span className={classes.label}> {translate(selected.label)}</span>
           </Group>

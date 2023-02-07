@@ -1,10 +1,12 @@
 import { Global_Context, Global_Context_Action } from '@ts/global.types';
+import initialContent from '../../../public/locales/en/translations.json';
 
 const noop = () => false;
 
 export const initialState: Global_Context = {
   dispatch: noop,
-  language: 'EN',
+
+  content: initialContent,
   appTheme: 'Mantine',
   appFont: 'Inter',
   appColorScheme: 'dark',
@@ -16,8 +18,9 @@ export const globalReducer = (state: Global_Context, action: Global_Context_Acti
     case 'INIT':
       return { ...state, ...action.payload };
 
-    case 'SET_LANGUAGE':
-      return { ...state, language: action.payload };
+    case 'SET_CONTENT':
+      return { ...state, content: action.payload };
+
     case 'SET_THEME':
       return { ...state, appTheme: action.payload };
     case 'SET_FONT':

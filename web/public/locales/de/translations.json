@@ -1,0 +1,230 @@
+{
+  "_comment": "Don't forget to update ITranslations at /src/types/global.types.ts",
+  "header": {
+    "appName": "ODF Collab DE",
+    "useOnline": "Use online",
+    "settings": "Settings",
+    "signIn": "Sign in"
+  },
+  "footer": {
+    "appName": "ODF Collab",
+    "description": "Collaborate with others on OpenDocument Format files",
+    "links": [
+      {
+        "title": "About",
+        "links": ["Home", "Settings", "Privacy"]
+      },
+      {
+        "title": "Project",
+        "links": ["Contribute", "Changelog", "Releases"]
+      },
+      {
+        "title": "Community",
+        "links": ["Join Discord", "GitHub Discussion"]
+      }
+    ]
+  },
+  "navbar": {
+    "links": ["Home", "Settings", "Download"]
+  },
+  "pages": {
+    "home": {
+      "hero": {
+        "title1": "A",
+        "title2": "modern",
+        "title3": "FOSS",
+        "title4": "collaboration tool",
+        "description": "Work together in real-time to create, edit, and share documents. The goal of the website is to provide a seamless and efficient way for teams and individuals to collaborate on projects, no matter where they are located.",
+        "downloadBtn": "Download",
+        "sourceCode": "Source code"
+      },
+
+      "cards": {
+        "title": "Your Go-To Destination for FOSS Document Collaboration",
+        "description": "Whether you're working on a team project or a personal document, our platform makes document collaboration effortless and efficient.",
+        "cards": [
+          {
+            "title": "Open standard",
+            "description": "By supporitng only open standard document formats ( ODF, HTML, PDF... ) we ensure that files from our app can be used with any other app that supports said standards"
+          },
+          {
+            "title": "Free & Open source",
+            "description": "ODF Collab is and will always be 'Free as in Freedom', this allows you to always view the source code and, if you feel like you have the necessary skills, contribute to the project"
+          },
+          {
+            "title": "Community driven",
+            "description": "We listen to all community feedback and are always open to suggestions, you can help in many ways like reporting bugs, joining discussions, working on code, etc..."
+          }
+        ]
+      }
+    },
+    "settings": {
+      "title": "General settings",
+      "selectLang": "Language select",
+      "selectLangOptions": {
+        "en": "English",
+        "fr": "French",
+        "de": "German"
+      },
+
+      "selectTheme": "Theme select",
+      "selectThemeOptions": {
+        "mantine": "Mantine",
+        "material": "Material",
+        "catppuccin": "Catppuccin"
+      },
+
+      "selectPrimaryColor": "Primary color",
+      "selectPrimaryColorOptions": {
+        "blue": "Blue",
+        "red": "Red",
+        "green": "Green",
+        "yellow": "Yellow",
+        "pink": "Pink",
+        "teal": "Teal"
+      },
+
+      "selectFont": "Font select",
+      "selectFontOptions": {
+        "inter": "Inter",
+        "roboto": "Roboto",
+        "montserrat": "Montserrat",
+        "sourceCodePro": "Source Code Pro"
+      },
+
+      "selectColor": "Color scheme",
+      "selectColorOptions": {
+        "light": "Light",
+        "dark": "Dark"
+      }
+    },
+    "download": {
+      "title": "Download the app",
+      "description": "Here you'll find all available download options, you have to be online in order to install the app on your device",
+      "online": "Online",
+      "offline": "Offline",
+
+      "optionPWA": {
+        "description": "Download as Progressive Web Application",
+        "buttonLM": "Learn more",
+        "buttonOffline": "Offline",
+        "buttonInstalled": "Installed",
+        "buttonUnavailable": "Unavailable",
+        "buttonInstall": "Install"
+      }
+    },
+    "doc": {
+      "title": "New document",
+      "cards": [
+        {
+          "title": "Writer",
+          "description": "Create .ODT document",
+          "button1": "Open",
+          "button2": "New",
+          "badge": "Alpha"
+        },
+        {
+          "title": "Calc",
+          "description": "Create .ODS spreadsheet",
+          "button1": "Open",
+          "button2": "New",
+          "badge": "Shouldn't exist"
+        },
+        {
+          "title": "Impress",
+          "description": "Impress presentation",
+          "button1": "Open",
+          "button2": "New",
+          "badge": "fml"
+        },
+        {
+          "title": "Math",
+          "description": "Math formula",
+          "button1": "Open",
+          "button2": "New",
+          "badge": "Math???"
+        }
+      ]
+    },
+    "doc_odt": {
+      "share": "Share",
+      "download": "Download .ODT",
+      "toolbarLabels": {
+        "boldControlLabel": "Bold",
+        "italicControlLabel": "Italic",
+        "underlineControlLabel": "Underline",
+        "strikeControlLabel": "Strikethrough",
+        "clearFormattingControlLabel": "Clear formatting",
+        "highlightControlLabel": "Highlight text",
+
+        "h1ControlLabel": "Heading 1",
+        "h2ControlLabel": "Heading 2",
+        "h3ControlLabel": "Heading 3",
+        "h4ControlLabel": "Heading 4",
+
+        "bulletListControlLabel": "Bullet list",
+        "orderedListControlLabel": "Ordered list",
+        "subscriptControlLabel": "Subscript",
+        "superscriptControlLabel": "Superscript",
+
+        "linkControlLabel": "Link",
+        "unlinkControlLabel": "Remove link",
+
+        "alignLeftControlLabel": "Align text: left",
+        "alignCenterControlLabel": "Align text: center",
+        "alignJustifyControlLabel": "Align text: justify",
+        "alignRightControlLabel": "Align text: right",
+
+        "colorPickerControlLabel": "Text color",
+        "unsetColorControlLabel": "Unset color",
+
+        "colorControlLabel": "Set text color"
+      },
+      "stateConnecting": {
+        "title": "Connetcing to the room"
+      },
+      "stateFull": {
+        "title": "Room full",
+        "button": "Take me back"
+      }
+    },
+    "changelog": {
+      "title": "Changelog"
+    },
+    "error": {
+      "title": "You have found a secret place",
+      "404": "Unfortunately, this is only a 404 page. You may have mistyped the address, or the page has been moved to another URL.",
+      "401": "Unfortunately, this is only a 401 page. You most likely do not have access to this page.",
+      "500": "Unfortunately, this is only a 500 page. An error has most likely occurred on our end.",
+      "button": "Take me back to home page"
+    }
+  },
+  "components": {
+    "timeline": [
+      {
+        "version": "v1.0.x",
+        "title": "ODF Writer",
+        "description": "Initial release for text documents ( .ODT files )",
+        "date": "10.02.2023"
+      },
+      {
+        "version": "v1.1.x",
+        "title": "@supabase",
+        "description": "Add DB & Auth to persist documents if user chooses to sign in",
+        "date": "01.03.2023"
+      },
+      {
+        "version": "v1.2.x",
+        "title": "ODF Calc",
+        "description": "Add spreadsheet editor ( .ODS files )",
+        "date": "--.--.2023"
+      },
+      {
+        "version": "v1.3.x",
+        "title": "ODF Math",
+        "description": "Add editor for math formula ( .ODF & .MML files )",
+        "date": "--.--.2023"
+      }
+    ]
+  }
+}
