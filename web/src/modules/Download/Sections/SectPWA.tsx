@@ -41,12 +41,15 @@ const SectPWA = () => {
           {translate(content.pages.download.optionPWA.buttonLM)}
         </Button>
 
-        <Button onClick={handleInstallPrompt} disabled={isOffline || isInstalled || isStandalone}>
+        <Button
+          onClick={handleInstallPrompt}
+          disabled={isOffline || isInstalled || isStandalone || !canInstall}
+        >
           {isOffline
             ? translate(content.pages.download.optionPWA.buttonOffline)
             : isInstalled
             ? translate(content.pages.download.optionPWA.buttonInstalled)
-            : isStandalone
+            : isStandalone || !canInstall
             ? translate(content.pages.download.optionPWA.buttonUnavailable)
             : translate(content.pages.download.optionPWA.buttonInstall)}
         </Button>

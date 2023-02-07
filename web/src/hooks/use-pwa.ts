@@ -1,3 +1,4 @@
+import { useNetwork } from '@mantine/hooks';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 const isServer = (): boolean => typeof window === 'undefined';
@@ -28,9 +29,9 @@ interface IusePwa {
 // Hook from https://github.com/dotmind/react-use-pwa
 
 const usePwa = (): IusePwa => {
+  const { online } = useNetwork();
   const [canInstall, setCanInstall] = useState<boolean>(false);
   const [isInstalled, setInstalled] = useState<boolean>(false);
-  const [isOffline, setOffline] = useState<boolean>(false);
   const [userChoice, setUserChoice] = useState<IusePwa['userChoice']>('unknow');
   const deferredPrompt = useRef() as React.MutableRefObject<BeforeInstallPromptEvent | null>;
 
@@ -41,13 +42,6 @@ const usePwa = (): IusePwa => {
     deferredPrompt.current = event as BeforeInstallPromptEvent;
     setCanInstall(true);
   }, []);
-
-  const handleOfflineEvent = useCallback(
-    (offline: boolean) => () => {
-      setOffline(offline);
-    },
-    []
-  );
 
   useEffect(() => {
     if (isServer()) {
@@ -67,23 +61,6 @@ const usePwa = (): IusePwa => {
     return () => window.removeEventListener('appinstalled', handleInstallEvent);
   }, [handleInstallEvent]);
 
-  useEffect(() => {
-    if (isServer()) {
-      return;
-    }
-
-    if (navigator) {
-      setOffline(!navigator.onLine);
-    }
-
-    window.addEventListener('online', handleOfflineEvent(false));
-    window.addEventListener('offline', handleOfflineEvent(true));
-    return () => {
-      window.removeEventListener('online', handleOfflineEvent(false));
-      window.removeEventListener('offline', handleOfflineEvent(true));
-    };
-  }, [handleOfflineEvent]);
-
   const installPrompt = useCallback(async () => {
     if (!deferredPrompt.current || isServer()) {
       return;
@@ -91,6 +68,7 @@ const usePwa = (): IusePwa => {
 
     deferredPrompt.current.prompt();
     const choiceResult = await deferredPrompt.current.userChoice;
+
     deferredPrompt.current = null;
     setUserChoice(choiceResult.outcome);
   }, []);
@@ -105,7 +83,7 @@ const usePwa = (): IusePwa => {
     installPrompt,
     isInstalled,
     isStandalone,
-    isOffline,
+    isOffline: !online,
     canInstall,
     userChoice,
   };
