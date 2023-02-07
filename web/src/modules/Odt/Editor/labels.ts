@@ -1,37 +1,41 @@
 import { RichTextEditorLabels } from '@mantine/tiptap';
 
-import content from '@content/editor/odt.json';
+import { ITranslations } from '@ts/global.types';
 
-export const GET_ODT_LABELS = (translate: (obj: any) => string): RichTextEditorLabels => ({
-  boldControlLabel: translate(content.toolbarLabels.boldControlLabel),
-  italicControlLabel: translate(content.toolbarLabels.italicControlLabel),
-  underlineControlLabel: translate(content.toolbarLabels.underlineControlLabel),
-  strikeControlLabel: translate(content.toolbarLabels.strikeControlLabel),
-  clearFormattingControlLabel: translate(content.toolbarLabels.clearFormattingControlLabel),
-  highlightControlLabel: translate(content.toolbarLabels.highlightControlLabel),
+export const getOdtLabels = (
+  translate: (obj: any) => string,
+  content: ITranslations
+): RichTextEditorLabels => ({
+  boldControlLabel: translate(content.pages.doc_odt.toolbarLabels.boldControlLabel),
+  italicControlLabel: translate(content.pages.doc_odt.toolbarLabels.italicControlLabel),
+  underlineControlLabel: translate(content.pages.doc_odt.toolbarLabels.underlineControlLabel),
+  strikeControlLabel: translate(content.pages.doc_odt.toolbarLabels.strikeControlLabel),
+  clearFormattingControlLabel: translate(content.pages.doc_odt.toolbarLabels.clearFormattingControlLabel),
+  highlightControlLabel: translate(content.pages.doc_odt.toolbarLabels.highlightControlLabel),
 
-  h1ControlLabel: translate(content.toolbarLabels.h1ControlLabel),
-  h2ControlLabel: translate(content.toolbarLabels.h2ControlLabel),
-  h3ControlLabel: translate(content.toolbarLabels.h3ControlLabel),
-  h4ControlLabel: translate(content.toolbarLabels.h4ControlLabel),
+  h1ControlLabel: translate(content.pages.doc_odt.toolbarLabels.h1ControlLabel),
+  h2ControlLabel: translate(content.pages.doc_odt.toolbarLabels.h2ControlLabel),
+  h3ControlLabel: translate(content.pages.doc_odt.toolbarLabels.h3ControlLabel),
+  h4ControlLabel: translate(content.pages.doc_odt.toolbarLabels.h4ControlLabel),
 
-  bulletListControlLabel: translate(content.toolbarLabels.bulletListControlLabel),
-  orderedListControlLabel: translate(content.toolbarLabels.orderedListControlLabel),
-  subscriptControlLabel: translate(content.toolbarLabels.subscriptControlLabel),
-  superscriptControlLabel: translate(content.toolbarLabels.superscriptControlLabel),
+  bulletListControlLabel: translate(content.pages.doc_odt.toolbarLabels.bulletListControlLabel),
+  orderedListControlLabel: translate(content.pages.doc_odt.toolbarLabels.orderedListControlLabel),
+  subscriptControlLabel: translate(content.pages.doc_odt.toolbarLabels.subscriptControlLabel),
+  superscriptControlLabel: translate(content.pages.doc_odt.toolbarLabels.superscriptControlLabel),
 
-  linkControlLabel: translate(content.toolbarLabels.linkControlLabel),
-  unlinkControlLabel: translate(content.toolbarLabels.unlinkControlLabel),
+  linkControlLabel: translate(content.pages.doc_odt.toolbarLabels.linkControlLabel),
+  unlinkControlLabel: translate(content.pages.doc_odt.toolbarLabels.unlinkControlLabel),
 
-  alignLeftControlLabel: translate(content.toolbarLabels.alignLeftControlLabel),
-  alignCenterControlLabel: translate(content.toolbarLabels.alignCenterControlLabel),
-  alignJustifyControlLabel: translate(content.toolbarLabels.alignJustifyControlLabel),
-  alignRightControlLabel: translate(content.toolbarLabels.alignRightControlLabel),
+  alignLeftControlLabel: translate(content.pages.doc_odt.toolbarLabels.alignLeftControlLabel),
+  alignCenterControlLabel: translate(content.pages.doc_odt.toolbarLabels.alignCenterControlLabel),
+  alignJustifyControlLabel: translate(content.pages.doc_odt.toolbarLabels.alignJustifyControlLabel),
+  alignRightControlLabel: translate(content.pages.doc_odt.toolbarLabels.alignRightControlLabel),
 
-  colorPickerControlLabel: translate(content.toolbarLabels.colorPickerControlLabel),
-  unsetColorControlLabel: translate(content.toolbarLabels.unsetColorControlLabel),
+  colorPickerControlLabel: translate(content.pages.doc_odt.toolbarLabels.colorPickerControlLabel),
+  unsetColorControlLabel: translate(content.pages.doc_odt.toolbarLabels.unsetColorControlLabel),
 
-  colorControlLabel: (color) => `${translate(content.toolbarLabels.colorControlLabel)} ${color}`,
+  colorControlLabel: (color) =>
+    `${translate(content.pages.doc_odt.toolbarLabels.colorControlLabel)} ${color}`,
 
   // Color picker control
   colorPickerCancel: 'Cancel',

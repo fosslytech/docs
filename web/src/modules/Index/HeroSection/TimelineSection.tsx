@@ -1,18 +1,12 @@
 import { useEffect, useRef } from 'react';
-import { Badge, Group, Paper, ScrollArea, Text, Timeline } from '@mantine/core';
-import {
-  DocumentBulletListFilled,
-  DocumentPercentFilled,
-  DocumentTableFilled,
-  FlashFilled,
-} from '@fluentui/react-icons';
+import { Badge, Group, ScrollArea, Text, Timeline } from '@mantine/core';
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
-import { timelineData } from '@utils/resources/timelineData';
+import { getTimelineData } from '@utils/resources/timelineData';
 
 const TimelineSection = () => {
-  const { translate } = useGlobalCtx();
+  const { translate, content } = useGlobalCtx();
   const viewport = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -20,6 +14,8 @@ const TimelineSection = () => {
       // viewport.current.scrollTo({ top: viewport.current.scrollHeight, behavior: 'smooth' });
     }
   }, [viewport]);
+
+  const timelineData = getTimelineData(content);
 
   return (
     <ScrollArea style={{ height: 350 }} offsetScrollbars viewportRef={viewport}>

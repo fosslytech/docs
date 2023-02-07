@@ -1,16 +1,15 @@
 import { Flex, Loader, Title } from '@mantine/core';
 import React from 'react';
 
-import content from '@content/editor/odt.json';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
 const StateConnecting = () => {
-  const { translate } = useGlobalCtx();
+  const { translate, content } = useGlobalCtx();
 
   return (
     <Flex mt={80} direction="column" align="center">
       <Title mb={20} align="center">
-        {translate(content.stateConnecting.title)}
+        {translate(content.pages.doc_odt.stateConnecting.title)}
       </Title>
 
       <Loader size={80} />

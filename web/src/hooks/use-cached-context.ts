@@ -13,14 +13,14 @@ const useCachedContext = <IState extends Base_Context<Base_Action>>(
   }, [key, dispatch]);
 
   useNonInitialEffect(() => {
-    const globalState = { ...state };
-    delete globalState.dispatch;
-    const stringified = JSON.stringify(globalState);
+    const cachedState = { ...state };
+    delete cachedState.dispatch;
+    const stringified = JSON.stringify(cachedState);
 
     if (localStorage.getItem(key) !== stringified) {
       localStorage.setItem(key, stringified);
     }
-  }, [state, dispatch, key]);
+  }, [state, key, dispatch]);
 };
 
 export default useCachedContext;

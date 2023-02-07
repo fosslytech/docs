@@ -4,19 +4,18 @@ import useStyles from './Features.styles';
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
-import { FEATURES_DATA } from '@utils/resources/featuresData';
-import content from '@content/doc/doc.json';
+import { getFeaturesData } from '@utils/resources/featuresData';
 
 const Features = () => {
-  const { translate } = useGlobalCtx();
+  const { translate, content } = useGlobalCtx();
   const { classes } = useStyles();
 
-  const features = FEATURES_DATA.map((feature, i) => <Feature key={i} {...feature} />);
+  const features = getFeaturesData(content).map((feature, i) => <Feature key={i} {...feature} />);
 
   return (
     <Container size="lg" py="xl" mt={120} mb={120}>
       <Title className={classes.title} align="center" mt="sm">
-        {translate(content.title)}
+        {translate(content.pages.doc.title)}
       </Title>
 
       <Flex mt={50} gap="md" justify="center" align="center" direction="row" wrap="wrap">

@@ -8,59 +8,59 @@ import {
   DocumentTableFilled,
 } from '@fluentui/react-icons';
 
-import content from 'src/content/doc/doc.json';
 import { getContentType } from '@cufta22/odf-collab-core';
+import { ITranslations } from '@ts/global.types';
 
 export interface IFeature {
-  title: {};
-  description: {};
+  title: string;
+  description: string;
   color: MantineColor;
-  button1: {};
-  button2: {};
+  button1: string;
+  button2: string;
   icon: React.FC<{ fontSize: number; color?: string }>;
   accept: string;
-  badge: {};
+  badge: string;
 }
 
-export const FEATURES_DATA: IFeature[] = [
+export const getFeaturesData = (content: ITranslations): IFeature[] => [
   {
-    title: content.cards[0].title,
-    description: content.cards[0].description,
+    title: content.pages.doc.cards[0].title,
+    description: content.pages.doc.cards[0].description,
     color: 'blue',
-    button1: content.cards[0].button1,
-    button2: content.cards[0].button2,
+    button1: content.pages.doc.cards[0].button1,
+    button2: content.pages.doc.cards[0].button2,
     icon: DocumentBulletListFilled,
     accept: `${getContentType('odt')}`,
-    badge: content.cards[0].badge,
+    badge: content.pages.doc.cards[0].badge,
   },
   // {
-  //   title: content.cards[1].title,
-  //   description: content.cards[1].description,
+  //   title: content.pages.doc.cards[1].title,
+  //   description: content.pages.doc.cards[1].description,
   //   color: 'green',
-  //   button1: content.cards[1].button1,
-  //   button2: content.cards[1].button2,
+  //   button1: content.pages.doc.cards[1].button1,
+  //   button2: content.pages.doc.cards[1].button2,
   //   icon: DocumentTableFilled,
   //   accept: 'application/vnd.oasis.opendocument.text',
-  //   badge: content.cards[1].badge,
+  //   badge: content.pages.doc.cards[1].badge,
   // },
   // {
-  //   title: content.cards[2].title,
-  //   description: content.cards[2].description,
+  //   title: content.pages.doc.cards[2].title,
+  //   description: content.pages.doc.cards[2].description,
   //   color: 'orange',
-  //   button1: content.cards[2].button1,
-  //   button2: content.cards[2].button2,
+  //   button1: content.pages.doc.cards[2].button1,
+  //   button2: content.pages.doc.cards[2].button2,
   //   icon: DocumentRibbonFilled,
   //   accept: 'application/vnd.oasis.opendocument.text',
-  //   badge: content.cards[2].badge,
+  //   badge: content.pages.doc.cards[2].badge,
   // },
   // {
-  //   title: content.cards[3].title,
-  //   description: content.cards[3].description,
+  //   title: content.pages.doc.cards[3].title,
+  //   description: content.pages.doc.cards[3].description,
   //   color: 'gray',
-  //   button1: content.cards[3].button1,
-  //   button2: content.cards[3].button2,
+  //   button1: content.pages.doc.cards[3].button1,
+  //   button2: content.pages.doc.cards[3].button2,
   //   icon: DocumentPercentFilled,
   //   accept: 'application/vnd.oasis.opendocument.text',
-  //   badge: content.cards[3].badge,
+  //   badge: content.pages.doc.cards[3].badge,
   // },
 ];

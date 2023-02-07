@@ -3,29 +3,28 @@ import { UnstyledButton, Menu, Image, Group } from '@mantine/core';
 import { ChevronDownRegular, TextFontFilled } from '@fluentui/react-icons';
 import useStyles from '../Select.styles';
 
-import { IAppFont } from '@ts/global.types';
+import { IAppFont, ITranslations } from '@ts/global.types';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
-import content from '@content/settings/settings.json';
-
 interface ILangData {
-  label: {};
+  label: string;
   value: IAppFont;
 }
 
-const getFontData = (): ILangData[] => [
-  { label: content.settings.selectFontOptions.inter, value: 'Inter' },
-  { label: content.settings.selectFontOptions.roboto, value: 'Roboto' },
-  { label: content.settings.selectFontOptions.montserrat, value: 'Montserrat' },
-  { label: content.settings.selectFontOptions.sourceCodePro, value: 'Source Code Pro' },
+const getFontData = (content: ITranslations): ILangData[] => [
+  { label: content.pages.settings.selectFontOptions.inter, value: 'Inter' },
+  { label: content.pages.settings.selectFontOptions.roboto, value: 'Roboto' },
+  { label: content.pages.settings.selectFontOptions.montserrat, value: 'Montserrat' },
+  { label: content.pages.settings.selectFontOptions.sourceCodePro, value: 'Source Code Pro' },
 ];
 
 const ThemeSelect = () => {
-  const data = getFontData();
-  const { appFont, changeFont, translate } = useGlobalCtx();
+  const { appFont, content, changeFont, translate } = useGlobalCtx();
 
   const [opened, setOpened] = useState<boolean>(false);
   const { classes } = useStyles({ opened });
+
+  const data = getFontData(content);
 
   const selected = data.find((l) => l.value === appFont);
 
@@ -40,8 +39,7 @@ const ThemeSelect = () => {
       <Menu.Target>
         <UnstyledButton className={classes.control}>
           <Group spacing="xs">
-            {/* <Image src={selected.image} width={22} height={22} /> */}
-            <TextFontFilled fontSize={22} />
+            <TextFontFilled fontSize={20} />
 
             <span className={classes.label}>{translate(selected.label)}</span>
           </Group>

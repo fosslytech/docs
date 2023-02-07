@@ -28,7 +28,6 @@ import Logo from '@icons/Logo';
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
-import content from '@content/index/header.json';
 import packageJson from '../../../../package.json';
 import { Dispatch } from 'react';
 
@@ -38,7 +37,7 @@ interface Props {
 }
 
 const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
-  const { translate } = useGlobalCtx();
+  const { translate, content } = useGlobalCtx();
   const theme = useMantineTheme();
   const colorScheme = useMantineColorScheme();
   const router = useRouter();
@@ -63,7 +62,7 @@ const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
 
           <MediaQuery smallerThan="xs" styles={{ display: 'none' }}>
             <Text ml={12} fw={700} size={20} color={logoColor}>
-              {translate(content.appName)}
+              {translate(content.header.appName)}
             </Text>
           </MediaQuery>
         </Flex>
@@ -79,7 +78,7 @@ const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
         <MediaQuery smallerThan="xs" styles={{ display: 'none' }}>
           <Link href="/settings">
             <Button size="sm" leftIcon={<SettingsFilled fontSize={16} />} variant="subtle">
-              {translate(content.settings)}
+              {translate(content.header.settings)}
             </Button>
           </Link>
         </MediaQuery>
@@ -87,7 +86,7 @@ const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
         {['/', '/settings'].includes(router.pathname) && (
           <Link href="/doc">
             <Button size="sm" ml="lg" rightIcon={<ArrowRightFilled fontSize={16} />}>
-              {translate(content.useOnline)}
+              {translate(content.header.useOnline)}
             </Button>
           </Link>
         )}

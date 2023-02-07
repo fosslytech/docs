@@ -3,10 +3,8 @@ import { useMantineColorScheme, SegmentedControl, Group, Center, Box, useMantine
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
-import content from '@content/settings/settings.json';
-
 const ColorSchemeSwitch = () => {
-  const { translate } = useGlobalCtx();
+  const { translate, content } = useGlobalCtx();
   const theme = useMantineTheme();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
@@ -21,7 +19,7 @@ const ColorSchemeSwitch = () => {
             label: (
               <Center>
                 <WeatherSunnyFilled fontSize={20} color={theme.colors.yellow[6]} />
-                <Box ml={10}>{translate(content.settings.selectColorOptions.light)}</Box>
+                <Box ml={10}>{translate(content.pages.settings.selectColorOptions.light)}</Box>
               </Center>
             ),
           },
@@ -30,7 +28,7 @@ const ColorSchemeSwitch = () => {
             label: (
               <Center>
                 <WeatherMoonFilled fontSize={20} color={theme.colors.gray[4]} />
-                <Box ml={10}>{translate(content.settings.selectColorOptions.dark)}</Box>
+                <Box ml={10}>{translate(content.pages.settings.selectColorOptions.dark)}</Box>
               </Center>
             ),
           },

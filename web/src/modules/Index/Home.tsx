@@ -2,17 +2,20 @@ import HeroSection from './HeroSection/HeroSection';
 import CardsSection from './CardsSection/CardsSection';
 import AppFooter from '@components/Footer/AppFooter';
 
-import { cardsData } from '@utils/resources/cardsData';
-import { footerData_index } from '@utils/resources/footerData';
+import { getFooterData_index } from '@utils/resources/footerData';
+import useGlobalCtx from 'src/store/global/use-global-ctx';
 
 const Home = () => {
+  const { content } = useGlobalCtx();
+  const footerData = getFooterData_index(content);
+
   return (
     <>
       <HeroSection />
 
-      <CardsSection {...cardsData} />
+      <CardsSection />
 
-      <AppFooter {...footerData_index} />
+      <AppFooter data={footerData} />
     </>
   );
 };

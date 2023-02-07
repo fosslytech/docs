@@ -3,19 +3,17 @@ import { formatChangelog } from './formatChangelog';
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
-import content from '@content/changelog/changelog.json';
-
 interface Props {
   data: string;
 }
 
 const Changelog: React.FC<Props> = ({ data }) => {
-  const { translate } = useGlobalCtx();
+  const { translate, content } = useGlobalCtx();
 
   return (
     <Container size="lg" py="xl" mt={40} mb={40}>
       <Title align="center" mt="md" mb="xl">
-        {translate(content.title)}
+        {translate(content.pages.changelog.title)}
       </Title>
 
       <Accordion variant="separated" defaultValue="customization">
