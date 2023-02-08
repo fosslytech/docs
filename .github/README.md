@@ -6,7 +6,7 @@
     <img align="center" alt="Next JS" src="https://img.shields.io/badge/nextjs-%23000000.svg?style=for-the-badge&logo=next.js&logoColor=white"/>
     <img align="center" alt="NodeJS" src="https://img.shields.io/badge/node.js-%2343853D.svg?style=for-the-badge&logo=node.js&logoColor=white" />
     <img align="center" alt="Supabase" src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" />
-    <img align="center" alt="Tauri" src="https://img.shields.io/badge/tauri-%2324C8DB.svg?style=for-the-badge&logo=tauri&logoColor=%23FFFFFF" />
+    <!-- <img align="center" alt="Tauri" src="https://img.shields.io/badge/tauri-%2324C8DB.svg?style=for-the-badge&logo=tauri&logoColor=%23FFFFFF" /> -->
     
 </p>
 
@@ -17,7 +17,7 @@
     <span> · </span>
     <a href="">Community</a>
     <span> · </span>
-    <a href="">Documentation</a>
+    <a href="https://github.com/cufta22/odf-collab/wiki">Documentation</a>
 </h3>
 
 ## Structure

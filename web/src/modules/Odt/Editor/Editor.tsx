@@ -35,7 +35,7 @@ const EditorComp: React.FC<Props> = ({ editor }) => {
 
       {editor && <BubbleMenu editor={editor} />}
 
-      <RichTextEditor.Content style={{ fontSize: editorFontSize, minHeight: '60vh' }} />
+      <RichTextEditor.Content style={{ fontSize: editorFontSize }} />
     </RichTextEditor>
   );
 };

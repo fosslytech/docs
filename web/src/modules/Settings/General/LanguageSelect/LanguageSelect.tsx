@@ -16,7 +16,6 @@ interface ILangData {
 const getLangData = (content: ITranslations): ILangData[] => [
   { label: content.pages.settings.selectLangOptions.en, value: 'en', icon: '/assets/flags/en.png' },
   { label: content.pages.settings.selectLangOptions.de, value: 'de', icon: '/assets/flags/de.png' },
-  { label: content.pages.settings.selectLangOptions.fr, value: 'fr', icon: '/assets/flags/fr.png' },
 ];
 
 const LanguageSelect = () => {

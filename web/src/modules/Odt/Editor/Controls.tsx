@@ -1,11 +1,17 @@
 import React from 'react';
-import { RichTextEditor } from '@mantine/tiptap';
+import { RichTextEditor, useRichTextEditorContext } from '@mantine/tiptap';
 
 import {
   DismissCircleRegular,
   HighlightFilled,
   LinkDismissFilled,
   LinkFilled,
+  TableDeleteColumnFilled,
+  TableDeleteRowFilled,
+  TableDismissFilled,
+  TableFilled,
+  TableInsertColumnFilled,
+  TableInsertRowFilled,
   TextAlignCenterFilled,
   TextAlignJustifyFilled,
   TextAlignLeftFilled,
@@ -20,8 +26,34 @@ import {
   TextSuperscriptFilled,
   TextUnderlineFilled,
 } from '@fluentui/react-icons';
-import { Flex, ScrollArea, Text } from '@mantine/core';
-import { IconBold } from '@tabler/icons';
+import { Flex, ScrollArea, Text, useMantineTheme } from '@mantine/core';
+import useGlobalCtx from 'src/store/global/use-global-ctx';
+import { getOdtLabels } from './labels';
+
+export const tableHTML = `
+  <table style="width:100%">
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Age</th>
+    </tr>
+    <tr>
+      <td>Jill</td>
+      <td>Smith</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <td>Eve</td>
+      <td>Jackson</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <td>John</td>
+      <td>Doe</td>
+      <td>80</td>
+    </tr>
+  </table>
+`;
 
 const BoldIcon = () => <TextBoldFilled fontSize={20} />;
 const ItalicIcon = () => <TextItalicFilled fontSize={20} />;
@@ -54,17 +86,36 @@ const AlignRightIcon = () => <TextAlignRightFilled fontSize={20} />;
 
 const UnsetColorIcon = () => <DismissCircleRegular fontSize={20} />;
 
+const TableAddIcon = () => <TableFilled fontSize={20} />;
+const TableRemoveIcon = () => <TableDismissFilled fontSize={20} />;
+const TableColumnAddIcon = () => <TableInsertColumnFilled fontSize={20} />;
+const TableColumnRemoveIcon = () => <TableDeleteColumnFilled fontSize={20} />;
+const TableRowAddIcon = () => <TableInsertRowFilled fontSize={20} />;
+const TableRowRemoveIcon = () => <TableDeleteRowFilled fontSize={20} />;
+
 const Controls = () => {
+  const { translate, content } = useGlobalCtx();
+  const { editor } = useRichTextEditorContext();
+  const theme = useMantineTheme();
+
+  const labels = getOdtLabels(translate, content);
+
   return (
     <ScrollArea type="never" style={{ width: '100%' }}>
-      <Flex w={820} gap="lg">
+      <Flex gap="lg" justify="center">
         <RichTextEditor.ControlsGroup>
           <RichTextEditor.Bold icon={BoldIcon} w={32} h={32} />
           <RichTextEditor.Italic icon={ItalicIcon} w={32} h={32} />
           <RichTextEditor.Underline icon={UnderlineIcon} w={32} h={32} />
           <RichTextEditor.Strikethrough icon={StrikethroughIcon} w={32} h={32} />
+          <RichTextEditor.Highlight
+            icon={HighlightIcon}
+            w={32}
+            h={32}
+            onClick={() => editor?.commands?.setHighlight({ color: theme.colors[theme.primaryColor][8] })}
+          />
+
           <RichTextEditor.ClearFormatting icon={ClearFormattingIcon} w={32} h={32} />
-          <RichTextEditor.Highlight icon={HighlightIcon} w={32} h={32} />
 
           {/* <RichTextEditor.Code icon={() => <CodeFilled fontSize={20} />} w={32} h={32} /> */}
         </RichTextEditor.ControlsGroup>
@@ -95,6 +146,70 @@ const Controls = () => {
           <RichTextEditor.AlignCenter icon={AlignCenterIcon} w={32} h={32} />
           <RichTextEditor.AlignJustify icon={AlignJustifyIcon} w={32} h={32} />
           <RichTextEditor.AlignRight icon={AlignRightIcon} w={32} h={32} />
+        </RichTextEditor.ControlsGroup>
+
+        <RichTextEditor.ControlsGroup>
+          <RichTextEditor.Control
+            onClick={() =>
+              editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: false }).run()
+            }
+            aria-label={labels.tableInsertLabel}
+            title={labels.tableInsertLabel}
+            w={32}
+            h={32}
+          >
+            <TableAddIcon />
+          </RichTextEditor.Control>
+          <RichTextEditor.Control
+            onClick={() => editor?.chain().focus().deleteTable().run()}
+            disabled={!editor?.can().deleteTable()}
+            aria-label={labels.tableDeleteLabel}
+            title={labels.tableDeleteLabel}
+            w={32}
+            h={32}
+          >
+            <TableRemoveIcon />
+          </RichTextEditor.Control>
+          <RichTextEditor.Control
+            onClick={() => editor?.chain().focus().addRowAfter().run()}
+            disabled={!editor?.can().addRowAfter()}
+            aria-label={labels.rowInsertLabel}
+            title={labels.rowInsertLabel}
+            w={32}
+            h={32}
+          >
+            <TableRowAddIcon />
+          </RichTextEditor.Control>
+          <RichTextEditor.Control
+            onClick={() => editor?.chain().focus().deleteRow().run()}
+            disabled={!editor?.can().deleteRow()}
+            aria-label={labels.rowDeleteLabel}
+            title={labels.rowDeleteLabel}
+            w={32}
+            h={32}
+          >
+            <TableRowRemoveIcon />
+          </RichTextEditor.Control>
+          <RichTextEditor.Control
+            onClick={() => editor?.chain().focus().addColumnAfter().run()}
+            disabled={!editor?.can().addColumnAfter()}
+            aria-label={labels.columnInsertLabel}
+            title={labels.columnInsertLabel}
+            w={32}
+            h={32}
+          >
+            <TableColumnAddIcon />
+          </RichTextEditor.Control>
+          <RichTextEditor.Control
+            onClick={() => editor?.chain().focus().deleteColumn().run()}
+            disabled={!editor?.can().deleteColumn()}
+            aria-label={labels.columnDeleteLabel}
+            title={labels.columnDeleteLabel}
+            w={32}
+            h={32}
+          >
+            <TableColumnRemoveIcon />
+          </RichTextEditor.Control>
         </RichTextEditor.ControlsGroup>
 
         <RichTextEditor.ControlsGroup>

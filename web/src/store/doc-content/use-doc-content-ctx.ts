@@ -4,9 +4,10 @@ import { useRouter } from 'next/router';
 import useDocApi from 'src/api/doc/use-doc-api';
 
 import { formatHtmlResponse } from '@cufta22/odf-collab-core';
-import { ISupportedInputExtensions, ISupportedOutputExtensions } from '@ts/global.types';
+import { ISupportedOutputExtensions } from '@ts/global.types';
 import { Editor } from '@tiptap/react';
 import useDownload from '@hooks/use-download';
+import { localFormatHtmlResponse } from '@utils/functions/localFormatHtmlResponse';
 
 const useDocContentCtx = () => {
   const { dispatch, initialDocContent, isLoadingNew, isLoadingUpload, isLoadingDownload } =
@@ -43,6 +44,8 @@ const useDocContentCtx = () => {
 
     const data = await doc_uploadFile(file, 'html');
 
+    // For local development
+    // const formattedHtml = localFormatHtmlResponse(data.output);
     const formattedHtml = formatHtmlResponse(data.output);
 
     setInitialContent(formattedHtml);
@@ -60,26 +63,36 @@ const useDocContentCtx = () => {
 
     switch (format) {
       case 'html':
-        console.log(editor.getHTML());
+        // console.log(editor.getHTML());
 
-        return jsFileDownload({ filename: 'output.html', text: editor.getHTML() });
+        jsFileDownload({ filename: 'output.html', text: editor.getHTML() });
+
+        dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDownload', value: false } });
+        break;
 
       case 'txt':
-        console.log(editor.getText());
+        // console.log(editor.getText());
 
-        return jsFileDownload({ filename: 'output.txt', text: editor.getText() });
+        jsFileDownload({ filename: 'output.txt', text: editor.getText() });
+
+        dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDownload', value: false } });
+        break;
 
       case 'pdf':
-        return await doc_downloadFile(editor.getHTML(), format);
+        await doc_downloadFile(editor.getHTML(), format);
+
+        dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDownload', value: false } });
+        break;
 
       case 'odt':
-        return await doc_downloadFile(editor.getHTML(), format);
+        await doc_downloadFile(editor.getHTML(), format);
+
+        dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDownload', value: false } });
+        break;
 
       default:
         break;
     }
-
-    dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDownload', value: false } });
   };
 
   return {

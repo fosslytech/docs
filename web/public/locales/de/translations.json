@@ -1,7 +1,7 @@
 {
   "_comment": "Don't forget to update ITranslations at /src/types/global.types.ts",
   "header": {
-    "appName": "ODF Collab DE",
+    "appName": "ODF Collab",
     "useOnline": "Use online",
     "settings": "Settings",
     "signIn": "Sign in"
@@ -147,6 +147,7 @@
       ]
     },
     "doc_odt": {
+      "back": "Go back",
       "share": "Share",
       "download": "Download .ODT",
       "toolbarLabels": {
@@ -177,6 +178,13 @@
 
         "colorPickerControlLabel": "Text color",
         "unsetColorControlLabel": "Unset color",
+
+        "tableInsertLabel": "Insert table",
+        "tableDeleteLabel": "Delete table",
+        "rowInsertLabel": "Insert row",
+        "rowDeleteLabel": "Delete row",
+        "columnInsertLabel": "Insert column",
+        "columnDeleteLabel": "Delete column",
 
         "colorControlLabel": "Set text color"
       },

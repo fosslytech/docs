@@ -1,12 +1,11 @@
 import { Global_Context, Global_Context_Action } from '@ts/global.types';
-import initialContent from '../../../public/locales/en/translations.json';
 
 const noop = () => false;
 
 export const initialState: Global_Context = {
   dispatch: noop,
 
-  content: initialContent,
+  content: null, // Will be asigned dynamically later
   appTheme: 'Mantine',
   appFont: 'Inter',
   appColorScheme: 'dark',
