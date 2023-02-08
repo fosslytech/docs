@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 import 'src/styles/fonts.css';
 import 'src/styles/base.css';
+import 'src/styles/editor.css';
 
 import { ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';

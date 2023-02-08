@@ -159,6 +159,7 @@ export interface ITranslations {
       }[];
     };
     doc_odt: {
+      back: string;
       share: string;
       download: string;
       toolbarLabels: {
@@ -189,6 +190,13 @@ export interface ITranslations {
 
         colorPickerControlLabel: string;
         unsetColorControlLabel: string;
+
+        tableInsertLabel: string;
+        tableDeleteLabel: string;
+        rowInsertLabel: string;
+        rowDeleteLabel: string;
+        columnInsertLabel: string;
+        columnDeleteLabel: string;
 
         colorControlLabel: string;
       };

@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import { Global_Context } from '@ts/global.types';
 import { initialState, globalReducer } from './reducer';
 import useCachedContext from '@hooks/use-cached-context';
@@ -13,20 +13,13 @@ export const GlobalCTXProvider = ({ children }) => {
   // Save/Init state from localStorage
   useCachedContext('ctx_global', state, dispatch);
 
-  // Fetch locales
-  useEffect(() => {
-    fetch(`/locales/${locale}/translations.json`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (!data) return;
-        dispatch({ type: 'SET_CONTENT', payload: data });
-      });
-  }, [locale, dispatch]);
-
   return (
     <GlobalContext.Provider
       value={{
         ...state,
+
+        // Dynamically get initial value for translations
+        content: require(`../../../public/locales/${locale}/translations.json`),
         dispatch,
       }}
     >

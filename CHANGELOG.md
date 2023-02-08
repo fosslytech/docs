@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Support for .ODT Format
-- Convert API for document conversion
-- Customization [ language, theme, font, color scheme ]
+- Support for .ODT Format ( Writer )
+- Document API ( convert/download )
+- Look & Feel customization
+- Multi-language support
+- Progressive Web App

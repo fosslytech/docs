@@ -2,10 +2,17 @@ import { RichTextEditorLabels } from '@mantine/tiptap';
 
 import { ITranslations } from '@ts/global.types';
 
-export const getOdtLabels = (
-  translate: (obj: any) => string,
-  content: ITranslations
-): RichTextEditorLabels => ({
+export interface RTELabelsOdt extends RichTextEditorLabels {
+  // Custom control labels
+  tableInsertLabel: string;
+  tableDeleteLabel: string;
+  rowInsertLabel: string;
+  rowDeleteLabel: string;
+  columnInsertLabel: string;
+  columnDeleteLabel: string;
+}
+
+export const getOdtLabels = (translate: (obj: any) => string, content: ITranslations): RTELabelsOdt => ({
   boldControlLabel: translate(content.pages.doc_odt.toolbarLabels.boldControlLabel),
   italicControlLabel: translate(content.pages.doc_odt.toolbarLabels.italicControlLabel),
   underlineControlLabel: translate(content.pages.doc_odt.toolbarLabels.underlineControlLabel),
@@ -30,6 +37,13 @@ export const getOdtLabels = (
   alignCenterControlLabel: translate(content.pages.doc_odt.toolbarLabels.alignCenterControlLabel),
   alignJustifyControlLabel: translate(content.pages.doc_odt.toolbarLabels.alignJustifyControlLabel),
   alignRightControlLabel: translate(content.pages.doc_odt.toolbarLabels.alignRightControlLabel),
+
+  tableInsertLabel: translate(content.pages.doc_odt.toolbarLabels.tableInsertLabel),
+  tableDeleteLabel: translate(content.pages.doc_odt.toolbarLabels.tableDeleteLabel),
+  rowInsertLabel: translate(content.pages.doc_odt.toolbarLabels.rowInsertLabel),
+  rowDeleteLabel: translate(content.pages.doc_odt.toolbarLabels.rowDeleteLabel),
+  columnInsertLabel: translate(content.pages.doc_odt.toolbarLabels.columnInsertLabel),
+  columnDeleteLabel: translate(content.pages.doc_odt.toolbarLabels.columnDeleteLabel),
 
   colorPickerControlLabel: translate(content.pages.doc_odt.toolbarLabels.colorPickerControlLabel),
   unsetColorControlLabel: translate(content.pages.doc_odt.toolbarLabels.unsetColorControlLabel),

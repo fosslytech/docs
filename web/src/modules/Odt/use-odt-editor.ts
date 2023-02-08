@@ -1,4 +1,9 @@
+import { useRouter } from 'next/router';
+
+import { MANTINE_COLORS, useMantineTheme } from '@mantine/core';
 import { Link } from '@mantine/tiptap';
+
+import { useEditor } from '@tiptap/react';
 
 import CollaborationCursor from '@tiptap/extension-collaboration-cursor';
 import Collaboration from '@tiptap/extension-collaboration';
@@ -9,12 +14,14 @@ import TextAlign from '@tiptap/extension-text-align';
 import Superscript from '@tiptap/extension-superscript';
 import SubScript from '@tiptap/extension-subscript';
 import TextStyle from '@tiptap/extension-text-style';
+import Table from '@tiptap/extension-table';
+import TableCell from '@tiptap/extension-table-cell';
+import TableHeader from '@tiptap/extension-table-header';
+import TableRow from '@tiptap/extension-table-row';
 import { Color } from '@tiptap/extension-color';
-import { useEditor } from '@tiptap/react';
-import { MANTINE_COLORS, useMantineTheme } from '@mantine/core';
+
 import useDocContentCtx from 'src/store/doc-content/use-doc-content-ctx';
 import { useYWebRtc } from '@hooks/yjs/use-y-webrtc';
-import { useRouter } from 'next/router';
 import useNonInitialEffect from '@hooks/use-non-initial-effect';
 import { getRandomInt } from '@utils/functions/randomNumber';
 
@@ -52,12 +59,25 @@ export const useOdtEditor = () => {
       Link,
       Superscript,
       SubScript,
-      Highlight,
+      Highlight.configure({
+        multicolor: true,
+      }),
       Color,
       TextStyle,
       TextAlign.configure({ types: ['heading', 'paragraph'] }),
+
+      // Table support
+      Table.configure({
+        resizable: true,
+        HTMLAttributes: {
+          class: 'my-custom-paragraph',
+        },
+      }),
+      TableRow,
+      TableHeader,
+      TableCell,
     ],
-    content: initialDocContent || '',
+    content: initialDocContent || `<br/><br/><br/><br/><br/><br/><br/><br/><br/>`,
   });
 
   // Remove initial content
