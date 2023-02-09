@@ -18,12 +18,16 @@ export const localFormatHtmlResponse = (html: string): string => {
     // Text color doesn't work,
     // soffice uses:  <font color="*">123</font>
     // we need:       <span style="color: *">123</span>
-    .replace(/""/g, '')
+    .replace(/<font color="([^"]+)">([^<]+)<\/font>/g, (_match, p1, p2) => {
+      return `<span style="color: ${p1}">${p2}</span>`;
+    })
 
     // Text highlight doesn't work
     // soffice uses:  <span style="background: *">123</span>
     // we need:       <mark data-color="*" style="background-color: *; color: inherit">123</mark>
-    .replace(/""/g, '')
+    .replace(/<span style="background: ([^"]+)">([^<]+)<\/span>/g, (_match, p1, p2) => {
+      return `<mark data-color="${p1}" style="background-color: ${p1}; color: inherit">${p2}</mark>`;
+    })
 
     // Title doesn't work,
     // soffice uses:  <font size="6" style="font-size: 28pt"><b>Title + </b></font>

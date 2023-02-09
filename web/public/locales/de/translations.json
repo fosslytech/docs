@@ -1,7 +1,7 @@
 {
   "_comment": "Don't forget to update ITranslations at /src/types/global.types.ts",
   "header": {
-    "appName": "ODF Collab",
+    "appName": "ODF Collab DE",
     "useOnline": "Use online",
     "settings": "Settings",
     "signIn": "Sign in"
