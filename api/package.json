@@ -12,8 +12,8 @@
     "start": "npm run build && node dist/index.js"
   },
   "dependencies": {
-    "@cufta22/odf-collab-core": "^1.0.1",
-    "@hapi/hapi": "^21.2.0",
+    "@cufta22/odf-collab-core": "^1.0.2",
+    "@hapi/hapi": "^21.2.1",
     "@hapi/inert": "^7.0.0",
     "dotenv": "^16.0.3",
     "libreoffice-convert": "^1.4.1",
