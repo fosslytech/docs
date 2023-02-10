@@ -16,7 +16,7 @@ export const getFooterData_index = (content: ITranslations): AppFooterData[] => 
     links: [
       { label: content.footer.links[1].links[0], link: 'https://github.com/cufta22/odf-collab' },
       { label: content.footer.links[1].links[1], link: '/changelog' },
-      { label: content.footer.links[1].links[2], link: '/download' },
+      { label: content.footer.links[1].links[2], link: 'https://github.com/cufta22/odf-collab/wiki' },
     ],
   },
   {

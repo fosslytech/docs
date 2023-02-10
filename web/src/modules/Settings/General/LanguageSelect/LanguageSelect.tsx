@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { UnstyledButton, Menu, Group, Image } from '@mantine/core';
+import { UnstyledButton, Menu, Group } from '@mantine/core';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 import useStyles from '../Select.styles';
 
@@ -7,15 +7,17 @@ import { ITranslations } from '@ts/global.types';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 import { useRouter } from 'next/router';
 
+import { USFlag, DEFlag, FlagProps } from 'mantine-flagpack';
+
 interface ILangData {
   label: string;
   value: string;
-  icon: string;
+  icon: React.FC<FlagProps>;
 }
 
 const getLangData = (content: ITranslations): ILangData[] => [
-  { label: content.pages.settings.selectLangOptions.en, value: 'en', icon: '/assets/flags/en.png' },
-  { label: content.pages.settings.selectLangOptions.de, value: 'de', icon: '/assets/flags/de.png' },
+  { label: content.pages.settings.selectLangOptions.en, value: 'en', icon: USFlag },
+  { label: content.pages.settings.selectLangOptions.de, value: 'de', icon: DEFlag },
 ];
 
 const LanguageSelect = () => {
@@ -36,7 +38,7 @@ const LanguageSelect = () => {
 
   const items = data.map((item) => (
     <Menu.Item
-      icon={<Image src={item.icon} alt={`${item.icon} flag`} width={24} height={18} />}
+      icon={<item.icon w={25} radius="xs" />}
       onClick={() => changeLanguage(item.value)}
       key={item.value}
       pt={10}
@@ -51,8 +53,7 @@ const LanguageSelect = () => {
       <Menu.Target>
         <UnstyledButton className={classes.control}>
           <Group spacing="xs">
-            {/* <selected.icon fontSize={22} /> */}
-            <Image src={selected.icon} alt={`${selected.icon} flag`} width={26} height={20} />
+            <selected.icon w={27} radius="xs" />
 
             <span className={classes.label}>{translate(selected.label)}</span>
           </Group>

@@ -160,7 +160,7 @@ export interface ITranslations {
     };
     doc_odt: {
       back: string;
-      share: string;
+      invite: string;
       download: string;
       toolbarLabels: {
         boldControlLabel: string;

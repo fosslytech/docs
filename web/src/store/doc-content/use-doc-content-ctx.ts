@@ -10,7 +10,7 @@ import useDownload from '@hooks/use-download';
 import { localFormatHtmlResponse } from '@utils/functions/localFormatHtmlResponse';
 
 const useDocContentCtx = () => {
-  const { dispatch, initialDocContent, isLoadingNew, isLoadingUpload, isLoadingDownload } =
+  const { dispatch, initialDocContent, isLoadingNew, isLoadingUpload, isLoadingDownload, isRoomFull } =
     useContext(DocContentContext);
 
   const { jsFileDownload } = useDownload();
@@ -20,6 +20,10 @@ const useDocContentCtx = () => {
 
   const setInitialContent = (content: string) =>
     dispatch({ type: 'SET_INITIAL_DOC_CONTENT', payload: content });
+
+  const handleRoomFull = (next: boolean) => {
+    dispatch({ type: 'SET_ROOM_FULL', payload: next });
+  };
 
   // -------------------------------------------------------------------------
   // Handle new document
@@ -102,6 +106,9 @@ const useDocContentCtx = () => {
     handleNewDocument,
     handleUploadDocument,
     handleDownloadDocument,
+
+    isRoomFull,
+    handleRoomFull,
 
     isLoadingNew,
     isLoadingUpload,

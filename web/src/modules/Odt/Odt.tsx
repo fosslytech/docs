@@ -10,11 +10,11 @@ const Home = () => {
   const theme = useMantineTheme();
   const { editor, connectedUsers, isConnected, isFull } = useOdtEditor();
 
+  // State: Room is full
+  if (isFull) return <StateRoomFull />;
+
   // State: Connecting to the room
   if (!isConnected) return <StateConnecting />;
-
-  // State: Room is full
-  // if (isFull) return <StateRoomFull />;
 
   return (
     <>

@@ -9,8 +9,10 @@ import {
   handleCommandResume,
   handleCommandSkip,
 } from './player';
+
 import { handleCommandCowsay } from './shell/cowsay';
 import { handleCommandNeofetch } from './shell/neofetch';
+import { handleCommandPwd } from './shell/pwd';
 
 export const handleInteractionCreate = async (int: Interaction, player: Player) => {
   if (!int.isChatInputCommand()) return;
@@ -28,6 +30,10 @@ export const handleInteractionCreate = async (int: Interaction, player: Player) 
 
     case 'cowsay':
       handleCommandCowsay(int);
+      break;
+
+    case 'pwd':
+      handleCommandPwd(int);
       break;
 
     // Music player

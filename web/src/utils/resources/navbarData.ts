@@ -1,4 +1,10 @@
-import { ArrowDownloadFilled, HomeFilled, SettingsFilled } from '@fluentui/react-icons';
+import {
+  ArchiveFilled,
+  BookFilled,
+  HomeFilled,
+  MailInboxFilled,
+  SettingsFilled,
+} from '@fluentui/react-icons';
 import { ITranslations } from '@ts/global.types';
 
 interface INavbarItem {
@@ -15,12 +21,18 @@ export const getNavbarData = (content: ITranslations): INavbarItem[] => [
   },
   {
     text: content.navbar.links[1],
-    href: '/settings',
-    icon: SettingsFilled,
+    href: 'https://github.com/cufta22/odf-collab/wiki',
+    icon: BookFilled,
   },
   {
     text: content.navbar.links[2],
+    href: '/settings',
+    icon: SettingsFilled,
+  },
+
+  {
+    text: content.navbar.links[3],
     href: '/download',
-    icon: ArrowDownloadFilled,
+    icon: MailInboxFilled,
   },
 ];
