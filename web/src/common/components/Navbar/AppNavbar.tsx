@@ -16,7 +16,7 @@ const AppNavbar: React.FC<Props> = ({ opened }) => {
     <MediaQuery largerThan="xs" styles={{ display: 'none' }}>
       <Navbar p="xl" hiddenBreakpoint="xs" hidden={!opened} width={{ xs: 300 }}>
         {getNavbarData(content).map((item, i) => (
-          <Link href={item.href} key={i}>
+          <Link href={item.href} key={i} target={item.href.includes('http') ? '_blank' : ''}>
             <Flex p="sm" my="xs" align="center">
               <item.icon fontSize={32} color={theme.colors[theme.primaryColor][5]} />
 

@@ -5,7 +5,7 @@ import React from 'react';
 import AvatarGroup from './components/AvatarGroup';
 import BackButton from './components/BackButton';
 import DownloadButton from './components/DownloadButton';
-import ShareButton from './components/ShareButton';
+import InviteButton from './components/InviteButton';
 
 interface Props {
   editor: Editor;
@@ -19,7 +19,7 @@ const OdtHeader: React.FC<Props> = ({ editor, connectedUsers }) => {
         <Group>
           <BackButton />
 
-          <ShareButton />
+          <InviteButton />
 
           <DownloadButton editor={editor} />
 

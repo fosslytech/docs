@@ -24,8 +24,9 @@ import useDocContentCtx from 'src/store/doc-content/use-doc-content-ctx';
 import { useYWebRtc } from '@hooks/yjs/use-y-webrtc';
 import useNonInitialEffect from '@hooks/use-non-initial-effect';
 import { getRandomInt } from '@utils/functions/randomNumber';
+import { useEffect, useState } from 'react';
 
-export const MAX_CONNS_ODT = 2;
+export const MAX_CONNS_ODT = 20;
 
 export const useOdtEditor = () => {
   const router = useRouter();
@@ -37,7 +38,18 @@ export const useOdtEditor = () => {
     filterBcConns: true,
   });
 
+  const [isNew, setIsNew] = useState(true);
+  const [isFull, setIsFull] = useState(false);
+
   const userColor = MANTINE_COLORS[getRandomInt(0, 13)];
+
+  const connectedUsers = Array.from(provider.awareness.getStates(), ([id, { cursor, user }]) => ({
+    name: user?.name || 'Anon',
+    color: user?.color || theme.colors.blue[6],
+    colorName: user?.colorName || 'blue',
+  }));
+
+  const roomFull = connectedUsers?.length > MAX_CONNS_ODT;
 
   const editor = useEditor({
     extensions: [
@@ -77,7 +89,7 @@ export const useOdtEditor = () => {
       TableHeader,
       TableCell,
     ],
-    content: initialDocContent || `<br/><br/><br/><br/><br/><br/><br/><br/><br/>`,
+    content: initialDocContent,
   });
 
   // Remove initial content
@@ -85,16 +97,25 @@ export const useOdtEditor = () => {
     if (initialDocContent.length) setInitialContent('');
   }, [initialDocContent]);
 
-  const connectedUsers = Array.from(provider.awareness.getStates(), ([id, { cursor, user }]) => ({
-    name: user?.name || 'Anon',
-    color: user?.color || theme.colors.blue[6],
-    colorName: user?.colorName || 'blue',
-  }));
+  // Don't allow new connections if room is full
+  useEffect(() => {
+    // Initially it's 1 until it updates to the actual number
+    const connecting = connectedUsers?.length === 1;
+
+    // If the user was already in the room, don't do anything
+    // If the connection wasn't established, don't do anything
+    if (!isNew || connecting) return;
+
+    if (!roomFull) return setIsNew(false);
+
+    setIsFull(true);
+    provider.disconnect();
+  }, [connectedUsers.length, provider.connected]);
 
   return {
     editor,
     connectedUsers,
     isConnected: provider.connected,
-    isFull: connectedUsers?.length > MAX_CONNS_ODT,
+    isFull,
   };
 };

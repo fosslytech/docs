@@ -19,5 +19,5 @@ export const handleCommandExit = async (int: Interaction, player: Player) => {
   // Deletes all the songs from the queue and exits the channel
   queue.destroy();
 
-  await int.reply('Why you do this to me?');
+  await int.reply('Just like they did in the FSF');
 };

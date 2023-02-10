@@ -8,8 +8,10 @@ import {
   slashCommandResume,
   slashCommandSkip,
 } from './handler/player';
+
 import { slashCommandNeofetch } from './handler/shell/neofetch';
 import { slashCommandCowsay } from './handler/shell/cowsay';
+import { slashCommandPwd } from './handler/shell/pwd';
 
 dotenv.config();
 
@@ -24,6 +26,7 @@ const commands = [
   // Shell
   slashCommandNeofetch.toJSON(),
   slashCommandCowsay.toJSON(),
+  slashCommandPwd.toJSON(),
 
   // Music
   slashCommandPlay.toJSON(),
