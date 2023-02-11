@@ -1,6 +1,14 @@
+<a href="https://odfcollab.com">
 <p align="center">
-    <strong>Free & Open source document collaboration tool</strong>
+    <img height="80" src="./assets/logo.png"/>
 </p>
+</a>
+
+<br />
+<p align="center">
+    <strong>ODF Collab - Free & Open source document collaboration tool</strong>
+</p>
+<br />
 
 <p align="center">
     <img align="center" alt="Next JS" src="https://img.shields.io/badge/nextjs-%23000000.svg?style=for-the-badge&logo=next.js&logoColor=white"/>
@@ -32,6 +40,10 @@
 
 <!-- | [mobile](mobile)   |  Mobile app          |   /   | -->
 <!-- | [desktop](desktop) |  Desktop app         |   /   | -->
+
+## Features ( so far )
+
+- Writer **ALPHA** - online collaborative .odt editor
 
 ## Branches
 
