@@ -2,7 +2,7 @@ import { Interaction, SlashCommandBuilder } from 'discord.js';
 
 export const slashCommandCowsay = new SlashCommandBuilder()
   .setName('cowsay')
-  .setDescription('cowsay is a configurable talking cow')
+  .setDescription('Cowsay is a configurable talking cow')
   .addStringOption((option) =>
     option.setName('input').setDescription('what does the cow say').setRequired(true)
   );

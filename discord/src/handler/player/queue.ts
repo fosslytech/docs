@@ -3,7 +3,7 @@ import { EmbedBuilder, Interaction, SlashCommandBuilder } from 'discord.js';
 
 export const slashCommandQueue = new SlashCommandBuilder()
   .setName('queue')
-  .setDescription('shows first 10 songs in the queue');
+  .setDescription('Shows first 10 songs in the queue');
 
 export const handleCommandQueue = async (int: Interaction, player: Player) => {
   if (!int.isChatInputCommand() || !int.guildId) return;
