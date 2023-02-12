@@ -2,7 +2,7 @@ import { Interaction, SlashCommandBuilder } from 'discord.js';
 
 export const slashCommandPwd = new SlashCommandBuilder()
   .setName('pwd')
-  .setDescription('print current directory');
+  .setDescription('Print current directory');
 
 export const handleCommandPwd = async (int: Interaction) => {
   if (!int.isChatInputCommand()) return;

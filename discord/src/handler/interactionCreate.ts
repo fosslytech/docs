@@ -1,6 +1,6 @@
 import { Player } from 'discord-player';
 import { Interaction } from 'discord.js';
-import { formatTime, getLinuxDistro } from '../utils';
+import { handleCommandAskGpt } from './gpt/gpt';
 import {
   handleCommandExit,
   handleCommandPause,
@@ -60,6 +60,11 @@ export const handleInteractionCreate = async (int: Interaction, player: Player) 
 
     case 'exit':
       handleCommandExit(int, player);
+      break;
+
+    // ChatGPT
+    case 'ask-gpt':
+      handleCommandAskGpt(int);
       break;
 
     default:

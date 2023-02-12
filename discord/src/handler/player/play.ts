@@ -9,7 +9,7 @@ export const slashCommandPlay = new SlashCommandBuilder()
       .setName('song')
       .setDescription('Plays a single song from [REDACTED]')
       .addStringOption((option) =>
-        option.setName('query').setDescription('search for the song').setRequired(true)
+        option.setName('query').setDescription('search for the song or link').setRequired(true)
       )
   )
   .addSubcommand((subcommand) =>
@@ -23,6 +23,9 @@ export const slashCommandPlay = new SlashCommandBuilder()
 
 export const handleCommandPlay = async (int: Interaction, player: Player) => {
   if (!int.isChatInputCommand() || !int.guild) return;
+
+  // The reply may take longer than 3s ( discord limit )
+  int.deferReply({ ephemeral: true });
 
   // Make sure the user is inside a voice channel
   //@ts-ignore
@@ -100,7 +103,7 @@ export const handleCommandPlay = async (int: Interaction, player: Player) => {
   if (!queue.playing) await queue.play();
 
   // Respond with the embed containing information about the player
-  await int.reply({
-    embeds: [embedBuilder.toJSON()],
+  await int.followUp({
+    embeds: [embedBuilder.toJSON() || { title: 'Embed builder broke' }],
   });
 };

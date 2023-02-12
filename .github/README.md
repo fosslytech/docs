@@ -23,7 +23,7 @@
 <h3 align="center">
     <a href="https://github.com/cufta22/odf-collab/blob/master/CONTRIBUTING.md">Contribute</a>
     <span> · </span>
-    <a href="">Community</a>
+    <a href="https://discord.gg/UygKwaj3">Community</a>
     <span> · </span>
     <a href="https://github.com/cufta22/odf-collab/wiki">Documentation</a>
 </h3>

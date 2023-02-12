@@ -12,6 +12,7 @@ import {
 import { slashCommandNeofetch } from './handler/shell/neofetch';
 import { slashCommandCowsay } from './handler/shell/cowsay';
 import { slashCommandPwd } from './handler/shell/pwd';
+import { slashCommandAskGpt } from './handler/gpt/gpt';
 
 dotenv.config();
 
@@ -35,6 +36,9 @@ const commands = [
   slashCommandQueue.toJSON(),
   slashCommandResume.toJSON(),
   slashCommandSkip.toJSON(),
+
+  // ChatGPT
+  slashCommandAskGpt.toJSON(),
 ];
 
 const rest = new REST({ version: '10' }).setToken(process.env.CLIENT_TOKEN || '');
