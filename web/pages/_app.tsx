@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import 'src/styles/fonts.css';
 import 'src/styles/base.css';
@@ -9,40 +9,47 @@ import { NotificationsProvider } from '@mantine/notifications';
 import { ModalsProvider } from '@mantine/modals';
 import NProgress from '@module/NProgress/NProgress';
 
-import { logConsoleCat } from '@utils/functions/consoleCat';
+import { logConsoleWarning } from '@utils/functions/consoleWarning';
 import { getMantineTheme } from '@utils/resources/mantineTheme';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 import JoinedCTXProvider from 'src/store/CTX';
 import GlobalSEO from '@module/SEO/GlobalSEO';
+import { SessionContextProvider } from '@supabase/auth-helpers-react';
+import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs';
+import { ISupabase } from '@ts/supabase.types';
 
 const App = ({ Component, pageProps }) => {
+  const [supabaseClient] = useState(() => createBrowserSupabaseClient<ISupabase>());
+
+  useEffect(() => logConsoleWarning(), []);
+
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page) => page);
-
-  useEffect(() => logConsoleCat(), []);
 
   const Root = () => {
     const { appTheme, appFont, appColorScheme, appPrimaryColor, toggleColorScheme } = useGlobalCtx();
 
     return (
-      <ColorSchemeProvider colorScheme={appColorScheme} toggleColorScheme={toggleColorScheme}>
-        <MantineProvider
-          withGlobalStyles
-          withNormalizeCSS
-          theme={getMantineTheme(appColorScheme, appPrimaryColor, appTheme, appFont)}
-        >
-          <ModalsProvider>
-            <NotificationsProvider>
-              {/* Route transition */}
-              <NProgress />
+      <SessionContextProvider supabaseClient={supabaseClient} initialSession={pageProps.initialSession}>
+        <ColorSchemeProvider colorScheme={appColorScheme} toggleColorScheme={toggleColorScheme}>
+          <MantineProvider
+            withGlobalStyles
+            withNormalizeCSS
+            theme={getMantineTheme(appColorScheme, appPrimaryColor, appTheme, appFont)}
+          >
+            <ModalsProvider>
+              <NotificationsProvider>
+                {/* Route transition */}
+                <NProgress />
 
-              <GlobalSEO />
+                <GlobalSEO />
 
-              {getLayout(<Component {...pageProps} />)}
-            </NotificationsProvider>
-          </ModalsProvider>
-        </MantineProvider>
-      </ColorSchemeProvider>
+                {getLayout(<Component {...pageProps} />)}
+              </NotificationsProvider>
+            </ModalsProvider>
+          </MantineProvider>
+        </ColorSchemeProvider>
+      </SessionContextProvider>
     );
   };
 

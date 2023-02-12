@@ -30,6 +30,7 @@ import useGlobalCtx from 'src/store/global/use-global-ctx';
 
 import packageJson from '../../../../package.json';
 import { Dispatch } from 'react';
+import { useSession } from '@supabase/auth-helpers-react';
 
 interface Props {
   opened: boolean;
@@ -41,6 +42,7 @@ const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
   const theme = useMantineTheme();
   const colorScheme = useMantineColorScheme();
   const router = useRouter();
+  const session = useSession();
 
   const logoColor = colorScheme.colorScheme === 'dark' ? theme.colors.gray[0] : theme.colors.gray[7];
 
@@ -91,13 +93,14 @@ const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
           </Link>
         )}
 
-        {/* {user ? (
-          <HeaderAvatar />
-        ) : (
-          <Button size="sm" onClick={() => openModal({ title: 'Log in', children: <UserModal /> })}>
-            {translate(content.signIn)}
-          </Button>
-        )} */}
+        {!['/', '/settings'].includes(router.pathname) &&
+          (session ? (
+            <HeaderAvatar />
+          ) : (
+            <Button size="sm" ml="lg" onClick={() => router.push('/auth/login')}>
+              {translate(content.header.signIn)}
+            </Button>
+          ))}
       </div>
     </Header>
   );

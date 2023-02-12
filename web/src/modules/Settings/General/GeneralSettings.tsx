@@ -10,7 +10,7 @@ import useGlobalCtx from 'src/store/global/use-global-ctx';
 
 import { SettingsFilled } from '@fluentui/react-icons';
 
-import useStyles from './GeneralSettings.theme';
+import useStyles from './GeneralSettings.styles';
 
 const Settings = () => {
   const { translate, content } = useGlobalCtx();

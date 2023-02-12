@@ -208,6 +208,80 @@ export interface ITranslations {
         button: string;
       };
     };
+    auth_confirm: {
+      title: string;
+      description: string;
+      openMailApp: string;
+      goBack: string;
+    };
+    auth_forgot: {
+      title: string;
+      subtitle: string;
+      mailLabel: string;
+      mailPlaceholder: string;
+      toLogin: string;
+      button: string;
+      errors: {
+        email: string;
+      };
+    };
+    auth_login: {
+      title: string;
+      noAccount: string;
+      registerCta: string;
+      mailLabel: string;
+      mailPlaceholder: string;
+      passwordLabel: string;
+      passwordPlaceholder: string;
+      rememberLabel: string;
+      forgot: string;
+      button: string;
+      buttonOtp: string;
+      errors: {
+        email: string;
+        password: string;
+      };
+    };
+    auth_register: {
+      title: string;
+      yesAccount: string;
+      loginCta: string;
+      mailLabel: string;
+      mailPlaceholder: string;
+      passwordLabel: string;
+      passwordPlaceholder: string;
+      generateTooltip: string;
+      button: string;
+      errors: {
+        email: string;
+        password: string;
+      };
+    };
+    auth_reset: {
+      title: string;
+      subtitle: string;
+      password1Label: string;
+      password1Placeholder: string;
+      generateTooltip: string;
+      password2Label: string;
+      password2Placeholder: string;
+      button: string;
+      errors: {
+        password1: string;
+        password2: string;
+      };
+    };
+    profile: {
+      danger: {
+        title: string;
+
+        deleteDocDescription: string;
+        deleteDocButton: string;
+
+        deleteAccDescription: string;
+        deleteAccButton: string;
+      };
+    };
     changelog: {
       title: string;
     };

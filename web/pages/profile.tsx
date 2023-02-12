@@ -1,9 +1,9 @@
 import AppLayout from '@layout/AppLayout';
-import Settings from '@module/Settings/SettingsPage';
+import Profile from '@module/Profile/ProfilePage';
 import { NextPageWithLayout } from '@ts/global.types';
 
 const Page: NextPageWithLayout = () => {
-  return <Settings />;
+  return <Profile />;
 };
 
 Page.getLayout = (page: React.ReactElement) => {
