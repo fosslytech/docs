@@ -1,5 +1,5 @@
 import AppLayout from '@layout/AppLayout';
-import Changelog from '@module/Changelog/Changelog';
+import Changelog from '@module/Changelog/ChangelogPage';
 import { NextPageWithLayout } from '@ts/global.types';
 
 const Page: NextPageWithLayout<{ data: string }> = ({ data }) => {

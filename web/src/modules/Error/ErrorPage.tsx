@@ -1,6 +1,6 @@
 import React from 'react';
 import { Title, Text, Button, Container, Group } from '@mantine/core';
-import useStyles from './Error.styles';
+import useStyles from './ErrorPage.styles';
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 import Link from 'next/link';

@@ -1,5 +1,5 @@
 import AppLayout from '@layout/AppLayout';
-import Home from '@module/Index/Home';
+import Home from '@module/Index/IndexPage';
 import { NextPageWithLayout } from '@ts/global.types';
 
 const Page: NextPageWithLayout = () => {

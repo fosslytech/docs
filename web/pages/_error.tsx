@@ -1,5 +1,5 @@
 import AppLayout from '@layout/AppLayout';
-import Error from '@module/Error/Error';
+import Error from '@module/Error/ErrorPage';
 
 const Page = ({ statusCode }: { statusCode?: 404 | 401 | 500 }) => {
   return (

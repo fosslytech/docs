@@ -1,9 +1,9 @@
-import AppLayout from '@layout/AppLayout';
-import Settings from '@module/Settings/SettingsPage';
 import { NextPageWithLayout } from '@ts/global.types';
+import AppLayout from '@layout/AppLayout';
+import Reset from '@module/Auth/Reset/ResetPage';
 
 const Page: NextPageWithLayout = () => {
-  return <Settings />;
+  return <Reset />;
 };
 
 Page.getLayout = (page: React.ReactElement) => {

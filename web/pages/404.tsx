@@ -1,5 +1,5 @@
 import AppLayout from '@layout/AppLayout';
-import Error from '@module/Error/Error';
+import Error from '@module/Error/ErrorPage';
 import { NextPageWithLayout } from '@ts/global.types';
 
 const Page: NextPageWithLayout = () => {
