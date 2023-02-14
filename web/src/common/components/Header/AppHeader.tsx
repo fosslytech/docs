@@ -12,15 +12,8 @@ import {
   MediaQuery,
   Burger,
 } from '@mantine/core';
-import { openModal } from '@mantine/modals';
 
-import {
-  ArrowRight12Filled,
-  ArrowRightFilled,
-  BookFilled,
-  SettingsFilled,
-  StarFilled,
-} from '@fluentui/react-icons';
+import { IconSettings, IconArrowRight } from '@tabler/icons';
 
 import HeaderAvatar from './HeaderAvatar';
 
@@ -79,21 +72,21 @@ const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
 
         <MediaQuery smallerThan="xs" styles={{ display: 'none' }}>
           <Link href="/settings">
-            <Button size="sm" leftIcon={<SettingsFilled fontSize={16} />} variant="subtle">
+            <Button size="sm" leftIcon={<IconSettings size={18} />} variant="subtle">
               {translate(content.header.settings)}
             </Button>
           </Link>
         </MediaQuery>
 
-        {['/', '/settings'].includes(router.pathname) && (
+        {['/', '/settings', '/changelog'].includes(router.pathname) && (
           <Link href="/doc">
-            <Button size="sm" ml="lg" rightIcon={<ArrowRightFilled fontSize={16} />}>
+            <Button size="sm" ml="lg" rightIcon={<IconArrowRight size={20} />}>
               {translate(content.header.useOnline)}
             </Button>
           </Link>
         )}
 
-        {!['/', '/settings'].includes(router.pathname) &&
+        {!['/', '/settings', '/changelog'].includes(router.pathname) &&
           (session ? (
             <HeaderAvatar />
           ) : (

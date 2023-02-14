@@ -1,9 +1,10 @@
-import { AddFilled } from '@fluentui/react-icons';
 import { Button } from '@mantine/core';
 import { IFeature } from '@utils/resources/featuresData';
 import React from 'react';
 import useDocContentCtx from 'src/store/doc-content/use-doc-content-ctx';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
+
+import { IconPlus } from '@tabler/icons';
 
 const ButtonNew: React.FC<IFeature> = (feature) => {
   const { translate } = useGlobalCtx();
@@ -14,7 +15,7 @@ const ButtonNew: React.FC<IFeature> = (feature) => {
     <Button
       variant="filled"
       ml={10}
-      leftIcon={<AddFilled fontSize={16} />}
+      leftIcon={<IconPlus size={20} />}
       onClick={handleNewDocument}
       color={feature.color}
       loading={isLoadingNew}

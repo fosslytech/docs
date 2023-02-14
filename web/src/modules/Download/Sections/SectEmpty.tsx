@@ -1,14 +1,14 @@
-import { ArrowDownloadFilled } from '@fluentui/react-icons';
-
 import { Text, Card, Divider, Button, Flex } from '@mantine/core';
 import useStyles from './Sections.styles';
+
+import { IconDownload } from '@tabler/icons';
 
 const SectEmpty = () => {
   const { classes, theme } = useStyles();
 
   return (
     <Card shadow="md" radius="md" className={classes.card} p="xl">
-      <ArrowDownloadFilled fontSize={30} />
+      <IconDownload size={30} />
 
       <Divider size={2} color={theme.colors[theme.primaryColor][6]} w={70} mt={10} mb={20} />
 

@@ -1,6 +1,6 @@
 import { RichTextEditorLabels } from '@mantine/tiptap';
 
-import { ITranslations } from '@ts/global.types';
+import { ITranslations } from '@ts/content.types';
 
 export interface RTELabelsOdt extends RichTextEditorLabels {
   // Custom control labels

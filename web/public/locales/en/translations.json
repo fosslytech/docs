@@ -1,10 +1,15 @@
 {
-  "_comment": "Don't forget to update ITranslations at /src/types/global.types.ts",
+  "_comment": "Don't forget to update ITranslations at /src/types/content.types.ts",
   "header": {
     "appName": "ODF Collab",
     "useOnline": "Use online",
     "settings": "Settings",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "avatar": {
+      "label1": "Actions",
+      "switchAcc": "Switch accounts",
+      "signOut": "Sign out"
+    }
   },
   "footer": {
     "appName": "ODF Collab",
@@ -34,7 +39,7 @@
         "title2": "modern",
         "title3": "FOSS",
         "title4": "collaboration tool",
-        "description": "Work together in real-time to create, edit, and share documents. The goal of the website is to provide a seamless and efficient way for teams and individuals to collaborate on projects, no matter where they are located.",
+        "description": "Work together in real-time to create, edit, and share documents. The goal of the website is to provide a seamless and efficient way for teams and individuals to collaborate on documents, no matter where they are located.",
         "downloadBtn": "Download",
         "sourceCode": "Source code"
       },
@@ -121,35 +126,48 @@
           "description": "Create .ODT document",
           "button1": "Open",
           "button2": "New",
-          "badge": "Alpha"
+          "badge": "Beta"
         },
         {
           "title": "Calc",
           "description": "Create .ODS spreadsheet",
           "button1": "Open",
           "button2": "New",
-          "badge": "Shouldn't exist"
+          "badge": "Alpha"
         },
         {
           "title": "Impress",
           "description": "Impress presentation",
           "button1": "Open",
           "button2": "New",
-          "badge": "fml"
+          "badge": "Alpha"
         },
         {
           "title": "Math",
           "description": "Math formula",
           "button1": "Open",
           "button2": "New",
-          "badge": "Math???"
+          "badge": "Alpha"
+        },
+        {
+          "title": "Draw",
+          "description": "Draw Drawing",
+          "button1": "Open",
+          "button2": "New",
+          "badge": "Alpha"
         }
       ]
     },
     "doc_odt": {
       "back": "Go back",
       "invite": "Invite",
-      "download": "Download .ODT",
+      "download": {
+        "button": "Download",
+        "odt": "as .odt file",
+        "pdf": "as .pdf file",
+        "txt": "as .txt file",
+        "html": "as .html file"
+      },
       "toolbarLabels": {
         "boldControlLabel": "Bold",
         "italicControlLabel": "Italic",
@@ -231,7 +249,7 @@
       }
     },
     "auth_register": {
-      "title": "Welcome back!",
+      "title": "Create new account",
       "yesAccount": "Already have an account?",
       "loginCta": "Sign in",
       "mailLabel": "Email",
@@ -281,32 +299,5 @@
       "button": "Take me back to home page"
     }
   },
-  "components": {
-    "timeline": [
-      {
-        "version": "v1.0.x",
-        "title": "ODF Writer",
-        "description": "Initial release for text documents ( .ODT files )",
-        "date": "10.02.2023"
-      },
-      {
-        "version": "v1.1.x",
-        "title": "@supabase",
-        "description": "Add DB & Auth to persist documents if user chooses to sign in",
-        "date": "01.03.2023"
-      },
-      {
-        "version": "v1.2.x",
-        "title": "ODF Calc",
-        "description": "Add spreadsheet editor ( .ODS files )",
-        "date": "--.--.2023"
-      },
-      {
-        "version": "v1.3.x",
-        "title": "ODF Math",
-        "description": "Add editor for math formula ( .ODF & .MML files )",
-        "date": "--.--.2023"
-      }
-    ]
-  }
+  "components": {}
 }

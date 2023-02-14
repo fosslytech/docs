@@ -1,11 +1,3 @@
-import {
-  AccessibilityFilled,
-  BuildingFactoryFilled,
-  CookiesFilled,
-  HandshakeFilled,
-  InfoFilled,
-  PeopleCommunityFilled,
-} from '@fluentui/react-icons';
 import AppLayout from '@layout/AppLayout';
 import { Container, Divider, Flex, List, Paper, Text, Title } from '@mantine/core';
 import { NextPageWithLayout } from '@ts/global.types';
@@ -18,31 +10,26 @@ const Page: NextPageWithLayout = () => {
           Privacy Policy
         </Title>
 
-        <Divider my="md" />
+        <Divider my="xl" />
 
         {/* Types of data we collect */}
 
         <Flex align="center">
-          <InfoFilled fontSize={36} />
-
-          <Title order={2} ml="md" my="md">
+          <Title order={2} ml="md" mb="md">
             Types of data we collect
           </Title>
         </Flex>
 
         <List withPadding my="md" size="lg">
           <List.Item>Email</List.Item>
-          <List.Item>Document content</List.Item>
         </List>
 
-        <Divider my="md" />
+        <Divider my="xl" />
 
         {/* How we use your data */}
 
         <Flex align="center">
-          <BuildingFactoryFilled fontSize={36} />
-
-          <Title order={2} ml="md" my="md">
+          <Title order={2} ml="md" mb="md">
             How we use your data
           </Title>
         </Flex>
@@ -51,14 +38,12 @@ const Page: NextPageWithLayout = () => {
           <List.Item>We don&apos;t 🙂</List.Item>
         </List>
 
-        <Divider my="md" />
+        <Divider my="xl" />
 
         {/* Third parties who process your data */}
 
         <Flex align="center">
-          <PeopleCommunityFilled fontSize={36} />
-
-          <Title order={2} ml="md" my="md">
+          <Title order={2} ml="md" mb="md">
             Third parties who process your data
           </Title>
         </Flex>
@@ -67,14 +52,12 @@ const Page: NextPageWithLayout = () => {
           <List.Item>Infrastructure: Supabase, AWS</List.Item>
         </List>
 
-        <Divider my="md" />
+        <Divider my="xl" />
 
         {/* We use cookies */}
 
         <Flex align="center">
-          <CookiesFilled fontSize={36} />
-
-          <Title order={2} ml="md" my="md">
+          <Title order={2} ml="md" mb="md">
             We *kinda* use cookies
           </Title>
         </Flex>
@@ -85,36 +68,27 @@ const Page: NextPageWithLayout = () => {
           <List.Item>If you&apos;re signed in session id is saved in a cookie</List.Item>
         </List>
 
-        <Divider my="md" />
+        <Divider my="xl" />
 
         {/* When and how we collect data */}
 
         <Flex align="center">
-          <HandshakeFilled fontSize={36} />
-
-          <Title order={2} ml="md" my="md">
+          <Title order={2} ml="md" mb="md">
             When and how we collect data
           </Title>
         </Flex>
 
         <Text ml="xl">
           Keep in mind that no data is collected by default. <br />
-          We only store the your data when you decide to sign in or save your document with us
+          We only store the your data when you decide to sign in
         </Text>
 
-        <List withPadding my="md" size="lg">
-          <List.Item>Email - you sign in</List.Item>
-          <List.Item>Document content - you save it to the database</List.Item>
-        </List>
-
-        <Divider my="md" />
+        <Divider my="xl" />
 
         {/* Know your rights */}
 
         <Flex align="center">
-          <AccessibilityFilled fontSize={36} />
-
-          <Title order={2} ml="md" my="md">
+          <Title order={2} ml="md" mb="md">
             Know your rights
           </Title>
         </Flex>
@@ -125,10 +99,10 @@ const Page: NextPageWithLayout = () => {
           <List.Item>Contact us about anything you need</List.Item>
         </List>
 
-        <Divider my="md" />
+        <Divider my="xl" />
 
-        <Text align="center" ml="xl">
-          Contact us - <a href="mailto:contact@odfcollab.com">contact@odfcollab.com</a>
+        <Text align="center" ml="xl" my="xl">
+          Contact us - <a href="mailto:contact@odfcollab.com">contact@fossey.tech</a>
         </Text>
       </Paper>
     </Container>

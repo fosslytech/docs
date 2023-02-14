@@ -43,6 +43,7 @@ export default createStyles((theme) => ({
 
   image: {
     flex: 1,
+    textAlign: 'right',
 
     [theme.fn.smallerThan('md')]: {
       display: 'none',

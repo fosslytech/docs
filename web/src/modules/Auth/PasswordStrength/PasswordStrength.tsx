@@ -1,12 +1,13 @@
 import { Progress, Text, Popover, Box } from '@mantine/core';
-import { CheckmarkRegular, DismissRegular } from '@fluentui/react-icons';
 import { IFC } from '@ts/global.types';
 import { PASSWORD_LENGTH } from '@utils/constants/auth';
+
+import { IconCheck, IconX } from '@tabler/icons';
 
 function PasswordRequirement({ meets, label }: { meets: boolean; label: string }) {
   return (
     <Text color={meets ? 'teal' : 'red'} sx={{ display: 'flex', alignItems: 'center' }} mt={7} size="sm">
-      {meets ? <CheckmarkRegular /> : <DismissRegular />} <Box ml={10}>{label}</Box>
+      {meets ? <IconCheck /> : <IconX />} <Box ml={10}>{label}</Box>
     </Text>
   );
 }

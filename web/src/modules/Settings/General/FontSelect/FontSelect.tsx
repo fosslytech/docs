@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { UnstyledButton, Menu, Image, Group } from '@mantine/core';
-import { ChevronDownRegular, TextFontFilled } from '@fluentui/react-icons';
+import { UnstyledButton, Menu, Group, Text } from '@mantine/core';
 import useStyles from '../Select.styles';
 
-import { IAppFont, ITranslations } from '@ts/global.types';
+import { IAppFont } from '@ts/global.types';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
+import { ITranslations } from '@ts/content.types';
+
+import { IconTypography, IconChevronDown } from '@tabler/icons';
 
 interface ILangData {
   label: string;
@@ -38,13 +40,15 @@ const ThemeSelect = () => {
     <Menu onOpen={() => setOpened(true)} onClose={() => setOpened(false)} radius="md" width="target">
       <Menu.Target>
         <UnstyledButton className={classes.control}>
-          <Group spacing="xs">
-            <TextFontFilled fontSize={20} />
+          <Group spacing="xs" style={{ flex: 1 }}>
+            <IconTypography size={20} />
 
-            <span className={classes.label}>{translate(selected.label)}</span>
+            <div className={classes.label} style={{ width: '70%' }}>
+              <Text truncate>{translate(selected.label)}</Text>
+            </div>
           </Group>
 
-          <ChevronDownRegular fontSize={16} className={classes.icon} />
+          <IconChevronDown size={18} className={classes.icon} />
         </UnstyledButton>
       </Menu.Target>
       <Menu.Dropdown>{items}</Menu.Dropdown>

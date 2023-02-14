@@ -11,7 +11,6 @@ import {
   Button,
   Divider,
 } from '@mantine/core';
-import { EyeOffRegular, EyeRegular, KeyRegular, LinkRegular, MailRegular } from '@fluentui/react-icons';
 
 import Link from 'next/link';
 import { useForm, isEmail, matches } from '@mantine/form';
@@ -19,12 +18,13 @@ import { useForm, isEmail, matches } from '@mantine/form';
 import { initialValues, LoginFormProps } from './types';
 import useStyles from './LoginForm.styles';
 import AuthButton from '../AuthButton/AuthButton';
-import GitHub from 'src/icons/logos/GitHub';
 import OTPModal from '../../OTP/OTPModal';
 import { useApiAuth } from 'src/api/auth/use-api-auth';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 import { openModal } from '@mantine/modals';
 import { REGEX_PASSWORD } from '@utils/constants/auth';
+
+import { IconMail, IconLock, IconEye, IconEyeOff, IconLink, IconBrandGithub } from '@tabler/icons';
 
 const LoginForm: React.FC<LoginFormProps> = ({ withTitle = true }) => {
   const { translate, content } = useGlobalCtx();
@@ -65,7 +65,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ withTitle = true }) => {
             placeholder={translate(content.pages.auth_login.mailPlaceholder)}
             required
             {...form.getInputProps('email')}
-            icon={<MailRegular fontSize={20} />}
+            icon={<IconMail size={22} />}
+            size="md"
           />
 
           <PasswordInput
@@ -74,13 +75,17 @@ const LoginForm: React.FC<LoginFormProps> = ({ withTitle = true }) => {
             required
             {...form.getInputProps('password')}
             mt="xs"
-            visibilityToggleIcon={({ reveal }) =>
-              reveal ? <EyeRegular fontSize={20} /> : <EyeOffRegular fontSize={20} />
-            }
-            icon={<KeyRegular fontSize={20} />}
+            visibilityToggleIcon={({ reveal }) => (reveal ? <IconEye size={20} /> : <IconEyeOff size={20} />)}
+            styles={{
+              visibilityToggle: {
+                marginRight: 12,
+              },
+            }}
+            icon={<IconLock size={22} />}
+            size="md"
           />
 
-          <Group position="apart" mt="xs">
+          <Group position="apart" mt="lg">
             <Checkbox
               label={translate(content.pages.auth_login.rememberLabel)}
               {...form.getInputProps('remember', { type: 'checkbox' })}
@@ -91,21 +96,27 @@ const LoginForm: React.FC<LoginFormProps> = ({ withTitle = true }) => {
             </Text>
           </Group>
 
-          <Button fullWidth mt="md" type="submit" loading={isLoading}>
+          <Button fullWidth mt="xl" type="submit" loading={isLoading} size="md">
             {translate(content.pages.auth_login.button)}
           </Button>
         </form>
 
         <Divider label="Or continue with:" labelPosition="center" my="lg" />
 
-        <Group grow mb="md" mt="md">
-          <AuthButton leftIcon={<GitHub width={20} />} radius="xl" onClick={auth_signInWithGitHub}>
+        <Group grow mt="xl">
+          <AuthButton
+            leftIcon={<IconBrandGithub size={22} />}
+            radius="xl"
+            onClick={auth_signInWithGitHub}
+            size="md"
+          >
             GitHub
           </AuthButton>
           <AuthButton
-            leftIcon={<LinkRegular fontSize={20} />}
+            leftIcon={<IconLink size={22} />}
             radius="xl"
             onClick={() => openModal({ title: 'Sign in with OTP', children: <OTPModal />, centered: true })}
+            size="md"
           >
             Magic link
           </AuthButton>

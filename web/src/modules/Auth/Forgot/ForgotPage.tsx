@@ -1,12 +1,13 @@
 import React from 'react';
 import { Paper, Title, Text, TextInput, Button, Container, Group, Center } from '@mantine/core';
-import { ArrowLeftRegular, MailRegular } from '@fluentui/react-icons';
 
 import useStyles from './ForgotPage.styles';
 import Link from 'next/link';
 import { useForm, isEmail } from '@mantine/form';
 import { useApiAuth } from 'src/api/auth/use-api-auth';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
+
+import { IconMail, IconArrowLeft } from '@tabler/icons';
 
 const ForgotPassword = () => {
   const { translate, content } = useGlobalCtx();
@@ -40,17 +41,18 @@ const ForgotPassword = () => {
         <Paper className={classes.form} withBorder shadow="md" p={30} radius="md" mt="xl">
           <form onSubmit={form.onSubmit(handleSubmit)}>
             <TextInput
-              icon={<MailRegular fontSize={20} />}
+              icon={<IconMail size={22} />}
               label={translate(content.pages.auth_forgot.mailLabel)}
               placeholder={translate(content.pages.auth_forgot.mailPlaceholder)}
               required
               {...form.getInputProps('email')}
+              size="md"
             />
 
-            <Group position="apart" mt="lg" className={classes.controls}>
+            <Group position="apart" mt="xl" className={classes.controls}>
               <Link href="/auth/login" className={classes.control}>
                 <Center inline style={{ cursor: 'pointer', color: theme.colors.blue[6] }}>
-                  <ArrowLeftRegular fontSize={14} />
+                  <IconArrowLeft size={18} />
 
                   <Text size="sm" ml={4}>
                     {translate(content.pages.auth_forgot.toLogin)}
@@ -58,7 +60,7 @@ const ForgotPassword = () => {
                 </Center>
               </Link>
 
-              <Button className={classes.control} type="submit">
+              <Button className={classes.control} type="submit" size="md">
                 {translate(content.pages.auth_forgot.button)}
               </Button>
             </Group>

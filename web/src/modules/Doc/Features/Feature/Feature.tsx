@@ -14,7 +14,7 @@ const Feature: React.FC<IFeature> = (feature) => {
   return (
     <Card shadow="md" radius="md" className={classes.card} p="xl">
       <Flex align="center">
-        <feature.icon fontSize={40} color={theme.colors[feature.color][6]} />
+        <feature.icon size={40} color={theme.colors[feature.color][6]} />
 
         <Text size="xl" weight={600} ml={6} c={theme.colors.gray[2]}>
           {translate(feature.title)}

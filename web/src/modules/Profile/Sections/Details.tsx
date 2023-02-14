@@ -2,7 +2,7 @@ import { Button, Divider, Flex, Paper, Text } from '@mantine/core';
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
-import { DeleteFilled, DocumentTextFilled, PersonFilled } from '@fluentui/react-icons';
+import { IconUser } from '@tabler/icons';
 
 const Details = () => {
   const { translate, content } = useGlobalCtx();
@@ -10,7 +10,7 @@ const Details = () => {
   return (
     <Paper radius="md" p="xl" mb={40} withBorder>
       <Flex align="center" mb="xl">
-        <PersonFilled fontSize={32} />
+        <IconUser size={32} />
 
         <Text size={28} weight={600} ml="sm">
           {translate(content.pages.profile.danger.title)}
