@@ -1,15 +1,11 @@
 import { MantineColor } from '@mantine/core';
 import React from 'react';
 
-import {
-  DocumentBulletListFilled,
-  DocumentPercentFilled,
-  DocumentRibbonFilled,
-  DocumentTableFilled,
-} from '@fluentui/react-icons';
-
 import { getContentType } from '@cufta22/odf-collab-core';
-import { ITranslations } from '@ts/global.types';
+import { ITranslations } from '@ts/content.types';
+
+import AppWriter from '@icons/products/AppWriter';
+import AppCalc from '@icons/products/AppCalc';
 
 export interface IFeature {
   title: string;
@@ -17,7 +13,7 @@ export interface IFeature {
   color: MantineColor;
   button1: string;
   button2: string;
-  icon: React.FC<{ fontSize: number; color?: string }>;
+  icon: React.FC<{ size?: number; color?: string }>;
   accept: string;
   badge: string;
 }
@@ -29,7 +25,7 @@ export const getFeaturesData = (content: ITranslations): IFeature[] => [
     color: 'blue',
     button1: content.pages.doc.cards[0].button1,
     button2: content.pages.doc.cards[0].button2,
-    icon: DocumentBulletListFilled,
+    icon: AppWriter,
     accept: `${getContentType('odt')}`,
     badge: content.pages.doc.cards[0].badge,
   },
@@ -39,8 +35,8 @@ export const getFeaturesData = (content: ITranslations): IFeature[] => [
   //   color: 'green',
   //   button1: content.pages.doc.cards[1].button1,
   //   button2: content.pages.doc.cards[1].button2,
-  //   icon: DocumentTableFilled,
-  //   accept: 'application/vnd.oasis.opendocument.text',
+  //   icon: AppCalc,
+  //   accept: `${getContentType('ods')}`,
   //   badge: content.pages.doc.cards[1].badge,
   // },
   // {
@@ -49,7 +45,7 @@ export const getFeaturesData = (content: ITranslations): IFeature[] => [
   //   color: 'orange',
   //   button1: content.pages.doc.cards[2].button1,
   //   button2: content.pages.doc.cards[2].button2,
-  //   icon: DocumentRibbonFilled,
+  //   icon: AppWriter,
   //   accept: 'application/vnd.oasis.opendocument.text',
   //   badge: content.pages.doc.cards[2].badge,
   // },
@@ -59,8 +55,18 @@ export const getFeaturesData = (content: ITranslations): IFeature[] => [
   //   color: 'gray',
   //   button1: content.pages.doc.cards[3].button1,
   //   button2: content.pages.doc.cards[3].button2,
-  //   icon: DocumentPercentFilled,
+  //   icon: AppWriter,
   //   accept: 'application/vnd.oasis.opendocument.text',
   //   badge: content.pages.doc.cards[3].badge,
+  // },
+  // {
+  //   title: content.pages.doc.cards[4].title,
+  //   description: content.pages.doc.cards[4].description,
+  //   color: 'gray',
+  //   button1: content.pages.doc.cards[4].button1,
+  //   button2: content.pages.doc.cards[4].button2,
+  //   icon: AppWriter,
+  //   accept: 'application/vnd.oasis.opendocument.text',
+  //   badge: content.pages.doc.cards[4].badge,
   // },
 ];

@@ -1,4 +1,3 @@
-import { FluentIconsProps } from '@fluentui/react-icons';
 import { Title, Text, Card, SimpleGrid, Container } from '@mantine/core';
 import useStyles from './CardsSection.styles';
 
@@ -11,7 +10,7 @@ const CardsSection = () => {
 
   const features = getCardsData(content).map((feature, i) => (
     <Card key={i} shadow="md" radius="md" className={classes.card} p="xl">
-      <feature.icon fontSize={50} color={theme.fn.primaryColor()} />
+      <feature.icon size={50} color={theme.fn.primaryColor()} />
 
       <Text size="lg" weight={500} className={classes.cardTitle} mt="md">
         {translate(feature.title)}

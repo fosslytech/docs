@@ -14,7 +14,7 @@ export default createStyles((theme) => ({
   },
 
   content: {
-    maxWidth: 480,
+    maxWidth: 510,
     marginRight: theme.spacing.xl * 3,
 
     [theme.fn.smallerThan('md')]: {
@@ -43,6 +43,7 @@ export default createStyles((theme) => ({
 
   image: {
     flex: 1,
+    textAlign: 'right',
 
     [theme.fn.smallerThan('md')]: {
       display: 'none',

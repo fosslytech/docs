@@ -1,24 +1,34 @@
-import { ArrowSyncFilled, DocumentTextFilled, SettingsFilled, SignOutFilled } from '@fluentui/react-icons';
-import { Avatar, Group, Menu, Text, useMantineTheme } from '@mantine/core';
+import { Avatar, Group, Menu, Text } from '@mantine/core';
 import { useSession } from '@supabase/auth-helpers-react';
 import { useRouter } from 'next/router';
 
+import { IconRefresh, IconLogout } from '@tabler/icons';
+
 import { useApiAuth } from 'src/api/auth/use-api-auth';
+import useGlobalCtx from 'src/store/global/use-global-ctx';
 
 const HeaderAvatar = () => {
+  const { translate, content } = useGlobalCtx();
   const { auth_signOut } = useApiAuth();
   const router = useRouter();
   const session = useSession();
-  const theme = useMantineTheme();
 
   // GitHub metadata
   const ghImg = session.user.user_metadata?.avatar_url;
   const ghName = session.user.user_metadata?.user_name;
 
+  // GitLab metadata
+  const glName = session.user.user_metadata?.name;
+
+  const avatarUrl = ghImg;
+  const username = ghName || glName;
+
+  console.log(session?.user);
+
   return (
     <Menu shadow="md" width={250} position="bottom-end" withArrow>
       <Menu.Target>
-        <Avatar radius="xl" style={{ cursor: 'pointer' }} ml="lg" color="blue" src={ghImg}>
+        <Avatar radius="xl" style={{ cursor: 'pointer' }} ml="lg" color="blue" src={avatarUrl}>
           {/* <PersonFilled fontSize={24} /> */}
           {/* {user.username.substring(0, 2)} */}
         </Avatar>
@@ -27,12 +37,12 @@ const HeaderAvatar = () => {
       <Menu.Dropdown>
         <Menu.Item>
           <Group onClick={() => router.push('/profile')}>
-            <Avatar radius="xl" src={ghImg} />
+            <Avatar radius="xl" src={avatarUrl} />
 
             <div style={{ width: 160 }}>
-              {ghName && (
+              {username && (
                 <Text weight={500} truncate>
-                  {ghName}
+                  {username}
                 </Text>
               )}
 
@@ -45,26 +55,14 @@ const HeaderAvatar = () => {
 
         <Menu.Divider />
 
-        <Menu.Label>Resources</Menu.Label>
+        <Menu.Label>{translate(content.header.avatar.label1)}</Menu.Label>
 
-        <Menu.Item icon={<DocumentTextFilled fontSize={20} />} onClick={() => router.push('/doc')}>
-          My documents
+        <Menu.Item icon={<IconRefresh size={20} />} onClick={() => router.push('/auth/login')}>
+          {translate(content.header.avatar.switchAcc)}
         </Menu.Item>
 
-        <Menu.Item icon={<SettingsFilled fontSize={20} />} onClick={() => router.push('/settings')}>
-          Settings
-        </Menu.Item>
-
-        <Menu.Divider />
-
-        <Menu.Label>Actions</Menu.Label>
-
-        <Menu.Item icon={<ArrowSyncFilled fontSize={20} />} onClick={() => router.push('/auth/login')}>
-          Switch account
-        </Menu.Item>
-
-        <Menu.Item color="yellow" icon={<SignOutFilled fontSize={20} />} onClick={() => auth_signOut()}>
-          Sign out
+        <Menu.Item color="yellow" icon={<IconLogout size={20} />} onClick={() => auth_signOut()}>
+          {translate(content.header.avatar.signOut)}
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

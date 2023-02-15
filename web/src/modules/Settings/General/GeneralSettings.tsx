@@ -8,9 +8,9 @@ import PrimaryColorSelect from './PrimaryColorSelect/PrimaryColorSelect';
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
-import { SettingsFilled } from '@fluentui/react-icons';
-
 import useStyles from './GeneralSettings.styles';
+
+import { IconSettings } from '@tabler/icons';
 
 const Settings = () => {
   const { translate, content } = useGlobalCtx();
@@ -19,7 +19,7 @@ const Settings = () => {
   return (
     <Paper radius="md" p="xl" withBorder>
       <Flex align="center" mb={16}>
-        <SettingsFilled fontSize={32} />
+        <IconSettings size={32} />
 
         <Text size={28} weight={600} ml="sm">
           {translate(content.pages.settings.title)}

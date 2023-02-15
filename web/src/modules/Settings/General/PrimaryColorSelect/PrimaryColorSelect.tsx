@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { UnstyledButton, Menu, Group, DefaultMantineColor, ColorSwatch } from '@mantine/core';
-import { ChevronDownRegular } from '@fluentui/react-icons';
+import { UnstyledButton, Menu, Group, DefaultMantineColor, ColorSwatch, Text } from '@mantine/core';
 import useStyles from '../Select.styles';
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
-import { ITranslations } from '@ts/global.types';
+import { ITranslations } from '@ts/content.types';
+
+import { IconChevronDown } from '@tabler/icons';
 
 interface IColorData {
   label: string;
@@ -46,13 +47,14 @@ const PrimaryColorSelect = () => {
     <Menu onOpen={() => setOpened(true)} onClose={() => setOpened(false)} radius="md" width="target">
       <Menu.Target>
         <UnstyledButton className={classes.control}>
-          <Group spacing="xs">
+          <Group spacing="xs" style={{ flex: 1 }}>
             <ColorSwatch color={theme.colors[selected.value][6]} size={20} />
-
-            <span className={classes.label}> {translate(selected.label)}</span>
+            <div className={classes.label} style={{ width: '70%' }}>
+              <Text truncate>{translate(selected.label)}</Text>
+            </div>{' '}
           </Group>
 
-          <ChevronDownRegular fontSize={16} className={classes.icon} />
+          <IconChevronDown size={18} className={classes.icon} />
         </UnstyledButton>
       </Menu.Target>
       <Menu.Dropdown>{items}</Menu.Dropdown>

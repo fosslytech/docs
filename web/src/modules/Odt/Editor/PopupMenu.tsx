@@ -1,26 +1,21 @@
-import {
-  TextBoldFilled,
-  TextClearFormattingFilled,
-  TextItalicFilled,
-  TextStrikethroughFilled,
-  TextUnderlineFilled,
-} from '@fluentui/react-icons';
-import { RichTextEditor, useRichTextEditorContext } from '@mantine/tiptap';
+import { RichTextEditor } from '@mantine/tiptap';
 import { BubbleMenu, Editor } from '@tiptap/react';
+
+import { IconBold, IconItalic, IconUnderline, IconStrikethrough } from '@tabler/icons';
+
+const BoldIcon = () => <IconBold size={22} />;
+const ItalicIcon = () => <IconItalic size={22} />;
+const UnderlineIcon = () => <IconUnderline size={22} />;
+const StrikethroughIcon = () => <IconStrikethrough size={22} />;
 
 const PopupMenu: React.FC<{ editor: Editor }> = ({ editor }) => {
   return (
     <BubbleMenu editor={editor}>
       <RichTextEditor.ControlsGroup>
-        <RichTextEditor.Bold icon={() => <TextBoldFilled fontSize={20} />} w={32} h={32} />
-        <RichTextEditor.Italic icon={() => <TextItalicFilled fontSize={20} />} w={32} h={32} />
-        <RichTextEditor.Underline icon={() => <TextUnderlineFilled fontSize={20} />} w={32} h={32} />
-        <RichTextEditor.Strikethrough icon={() => <TextStrikethroughFilled fontSize={20} />} w={32} h={32} />
-        <RichTextEditor.ClearFormatting
-          icon={() => <TextClearFormattingFilled fontSize={20} />}
-          w={32}
-          h={32}
-        />
+        <RichTextEditor.Bold icon={BoldIcon} w={32} h={32} />
+        <RichTextEditor.Italic icon={ItalicIcon} w={32} h={32} />
+        <RichTextEditor.Underline icon={UnderlineIcon} w={32} h={32} />
+        <RichTextEditor.Strikethrough icon={StrikethroughIcon} w={32} h={32} />
       </RichTextEditor.ControlsGroup>
     </BubbleMenu>
   );

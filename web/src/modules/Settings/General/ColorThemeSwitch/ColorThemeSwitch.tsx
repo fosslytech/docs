@@ -1,7 +1,8 @@
-import { WeatherMoonFilled, WeatherSunnyFilled } from '@fluentui/react-icons';
 import { useMantineColorScheme, SegmentedControl, Group, Center, Box, useMantineTheme } from '@mantine/core';
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
+
+import { IconSun, IconMoon } from '@tabler/icons';
 
 const ColorSchemeSwitch = () => {
   const { translate, content } = useGlobalCtx();
@@ -18,7 +19,7 @@ const ColorSchemeSwitch = () => {
             value: 'light',
             label: (
               <Center>
-                <WeatherSunnyFilled fontSize={20} color={theme.colors.yellow[6]} />
+                <IconSun size={20} color={theme.colors.yellow[6]} />
                 <Box ml={10}>{translate(content.pages.settings.selectColorOptions.light)}</Box>
               </Center>
             ),
@@ -27,7 +28,7 @@ const ColorSchemeSwitch = () => {
             value: 'dark',
             label: (
               <Center>
-                <WeatherMoonFilled fontSize={20} color={theme.colors.gray[4]} />
+                <IconMoon size={20} color={theme.colors.gray[4]} />
                 <Box ml={10}>{translate(content.pages.settings.selectColorOptions.dark)}</Box>
               </Center>
             ),

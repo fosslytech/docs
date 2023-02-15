@@ -1,10 +1,11 @@
 import { Container, Title, Button, Group, Text } from '@mantine/core';
 import Link from 'next/link';
-import GitHub from 'src/icons/logos/GitHub';
 import useStyles from './HeroSection.styles';
-import TimelineSection from './TimelineSection';
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
+import CatVector from '@icons/CatVector';
+
+import { IconBrandGithub } from '@tabler/icons';
 
 const HeroSection = () => {
   const { translate, content } = useGlobalCtx();
@@ -39,7 +40,7 @@ const HeroSection = () => {
                   radius="lg"
                   size="lg"
                   className={classes.control}
-                  leftIcon={<GitHub width={20} />}
+                  leftIcon={<IconBrandGithub size={24} />}
                 >
                   {translate(content.pages.home.hero.sourceCode)}
                 </Button>
@@ -48,7 +49,7 @@ const HeroSection = () => {
           </div>
 
           <div className={classes.image}>
-            <TimelineSection />
+            <CatVector size={300} />
           </div>
         </div>
       </Container>

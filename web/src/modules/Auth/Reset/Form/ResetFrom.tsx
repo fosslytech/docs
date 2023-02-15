@@ -13,13 +13,14 @@ import {
 
 import useStyles from './ResetForm.styles';
 import { useForm, matches } from '@mantine/form';
-import { ArrowSyncRegular, EyeOffRegular, EyeRegular, KeyRegular } from '@fluentui/react-icons';
 import { initialValues } from './types';
 import { REGEX_PASSWORD } from '@utils/constants/auth';
 import PasswordStrength from '@module/Auth/PasswordStrength/PasswordStrength';
 import { generateRandomPassword } from '@utils/functions/randomPassword';
 import { useApiAuth } from 'src/api/auth/use-api-auth';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
+
+import { IconLock, IconEye, IconEyeOff, IconRefresh } from '@tabler/icons';
 
 const ResetForm = () => {
   const { translate, content } = useGlobalCtx();
@@ -68,16 +69,22 @@ const ResetForm = () => {
                 {...form.getInputProps('password1')}
                 mt="xs"
                 visibilityToggleIcon={({ reveal }) =>
-                  reveal ? <EyeRegular fontSize={18} /> : <EyeOffRegular fontSize={18} />
+                  reveal ? <IconEye size={18} /> : <IconEyeOff size={18} />
                 }
-                icon={<KeyRegular fontSize={20} />}
+                styles={{
+                  visibilityToggle: {
+                    marginRight: 12,
+                  },
+                }}
+                icon={<IconLock size={22} />}
                 className={classes.input}
+                size="md"
               />
             </PasswordStrength>
 
             <Tooltip label={translate(content.pages.auth_reset.generateTooltip)} withArrow arrowSize={3}>
-              <ThemeIcon className={classes.resetIcon} onClick={handleUseGenerated} size={36} color="gray">
-                <ArrowSyncRegular fontSize={20} />
+              <ThemeIcon className={classes.resetIcon} onClick={handleUseGenerated} size={42} color="gray">
+                <IconRefresh size={24} />
               </ThemeIcon>
             </Tooltip>
           </Group>
@@ -87,14 +94,18 @@ const ResetForm = () => {
             placeholder={translate(content.pages.auth_reset.password2Placeholder)}
             required
             {...form.getInputProps('password2')}
-            mt="xs"
-            visibilityToggleIcon={({ reveal }) =>
-              reveal ? <EyeRegular fontSize={18} /> : <EyeOffRegular fontSize={18} />
-            }
-            icon={<KeyRegular fontSize={20} />}
+            mt="md"
+            visibilityToggleIcon={({ reveal }) => (reveal ? <IconEye size={18} /> : <IconEyeOff size={18} />)}
+            styles={{
+              visibilityToggle: {
+                marginRight: 12,
+              },
+            }}
+            icon={<IconLock size={22} />}
+            size="md"
           />
 
-          <Button fullWidth mt="md" type="submit" loading={isLoading}>
+          <Button fullWidth mt="xl" type="submit" loading={isLoading} size="md">
             {translate(content.pages.auth_reset.button)}
           </Button>
         </form>

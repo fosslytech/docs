@@ -145,6 +145,19 @@ export const useApiAuth = () => {
     });
   };
 
+  // ----------------------------------------------------------------------------
+  // SignIn - Provider | GitLab
+  // ----------------------------------------------------------------------------
+
+  const auth_signInWithGitLab = async () => {
+    supabaseClient.auth.signInWithOAuth({
+      provider: 'gitlab',
+      options: {
+        redirectTo: process.env.NEXT_PUBLIC_HOST + '/doc',
+      },
+    });
+  };
+
   return {
     isLoading,
     auth_signUp,
@@ -152,6 +165,7 @@ export const useApiAuth = () => {
     auth_signInWithPassword,
     auth_signInWithOtp,
     auth_signInWithGitHub,
+    auth_signInWithGitLab,
     auth_resetPassword,
     auth_forgotPassword,
   };

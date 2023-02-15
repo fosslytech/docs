@@ -18,7 +18,7 @@ const AppNavbar: React.FC<Props> = ({ opened }) => {
         {getNavbarData(content).map((item, i) => (
           <Link href={item.href} key={i} target={item.href.includes('http') ? '_blank' : ''}>
             <Flex p="sm" my="xs" align="center">
-              <item.icon fontSize={32} color={theme.colors[theme.primaryColor][5]} />
+              <item.icon size={32} color={theme.colors[theme.primaryColor][5]} />
 
               <Text ml="md" size={26} fw={500} color={theme.colors[theme.primaryColor][5]}>
                 {translate(item.text)}

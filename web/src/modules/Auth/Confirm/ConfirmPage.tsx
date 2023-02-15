@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Button, Center, Container, Divider, Group, Paper, Text, Title } from '@mantine/core';
+import { Button, Center, Container, Divider, Paper, Text, Title } from '@mantine/core';
 
 import Link from 'next/link';
-import { MailRegular } from '@fluentui/react-icons';
 import { useMediaQuery } from '@mantine/hooks';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
+import { IconMail } from '@tabler/icons';
 
 const ConfirmPage = () => {
   const { translate, content } = useGlobalCtx();
@@ -23,18 +23,16 @@ const ConfirmPage = () => {
         </Text>
 
         <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-          <Group grow w="100%" mb="md" mt="md">
-            <Link href={'mailto:'} style={{ minWidth: isMobile ? '100%' : 'unset' }}>
-              <Button variant="default" fullWidth leftIcon={<MailRegular fontSize={22} />}>
-                {translate(content.pages.auth_confirm.openMailApp)}
-              </Button>
-            </Link>
-          </Group>
+          <Link href={'mailto:'} style={{ minWidth: isMobile ? '100%' : 'unset' }}>
+            <Button variant="default" fullWidth leftIcon={<IconMail size={22} />} size="md">
+              {translate(content.pages.auth_confirm.openMailApp)}
+            </Button>
+          </Link>
 
-          <Divider label="Or you can" labelPosition="center" my="lg" />
+          <Divider label="Or you can" labelPosition="center" my="xl" />
 
           <Link href={'/'}>
-            <Button variant="light" fullWidth>
+            <Button variant="light" fullWidth size="md">
               {translate(content.pages.auth_confirm.goBack)}
             </Button>
           </Link>

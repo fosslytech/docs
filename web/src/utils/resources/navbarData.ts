@@ -1,38 +1,33 @@
-import {
-  ArchiveFilled,
-  BookFilled,
-  HomeFilled,
-  MailInboxFilled,
-  SettingsFilled,
-} from '@fluentui/react-icons';
-import { ITranslations } from '@ts/global.types';
+import { ITranslations } from '@ts/content.types';
+
+import { TablerIcon, IconHome, IconNotebook, IconSettings, IconDownload } from '@tabler/icons';
 
 interface INavbarItem {
   text: string;
   href: string;
-  icon: React.FC<{ fontSize: number; color?: string }>;
+  icon: TablerIcon;
 }
 
 export const getNavbarData = (content: ITranslations): INavbarItem[] => [
   {
     text: content.navbar.links[0],
     href: '/',
-    icon: HomeFilled,
+    icon: IconHome,
   },
   {
     text: content.navbar.links[1],
     href: 'https://github.com/cufta22/odf-collab/wiki',
-    icon: BookFilled,
+    icon: IconNotebook,
   },
   {
     text: content.navbar.links[2],
     href: '/settings',
-    icon: SettingsFilled,
+    icon: IconSettings,
   },
 
   {
     text: content.navbar.links[3],
     href: '/download',
-    icon: MailInboxFilled,
+    icon: IconDownload,
   },
 ];

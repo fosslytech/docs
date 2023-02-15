@@ -1,22 +1,25 @@
-import {
-  ArrowDownloadFilled,
-  ChevronDownFilled,
-  CodeFilled,
-  DocumentBulletListFilled,
-  DocumentPdfFilled,
-  TextDescriptionFilled,
-} from '@fluentui/react-icons';
 import { useResponsive } from '@hooks/use-responsive';
 import { Button, Menu, useMantineTheme } from '@mantine/core';
 import { Editor } from '@tiptap/react';
 import React from 'react';
 import useDocContentCtx from 'src/store/doc-content/use-doc-content-ctx';
+import useGlobalCtx from 'src/store/global/use-global-ctx';
+
+import {
+  IconCloudDownload,
+  IconChevronDown,
+  IconFileText,
+  IconFileDescription,
+  IconCode,
+  IconAlignJustified,
+} from '@tabler/icons';
 
 interface Props {
   editor: Editor;
 }
 
 const DownloadButton: React.FC<Props> = ({ editor }) => {
+  const { translate, content } = useGlobalCtx();
   const theme = useMantineTheme();
   const { handleDownloadDocument, isLoadingDownload } = useDocContentCtx();
 
@@ -26,38 +29,38 @@ const DownloadButton: React.FC<Props> = ({ editor }) => {
     <Menu transition="fade" position="bottom-start" width={180} withinPortal>
       <Menu.Target>
         <Button
-          leftIcon={!isXs && <ArrowDownloadFilled fontSize={22} />}
-          rightIcon={<ChevronDownFilled fontSize={18} />}
+          leftIcon={!isXs && <IconCloudDownload size={22} />}
+          rightIcon={<IconChevronDown size={18} />}
           pr={12}
           loading={isLoadingDownload}
         >
-          Download
+          {translate(content.pages.doc_odt.download.button)}
         </Button>
       </Menu.Target>
       <Menu.Dropdown>
         <Menu.Item
-          icon={<DocumentBulletListFilled fontSize={20} color={theme.colors.blue[6]} />}
+          icon={<IconFileText size={20} color={theme.colors.blue[6]} />}
           onClick={() => handleDownloadDocument(editor, 'odt')}
         >
-          as .odt file
+          {translate(content.pages.doc_odt.download.odt)}
         </Menu.Item>
         {/* <Menu.Item
-          icon={<DocumentPdfFilled fontSize={20} color={theme.colors.red[6]} />}
+          icon={<IconFileDescription size={20} color={theme.colors.red[6]} />}
           onClick={() => handleDownloadDocument(editor, 'pdf')}
         >
-          as .pdf file
+          {translate(content.pages.doc_odt.download.pdf)}
         </Menu.Item> */}
         <Menu.Item
-          icon={<CodeFilled fontSize={20} color={theme.colors.orange[6]} />}
+          icon={<IconCode size={20} color={theme.colors.orange[6]} />}
           onClick={() => handleDownloadDocument(editor, 'html')}
         >
-          as .html file
+          {translate(content.pages.doc_odt.download.html)}
         </Menu.Item>
         <Menu.Item
-          icon={<TextDescriptionFilled fontSize={20} color={theme.colors.green[6]} />}
+          icon={<IconAlignJustified size={20} color={theme.colors.green[6]} />}
           onClick={() => handleDownloadDocument(editor, 'txt')}
         >
-          as .txt file
+          {translate(content.pages.doc_odt.download.txt)}
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

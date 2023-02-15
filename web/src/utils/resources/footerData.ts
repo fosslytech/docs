@@ -1,6 +1,6 @@
 import { AppFooterData } from '@components/Footer/AppFooter';
 
-import { ITranslations } from '@ts/global.types';
+import { ITranslations } from '@ts/content.types';
 
 export const getFooterData_index = (content: ITranslations): AppFooterData[] => [
   {
