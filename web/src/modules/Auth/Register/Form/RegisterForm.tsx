@@ -19,13 +19,10 @@ import { REGEX_PASSWORD } from '@utils/constants/auth';
 
 import { initialValues, RegisterFormProps } from './types';
 import useStyles from './RegisterForm.styles';
-import GitHub from 'src/icons/logos/GitHub';
 import AuthButton from '@module/Auth/Login/AuthButton/AuthButton';
-import OTPModal from '@module/Auth/OTP/OTPModal';
 import { generateRandomPassword } from '@utils/functions/randomPassword';
 import PasswordStrength from '../../PasswordStrength/PasswordStrength';
 import { useApiAuth } from 'src/api/auth/use-api-auth';
-import { openModal } from '@mantine/modals';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
 import {
@@ -41,7 +38,7 @@ import {
 const RegisterForm: React.FC<RegisterFormProps> = ({ withTitle = true }) => {
   const { translate, content } = useGlobalCtx();
   const { classes } = useStyles();
-  const { auth_signUp, auth_signInWithGitHub, isLoading } = useApiAuth();
+  const { auth_signUp, auth_signInWithGitHub, auth_signInWithGitLab, isLoading } = useApiAuth();
 
   const form = useForm({
     initialValues,
@@ -130,12 +127,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ withTitle = true }) => {
           >
             GitHub
           </AuthButton>
-          <AuthButton
-            leftIcon={<IconLink size={22} />}
-            radius="xl"
-            onClick={() => openModal({ title: 'Sign in with OTP', children: <OTPModal />, centered: true })}
-            size="md"
-          >
+          <AuthButton leftIcon={<IconLink size={22} />} radius="xl" onClick={auth_signInWithGitLab} size="md">
             Magic link
           </AuthButton>
         </Group>

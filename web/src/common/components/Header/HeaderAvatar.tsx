@@ -17,10 +17,18 @@ const HeaderAvatar = () => {
   const ghImg = session.user.user_metadata?.avatar_url;
   const ghName = session.user.user_metadata?.user_name;
 
+  // GitLab metadata
+  const glName = session.user.user_metadata?.name;
+
+  const avatarUrl = ghImg;
+  const username = ghName || glName;
+
+  console.log(session?.user);
+
   return (
     <Menu shadow="md" width={250} position="bottom-end" withArrow>
       <Menu.Target>
-        <Avatar radius="xl" style={{ cursor: 'pointer' }} ml="lg" color="blue" src={ghImg}>
+        <Avatar radius="xl" style={{ cursor: 'pointer' }} ml="lg" color="blue" src={avatarUrl}>
           {/* <PersonFilled fontSize={24} /> */}
           {/* {user.username.substring(0, 2)} */}
         </Avatar>
@@ -29,12 +37,12 @@ const HeaderAvatar = () => {
       <Menu.Dropdown>
         <Menu.Item>
           <Group onClick={() => router.push('/profile')}>
-            <Avatar radius="xl" src={ghImg} />
+            <Avatar radius="xl" src={avatarUrl} />
 
             <div style={{ width: 160 }}>
-              {ghName && (
+              {username && (
                 <Text weight={500} truncate>
-                  {ghName}
+                  {username}
                 </Text>
               )}
 

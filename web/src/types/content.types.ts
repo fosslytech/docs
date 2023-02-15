@@ -193,7 +193,8 @@ export interface ITranslations {
       rememberLabel: string;
       forgot: string;
       button: string;
-      buttonOtp: string;
+      buttonGH: string;
+      buttonGL: string;
       errors: {
         email: string;
         password: string;
@@ -209,6 +210,8 @@ export interface ITranslations {
       passwordPlaceholder: string;
       generateTooltip: string;
       button: string;
+      buttonGH: string;
+      buttonGL: string;
       errors: {
         email: string;
         password: string;

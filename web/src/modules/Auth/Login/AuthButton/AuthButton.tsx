@@ -9,10 +9,10 @@ const AuthButton: React.FC<Props> = (props) => {
     <Button
       {...props}
       sx={(theme) => ({
-        backgroundColor: theme.colors.dark[theme.colorScheme === 'dark' ? 6 : 6],
-        color: '#fff',
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+        color: theme.colorScheme === 'dark' ? theme.colors.gray[0] : theme.colors.dark[8],
         '&:hover': {
-          backgroundColor: theme.colors.dark[theme.colorScheme === 'dark' ? 5 : 5],
+          backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
         },
       })}
     />

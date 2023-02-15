@@ -242,7 +242,8 @@
       "rememberLabel": "Remember me",
       "forgot": "Forgot password?",
       "button": "Sign in",
-      "buttonOtp": "Continue",
+      "buttonGH": "GitHub",
+      "buttonGL": "GitLab",
       "errors": {
         "email": "Invalid mail address",
         "password": "Invalid password"
@@ -258,6 +259,8 @@
       "passwordPlaceholder": "Your password",
       "generateTooltip": "Generate password",
       "button": "Register",
+      "buttonGH": "GitHub",
+      "buttonGL": "GitLab",
       "errors": {
         "email": "Invalid mail address",
         "password": "Invalid password"

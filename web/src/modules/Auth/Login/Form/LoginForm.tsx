@@ -18,18 +18,16 @@ import { useForm, isEmail, matches } from '@mantine/form';
 import { initialValues, LoginFormProps } from './types';
 import useStyles from './LoginForm.styles';
 import AuthButton from '../AuthButton/AuthButton';
-import OTPModal from '../../OTP/OTPModal';
 import { useApiAuth } from 'src/api/auth/use-api-auth';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
-import { openModal } from '@mantine/modals';
 import { REGEX_PASSWORD } from '@utils/constants/auth';
 
-import { IconMail, IconLock, IconEye, IconEyeOff, IconLink, IconBrandGithub } from '@tabler/icons';
+import { IconMail, IconLock, IconEye, IconEyeOff, IconBrandGithub, IconBrandGitlab } from '@tabler/icons';
 
 const LoginForm: React.FC<LoginFormProps> = ({ withTitle = true }) => {
   const { translate, content } = useGlobalCtx();
-  const { classes } = useStyles();
-  const { auth_signInWithPassword, auth_signInWithGitHub, isLoading } = useApiAuth();
+  const { classes, theme } = useStyles();
+  const { auth_signInWithPassword, auth_signInWithGitHub, auth_signInWithGitLab, isLoading } = useApiAuth();
 
   const form = useForm({
     initialValues,
@@ -110,15 +108,15 @@ const LoginForm: React.FC<LoginFormProps> = ({ withTitle = true }) => {
             onClick={auth_signInWithGitHub}
             size="md"
           >
-            GitHub
+            {translate(content.pages.auth_login.buttonGH)}
           </AuthButton>
           <AuthButton
-            leftIcon={<IconLink size={22} />}
+            leftIcon={<IconBrandGitlab size={22} color={theme.colors.orange[6]} />}
             radius="xl"
-            onClick={() => openModal({ title: 'Sign in with OTP', children: <OTPModal />, centered: true })}
+            onClick={auth_signInWithGitLab}
             size="md"
           >
-            Magic link
+            {translate(content.pages.auth_login.buttonGL)}
           </AuthButton>
         </Group>
       </Paper>
