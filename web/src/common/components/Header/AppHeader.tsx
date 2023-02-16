@@ -40,7 +40,7 @@ const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
   const logoColor = colorScheme.colorScheme === 'dark' ? theme.colors.gray[0] : theme.colors.gray[7];
 
   return (
-    <Header height={{ base: 60, md: 70 }} p="md">
+    <Header height={{ base: 60, md: 70 }} p="md" px="xl">
       <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
         <MediaQuery largerThan="xs" styles={{ display: 'none' }}>
           <Burger

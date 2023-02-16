@@ -16,7 +16,7 @@ export const getNavbarData = (content: ITranslations): INavbarItem[] => [
   },
   {
     text: content.navbar.links[1],
-    href: 'https://github.com/cufta22/odf-collab/wiki',
+    href: 'https://github.com/fosslytech/odf-collab/wiki',
     icon: IconNotebook,
   },
   {
