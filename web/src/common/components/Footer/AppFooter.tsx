@@ -57,19 +57,19 @@ const AppFooter: React.FC<AppFooterProps> = ({ data }) => {
           <Link href="https://fossly.tech" target="_blank">
             <Flex align="center" mb="md">
               <Fossly
-                width={30}
+                width={32}
                 fill2={theme.colors[theme.primaryColor][2]}
                 fill4={theme.colors[theme.primaryColor][4]}
               />
 
-              <Text ml={12} fw={600} size={16}>
+              <Text ml={12} fw={600} size={20}>
                 Fossly Tech
               </Text>
             </Flex>
           </Link>
 
-          <Text size="xs" color="dimmed" className={classes.description}>
-            Build fully functional accessible web applications faster than ever
+          <Text size="sm" color="dimmed" className={classes.description}>
+            The future is open source
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>

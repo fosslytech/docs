@@ -8,7 +8,7 @@ export const getFooterData_index = (content: ITranslations): AppFooterData[] => 
     links: [
       { label: content.footer.links[0].links[0], link: '/' },
       { label: content.footer.links[0].links[1], link: '/settings' },
-      { label: content.footer.links[0].links[2], link: '/privacy' },
+      { label: content.footer.links[0].links[2], link: 'https://fossly.tech/privacy' },
     ],
   },
   {

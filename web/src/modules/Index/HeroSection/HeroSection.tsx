@@ -49,7 +49,7 @@ const HeroSection = () => {
           </div>
 
           <div className={classes.image}>
-            <CatVector size={300} />
+            <CatVector size={250} />
           </div>
         </div>
       </Container>

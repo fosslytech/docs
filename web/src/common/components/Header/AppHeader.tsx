@@ -90,7 +90,19 @@ const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
           (session ? (
             <HeaderAvatar />
           ) : (
-            <Button size="sm" ml="lg" onClick={() => router.push('/auth/login')}>
+            <Button
+              size="sm"
+              ml="lg"
+              onClick={() =>
+                window.open(
+                  process.env.NEXT_PUBLIC_AUTH_URL +
+                    '/auth/login?redirectTo=' +
+                    process.env.NEXT_PUBLIC_HOST +
+                    '/doc',
+                  '_blank'
+                )
+              }
+            >
               {translate(content.header.signIn)}
             </Button>
           ))}

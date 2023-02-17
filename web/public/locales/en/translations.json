@@ -214,72 +214,7 @@
         "button": "Take me back"
       }
     },
-    "auth_confirm": {
-      "title": "Confirm your email",
-      "description": "Click the link in your mail to confirm your account.",
-      "openMailApp": "Open mail app",
-      "goBack": "Return to home page"
-    },
-    "auth_forgot": {
-      "title": "Forgot your password?",
-      "subtitle": "Enter your email to get a reset link",
-      "mailLabel": "Your email",
-      "mailPlaceholder": "your@email.com",
-      "toLogin": "Back to login page",
-      "button": "Reset password",
-      "errors": {
-        "email": "Invalid mail address"
-      }
-    },
-    "auth_login": {
-      "title": "Welcome back!",
-      "noAccount": "Do not have an account yet?",
-      "registerCta": "Create account",
-      "mailLabel": "Email",
-      "mailPlaceholder": "your@email.com",
-      "passwordLabel": "Password",
-      "passwordPlaceholder": "Your password",
-      "rememberLabel": "Remember me",
-      "forgot": "Forgot password?",
-      "button": "Sign in",
-      "buttonGH": "GitHub",
-      "buttonGL": "GitLab",
-      "errors": {
-        "email": "Invalid mail address",
-        "password": "Invalid password"
-      }
-    },
-    "auth_register": {
-      "title": "Create new account",
-      "yesAccount": "Already have an account?",
-      "loginCta": "Sign in",
-      "mailLabel": "Email",
-      "mailPlaceholder": "your@email.com",
-      "passwordLabel": "Password",
-      "passwordPlaceholder": "Your password",
-      "generateTooltip": "Generate password",
-      "button": "Register",
-      "buttonGH": "GitHub",
-      "buttonGL": "GitLab",
-      "errors": {
-        "email": "Invalid mail address",
-        "password": "Invalid password"
-      }
-    },
-    "auth_reset": {
-      "title": "Reset password",
-      "subtitle": "Choose a new password for your account",
-      "password1Label": "New password",
-      "password1Placeholder": "*******",
-      "generateTooltip": "Generate password",
-      "password2Label": "Repeat password",
-      "password2Placeholder": "*******",
-      "button": "Reset password",
-      "errors": {
-        "password1": "Invalid password",
-        "password2": "Please repeat password"
-      }
-    },
+
     "profile": {
       "danger": {
         "title": "Danger zone",
