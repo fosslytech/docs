@@ -40,7 +40,7 @@ const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
   const logoColor = colorScheme.colorScheme === 'dark' ? theme.colors.gray[0] : theme.colors.gray[7];
 
   return (
-    <Header height={{ base: 60, md: 70 }} p="md">
+    <Header height={{ base: 60, md: 70 }} p="md" px="xl">
       <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
         <MediaQuery largerThan="xs" styles={{ display: 'none' }}>
           <Burger
@@ -90,7 +90,19 @@ const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
           (session ? (
             <HeaderAvatar />
           ) : (
-            <Button size="sm" ml="lg" onClick={() => router.push('/auth/login')}>
+            <Button
+              size="sm"
+              ml="lg"
+              onClick={() =>
+                window.open(
+                  process.env.NEXT_PUBLIC_AUTH_URL +
+                    '/auth/login?redirectTo=' +
+                    process.env.NEXT_PUBLIC_HOST +
+                    '/doc',
+                  '_blank'
+                )
+              }
+            >
               {translate(content.header.signIn)}
             </Button>
           ))}

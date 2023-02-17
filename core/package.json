@@ -1,5 +1,5 @@
 {
-  "name": "@cufta22/odf-collab-core",
+  "name": "@fosslytech/odf-collab-core",
   "version": "1.0.2",
   "description": "ODF Collab shared code",
   "main": "dist/cjs/index.js",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cufta22/odf-collab.git"
+    "url": "git+https://github.com/fosslytech/odf-collab.git"
   },
   "author": "cufta22",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cufta22/odf-collab/issues"
+    "url": "https://github.com/fosslytech/odf-collab/issues"
   },
-  "homepage": "https://github.com/cufta22/odf-collab#readme",
+  "homepage": "https://github.com/fosslytech/odf-collab#readme",
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",

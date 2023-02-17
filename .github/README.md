@@ -21,22 +21,21 @@
 <br />
 
 <h3 align="center">
-    <a href="https://github.com/cufta22/odf-collab/blob/master/CONTRIBUTING.md">Contribute</a>
+    <a href="https://github.com/fosslytech/odf-collab/blob/master/CONTRIBUTING.md">Contribute</a>
     <span> · </span>
     <a href="https://discord.gg/UygKwaj3">Community</a>
     <span> · </span>
-    <a href="https://github.com/cufta22/odf-collab/wiki">Documentation</a>
+    <a href="https://github.com/fosslytech/odf-collab/wiki">Documentation</a>
 </h3>
 
 ## Structure
 
-| Codebase              |   Description   |                     Domain                     |
-| :-------------------- | :-------------: | :--------------------------------------------: |
-| [web](../web)         | Next.js web app |     [odfcollab.com](https://odfcollab.com)     |
-| [api](../api)         |   Node.js API   | [api.odfcollab.com](https://api.odfcollab.com) |
-| [core](../core)       |   Shared code   |                       /                        |
-| [design](../design)   | Project assets  |                       /                        |
-| [discord](../discord) |   Discord bot   |                       /                        |
+| Codebase            |   Description   |                     Domain                     |
+| :------------------ | :-------------: | :--------------------------------------------: |
+| [web](../web)       | Next.js web app |     [odfcollab.com](https://odfcollab.com)     |
+| [api](../api)       |   Node.js API   | [api.odfcollab.com](https://api.odfcollab.com) |
+| [core](../core)     |   Shared code   |                       /                        |
+| [design](../design) | Project assets  |                       /                        |
 
 <!-- | [mobile](mobile)   |  Mobile app          |   /   | -->
 <!-- | [desktop](desktop) |  Desktop app         |   /   | -->
@@ -56,7 +55,7 @@ If you're working on an **issue**, create an issue branch - [ fix/issue-\* ] ( e
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/cufta22/odf-collab/blob/master/CONTRIBUTING.md) for all details.
+See [CONTRIBUTING.md](https://github.com/fosslytech/odf-collab/blob/master/CONTRIBUTING.md) for all details.
 
 Also check out the [Project Board]() for all available and future tasks
 
@@ -64,4 +63,4 @@ I recommend creating an issue or message me on discord [ cufta22#8160 ] to let m
 
 ## Code of Conduct
 
-Please read [CODE_OF_CONDUCT.md](https://github.com/cufta22/odf-collab/blob/master/CODE_OF_CONDUCT.md) for details on our code of conduct.
+Please read [CODE_OF_CONDUCT.md](https://github.com/fosslytech/odf-collab/blob/master/CODE_OF_CONDUCT.md) for details on our code of conduct.

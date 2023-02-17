@@ -34,7 +34,7 @@ const HeroSection = () => {
                   {translate(content.pages.home.hero.downloadBtn)}
                 </Button>
               </Link>
-              <Link href="https://github.com/cufta22/odf-collab" target="_blank">
+              <Link href="https://github.com/fosslytech/odf-collab" target="_blank">
                 <Button
                   variant="default"
                   radius="lg"
@@ -49,7 +49,7 @@ const HeroSection = () => {
           </div>
 
           <div className={classes.image}>
-            <CatVector size={300} />
+            <CatVector size={250} />
           </div>
         </div>
       </Container>

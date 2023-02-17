@@ -1,4 +1,5 @@
 import Logo from '@icons/Logo';
+import Fossly from '@icons/logos/Fossly';
 import { Text, Container, Group, Flex } from '@mantine/core';
 import Link from 'next/link';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
@@ -53,16 +54,22 @@ const AppFooter: React.FC<AppFooterProps> = ({ data }) => {
     <footer className={classes.footer}>
       <Container size="lg" className={classes.inner}>
         <div className={classes.logo}>
-          <Flex align="center" mb="md">
-            <Logo width={22} fill={theme.colors[theme.primaryColor][6]} />
+          <Link href="https://fossly.tech" target="_blank">
+            <Flex align="center" mb="md">
+              <Fossly
+                width={32}
+                fill2={theme.colors[theme.primaryColor][2]}
+                fill4={theme.colors[theme.primaryColor][4]}
+              />
 
-            <Text ml={12} fw={600} size={16}>
-              ODF Collab
-            </Text>
-          </Flex>
+              <Text ml={12} fw={600} size={20}>
+                Fossly Tech
+              </Text>
+            </Flex>
+          </Link>
 
-          <Text size="xs" color="dimmed" className={classes.description}>
-            Build fully functional accessible web applications faster than ever
+          <Text size="sm" color="dimmed" className={classes.description}>
+            The future is open source
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>

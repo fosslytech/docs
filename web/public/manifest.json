@@ -6,7 +6,7 @@
   "background_color": "#25262b",
   "display": "standalone",
   "scope": "/",
-  "start_url": "https://odfcollab.com/",
+  "start_url": "https://collab.fossly.tech/",
   "icons": [
     {
       "src": "/icons/64x64.png",
