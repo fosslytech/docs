@@ -54,17 +54,19 @@ const AppFooter: React.FC<AppFooterProps> = ({ data }) => {
     <footer className={classes.footer}>
       <Container size="lg" className={classes.inner}>
         <div className={classes.logo}>
-          <Flex align="center" mb="md">
-            <Fossly
-              width={26}
-              fill2={theme.colors[theme.primaryColor][2]}
-              fill4={theme.colors[theme.primaryColor][4]}
-            />
+          <Link href="https://fossly.tech" target="_blank">
+            <Flex align="center" mb="md">
+              <Fossly
+                width={30}
+                fill2={theme.colors[theme.primaryColor][2]}
+                fill4={theme.colors[theme.primaryColor][4]}
+              />
 
-            <Text ml={12} fw={600} size={16}>
-              Fossly Tech
-            </Text>
-          </Flex>
+              <Text ml={12} fw={600} size={16}>
+                Fossly Tech
+              </Text>
+            </Flex>
+          </Link>
 
           <Text size="xs" color="dimmed" className={classes.description}>
             Build fully functional accessible web applications faster than ever
