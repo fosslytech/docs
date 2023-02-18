@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 
 import { USFlag, DEFlag, FlagProps } from 'mantine-flagpack';
 
-import { IconChevronDown } from '@tabler/icons';
+import { IconChevronDown } from '@tabler/icons-react';
 
 interface ILangData {
   label: string;

@@ -5,7 +5,7 @@ import useStyles from '../Select.styles';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 import { ITranslations } from '@ts/content.types';
 
-import { IconChevronDown } from '@tabler/icons';
+import { IconChevronDown } from '@tabler/icons-react';
 
 interface IColorData {
   label: string;

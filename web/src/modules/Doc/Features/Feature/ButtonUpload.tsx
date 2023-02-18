@@ -4,7 +4,7 @@ import React from 'react';
 import useDocContentCtx from 'src/store/doc-content/use-doc-content-ctx';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
-import { IconUpload } from '@tabler/icons';
+import { IconUpload } from '@tabler/icons-react';
 
 const ButtonUpload: React.FC<IFeature> = (feature) => {
   const { translate } = useGlobalCtx();

@@ -32,7 +32,7 @@ import {
   IconRowInsertTop,
   IconBackspace,
   IconCircleX,
-} from '@tabler/icons';
+} from '@tabler/icons-react';
 
 const BoldIcon = () => <IconBold size={22} />;
 const ItalicIcon = () => <IconItalic size={22} />;

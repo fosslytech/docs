@@ -1,11 +1,12 @@
+import React from 'react';
 import { ITranslations } from '@ts/content.types';
 
-import { TablerIcon, IconHome, IconNotebook, IconSettings, IconDownload } from '@tabler/icons';
+import { TablerIconsProps, IconHome, IconNotebook, IconSettings, IconDownload } from '@tabler/icons-react';
 
 interface INavbarItem {
   text: string;
   href: string;
-  icon: TablerIcon;
+  icon: React.FC<TablerIconsProps>;
 }
 
 export const getNavbarData = (content: ITranslations): INavbarItem[] => [

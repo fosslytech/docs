@@ -2,15 +2,15 @@ import { Avatar, Group, Menu, Text } from '@mantine/core';
 import { useSession } from '@supabase/auth-helpers-react';
 import { useRouter } from 'next/router';
 
-import { IconRefresh, IconLogout } from '@tabler/icons';
+import { IconRefresh, IconLogout } from '@tabler/icons-react';
 
 import { useApiAuth } from 'src/api/auth/use-api-auth';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
+import Link from 'next/link';
 
 const HeaderAvatar = () => {
   const { translate, content } = useGlobalCtx();
   const { auth_signOut } = useApiAuth();
-  const router = useRouter();
   const session = useSession();
 
   // GitHub metadata
@@ -23,41 +23,42 @@ const HeaderAvatar = () => {
   const avatarUrl = ghImg;
   const username = ghName || glName;
 
-  console.log(session?.user);
+  const currentLocation = typeof window !== 'undefined' && window.location.origin;
+  const authUrl = process.env.NEXT_PUBLIC_AUTH_URL + '/auth/login?redirectTo=' + currentLocation + '/doc';
+  const profileUrl = process.env.NEXT_PUBLIC_AUTH_URL + '/user?redirectTo=' + currentLocation + '/doc';
 
   return (
     <Menu shadow="md" width={250} position="bottom-end" withArrow>
       <Menu.Target>
-        <Avatar radius="xl" style={{ cursor: 'pointer' }} ml="lg" color="blue" src={avatarUrl}>
-          {/* <PersonFilled fontSize={24} /> */}
-          {/* {user.username.substring(0, 2)} */}
-        </Avatar>
+        <Avatar radius="xl" style={{ cursor: 'pointer' }} ml="lg" color="blue" src={avatarUrl} />
       </Menu.Target>
 
       <Menu.Dropdown>
         <Menu.Item>
-          <Group onClick={() => router.push('/profile')}>
-            <Avatar radius="xl" src={avatarUrl} />
+          <Link href={profileUrl} target="_blank">
+            <Group>
+              <Avatar radius="xl" src={avatarUrl} />
 
-            <div style={{ width: 160 }}>
-              {username && (
-                <Text weight={500} truncate>
-                  {username}
+              <div style={{ width: 160 }}>
+                {username && (
+                  <Text weight={500} truncate>
+                    {username}
+                  </Text>
+                )}
+
+                <Text size="xs" color="dimmed" truncate>
+                  {session.user.email}
                 </Text>
-              )}
-
-              <Text size="xs" color="dimmed" truncate>
-                {session.user.email}
-              </Text>
-            </div>
-          </Group>
+              </div>
+            </Group>
+          </Link>
         </Menu.Item>
 
         <Menu.Divider />
 
         <Menu.Label>{translate(content.header.avatar.label1)}</Menu.Label>
 
-        <Menu.Item icon={<IconRefresh size={20} />} onClick={() => router.push('/auth/login')}>
+        <Menu.Item icon={<IconRefresh size={20} />} onClick={() => window.location.replace(authUrl)}>
           {translate(content.header.avatar.switchAcc)}
         </Menu.Item>
 

@@ -2,7 +2,7 @@ import { useMantineColorScheme, SegmentedControl, Group, Center, Box, useMantine
 
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
-import { IconSun, IconMoon } from '@tabler/icons';
+import { IconSun, IconMoon } from '@tabler/icons-react';
 
 const ColorSchemeSwitch = () => {
   const { translate, content } = useGlobalCtx();

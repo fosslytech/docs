@@ -1,7 +1,7 @@
 import { Button, Group, Text } from '@mantine/core';
 import React, { useState } from 'react';
 
-import { IconCloud } from '@tabler/icons';
+import { IconCloud } from '@tabler/icons-react';
 
 const SaveButton = () => {
   const [upToDate, setUpToDate] = useState(false);
