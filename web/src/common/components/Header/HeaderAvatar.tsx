@@ -24,8 +24,10 @@ const HeaderAvatar = () => {
   const username = ghName || glName;
 
   const currentLocation = typeof window !== 'undefined' && window.location.origin;
+
   const authUrl = process.env.NEXT_PUBLIC_AUTH_URL + '/auth/login?redirectTo=' + currentLocation + '/doc';
-  const profileUrl = process.env.NEXT_PUBLIC_AUTH_URL + '/user?redirectTo=' + currentLocation + '/doc';
+  const profileUrl =
+    process.env.NEXT_PUBLIC_AUTH_URL + '/auth/login?redirectTo=' + process.env.NEXT_PUBLIC_AUTH_URL + '/user';
 
   return (
     <Menu shadow="md" width={250} position="bottom-end" withArrow>
