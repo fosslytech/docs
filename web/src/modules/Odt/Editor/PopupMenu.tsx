@@ -1,7 +1,7 @@
 import { RichTextEditor } from '@mantine/tiptap';
 import { BubbleMenu, Editor } from '@tiptap/react';
 
-import { IconBold, IconItalic, IconUnderline, IconStrikethrough } from '@tabler/icons';
+import { IconBold, IconItalic, IconUnderline, IconStrikethrough } from '@tabler/icons-react';
 
 const BoldIcon = () => <IconBold size={22} />;
 const ItalicIcon = () => <IconItalic size={22} />;

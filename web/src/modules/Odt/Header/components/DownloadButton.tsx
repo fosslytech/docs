@@ -12,7 +12,7 @@ import {
   IconFileDescription,
   IconCode,
   IconAlignJustified,
-} from '@tabler/icons';
+} from '@tabler/icons-react';
 
 interface Props {
   editor: Editor;

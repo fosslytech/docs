@@ -3,7 +3,7 @@ import { Avatar, Text } from '@mantine/core';
 import { IYConn } from '@ts/global.types';
 import React from 'react';
 
-import { IconUser } from '@tabler/icons';
+import { IconUser } from '@tabler/icons-react';
 
 interface Props {
   connectedUsers: IYConn[];

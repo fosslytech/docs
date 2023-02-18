@@ -1,11 +1,12 @@
+import React from 'react';
 import { ITranslations } from '@ts/content.types';
 
-import { TablerIcon, IconBrandOpenSource, IconUsers, IconLeaf } from '@tabler/icons';
+import { TablerIconsProps, IconBrandOpenSource, IconUsers, IconLeaf } from '@tabler/icons-react';
 
 interface CardsSectionProps {
   title: string;
   description: string;
-  icon: TablerIcon;
+  icon: React.FC<TablerIconsProps>;
 }
 
 export const getCardsData = (content: ITranslations): CardsSectionProps[] => [

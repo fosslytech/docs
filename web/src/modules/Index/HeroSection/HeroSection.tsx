@@ -5,7 +5,7 @@ import useStyles from './HeroSection.styles';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 import CatVector from '@icons/CatVector';
 
-import { IconBrandGithub } from '@tabler/icons';
+import { IconBrandGithub } from '@tabler/icons-react';
 
 const HeroSection = () => {
   const { translate, content } = useGlobalCtx();

@@ -10,7 +10,7 @@ import useGlobalCtx from 'src/store/global/use-global-ctx';
 
 import useStyles from './GeneralSettings.styles';
 
-import { IconSettings } from '@tabler/icons';
+import { IconSettings } from '@tabler/icons-react';
 
 const Settings = () => {
   const { translate, content } = useGlobalCtx();

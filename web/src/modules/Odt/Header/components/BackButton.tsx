@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
-import { IconArrowLeft } from '@tabler/icons';
+import { IconArrowLeft } from '@tabler/icons-react';
 
 const BackButton = () => {
   const { translate, content } = useGlobalCtx();

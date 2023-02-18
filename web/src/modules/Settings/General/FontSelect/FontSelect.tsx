@@ -6,7 +6,7 @@ import { IAppFont } from '@ts/global.types';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 import { ITranslations } from '@ts/content.types';
 
-import { IconTypography, IconChevronDown } from '@tabler/icons';
+import { IconTypography, IconChevronDown } from '@tabler/icons-react';
 
 interface ILangData {
   label: string;

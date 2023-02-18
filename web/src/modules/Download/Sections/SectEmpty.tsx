@@ -1,7 +1,7 @@
 import { Text, Card, Divider, Button, Flex } from '@mantine/core';
 import useStyles from './Sections.styles';
 
-import { IconDownload } from '@tabler/icons';
+import { IconDownload } from '@tabler/icons-react';
 
 const SectEmpty = () => {
   const { classes, theme } = useStyles();

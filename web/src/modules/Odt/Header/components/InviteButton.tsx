@@ -4,7 +4,7 @@ import { Button } from '@mantine/core';
 import React from 'react';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
-import { IconShare } from '@tabler/icons';
+import { IconShare } from '@tabler/icons-react';
 
 const InviteButton = () => {
   const { translate, content } = useGlobalCtx();

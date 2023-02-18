@@ -13,7 +13,7 @@ import {
   Burger,
 } from '@mantine/core';
 
-import { IconSettings, IconArrowRight } from '@tabler/icons';
+import { IconSettings, IconArrowRight } from '@tabler/icons-react';
 
 import HeaderAvatar from './HeaderAvatar';
 
@@ -38,6 +38,9 @@ const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
   const session = useSession();
 
   const logoColor = colorScheme.colorScheme === 'dark' ? theme.colors.gray[0] : theme.colors.gray[7];
+
+  const currentLocation = typeof window !== 'undefined' && window.location.origin;
+  const authUrl = process.env.NEXT_PUBLIC_AUTH_URL + '/auth/login?redirectTo=' + currentLocation + '/doc';
 
   return (
     <Header height={{ base: 60, md: 70 }} p="md" px="xl">
@@ -90,19 +93,7 @@ const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
           (session ? (
             <HeaderAvatar />
           ) : (
-            <Button
-              size="sm"
-              ml="lg"
-              onClick={() =>
-                window.open(
-                  process.env.NEXT_PUBLIC_AUTH_URL +
-                    '/auth/login?redirectTo=' +
-                    process.env.NEXT_PUBLIC_HOST +
-                    '/doc',
-                  '_blank'
-                )
-              }
-            >
+            <Button size="sm" ml="lg" onClick={() => window.location.replace(authUrl)}>
               {translate(content.header.signIn)}
             </Button>
           ))}

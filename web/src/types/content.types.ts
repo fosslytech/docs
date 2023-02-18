@@ -165,17 +165,7 @@ export interface ITranslations {
         button: string;
       };
     };
-    profile: {
-      danger: {
-        title: string;
 
-        deleteDocDescription: string;
-        deleteDocButton: string;
-
-        deleteAccDescription: string;
-        deleteAccButton: string;
-      };
-    };
     changelog: {
       title: string;
     };
