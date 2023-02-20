@@ -8,6 +8,10 @@ export interface IConvertResponse {
   output: string;
 }
 
+// -------------------------------------------------------------------------------------------
+// Our convert/download API
+// -------------------------------------------------------------------------------------------
+
 const useDocApi = () => {
   const { fetchData } = useFetch();
   const { jsFileDownload } = useDownload();

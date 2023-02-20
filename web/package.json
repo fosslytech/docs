@@ -44,6 +44,9 @@
     "@tiptap/extension-underline": "^2.0.0-beta.218",
     "@tiptap/react": "^2.0.0-beta.218",
     "@tiptap/starter-kit": "^2.0.0-beta.218",
+    "argon2": "^0.30.3",
+    "crypto-js": "^4.1.1",
+    "dayjs": "^1.11.7",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
     "mantine-flagpack": "^1.0.1",
@@ -57,6 +60,7 @@
     "yjs": "^13.5.46"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.1.1",
     "@types/node": "18.13.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.10"

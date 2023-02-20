@@ -6,7 +6,9 @@
     "settings": "Settings",
     "signIn": "Sign in",
     "avatar": {
-      "label1": "Actions",
+      "label1": "Resources",
+      "myDocuments": "My documents",
+      "label2": "Actions",
       "switchAcc": "Switch accounts",
       "signOut": "Sign out"
     }

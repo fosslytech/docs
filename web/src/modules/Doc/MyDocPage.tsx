@@ -1,9 +1,9 @@
 import { Container, Title } from '@mantine/core';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
-import Features from './Features/Features';
+import MyDocTable from './MyDocTable/MyDocTable';
 import useStyles from './Page.styles';
 
-const DocPage = () => {
+const MyDocPage = () => {
   const { translate, content } = useGlobalCtx();
   const { classes } = useStyles();
 
@@ -13,9 +13,9 @@ const DocPage = () => {
         {translate(content.pages.doc.title)}
       </Title>
 
-      <Features />
+      <MyDocTable />
     </Container>
   );
 };
 
-export default DocPage;
+export default MyDocPage;

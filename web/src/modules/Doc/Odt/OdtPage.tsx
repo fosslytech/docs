@@ -1,7 +1,7 @@
 import { Container, useMantineTheme } from '@mantine/core';
 
 import Editor from './Editor/Editor';
-import Header from './Header/Header';
+import DocHeader from '../DocHeader/DocHeader';
 import StateConnecting from './StateConnecting';
 import StateRoomFull from './StateRoomFull';
 import { useOdtEditor } from './use-odt-editor';
@@ -53,7 +53,7 @@ const Home = () => {
         }
       `}</style>
 
-      <Header editor={editor} connectedUsers={connectedUsers} />
+      <DocHeader editor={editor} connectedUsers={connectedUsers} />
 
       <Container size="lg" py="xl" mt={40} mb={40}>
         <Editor editor={editor} />

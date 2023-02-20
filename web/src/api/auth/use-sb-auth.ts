@@ -1,9 +1,6 @@
-import { closeAllModals } from '@mantine/modals';
-import { showNotification } from '@mantine/notifications';
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
-import { AuthResponse } from '@supabase/supabase-js';
+
 import { ISupabase } from '@ts/supabase.types';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 export interface AuthDTO {
@@ -11,7 +8,7 @@ export interface AuthDTO {
   password: string;
 }
 
-export const useApiAuth = () => {
+export const useSbAuth = () => {
   const supabaseClient = useSupabaseClient<ISupabase>();
 
   const [isLoading, setLoading] = useState(false);

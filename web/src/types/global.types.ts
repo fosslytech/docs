@@ -52,3 +52,9 @@ export type IAppFont = 'Roboto' | 'Source Code Pro' | 'Inter' | 'Montserrat';
 
 export type ISupportedInputExtensions = 'html' | 'txt' | 'odt';
 export type ISupportedOutputExtensions = 'html' | 'txt' | 'odt' | 'pdf';
+
+export interface IApiResponse {
+  error: boolean;
+  message: string;
+  data: any;
+}

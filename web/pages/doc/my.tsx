@@ -1,9 +1,9 @@
 import AppLayout from '@layout/AppLayout';
-import DocPage from '@module/Doc/DocPage';
+import MyDocPage from '@module/Doc/MyDocPage';
 import { NextPageWithLayout } from '@ts/global.types';
 
 const Page: NextPageWithLayout = () => {
-  return <DocPage />;
+  return <MyDocPage />;
 };
 
 Page.getLayout = (page: React.ReactElement) => {

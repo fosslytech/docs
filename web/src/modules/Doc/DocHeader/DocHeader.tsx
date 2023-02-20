@@ -6,13 +6,14 @@ import AvatarGroup from './components/AvatarGroup';
 import BackButton from './components/BackButton';
 import DownloadButton from './components/DownloadButton';
 import InviteButton from './components/InviteButton';
+import SaveButton from './components/SaveButton';
 
 interface Props {
   editor: Editor;
   connectedUsers: IYConn[];
 }
 
-const OdtHeader: React.FC<Props> = ({ editor, connectedUsers }) => {
+const EditorHeader: React.FC<Props> = ({ editor, connectedUsers }) => {
   return (
     <Paper w="100%" p="sm" mb="md">
       <Group position="apart">
@@ -23,7 +24,7 @@ const OdtHeader: React.FC<Props> = ({ editor, connectedUsers }) => {
 
           <DownloadButton editor={editor} />
 
-          {/* <SaveButton /> */}
+          <SaveButton editor={editor} />
         </Group>
 
         <AvatarGroup connectedUsers={connectedUsers} />
@@ -32,4 +33,4 @@ const OdtHeader: React.FC<Props> = ({ editor, connectedUsers }) => {
   );
 };
 
-export default OdtHeader;
+export default EditorHeader;

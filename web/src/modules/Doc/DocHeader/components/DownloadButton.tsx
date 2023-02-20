@@ -23,13 +23,13 @@ const DownloadButton: React.FC<Props> = ({ editor }) => {
   const theme = useMantineTheme();
   const { handleDownloadDocument, isLoadingDownload } = useDocContentCtx();
 
-  const isXs = useResponsive('max', 'xs');
+  const isSm = useResponsive('max', 'sm');
 
   return (
     <Menu transition="fade" position="bottom-start" width={180} withinPortal>
       <Menu.Target>
         <Button
-          leftIcon={!isXs && <IconCloudDownload size={22} />}
+          leftIcon={!isSm && <IconCloudDownload size={22} />}
           rightIcon={<IconChevronDown size={18} />}
           pr={12}
           loading={isLoadingDownload}

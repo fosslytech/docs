@@ -8,6 +8,8 @@ export interface ITranslations {
     signIn: string;
     avatar: {
       label1: string;
+      myDocuments: string;
+      label2: string;
       switchAcc: string;
       signOut: string;
     };
