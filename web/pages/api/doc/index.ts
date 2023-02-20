@@ -1,17 +1,14 @@
-import AES from 'crypto-js/aes';
-import argon2 from 'argon2';
-
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs';
 import { ISupabase } from '@ts/supabase.types';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { sbApi_createDocument } from 'supabase/doc/create';
+import { sbApi_selectDocument } from 'supabase/doc/select';
+import { sbApi_updateDocument } from 'supabase/doc/update';
+import { sbApi_deleteDocument } from 'supabase/doc/delete';
 
 // ---------------------------------------------------------------------------
 // Supabase document API
 // ---------------------------------------------------------------------------
-
-const algorithm = 'aes-256-ctr';
-const secretKey = 'vOVH6sdmpNWjRRIqCc7rdxs01lwHzfr3';
-// const iv = crypto.randomBytes(16)
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const supabaseServerClient = createServerSupabaseClient<ISupabase>({ req, res });
@@ -27,53 +24,28 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // ---------------------------------------------------------------------------
 
   switch (req.method) {
-    // ---------------------------------------------------------------------------
     // Retrieve user documents
-    // ---------------------------------------------------------------------------
-
     case 'GET':
-      // supabaseServerClient.from("documents")
-
-      const { data: data_GET, error: error_GET } = await supabaseServerClient
-        .from('documents')
-        .select('name, ext, password, created_at, updated_at');
-
-      // Handle error_GET
-      if (error_GET) return res.status(400).json({ error: true, message: error_GET.message, data: null });
-
-      res.status(200).json({ error: false, message: 'Documents retrieved', data: data_GET });
+      await sbApi_selectDocument(req, res, supabaseServerClient, data_User.user.id);
 
       break;
 
-    // ---------------------------------------------------------------------------
     // Create new document
-    // ---------------------------------------------------------------------------
-
     case 'POST':
-      // Extract data from body
-      const { ext, html, name, password } = JSON.parse(req.body);
+      await sbApi_createDocument(req, res, supabaseServerClient, data_User.user.id);
 
-      const encriptionKey = password || data_User.user.id;
+      break;
 
-      // Encrypt html
-      const ciphertext = AES.encrypt(html, encriptionKey).toString();
-      // Hash password
-      const passwordHash = password ? await argon2.hash(password) : '';
+    // Update document
+    case 'PATCH':
+      await sbApi_updateDocument(req, res, supabaseServerClient, data_User.user.id);
 
-      // Don't allow too large documents
-      if (ciphertext.length > 20000)
-        return res.status(400).json({ error: true, message: 'Your document is too long', data: null });
+      break;
 
-      const { data: data_POST, error: error_POST } = await supabaseServerClient
-        .from('documents')
-        .insert({ name, ext, html: ciphertext, password: passwordHash, user_id: data_User.user.id });
+    // Delete document
+    case 'DELETE':
+      await sbApi_deleteDocument(req, res, supabaseServerClient, data_User.user.id);
 
-      // Handle error_POST
-      if (error_POST) return res.status(400).json({ error: true, message: error_POST.message, data: null });
-
-      res
-        .status(200)
-        .json({ error: false, message: 'Your document was successfully uploaded', data: data_POST });
       break;
 
     default:

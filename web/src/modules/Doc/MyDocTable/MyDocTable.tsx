@@ -1,24 +1,38 @@
-import { Table, ScrollArea, Loader, Center } from '@mantine/core';
+import { Table, Loader, Center, Button, Group, Text, Divider, ScrollArea } from '@mantine/core';
+import { IconPlus, IconRefresh } from '@tabler/icons-react';
 import { IDocument } from '@ts/supabase.types';
-import { useEffect, useState } from 'react';
-import { useSbDocuments } from 'src/api/doc/use-sb-documents';
+import Link from 'next/link';
+import { useSwrDocuments } from 'src/api/doc/use-sb-documents';
 import MyDocRow from './MyDocRow';
+import useStyles from './Table.styles';
 
 const MyDocTable = () => {
-  const [documents, setDocuments] = useState([]);
-  const { sb_DocumentSelect, isLoading } = useSbDocuments();
-
-  useEffect(() => {
-    sb_DocumentSelect().then((data) => setDocuments(data));
-  }, []);
-
-  const rows =
-    !isLoading && documents && documents.map((item: IDocument) => <MyDocRow key={item.id} {...item} />);
+  const { data: documents, isLoading, isValidating, mutate } = useSwrDocuments();
+  const { classes } = useStyles();
 
   return (
-    // <ScrollArea mt={50} sx={{ minWidth: 800, height: 'auto', overflowY: 'visible' }}>
-    <>
-      <Table sx={{ minWidth: 800 }} mt={50} verticalSpacing="sm">
+    <ScrollArea mt={50} sx={{ overflow: 'unset' }}>
+      <Group p="xs" bg="dark.7">
+        <Button
+          variant="light"
+          size="xs"
+          onClick={() => mutate()}
+          leftIcon={<IconRefresh size={16} />}
+          loading={isValidating}
+        >
+          Refresh
+        </Button>
+
+        <Link href="/doc">
+          <Button size="xs" leftIcon={<IconPlus size={16} />}>
+            Create new
+          </Button>
+        </Link>
+      </Group>
+
+      <Divider />
+
+      <Table sx={{ minWidth: 800 }} verticalSpacing="sm">
         <thead>
           <tr>
             <th>Document</th>
@@ -29,16 +43,27 @@ const MyDocTable = () => {
           </tr>
         </thead>
 
-        {!isLoading && documents && <tbody>{rows}</tbody>}
+        {!isLoading && documents && (
+          <tbody>
+            {documents.map((item: IDocument) => (
+              <MyDocRow key={item.id} mutate={mutate} {...item} />
+            ))}
+          </tbody>
+        )}
       </Table>
 
-      {isLoading && (
-        <Center>
-          <Loader size="lg" mt="lg" />
+      {!isLoading && !documents?.length && (
+        <Center my="lg">
+          <Text size="md">You have no documents</Text>
         </Center>
       )}
-    </>
-    // </ScrollArea>
+
+      {isLoading && (
+        <Center my="lg">
+          <Loader size="lg" />
+        </Center>
+      )}
+    </ScrollArea>
   );
 };
 

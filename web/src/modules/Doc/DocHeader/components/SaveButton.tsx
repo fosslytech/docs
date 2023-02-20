@@ -21,7 +21,7 @@ const SaveButton: React.FC<Props> = ({ editor }) => {
     return openModal({
       title: (
         <Text size="lg" fw={600}>
-          Save your document{' '}
+          Save your document
         </Text>
       ),
       centered: true,

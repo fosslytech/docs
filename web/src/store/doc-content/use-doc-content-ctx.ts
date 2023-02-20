@@ -8,6 +8,7 @@ import { ISupportedOutputExtensions } from '@ts/global.types';
 import { Editor } from '@tiptap/react';
 import useDownload from '@hooks/use-download';
 import { localFormatHtmlResponse } from '@utils/functions/localFormatHtmlResponse';
+import { useSbDocuments } from 'src/api/doc/use-sb-documents';
 
 const useDocContentCtx = () => {
   const { dispatch, initialDocContent, isLoadingNew, isLoadingUpload, isLoadingDownload, isRoomFull } =
@@ -15,9 +16,11 @@ const useDocContentCtx = () => {
 
   const { jsFileDownload } = useDownload();
 
+  const { sb_DocumentDecrypt } = useSbDocuments();
   const { doc_createNew, doc_uploadFile, doc_downloadFile } = useDocApi();
   const router = useRouter();
 
+  const setInitialId = (id: string) => dispatch({ type: 'SET_INITIAL_DOC_ID', payload: id });
   const setInitialContent = (content: string) =>
     dispatch({ type: 'SET_INITIAL_DOC_CONTENT', payload: content });
 
@@ -99,6 +102,22 @@ const useDocContentCtx = () => {
     }
   };
 
+  // -------------------------------------------------------------------------
+  // Handle open my document
+  // -------------------------------------------------------------------------
+
+  const handleOpenMyDocument = async (ext: string, id: string, password: string) => {
+    const data = await doc_createNew();
+    const html = await sb_DocumentDecrypt({ id, password });
+
+    if (!html) return;
+
+    setInitialContent(html);
+    setInitialId(id);
+
+    router.push(`/doc/${ext}/${data.roomName}`);
+  };
+
   return {
     initialDocContent,
     setInitialContent,
@@ -113,6 +132,8 @@ const useDocContentCtx = () => {
     isLoadingNew,
     isLoadingUpload,
     isLoadingDownload,
+
+    handleOpenMyDocument,
   };
 };
 

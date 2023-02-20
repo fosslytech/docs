@@ -1,52 +1,45 @@
-import { Button, PasswordInput, TextInput } from '@mantine/core';
+import { Button, PasswordInput, Text } from '@mantine/core';
 import { isNotEmpty, useForm } from '@mantine/form';
 import { closeAllModals } from '@mantine/modals';
 import { IconEye, IconEyeOff } from '@tabler/icons-react';
-import { Editor } from '@tiptap/react';
 import React from 'react';
 import { useSbDocuments } from 'src/api/doc/use-sb-documents';
+import { KeyedMutator } from 'swr';
 
 interface Props {
-  editor: Editor;
+  id: string;
+
+  mutate: KeyedMutator<any>;
 }
 
-const SaveModal: React.FC<Props> = ({ editor }) => {
-  const { sb_DocumentInsert, isLoading } = useSbDocuments();
+const PasswordModal: React.FC<Props> = ({ id, mutate }) => {
+  const { sb_DocumentUpdate, isLoading } = useSbDocuments();
 
   const form = useForm({
     initialValues: {
-      name: '',
       password: '',
     },
 
     validate: {
-      name: isNotEmpty('Enter document name'),
+      password: isNotEmpty('Enter password'),
     },
   });
 
-  const handleSaveDoc = async (values: typeof form.values) => {
-    await sb_DocumentInsert({
-      ext: 'odt',
-      html: editor.getHTML(),
-      name: values.name,
-      password: values.password,
-    });
+  const handleDeleteDoc = async (values: typeof form.values) => {
+    await sb_DocumentUpdate({ id, password: values.password });
+
+    mutate(); // Refetch data
 
     closeAllModals();
   };
 
   return (
-    <form onSubmit={form.onSubmit(handleSaveDoc)}>
-      <TextInput
-        label="Document name"
-        placeholder="Document name"
-        // data-autofocus
-        {...form.getInputProps('name')}
-      />
+    <form onSubmit={form.onSubmit(handleDeleteDoc)}>
+      <Text size="sm">You'll need to input it before accessing your document</Text>
+
       <PasswordInput
         label="Document password"
         placeholder="*******"
-        description="Optional, you'll need to input it before accessing your document"
         mt="sm"
         visibilityToggleIcon={({ reveal }) => (reveal ? <IconEye size={20} /> : <IconEyeOff size={20} />)}
         styles={{
@@ -56,11 +49,12 @@ const SaveModal: React.FC<Props> = ({ editor }) => {
         }}
         {...form.getInputProps('password')}
       />
+
       <Button fullWidth mt="lg" type="submit" loading={isLoading}>
-        Save
+        Set password
       </Button>
     </form>
   );
 };
 
-export default SaveModal;
+export default PasswordModal;

@@ -1,39 +1,34 @@
-import aes from 'crypto-js/aes';
-
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs';
 import { ISupabase } from '@ts/supabase.types';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { sbApi_decryptDocument } from 'supabase/doc/decrypt';
+import { sbApi_updateDocumentHtml } from 'supabase/doc/html/update';
 
 // ---------------------------------------------------------------------------
 // Supabase document API
 // ---------------------------------------------------------------------------
 
-const algorithm = 'aes-256-ctr';
-const secretKey = 'vOVH6sdmpNWjRRIqCc7rdxs01lwHzfr3';
-// const iv = crypto.randomBytes(16)
-
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const supabaseServerClient = createServerSupabaseClient<ISupabase>({ req, res });
 
   // Fetch logged in user
-  const { data: data_User, error: error_User } = await supabaseServerClient.auth.getUser();
+  const { error: error_User } = await supabaseServerClient.auth.getUser();
 
   // Handle error_User
-  if (error_User) return res.status(400).json({ success: false, message: 'No user found' });
+  if (error_User) return res.status(400).json({ error: true, message: 'No user found', data: null });
 
   // ---------------------------------------------------------------------------
   // API Handlers
   // ---------------------------------------------------------------------------
 
   switch (req.method) {
-    // Decrypt single document
-    case 'POST':
-      await sbApi_decryptDocument(req, res, supabaseServerClient, data_User.user.id);
+    // Update document html
+    case 'UPDATE':
+      await sbApi_updateDocumentHtml(req, res, supabaseServerClient);
+
       break;
 
     default:
-      res.status(400).json({ success: false, message: 'Method not found' });
+      res.status(400).json({ error: true, message: 'Method not found', data: null });
       break;
   }
 };
