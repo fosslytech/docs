@@ -10,6 +10,7 @@
       "@assets/*": ["public/assets/*"],
       "@module/*": ["src/modules/*"],
       "@styles/*": ["src/styles/*"],
+      "@server/*": ["server/*"],
       "@hooks/*": ["src/hooks/*"],
       "@utils/*": ["src/utils/*"],
       "@icons/*": ["src/icons/*"],

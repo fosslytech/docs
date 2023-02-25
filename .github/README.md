@@ -30,19 +30,20 @@
 
 ## Structure
 
-| Codebase            |   Description   |                     Domain                     |
-| :------------------ | :-------------: | :--------------------------------------------: |
-| [web](../web)       | Next.js web app |     [odfcollab.com](https://odfcollab.com)     |
-| [api](../api)       |   Node.js API   | [api.odfcollab.com](https://api.odfcollab.com) |
-| [core](../core)     |   Shared code   |                       /                        |
-| [design](../design) | Project assets  |                       /                        |
+| Codebase            |   Description    |                     Domain                     |
+| :------------------ | :--------------: | :--------------------------------------------: |
+| [web](../web)       | Next.js web app  |  [docs.fossly.tech](https://docs.fossly.tech)  |
+| [api](../api)       |   Node.js API    | [api.odfcollab.com](https://api.odfcollab.com) |
+| [apiv2](../apiv2)   | API but with Bun |                       /                        |
+| [core](../core)     |   Shared code    |                       /                        |
+| [design](../design) |  Project assets  |                       /                        |
 
 <!-- | [mobile](mobile)   |  Mobile app          |   /   | -->
 <!-- | [desktop](desktop) |  Desktop app         |   /   | -->
 
 ## Features ( so far )
 
-- Writer **ALPHA** - online collaborative .odt editor
+- Writer **ALPHA** - online collaborative text editor
 
 ## Branches
 

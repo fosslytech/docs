@@ -44,6 +44,7 @@ export interface IYConn {
   name: string;
   color: string;
   colorName: MantineColor;
+  avatarUrl: string;
 }
 
 export type IAppTheme = 'Mantine' | 'Catppuccin' | 'Material';

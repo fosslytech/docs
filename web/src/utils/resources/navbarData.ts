@@ -25,10 +25,4 @@ export const getNavbarData = (content: ITranslations): INavbarItem[] => [
     href: '/settings',
     icon: IconSettings,
   },
-
-  {
-    text: content.navbar.links[3],
-    href: '/download',
-    icon: IconDownload,
-  },
 ];

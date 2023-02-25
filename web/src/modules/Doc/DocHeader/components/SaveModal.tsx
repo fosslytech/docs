@@ -4,14 +4,14 @@ import { closeAllModals } from '@mantine/modals';
 import { IconEye, IconEyeOff } from '@tabler/icons-react';
 import { Editor } from '@tiptap/react';
 import React from 'react';
-import { useSbDocuments } from 'src/api/doc/use-sb-documents';
+import { InsertDocDTO, useCommonDocMutation } from 'src/api/doc/use-my-docs-mutation';
 
 interface Props {
   editor: Editor;
 }
 
 const SaveModal: React.FC<Props> = ({ editor }) => {
-  const { sb_DocumentInsert, isLoading } = useSbDocuments();
+  const docMutation = useCommonDocMutation<InsertDocDTO>('/api/doc', 'POST');
 
   const form = useForm({
     initialValues: {
@@ -25,7 +25,7 @@ const SaveModal: React.FC<Props> = ({ editor }) => {
   });
 
   const handleSaveDoc = async (values: typeof form.values) => {
-    await sb_DocumentInsert({
+    await docMutation.mutateAsync({
       ext: 'odt',
       html: editor.getHTML(),
       name: values.name,
@@ -56,7 +56,7 @@ const SaveModal: React.FC<Props> = ({ editor }) => {
         }}
         {...form.getInputProps('password')}
       />
-      <Button fullWidth mt="lg" type="submit" loading={isLoading}>
+      <Button fullWidth mt="lg" type="submit" loading={docMutation.isLoading}>
         Save
       </Button>
     </form>

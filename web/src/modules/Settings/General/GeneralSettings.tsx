@@ -12,7 +12,7 @@ import useStyles from './GeneralSettings.styles';
 
 import { IconSettings } from '@tabler/icons-react';
 
-const Settings = () => {
+const GeneralSettings = () => {
   const { translate, content } = useGlobalCtx();
   const { classes } = useStyles();
 
@@ -22,42 +22,42 @@ const Settings = () => {
         <IconSettings size={32} />
 
         <Text size={28} weight={600} ml="sm">
-          {translate(content.pages.settings.title)}
+          {translate(content.pages.settings.general.title)}
         </Text>
       </Flex>
 
       <Group align="start">
         <Flex direction="column" className={classes.container}>
           <Text size="md" weight={400} mb={6}>
-            {translate(content.pages.settings.selectLang)}
+            {translate(content.pages.settings.general.selectLang)}
           </Text>
           <LanguageSelect />
         </Flex>
 
         <Flex direction="column" className={classes.container}>
           <Text size="md" weight={400} mb={6}>
-            {translate(content.pages.settings.selectTheme)}
+            {translate(content.pages.settings.general.selectTheme)}
           </Text>
           <ThemeSelect />
         </Flex>
 
         <Flex direction="column" className={classes.container}>
           <Text size="md" weight={400} mb={6}>
-            {translate(content.pages.settings.selectPrimaryColor)}
+            {translate(content.pages.settings.general.selectPrimaryColor)}
           </Text>
           <PrimaryColorSelect />
         </Flex>
 
         <Flex direction="column" className={classes.container}>
           <Text size="md" weight={400} mb={6}>
-            {translate(content.pages.settings.selectFont)}
+            {translate(content.pages.settings.general.selectFont)}
           </Text>
           <FontSelect />
         </Flex>
 
         <Flex direction="column">
           <Text size="md" weight={400} mb={6}>
-            {translate(content.pages.settings.selectColor)}
+            {translate(content.pages.settings.general.selectColor)}
           </Text>
           <ColorSchemeSwitch />
         </Flex>
@@ -66,4 +66,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default GeneralSettings;

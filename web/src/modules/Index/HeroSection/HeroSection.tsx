@@ -29,9 +29,9 @@ const HeroSection = () => {
             </Text>
 
             <Group mt={30}>
-              <Link href="/download">
+              <Link href="/doc">
                 <Button radius="lg" size="lg" className={classes.control}>
-                  {translate(content.pages.home.hero.downloadBtn)}
+                  {translate(content.pages.home.hero.useOnlineBtn)}
                 </Button>
               </Link>
               <Link href="https://github.com/fosslytech/odf-collab" target="_blank">
@@ -42,7 +42,7 @@ const HeroSection = () => {
                   className={classes.control}
                   leftIcon={<IconBrandGithub size={24} />}
                 >
-                  {translate(content.pages.home.hero.sourceCode)}
+                  {translate(content.pages.home.hero.sourceCodeBtn)}
                 </Button>
               </Link>
             </Group>

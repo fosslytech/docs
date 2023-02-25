@@ -20,33 +20,46 @@ import TableHeader from '@tiptap/extension-table-header';
 import TableRow from '@tiptap/extension-table-row';
 import { Color } from '@tiptap/extension-color';
 
-import useDocContentCtx from 'src/store/doc-content/use-doc-content-ctx';
+import useDocCtx from 'src/store/doc/use-doc-ctx';
 import { useYWebRtc } from '@hooks/yjs/use-y-webrtc';
 import useNonInitialEffect from '@hooks/use-non-initial-effect';
 import { getRandomInt } from '@utils/functions/randomNumber';
 import { useEffect, useState } from 'react';
+import { useSession } from '@supabase/auth-helpers-react';
 
 export const MAX_CONNS_ODT = 20;
 
 export const useOdtEditor = () => {
   const router = useRouter();
   const theme = useMantineTheme();
-  const { initialDocContent, setInitialContent } = useDocContentCtx();
+  const session = useSession();
+  const { initialDocContent, setInitialContent, handleResetInitialDocument } = useDocCtx();
 
   const { doc, provider } = useYWebRtc(router.query.session as string, {
     maxConns: MAX_CONNS_ODT,
     filterBcConns: true,
   });
 
-  const [isNew, setIsNew] = useState(true);
+  const [isNew, setIsNew] = useState(true); // Is new member
   const [isFull, setIsFull] = useState(false);
 
   const userColor = MANTINE_COLORS[getRandomInt(0, 13)];
+
+  // GitHub metadata
+  const ghImg = session?.user?.user_metadata?.avatar_url;
+  const ghName = session?.user?.user_metadata?.user_name;
+
+  // GitLab metadata
+  const glName = session?.user?.user_metadata?.name;
+
+  const avatarUrl = ghImg;
+  const username = ghName || glName;
 
   const connectedUsers = Array.from(provider.awareness.getStates(), ([id, { cursor, user }]) => ({
     name: user?.name || 'Anon',
     color: user?.color || theme.colors.blue[6],
     colorName: user?.colorName || 'blue',
+    avatarUrl: user?.avatarUrl || '',
   }));
 
   const roomFull = connectedUsers?.length > MAX_CONNS_ODT;
@@ -62,9 +75,10 @@ export const useOdtEditor = () => {
       CollaborationCursor.configure({
         provider: provider,
         user: {
-          name: 'Anon',
+          name: username,
           color: theme.colors[userColor][6],
           colorName: userColor,
+          avatarUrl: avatarUrl,
         },
       }),
       Underline,
@@ -95,6 +109,10 @@ export const useOdtEditor = () => {
   // Remove initial content
   useNonInitialEffect(() => {
     if (initialDocContent.length) setInitialContent('');
+
+    return () => {
+      handleResetInitialDocument();
+    };
   }, [initialDocContent]);
 
   // Don't allow new connections if room is full

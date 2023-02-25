@@ -1,4 +1,5 @@
 import { Group, Paper } from '@mantine/core';
+import { useSession } from '@supabase/auth-helpers-react';
 import { Editor } from '@tiptap/react';
 import { IYConn } from '@ts/global.types';
 import React from 'react';
@@ -14,6 +15,8 @@ interface Props {
 }
 
 const EditorHeader: React.FC<Props> = ({ editor, connectedUsers }) => {
+  const session = useSession();
+
   return (
     <Paper w="100%" p="sm" mb="md">
       <Group position="apart">
@@ -24,7 +27,7 @@ const EditorHeader: React.FC<Props> = ({ editor, connectedUsers }) => {
 
           <DownloadButton editor={editor} />
 
-          <SaveButton editor={editor} />
+          {session && <SaveButton editor={editor} />}
         </Group>
 
         <AvatarGroup connectedUsers={connectedUsers} />

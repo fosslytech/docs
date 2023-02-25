@@ -2,7 +2,7 @@ import { Avatar, Group, Menu, Text } from '@mantine/core';
 import { useSession } from '@supabase/auth-helpers-react';
 import { useRouter } from 'next/router';
 
-import { IconRefresh, IconLogout, IconFileText } from '@tabler/icons-react';
+import { IconRefresh, IconLogout, IconFileText, IconFilePlus, IconPlus } from '@tabler/icons-react';
 
 import { useSbAuth } from 'src/api/auth/use-sb-auth';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
@@ -60,6 +60,10 @@ const HeaderAvatar = () => {
         <Menu.Divider />
 
         <Menu.Label>{translate(content.header.avatar.label1)}</Menu.Label>
+
+        <Menu.Item icon={<IconPlus size={20} />} onClick={() => router.push('/doc')}>
+          {translate(content.header.avatar.newDocument)}
+        </Menu.Item>
 
         <Menu.Item icon={<IconFileText size={20} />} onClick={() => router.push('/doc/my')}>
           {translate(content.header.avatar.myDocuments)}

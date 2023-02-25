@@ -18,7 +18,7 @@ const AvatarGroup: React.FC<Props> = ({ connectedUsers }) => {
   return (
     <Avatar.Group spacing="sm">
       {connectedUsers.slice(0, maxDisplayed).map((conn, i) => (
-        <Avatar key={i} size={42} color={conn.colorName} radius="xl">
+        <Avatar key={i} size={42} color={conn.colorName} src={conn.avatarUrl} radius="xl">
           {conn.name.substring(0, 2) || <IconUser size={20} />}
         </Avatar>
       ))}

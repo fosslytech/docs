@@ -13,12 +13,12 @@ interface IColorData {
 }
 
 const getLangData = (content: ITranslations): IColorData[] => [
-  { label: content.pages.settings.selectPrimaryColorOptions.blue, value: 'blue' },
-  { label: content.pages.settings.selectPrimaryColorOptions.red, value: 'red' },
-  { label: content.pages.settings.selectPrimaryColorOptions.green, value: 'green' },
-  { label: content.pages.settings.selectPrimaryColorOptions.yellow, value: 'yellow' },
-  { label: content.pages.settings.selectPrimaryColorOptions.pink, value: 'pink' },
-  { label: content.pages.settings.selectPrimaryColorOptions.teal, value: 'teal' },
+  { label: content.pages.settings.general.selectPrimaryColorOptions.blue, value: 'blue' },
+  { label: content.pages.settings.general.selectPrimaryColorOptions.red, value: 'red' },
+  { label: content.pages.settings.general.selectPrimaryColorOptions.green, value: 'green' },
+  { label: content.pages.settings.general.selectPrimaryColorOptions.yellow, value: 'yellow' },
+  { label: content.pages.settings.general.selectPrimaryColorOptions.pink, value: 'pink' },
+  { label: content.pages.settings.general.selectPrimaryColorOptions.teal, value: 'teal' },
 ];
 
 const PrimaryColorSelect = () => {

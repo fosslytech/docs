@@ -20,7 +20,7 @@ const ColorSchemeSwitch = () => {
             label: (
               <Center>
                 <IconSun size={20} color={theme.colors.yellow[6]} />
-                <Box ml={10}>{translate(content.pages.settings.selectColorOptions.light)}</Box>
+                <Box ml={10}>{translate(content.pages.settings.general.selectColorOptions.light)}</Box>
               </Center>
             ),
           },
@@ -29,7 +29,7 @@ const ColorSchemeSwitch = () => {
             label: (
               <Center>
                 <IconMoon size={20} color={theme.colors.gray[4]} />
-                <Box ml={10}>{translate(content.pages.settings.selectColorOptions.dark)}</Box>
+                <Box ml={10}>{translate(content.pages.settings.general.selectColorOptions.dark)}</Box>
               </Center>
             ),
           },

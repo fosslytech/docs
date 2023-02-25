@@ -81,22 +81,13 @@ const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
           </Link>
         </MediaQuery>
 
-        {['/', '/settings', '/changelog'].includes(router.pathname) && (
-          <Link href="/doc">
-            <Button size="sm" ml="lg" rightIcon={<IconArrowRight size={20} />}>
-              {translate(content.header.useOnline)}
-            </Button>
-          </Link>
+        {session ? (
+          <HeaderAvatar />
+        ) : (
+          <Button size="sm" ml="lg" onClick={() => window.location.replace(authUrl)}>
+            {translate(content.header.signIn)}
+          </Button>
         )}
-
-        {!['/', '/settings', '/changelog'].includes(router.pathname) &&
-          (session ? (
-            <HeaderAvatar />
-          ) : (
-            <Button size="sm" ml="lg" onClick={() => window.location.replace(authUrl)}>
-              {translate(content.header.signIn)}
-            </Button>
-          ))}
       </div>
     </Header>
   );

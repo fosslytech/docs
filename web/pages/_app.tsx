@@ -17,6 +17,7 @@ import GlobalSEO from '@module/SEO/GlobalSEO';
 import { SessionContextProvider } from '@supabase/auth-helpers-react';
 import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs';
 import { ISupabase } from '@ts/supabase.types';
+import { QueryCTXProvider } from 'src/api/CTX';
 
 const App = ({ Component, pageProps }) => {
   const [supabaseClient] = useState(() => createBrowserSupabaseClient<ISupabase>());
@@ -37,16 +38,18 @@ const App = ({ Component, pageProps }) => {
             withNormalizeCSS
             theme={getMantineTheme(appColorScheme, appPrimaryColor, appTheme, appFont)}
           >
-            <ModalsProvider>
-              <NotificationsProvider>
-                {/* Route transition */}
-                <NProgress />
+            <QueryCTXProvider>
+              <ModalsProvider>
+                <NotificationsProvider>
+                  {/* Route transition */}
+                  <NProgress />
 
-                <GlobalSEO />
+                  <GlobalSEO />
 
-                {getLayout(<Component {...pageProps} />)}
-              </NotificationsProvider>
-            </ModalsProvider>
+                  {getLayout(<Component {...pageProps} />)}
+                </NotificationsProvider>
+              </ModalsProvider>
+            </QueryCTXProvider>
           </MantineProvider>
         </ColorSchemeProvider>
       </SessionContextProvider>

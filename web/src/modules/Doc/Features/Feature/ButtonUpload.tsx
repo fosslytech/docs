@@ -1,14 +1,14 @@
 import { Button, FileButton } from '@mantine/core';
 import { IFeature } from '@utils/resources/featuresData';
 import React from 'react';
-import useDocContentCtx from 'src/store/doc-content/use-doc-content-ctx';
+import useDocCtx from 'src/store/doc/use-doc-ctx';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
 import { IconUpload } from '@tabler/icons-react';
 
 const ButtonUpload: React.FC<IFeature> = (feature) => {
   const { translate } = useGlobalCtx();
-  const { handleUploadDocument, isLoadingUpload } = useDocContentCtx();
+  const { handleUploadDocument, isLoadingUpload } = useDocCtx();
 
   return (
     <FileButton onChange={handleUploadDocument} accept={feature.accept}>

@@ -2,7 +2,7 @@ import { useResponsive } from '@hooks/use-responsive';
 import { Button, Menu, useMantineTheme } from '@mantine/core';
 import { Editor } from '@tiptap/react';
 import React from 'react';
-import useDocContentCtx from 'src/store/doc-content/use-doc-content-ctx';
+import useDocCtx from 'src/store/doc/use-doc-ctx';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
 import {
@@ -21,7 +21,7 @@ interface Props {
 const DownloadButton: React.FC<Props> = ({ editor }) => {
   const { translate, content } = useGlobalCtx();
   const theme = useMantineTheme();
-  const { handleDownloadDocument, isLoadingDownload } = useDocContentCtx();
+  const { handleDownloadDocument, isLoadingDownload } = useDocCtx();
 
   const isSm = useResponsive('max', 'sm');
 

@@ -13,12 +13,27 @@ npm run dev
 
 Next.js app runs locally on [http://localhost:3000](http://localhost:3000)
 
+<br />
+
+## Structure
+
+| Folders            |         Description         |
+| :----------------- | :-------------------------: |
+| [src](./src)       |    All client side code     |
+| [api](./api)       | Next API ( Supabase stuff ) |
+| [pages](./pages)   |   Next file based routes    |
+| [public](./public) |  Public assets mapped to /  |
+
+<br />
+
 ## Environments
 
 | Env        | Branch  |                         Domain                         |
 | :--------- | :-----: | :----------------------------------------------------: |
 | production | master  |         [odfcollab.com](https://odfcollab.com)         |
 | staging    | staging | [staging.odfcollab.com](https://staging.odfcollab.com) |
+
+<br />
 
 ## Translations
 

@@ -14,10 +14,10 @@ interface ILangData {
 }
 
 const getFontData = (content: ITranslations): ILangData[] => [
-  { label: content.pages.settings.selectFontOptions.inter, value: 'Inter' },
-  { label: content.pages.settings.selectFontOptions.roboto, value: 'Roboto' },
-  { label: content.pages.settings.selectFontOptions.montserrat, value: 'Montserrat' },
-  { label: content.pages.settings.selectFontOptions.sourceCodePro, value: 'Source Code Pro' },
+  { label: content.pages.settings.general.selectFontOptions.inter, value: 'Inter' },
+  { label: content.pages.settings.general.selectFontOptions.roboto, value: 'Roboto' },
+  { label: content.pages.settings.general.selectFontOptions.montserrat, value: 'Montserrat' },
+  { label: content.pages.settings.general.selectFontOptions.sourceCodePro, value: 'Source Code Pro' },
 ];
 
 const ThemeSelect = () => {
