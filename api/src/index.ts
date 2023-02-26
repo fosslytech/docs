@@ -8,7 +8,7 @@ dotenv.config();
 
 const init = async () => {
   const server: Server = Hapi.server({
-    port: process.env.PORT || 4000,
+    port: process.env.PORT || 4001,
     // host: 'localhost',
     host: '0.0.0.0', // This is needed for prod
     routes: {

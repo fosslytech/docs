@@ -1,7 +1,7 @@
 import { MantineColor } from '@mantine/core';
 import React from 'react';
 
-import { getContentType } from '@cufta22/odf-collab-core';
+import { getContentType } from '@fosslytech/docs-core';
 import { ITranslations } from '@ts/content.types';
 
 import AppWriter from '@icons/products/AppWriter';

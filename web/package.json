@@ -12,9 +12,9 @@
     "postbuild": "next-sitemap --config next-sitemap.config.js"
   },
   "dependencies": {
-    "@cufta22/odf-collab-core": "^1.0.2",
     "@emotion/react": "^11.10.6",
     "@emotion/server": "^11.10.0",
+    "@fosslytech/docs-core": "^1.1.0",
     "@mantine/core": "^5.10.4",
     "@mantine/form": "^5.10.4",
     "@mantine/hooks": "^5.10.4",

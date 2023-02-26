@@ -2,18 +2,19 @@ import { DocContext } from './CTX';
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
 
-import { formatHtmlResponse } from '@cufta22/odf-collab-core';
 import { ISupportedOutputExtensions } from '@ts/global.types';
 import { Editor } from '@tiptap/react';
 import useDownload from '@hooks/use-download';
-import { localFormatHtmlResponse } from '@utils/functions/localFormatHtmlResponse';
 import { DecryptDocDTO, useCommonDocMutation } from 'src/api/doc/use-my-docs-mutation';
 import {
   useConvertDownloadMutation,
   useConvertNewMutation,
   useConvertUploadMutation,
 } from 'src/api/convert/use-convert-mutation';
-import { localFormatHtmlRequest } from '@utils/functions/localFormatHtmlRequest';
+
+import { formatHtmlResponse, formatHtmlRequest } from '@fosslytech/docs-core';
+// import { localFormatHtmlRequest } from '@utils/functions/localFormatHtmlRequest';
+// import { localFormatHtmlResponse } from '@utils/functions/localFormatHtmlResponse';
 
 const useDocCtx = () => {
   const {
@@ -71,8 +72,8 @@ const useDocCtx = () => {
     const data = await convertUploadMutation.mutateAsync({ file, format: 'html' });
 
     // For local development/testing
-    const formattedHtml = localFormatHtmlResponse(format, data.output);
-    // const formattedHtml = formatHtmlResponse(data.output);
+    // const formattedHtml = localFormatHtmlResponse(format, data.output);
+    const formattedHtml = formatHtmlResponse(format, data.output);
 
     if (!formattedHtml)
       return dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingUpload', value: false } });
@@ -91,7 +92,8 @@ const useDocCtx = () => {
     dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDownload', value: true } });
 
     // For local development/testing
-    const formattedHtml = localFormatHtmlRequest('odt', editor.getHTML());
+    // const formattedHtml = localFormatHtmlRequest('odt', editor.getHTML());
+    const formattedHtml = formatHtmlRequest('odt', editor.getHTML());
 
     switch (format) {
       case 'html':

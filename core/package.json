@@ -1,10 +1,16 @@
 {
   "name": "@fosslytech/docs-core",
   "version": "1.1.0",
+  "private": false,
+  "author": "cufta22",
+  "license": "MIT",
   "description": "Fossly Docs shared code",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.es.js",
-  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "files": [
     "dist"
   ],
@@ -16,12 +22,10 @@
     "type": "git",
     "url": "git+https://github.com/fosslytech/docs.git"
   },
-  "author": "cufta22",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fosslytech/docs/issues"
   },
-  "homepage": "https://github.com/fosslytech/docs#readme",
+  "homepage": "https://docs.fossly.tech",
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
