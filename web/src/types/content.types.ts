@@ -3,11 +3,13 @@
 export interface ITranslations {
   header: {
     appName: string;
-    useOnline: string;
     settings: string;
     signIn: string;
     avatar: {
       label1: string;
+      newDocument: string;
+      myDocuments: string;
+      label2: string;
       switchAcc: string;
       signOut: string;
     };
@@ -31,8 +33,8 @@ export interface ITranslations {
         title3: string;
         title4: string;
         description: string;
-        downloadBtn: string;
-        sourceCode: string;
+        useOnlineBtn: string;
+        sourceCodeBtn: string;
       };
 
       cards: {
@@ -45,43 +47,68 @@ export interface ITranslations {
       };
     };
     settings: {
-      title: string;
-      selectLang: string;
-      selectLangOptions: {
-        en: string;
-        fr: string;
-        de: string;
+      general: {
+        title: string;
+        selectLang: string;
+        selectLangOptions: {
+          en: string;
+          fr: string;
+          de: string;
+        };
+
+        selectTheme: string;
+        selectThemeOptions: {
+          mantine: string;
+          material: string;
+          catppuccin: string;
+        };
+
+        selectPrimaryColor: string;
+        selectPrimaryColorOptions: {
+          blue: string;
+          red: string;
+          green: string;
+          yellow: string;
+          pink: string;
+          teal: string;
+        };
+
+        selectFont: string;
+        selectFontOptions: {
+          inter: string;
+          roboto: string;
+          montserrat: string;
+          sourceCodePro: string;
+        };
+
+        selectColor: string;
+        selectColorOptions: {
+          light: string;
+          dark: string;
+        };
       };
 
-      selectTheme: string;
-      selectThemeOptions: {
-        mantine: string;
-        material: string;
-        catppuccin: string;
-      };
+      convertApi: {
+        title: string;
+        description: string;
+        noAuth: string;
 
-      selectPrimaryColor: string;
-      selectPrimaryColorOptions: {
-        blue: string;
-        red: string;
-        green: string;
-        yellow: string;
-        pink: string;
-        teal: string;
-      };
+        modalGenTitle: string;
+        modalGenDescription: string;
+        modalGenBtn: string;
 
-      selectFont: string;
-      selectFontOptions: {
-        inter: string;
-        roboto: string;
-        montserrat: string;
-        sourceCodePro: string;
-      };
+        modalDelTitle: string;
+        modalDelDescription: string;
+        modalDelBtn: string;
 
-      selectColor: string;
-      selectColorOptions: {
-        light: string;
-        dark: string;
+        generateBtn: string;
+
+        tableLabel1: string;
+        tableLabel2: string;
+        tableLabel3: string;
+        tableLabel4: string;
+
+        tableEmpty: string;
       };
     };
     download: {
@@ -108,6 +135,53 @@ export interface ITranslations {
         button2: string;
         badge: string;
       }[];
+    };
+    doc_my: {
+      title: string;
+      refreshBtn: string;
+      createNewBtn: string;
+      label1: string;
+      label2: string;
+      label3: string;
+      label4: string;
+      label5: string;
+      noDucuments: string;
+      protected: string;
+      unprotected: string;
+
+      actionRename: string;
+      actionChangePassword: string;
+      actionRemovePassword: string;
+      actionSetPassword: string;
+      actionDeleteDocument: string;
+
+      fieldRequired: string;
+
+      modalDecryptTitle: string;
+
+      modalDeleteTitle: string;
+      modalDeleteDescription: string;
+      modalDeleteBtn: string;
+
+      modalNameTitle: string;
+      modalNameInput: string;
+      modalNameBtn: string;
+
+      modalPasswordAddTitle: string;
+      modalPasswordAddDescription: string;
+      modalPasswordAddInput: string;
+      modalPasswordAddBtn: string;
+
+      modalPasswordDeleteTitle: string;
+      modalPasswordDeleteDescription: string;
+      modalPasswordDeleteInput: string;
+      modalPasswordDeleteBtn: string;
+
+      modalPasswordChangeTitle: string;
+      modalPasswordChangeDescription: string;
+      modalPasswordChangeInput1: string;
+      modalPasswordChangeInput2: string;
+      modalPasswordChangeBtn: string;
     };
     doc_odt: {
       back: string;

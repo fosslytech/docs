@@ -1,7 +1,7 @@
 import React from 'react';
 import { ITranslations } from '@ts/content.types';
 
-import { TablerIconsProps, IconBrandOpenSource, IconUsers, IconLeaf } from '@tabler/icons-react';
+import { TablerIconsProps, IconBrandOpenSource, IconShieldLock, IconLeaf } from '@tabler/icons-react';
 
 interface CardsSectionProps {
   title: string;
@@ -18,11 +18,11 @@ export const getCardsData = (content: ITranslations): CardsSectionProps[] => [
   {
     title: content.pages.home.cards.cards[1].title,
     description: content.pages.home.cards.cards[1].description,
-    icon: IconBrandOpenSource,
+    icon: IconShieldLock,
   },
   {
     title: content.pages.home.cards.cards[2].title,
     description: content.pages.home.cards.cards[2].description,
-    icon: IconUsers,
+    icon: IconBrandOpenSource,
   },
 ];

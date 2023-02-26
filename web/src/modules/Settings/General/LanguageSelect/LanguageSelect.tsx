@@ -6,7 +6,7 @@ import { ITranslations } from '@ts/content.types';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 import { useRouter } from 'next/router';
 
-import { USFlag, DEFlag, FlagProps } from 'mantine-flagpack';
+import { USFlag, FlagProps } from 'mantine-flagpack';
 
 import { IconChevronDown } from '@tabler/icons-react';
 
@@ -17,8 +17,8 @@ interface ILangData {
 }
 
 const getLangData = (content: ITranslations): ILangData[] => [
-  { label: content.pages.settings.selectLangOptions.en, value: 'en', icon: USFlag },
-  { label: content.pages.settings.selectLangOptions.de, value: 'de', icon: DEFlag },
+  { label: content.pages.settings.general.selectLangOptions.en, value: 'en', icon: USFlag },
+  // { label: content.pages.settings.general.selectLangOptions.de, value: 'de', icon: DEFlag },
 ];
 
 const LanguageSelect = () => {

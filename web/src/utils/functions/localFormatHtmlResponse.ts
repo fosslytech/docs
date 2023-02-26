@@ -1,5 +1,5 @@
-// For local testing/development of { formatHtmlResponse }
-export const localFormatHtmlResponse = (html: string): string => {
+// For local testing/development of { localFormatOdtHtmlResponse }
+const localFormatOdtHtmlResponse = (html: string): string => {
   const formattedHtml = html
     .replace(/\t/g, '')
     .replace(/\n/g, '')
@@ -31,8 +31,20 @@ export const localFormatHtmlResponse = (html: string): string => {
 
     // Title doesn't work,
     // soffice uses:  <font size="6" style="font-size: 28pt"><b>Title + </b></font>
-    // we need:       ?
-    .replace(/""/g, '');
+    // we need:       <strong>Title+ <mark data-color="transparent" style="background-color: transparent; color: inherit">center</mark></strong>
+    .replace(/<font size="6" style="font-size: 28pt"><b>([^<]+)<\/b><\/font>/g, (_match, p1) => {
+      return `<h1 style="text-align: center">${p1}</h1>`;
+    });
 
   return formattedHtml;
+};
+
+export const localFormatHtmlResponse = (format: string, html: string) => {
+  switch (format) {
+    case 'odt':
+      return localFormatOdtHtmlResponse(html);
+
+    default:
+      break;
+  }
 };

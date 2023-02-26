@@ -8,18 +8,12 @@ dotenv.config();
 
 const init = async () => {
   const server: Server = Hapi.server({
-    port: process.env.PORT || 4000,
+    port: process.env.PORT || 4001,
     // host: 'localhost',
     host: '0.0.0.0', // This is needed for prod
     routes: {
       cors: {
-        origin: [
-          'http://localhost:3000',
-          'https://odf-collab.vercel.app',
-          'https://odfcollab.com',
-          'https://www.odfcollab.com',
-          'https://staging.odfcollab.com',
-        ],
+        origin: ['http://localhost:3000', 'https://docs.fossly.tech', 'https://staging-docs.fossly.tech'],
       },
     },
   });

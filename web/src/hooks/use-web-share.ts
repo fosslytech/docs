@@ -13,7 +13,7 @@ export const useWebShare = () => {
       case 'ios':
         try {
           await navigator.share({
-            title: 'ODF Collab',
+            title: 'Fossly Docs',
             text: 'Share this with anyone you want to collab with',
             url,
           });

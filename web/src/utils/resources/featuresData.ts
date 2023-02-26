@@ -1,7 +1,7 @@
 import { MantineColor } from '@mantine/core';
 import React from 'react';
 
-import { getContentType } from '@cufta22/odf-collab-core';
+import { getContentType } from '@fosslytech/docs-core';
 import { ITranslations } from '@ts/content.types';
 
 import AppWriter from '@icons/products/AppWriter';
@@ -16,6 +16,7 @@ export interface IFeature {
   icon: React.FC<{ size?: number; color?: string }>;
   accept: string;
   badge: string;
+  appType: 'odt' | 'ods';
 }
 
 export const getFeaturesData = (content: ITranslations): IFeature[] => [
@@ -28,6 +29,7 @@ export const getFeaturesData = (content: ITranslations): IFeature[] => [
     icon: AppWriter,
     accept: `${getContentType('odt')}`,
     badge: content.pages.doc.cards[0].badge,
+    appType: 'odt',
   },
   // {
   //   title: content.pages.doc.cards[1].title,
@@ -38,6 +40,7 @@ export const getFeaturesData = (content: ITranslations): IFeature[] => [
   //   icon: AppCalc,
   //   accept: `${getContentType('ods')}`,
   //   badge: content.pages.doc.cards[1].badge,
+  //   appType: 'ods',
   // },
   // {
   //   title: content.pages.doc.cards[2].title,

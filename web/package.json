@@ -1,5 +1,5 @@
 {
-  "name": "odf-collab",
+  "name": "fossly-docs",
   "version": "1.1.0",
   "private": false,
   "author": "cufta22",
@@ -12,10 +12,9 @@
     "postbuild": "next-sitemap --config next-sitemap.config.js"
   },
   "dependencies": {
-    "@cufta22/odf-collab-core": "^1.0.2",
-    "@ducanh2912/next-pwa": "^8.0.0",
     "@emotion/react": "^11.10.6",
     "@emotion/server": "^11.10.0",
+    "@fosslytech/docs-core": "^1.1.0",
     "@mantine/core": "^5.10.4",
     "@mantine/form": "^5.10.4",
     "@mantine/hooks": "^5.10.4",
@@ -26,8 +25,8 @@
     "@mantine/tiptap": "^5.10.4",
     "@supabase/auth-helpers-nextjs": "^0.5.4",
     "@supabase/auth-helpers-react": "^0.3.1",
-    "@supabase/supabase-js": "^2.7.1",
-    "@tabler/icons-react": "^2.4.0",
+    "@supabase/supabase-js": "^2.8.0",
+    "@tabler/icons-react": "^2.5.0",
     "@tiptap/extension-collaboration": "^2.0.0-beta.218",
     "@tiptap/extension-collaboration-cursor": "^2.0.0-beta.218",
     "@tiptap/extension-color": "^2.0.0-beta.218",
@@ -44,19 +43,25 @@
     "@tiptap/extension-underline": "^2.0.0-beta.218",
     "@tiptap/react": "^2.0.0-beta.218",
     "@tiptap/starter-kit": "^2.0.0-beta.218",
+    "argon2": "^0.30.3",
+    "crypto-js": "^4.1.1",
+    "dayjs": "^1.11.7",
     "eslint": "8.34.0",
-    "eslint-config-next": "13.1.6",
+    "eslint-config-next": "13.2.1",
     "mantine-flagpack": "^1.0.1",
-    "next": "13.1.6",
+    "next": "13.2.1",
     "next-seo": "^5.15.0",
     "next-sitemap": "^3.1.52",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-query": "^3.39.3",
     "typescript": "4.9.5",
+    "uuid": "^9.0.0",
     "y-webrtc": "^10.2.4",
-    "yjs": "^13.5.46"
+    "yjs": "^13.5.47"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.1.1",
     "@types/node": "18.13.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.10"

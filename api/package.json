@@ -1,10 +1,10 @@
 {
-  "name": "odf-collab-api",
+  "name": "fossly-docs-api",
   "version": "1.0.0",
   "private": false,
   "author": "cufta22",
   "license": "MIT",
-  "description": "ODF Collab document API",
+  "description": "Fossly Docs Convert API",
   "main": "./src/index.ts",
   "scripts": {
     "dev": "npx nodemon",

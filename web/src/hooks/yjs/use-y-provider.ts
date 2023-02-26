@@ -1,10 +1,10 @@
-import { Provider } from '@ts/doc.types';
-import useDocCtx from 'src/store/doc/use-doc-ctx';
+import { Provider } from '@ts/yjs.types';
+import useYjsCtx from 'src/store/yjs/use-yjs-ctx';
 
 // Hook from https://github.com/joebobmiles/y-react
 
 export const useYProviders = (): Map<new (...args: any) => Provider, Map<string, Provider>> => {
-  const { providers } = useDocCtx();
+  const { providers } = useYjsCtx();
 
   if (providers !== null) {
     return providers;

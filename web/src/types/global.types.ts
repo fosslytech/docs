@@ -44,11 +44,12 @@ export interface IYConn {
   name: string;
   color: string;
   colorName: MantineColor;
+  avatarUrl: string;
 }
 
 export type IAppTheme = 'Mantine' | 'Catppuccin' | 'Material';
 
 export type IAppFont = 'Roboto' | 'Source Code Pro' | 'Inter' | 'Montserrat';
 
-export type ISupportedInputExtensions = 'html' | 'txt' | 'odt';
-export type ISupportedOutputExtensions = 'html' | 'txt' | 'odt' | 'pdf';
+export type ISupportedInputExtensions = 'html' | 'txt' | 'odt' | 'ods';
+export type ISupportedOutputExtensions = 'html' | 'txt' | 'odt' | 'ods' | 'pdf';

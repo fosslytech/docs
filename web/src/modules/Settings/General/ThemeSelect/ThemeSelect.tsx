@@ -16,12 +16,12 @@ interface ILangData {
 
 const getLangData = (content: ITranslations): ILangData[] => [
   {
-    label: content.pages.settings.selectThemeOptions.mantine,
+    label: content.pages.settings.general.selectThemeOptions.mantine,
     value: 'Mantine',
     image: '/assets/mantine.png',
   },
   {
-    label: content.pages.settings.selectThemeOptions.catppuccin,
+    label: content.pages.settings.general.selectThemeOptions.catppuccin,
     value: 'Catppuccin',
     image: '/assets/catppuccin.png',
   },

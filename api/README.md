@@ -13,15 +13,15 @@ npm i
 npm run dev
 ```
 
-Node API runs locally on [http://localhost:4000](http://localhost:4000)
+Node API runs locally on [http://localhost:4001](http://localhost:4001)
 
 <br />
 
 ## Servers
 
-| Location      | Branch |                     Domain                     |
-| :------------ | :----: | :--------------------------------------------: |
-| EU, Frankfurt | master | [api.odfcollab.com](https://api.odfcollab.com) |
+| Location      | Branch |                      Domain                      |
+| :------------ | :----: | :----------------------------------------------: |
+| EU, Frankfurt | master | [api-eu.fossly.tech](https://api-eu.fossly.tech) |
 
 <br />
 

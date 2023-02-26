@@ -4,7 +4,7 @@ import AppLayout from '@layout/AppLayout';
 import { NextPageWithLayout } from '@ts/global.types';
 
 // import Odt from '@module/Odt/OdtPage';
-const OdtWithNoSSR = dynamic(() => import('@module/Odt/OdtPage'), {
+const OdtWithNoSSR = dynamic(() => import('@module/Doc/Odt/OdtPage'), {
   ssr: false,
 });
 

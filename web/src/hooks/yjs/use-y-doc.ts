@@ -1,10 +1,10 @@
 import * as Y from 'yjs';
-import useDocCtx from 'src/store/doc/use-doc-ctx';
+import useYjsCtx from 'src/store/yjs/use-yjs-ctx';
 
 // Hook from https://github.com/joebobmiles/y-react
 
 export const useYDoc = (): Y.Doc => {
-  const { doc } = useDocCtx();
+  const { doc } = useYjsCtx();
 
   if (doc !== null) {
     return doc;

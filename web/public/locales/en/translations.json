@@ -1,18 +1,20 @@
 {
   "_comment": "Don't forget to update ITranslations at /src/types/content.types.ts",
   "header": {
-    "appName": "ODF Collab",
-    "useOnline": "Use online",
+    "appName": "Fossly Docs",
     "settings": "Settings",
     "signIn": "Sign in",
     "avatar": {
-      "label1": "Actions",
+      "label1": "Resources",
+      "newDocument": "New document",
+      "myDocuments": "My documents",
+      "label2": "Actions",
       "switchAcc": "Switch accounts",
       "signOut": "Sign out"
     }
   },
   "footer": {
-    "appName": "ODF Collab",
+    "appName": "?",
     "description": "Collaborate with others on OpenDocument Format files",
     "links": [
       {
@@ -38,10 +40,10 @@
         "title1": "A",
         "title2": "modern",
         "title3": "FOSS",
-        "title4": "collaboration tool",
+        "title4": "document manager",
         "description": "Work together in real-time to create, edit, and share documents. The goal of the website is to provide a seamless and efficient way for teams and individuals to collaborate on documents, no matter where they are located.",
-        "downloadBtn": "Download",
-        "sourceCode": "Source code"
+        "useOnlineBtn": "Getting started",
+        "sourceCodeBtn": "Source code"
       },
 
       "cards": {
@@ -53,84 +55,97 @@
             "description": "By supporitng only open standard document formats ( ODF, HTML, PDF... ) we ensure that files from our app can be used with any other app that supports said standards"
           },
           {
-            "title": "Free & Open source",
-            "description": "ODF Collab is and will always be 'Free as in Freedom', this allows you to always view the source code and, if you feel like you have the necessary skills, contribute to the project"
+            "title": "Enhanced privacy",
+            "description": "We collect no user data and all saved documents are encrypted by default with the ability to password protect them so that nobody can access the contents without it"
           },
           {
-            "title": "Community driven",
-            "description": "We listen to all community feedback and are always open to suggestions, you can help in many ways like reporting bugs, joining discussions, working on code, etc..."
+            "title": "Free & Open source",
+            "description": "Fossly Docs is and will always be 'Free as in Freedom', this allows you to always view the source code and, if you feel like you have the necessary skills, contribute to the project"
           }
         ]
       }
     },
+
     "settings": {
-      "title": "General settings",
-      "selectLang": "Language select",
-      "selectLangOptions": {
-        "en": "English",
-        "fr": "French",
-        "de": "German"
+      "general": {
+        "title": "General settings",
+
+        "selectLang": "Language select",
+        "selectLangOptions": {
+          "en": "English",
+          "fr": "French",
+          "de": "German"
+        },
+
+        "selectTheme": "Theme select",
+        "selectThemeOptions": {
+          "mantine": "Mantine",
+          "material": "Material",
+          "catppuccin": "Catppuccin"
+        },
+
+        "selectPrimaryColor": "Primary color",
+        "selectPrimaryColorOptions": {
+          "blue": "Blue",
+          "red": "Red",
+          "green": "Green",
+          "yellow": "Yellow",
+          "pink": "Pink",
+          "teal": "Teal"
+        },
+
+        "selectFont": "Font select",
+        "selectFontOptions": {
+          "inter": "Inter",
+          "roboto": "Roboto",
+          "montserrat": "Montserrat",
+          "sourceCodePro": "Source Code Pro"
+        },
+
+        "selectColor": "Color scheme",
+        "selectColorOptions": {
+          "light": "Light",
+          "dark": "Dark"
+        }
       },
 
-      "selectTheme": "Theme select",
-      "selectThemeOptions": {
-        "mantine": "Mantine",
-        "material": "Material",
-        "catppuccin": "Catppuccin"
-      },
+      "convertApi": {
+        "title": "Convert API",
+        "description": "Generate an API key for the document Convert API, useful if you want to self host Docs. Max 3 keys per account.",
+        "noAuth": "You have to be signed in",
 
-      "selectPrimaryColor": "Primary color",
-      "selectPrimaryColorOptions": {
-        "blue": "Blue",
-        "red": "Red",
-        "green": "Green",
-        "yellow": "Yellow",
-        "pink": "Pink",
-        "teal": "Teal"
-      },
+        "modalGenTitle": "API key generated",
+        "modalGenDescription": "Please save this secret key somewhere safe and accessible. For security reasons, you won't be able to view it again. If you lose this key, you'll need to generate a new one.",
+        "modalGenBtn": "Confirm",
 
-      "selectFont": "Font select",
-      "selectFontOptions": {
-        "inter": "Inter",
-        "roboto": "Roboto",
-        "montserrat": "Montserrat",
-        "sourceCodePro": "Source Code Pro"
-      },
+        "modalDelTitle": "Delete your key",
+        "modalDelDescription": "This action is irreversible.",
+        "modalDelBtn": "Delete",
 
-      "selectColor": "Color scheme",
-      "selectColorOptions": {
-        "light": "Light",
-        "dark": "Dark"
+        "generateBtn": "Create new key",
+
+        "tableLabel1": "Key",
+        "tableLabel2": "Value",
+        "tableLabel3": "Created at",
+        "tableLabel4": "Options",
+
+        "tableEmpty": "You have no keys"
       }
     },
-    "download": {
-      "title": "Download the app",
-      "description": "Here you'll find all available download options, you have to be online in order to install the app on your device",
-      "online": "Online",
-      "offline": "Offline",
 
-      "optionPWA": {
-        "description": "Download as Progressive Web Application",
-        "buttonLM": "Learn more",
-        "buttonOffline": "Offline",
-        "buttonInstalled": "Installed",
-        "buttonUnavailable": "Unavailable",
-        "buttonInstall": "Install"
-      }
-    },
     "doc": {
       "title": "New document",
       "cards": [
         {
           "title": "Writer",
-          "description": "Create .ODT document",
+          "description": "Create new text document",
           "button1": "Open",
           "button2": "New",
           "badge": "Beta"
         },
         {
           "title": "Calc",
-          "description": "Create .ODS spreadsheet",
+          "description": "Create new spreadsheet",
           "button1": "Open",
           "button2": "New",
           "badge": "Alpha"
@@ -158,6 +173,59 @@
         }
       ]
     },
+
+    "doc_my": {
+      "title": "My documents",
+
+      "refreshBtn": "Refresh",
+      "createNewBtn": "Create new",
+
+      "label1": "Document",
+      "label2": "Password",
+      "label3": "Created at",
+      "label4": "Updated at",
+      "label5": "Options",
+
+      "noDucuments": "You have no documents",
+
+      "protected": "Protected",
+      "unprotected": "Unprotected",
+
+      "actionRename": "Rename",
+      "actionChangePassword": "Change password",
+      "actionRemovePassword": "Remove password",
+      "actionSetPassword": "Set password",
+      "actionDeleteDocument": "Delete document",
+
+      "fieldRequired": "This field is required",
+
+      "modalDecryptTitle": "Open ducoment",
+
+      "modalDeleteTitle": "Delete your document",
+      "modalDeleteDescription": "This action is irreversible, you won't be able to recover your document later",
+      "modalDeleteBtn": "Delete document",
+
+      "modalNameTitle": "Rename your document",
+      "modalNameInput": "Document name",
+      "modalNameBtn": "Rename",
+
+      "modalPasswordAddTitle": "Set document password",
+      "modalPasswordAddDescription": "Remember this password, you'll need it to access the document",
+      "modalPasswordAddInput": "New password",
+      "modalPasswordAddBtn": "Confirm password",
+
+      "modalPasswordDeleteTitle": "Remove document password",
+      "modalPasswordDeleteDescription": "Enter current document password in order to remove it",
+      "modalPasswordDeleteInput": "Document password",
+      "modalPasswordDeleteBtn": "Remove password",
+
+      "modalPasswordChangeTitle": "Change document password",
+      "modalPasswordChangeDescription": "Remember this password, you'll need it to access the document",
+      "modalPasswordChangeInput1": "Old password",
+      "modalPasswordChangeInput2": "New password",
+      "modalPasswordChangeBtn": "Change password"
+    },
+
     "doc_odt": {
       "back": "Go back",
       "invite": "Invite",
@@ -218,6 +286,7 @@
     "changelog": {
       "title": "Changelog"
     },
+
     "error": {
       "title": "You have found a secret place",
       "404": "Unfortunately, this is only a 404 page. You may have mistyped the address, or the page has been moved to another URL.",
