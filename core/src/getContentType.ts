@@ -1,4 +1,24 @@
-export const getContentType = (fileExt: string): string => {
+type SupportedType =
+  | "pdf"
+  | "ppt"
+  | "pptx"
+  | "xls"
+  | "xlsx"
+  | "doc"
+  | "docx"
+  | "csv"
+  | "xml"
+  | "html"
+  | "txt"
+  | "odt"
+  | "ods"
+  | "odp";
+
+// ----------------------------------------------------------
+// Get content type from file extension
+// ----------------------------------------------------------
+
+export const getContentType = (fileExt: SupportedType): string => {
   switch (fileExt) {
     case "pdf":
       return "application/pdf";

@@ -1,7 +1,7 @@
 {
-  "name": "ODF Collab",
-  "short_name": "ODF Collab",
-  "description": "Collaborate with others on OpenDocument Format files",
+  "name": "Fossly Docs",
+  "short_name": "Fossly Docs",
+  "description": "Free & Open source document management app",
   "theme_color": "#228be6",
   "background_color": "#25262b",
   "display": "standalone",

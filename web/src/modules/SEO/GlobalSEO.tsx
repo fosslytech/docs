@@ -5,23 +5,23 @@ import { IFC } from '@ts/global.types';
 const GlobalSEO: React.FC<IFC> = ({ children }) => {
   return (
     <DefaultSeo
-      title="ODF Collab"
-      description="Collaborate with others on OpenDocument Format files"
+      title="Fossly Docs"
+      description="Free & Open source document management app"
       themeColor="#25262b"
-      // canonical="https://www.canonical.ie/"
+      canonical="https://www.canonical.ie/"
       openGraph={{
         type: 'website',
         locale: 'en_US',
         url: process.env.NEXT_PUBLIC_HOST,
-        siteName: 'ODF Collab',
-        title: 'ODF Collab',
-        description: 'Collaborate with others on OpenDocument Format files',
+        siteName: 'Fossly Docs',
+        title: 'Fossly Docs',
+        description: 'Free & Open source document management app',
         images: [
           {
-            url: 'https://odfcollab.com/images/og.png',
+            url: 'https://docs.fossly.tech/images/og.png',
             width: 1200,
             height: 600,
-            alt: 'ODF Collab og image',
+            alt: 'Fossly Docs og image',
             type: 'image/png',
           },
         ],

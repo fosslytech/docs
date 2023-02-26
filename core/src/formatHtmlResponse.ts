@@ -3,43 +3,21 @@
 // from the server cause without it it's a bit scuffed
 // ----------------------------------------------------------
 
-export const formatHtmlResponse = (html: string): string => {
-  const formattedHtml = html
-    .replace(/\t/g, "")
-    .replace(/\n/g, "")
+import { formatOdsHtmlResponse } from "./ods/formatOdsHtmlResponse";
+import { formatOdtHtmlResponse } from "./odt/formatOdtHtmlResponse";
 
-    // Because html has <p></p> tags with <br />
-    // there are 2 spaces when there should be only 1
-    .replace(/<br\/>/g, "")
+export const formatHtmlResponse = (
+  format: "odt" | "ods",
+  html: string
+): string => {
+  switch (format) {
+    case "odt":
+      return formatOdtHtmlResponse(html);
 
-    // Left, center & right align doesn't work,
-    // soffice uses:  <p align="center">...</p>
-    // we need:       <p style="text-align: center">...</p>
-    .replace(/align="left"/g, "")
-    .replace(/align="center"/g, 'style="text-align: center"')
-    .replace(/align="right"/g, 'style="text-align: right"')
+    case "ods":
+      return formatOdsHtmlResponse(html);
 
-    // Text color doesn't work,
-    // soffice uses:  <font color="*">123</font>
-    // we need:       <span style="color: *">123</span>
-    .replace(/<font color="([^"]+)">([^<]+)<\/font>/g, (_match, p1, p2) => {
-      return `<span style="color: ${p1}">${p2}</span>`;
-    })
-
-    // Text highlight doesn't work
-    // soffice uses:  <span style="background: *">123</span>
-    // we need:       <mark data-color="*" style="background-color: *; color: inherit">123</mark>
-    .replace(
-      /<span style="background: ([^"]+)">([^<]+)<\/span>/g,
-      (_match, p1, p2) => {
-        return `<mark data-color="${p1}" style="background-color: ${p1}; color: inherit">${p2}</mark>`;
-      }
-    )
-
-    // Title doesn't work,
-    // soffice uses:  <font size="6" style="font-size: 28pt"><b>Title + </b></font>
-    // we need:       ?
-    .replace(/""/g, "");
-
-  return formattedHtml;
+    default:
+      return html;
+  }
 };

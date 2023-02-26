@@ -9,7 +9,7 @@ const Settings = () => {
     <Container size="lg" py="xl" mt={40} mb={40}>
       <GeneralSettings />
 
-      <ConvertApiSettings />
+      {/* <ConvertApiSettings /> */}
     </Container>
   );
 };

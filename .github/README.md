@@ -1,4 +1,4 @@
-<a href="https://odfcollab.com">
+<a href="https://docs.fossly.tech">
 <p align="center">
     <img height="80" src="./assets/logo.png"/>
 </p>
@@ -6,7 +6,7 @@
 
 <br />
 <p align="center">
-    <strong>ODF Collab - Free & Open source document collaboration tool</strong>
+    <strong>Fossly Docs - Free & Open source document management app</strong>
 </p>
 <br />
 
@@ -14,18 +14,16 @@
     <img align="center" alt="Next JS" src="https://img.shields.io/badge/nextjs-%23000000.svg?style=for-the-badge&logo=next.js&logoColor=white"/>
     <img align="center" alt="NodeJS" src="https://img.shields.io/badge/node.js-%2343853D.svg?style=for-the-badge&logo=node.js&logoColor=white" />
     <img align="center" alt="Supabase" src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" />
-    <!-- <img align="center" alt="Tauri" src="https://img.shields.io/badge/tauri-%2324C8DB.svg?style=for-the-badge&logo=tauri&logoColor=%23FFFFFF" /> -->
-    
 </p>
 
 <br />
 
 <h3 align="center">
-    <a href="https://github.com/fosslytech/odf-collab/blob/master/CONTRIBUTING.md">Contribute</a>
+    <a href="https://github.com/fosslytech/docs/blob/master/CONTRIBUTING.md">Contribute</a>
     <span> · </span>
     <a href="https://discord.gg/UygKwaj3">Community</a>
     <span> · </span>
-    <a href="https://github.com/fosslytech/odf-collab/wiki">Documentation</a>
+    <a href="https://github.com/fosslytech/docs/wiki">Documentation</a>
 </h3>
 
 ## Structure
@@ -41,9 +39,9 @@
 <!-- | [mobile](mobile)   |  Mobile app          |   /   | -->
 <!-- | [desktop](desktop) |  Desktop app         |   /   | -->
 
-## Features ( so far )
+## Features
 
-- Writer **ALPHA** - online collaborative text editor
+- Writer **BETA** - online collaborative text editor
 
 ## Branches
 
@@ -56,7 +54,7 @@ If you're working on an **issue**, create an issue branch - [ fix/issue-\* ] ( e
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/fosslytech/odf-collab/blob/master/CONTRIBUTING.md) for all details.
+See [CONTRIBUTING.md](https://github.com/fosslytech/docs/blob/master/CONTRIBUTING.md) for all details.
 
 Also check out the [Project Board]() for all available and future tasks
 
@@ -64,4 +62,4 @@ I recommend creating an issue or message me on discord [ cufta22#8160 ] to let m
 
 ## Code of Conduct
 
-Please read [CODE_OF_CONDUCT.md](https://github.com/fosslytech/odf-collab/blob/master/CODE_OF_CONDUCT.md) for details on our code of conduct.
+Please read [CODE_OF_CONDUCT.md](https://github.com/fosslytech/docs/blob/master/CODE_OF_CONDUCT.md) for details on our code of conduct.

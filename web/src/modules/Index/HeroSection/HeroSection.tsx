@@ -6,10 +6,13 @@ import useGlobalCtx from 'src/store/global/use-global-ctx';
 import CatVector from '@icons/CatVector';
 
 import { IconBrandGithub } from '@tabler/icons-react';
+import { useResponsive } from '@hooks/use-responsive';
 
 const HeroSection = () => {
   const { translate, content } = useGlobalCtx();
   const { classes } = useStyles();
+
+  const isXs = useResponsive('max', 'xs');
 
   return (
     <div>
@@ -30,17 +33,16 @@ const HeroSection = () => {
 
             <Group mt={30}>
               <Link href="/doc">
-                <Button radius="lg" size="lg" className={classes.control}>
+                <Button radius="lg" size={isXs ? 'md' : 'lg'}>
                   {translate(content.pages.home.hero.useOnlineBtn)}
                 </Button>
               </Link>
-              <Link href="https://github.com/fosslytech/odf-collab" target="_blank">
+              <Link href="https://github.com/fosslytech/docs" target="_blank">
                 <Button
                   variant="default"
                   radius="lg"
-                  size="lg"
-                  className={classes.control}
-                  leftIcon={<IconBrandGithub size={24} />}
+                  size={isXs ? 'md' : 'lg'}
+                  leftIcon={<IconBrandGithub size={isXs ? 20 : 24} />}
                 >
                   {translate(content.pages.home.hero.sourceCodeBtn)}
                 </Button>

@@ -11,7 +11,7 @@ Page.getLayout = (page: React.ReactElement) => {
 };
 
 export const getStaticProps = async () => {
-  const data = await fetch('https://raw.githubusercontent.com/fosslytech/odf-collab/master/CHANGELOG.md');
+  const data = await fetch('https://raw.githubusercontent.com/fosslytech/docs/master/CHANGELOG.md');
   const changelog = await data.text();
 
   return { props: { data: changelog } };

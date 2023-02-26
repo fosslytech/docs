@@ -1,7 +1,7 @@
 {
   "_comment": "Don't forget to update ITranslations at /src/types/content.types.ts",
   "header": {
-    "appName": "ODF Collab",
+    "appName": "Fossly Docs",
     "settings": "Settings",
     "signIn": "Sign in",
     "avatar": {
@@ -14,7 +14,7 @@
     }
   },
   "footer": {
-    "appName": "ODF Collab",
+    "appName": "?",
     "description": "Collaborate with others on OpenDocument Format files",
     "links": [
       {
@@ -40,7 +40,7 @@
         "title1": "A",
         "title2": "modern",
         "title3": "FOSS",
-        "title4": "collaboration tool",
+        "title4": "document manager",
         "description": "Work together in real-time to create, edit, and share documents. The goal of the website is to provide a seamless and efficient way for teams and individuals to collaborate on documents, no matter where they are located.",
         "useOnlineBtn": "Getting started",
         "sourceCodeBtn": "Source code"
@@ -55,12 +55,12 @@
             "description": "By supporitng only open standard document formats ( ODF, HTML, PDF... ) we ensure that files from our app can be used with any other app that supports said standards"
           },
           {
-            "title": "Free & Open source",
-            "description": "ODF Collab is and will always be 'Free as in Freedom', this allows you to always view the source code and, if you feel like you have the necessary skills, contribute to the project"
+            "title": "Enhanced privacy",
+            "description": "We collect no user data and all saved documents are encrypted by default with the ability to password protect them so that nobody can access the contents without it"
           },
           {
-            "title": "Community driven",
-            "description": "We listen to all community feedback and are always open to suggestions, you can help in many ways like reporting bugs, joining discussions, working on code, etc..."
+            "title": "Free & Open source",
+            "description": "Fossly Docs is and will always be 'Free as in Freedom', this allows you to always view the source code and, if you feel like you have the necessary skills, contribute to the project"
           }
         ]
       }

@@ -6,13 +6,14 @@ import { formatHtmlResponse } from '@cufta22/odf-collab-core';
 import { ISupportedOutputExtensions } from '@ts/global.types';
 import { Editor } from '@tiptap/react';
 import useDownload from '@hooks/use-download';
-// import { localFormatHtmlResponse } from '@utils/functions/localFormatHtmlResponse';
+import { localFormatHtmlResponse } from '@utils/functions/localFormatHtmlResponse';
 import { DecryptDocDTO, useCommonDocMutation } from 'src/api/doc/use-my-docs-mutation';
 import {
   useConvertDownloadMutation,
   useConvertNewMutation,
   useConvertUploadMutation,
 } from 'src/api/convert/use-convert-mutation';
+import { localFormatHtmlRequest } from '@utils/functions/localFormatHtmlRequest';
 
 const useDocCtx = () => {
   const {
@@ -64,14 +65,17 @@ const useDocCtx = () => {
   // Handle document upload
   // -------------------------------------------------------------------------
 
-  const handleUploadDocument = async (file: File) => {
+  const handleUploadDocument = async (file: File, format: 'odt' | 'ods') => {
     dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingUpload', value: true } });
 
     const data = await convertUploadMutation.mutateAsync({ file, format: 'html' });
 
-    // For local development
-    // const formattedHtml = localFormatHtmlResponse(data.output);
-    const formattedHtml = formatHtmlResponse(data.output);
+    // For local development/testing
+    const formattedHtml = localFormatHtmlResponse(format, data.output);
+    // const formattedHtml = formatHtmlResponse(data.output);
+
+    if (!formattedHtml)
+      return dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingUpload', value: false } });
 
     setInitialContent(formattedHtml);
     router.push(`/doc/odt/${data.roomName}`);
@@ -86,31 +90,31 @@ const useDocCtx = () => {
   const handleDownloadDocument = async (editor: Editor, format: ISupportedOutputExtensions) => {
     dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDownload', value: true } });
 
+    // For local development/testing
+    const formattedHtml = localFormatHtmlRequest('odt', editor.getHTML());
+
     switch (format) {
       case 'html':
-        // console.log(editor.getHTML());
-
         jsFileDownload({ filename: 'output.html', text: editor.getHTML() });
 
         dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDownload', value: false } });
         break;
 
       case 'txt':
-        // console.log(editor.getText());
-
         jsFileDownload({ filename: 'output.txt', text: editor.getText() });
 
         dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDownload', value: false } });
         break;
 
       case 'pdf':
-        await convertDownloadMutation.mutateAsync({ text: editor.getHTML(), to: format });
+        await convertDownloadMutation.mutateAsync({ text: formattedHtml, to: format });
 
         dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDownload', value: false } });
         break;
 
       case 'odt':
-        await convertDownloadMutation.mutateAsync({ text: editor.getHTML(), to: format });
+      case 'ods':
+        await convertDownloadMutation.mutateAsync({ text: formattedHtml, to: format });
 
         dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDownload', value: false } });
         break;
@@ -146,8 +150,10 @@ const useDocCtx = () => {
     setInitialContent,
 
     initialDocId,
+    setInitialId,
 
     initialDocPassword,
+    setInitialPassword,
 
     handleNewDocument,
     handleUploadDocument,

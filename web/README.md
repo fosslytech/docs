@@ -20,7 +20,7 @@ Next.js app runs locally on [http://localhost:3000](http://localhost:3000)
 | Folders            |         Description         |
 | :----------------- | :-------------------------: |
 | [src](./src)       |    All client side code     |
-| [api](./api)       | Next API ( Supabase stuff ) |
+| [server](./server) | Next API ( Supabase stuff ) |
 | [pages](./pages)   |   Next file based routes    |
 | [public](./public) |  Public assets mapped to /  |
 
@@ -28,10 +28,10 @@ Next.js app runs locally on [http://localhost:3000](http://localhost:3000)
 
 ## Environments
 
-| Env        | Branch  |                         Domain                         |
-| :--------- | :-----: | :----------------------------------------------------: |
-| production | master  |         [odfcollab.com](https://odfcollab.com)         |
-| staging    | staging | [staging.odfcollab.com](https://staging.odfcollab.com) |
+| Env        | Branch  |                            Domain                            |
+| :--------- | :-----: | :----------------------------------------------------------: |
+| production | master  |         [docs.fossly.tech](https://docs.fossly.tech)         |
+| staging    | staging | [staging-docs.fossly.tech](https://staging-docs.fossly.tech) |
 
 <br />
 

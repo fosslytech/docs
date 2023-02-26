@@ -10,8 +10,13 @@ const ButtonUpload: React.FC<IFeature> = (feature) => {
   const { translate } = useGlobalCtx();
   const { handleUploadDocument, isLoadingUpload } = useDocCtx();
 
+  const handleChange = (file: File) => {
+    console.log(file);
+    handleUploadDocument(file, feature.appType);
+  };
+
   return (
-    <FileButton onChange={handleUploadDocument} accept={feature.accept}>
+    <FileButton onChange={handleChange} accept={feature.accept}>
       {(props) => (
         <Button
           variant="default"
