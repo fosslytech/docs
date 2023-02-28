@@ -25,6 +25,7 @@ const useDocCtx = () => {
     isLoadingNew,
     isLoadingUpload,
     isLoadingDownload,
+    isLoadingDecrypt,
     isRoomFull,
   } = useContext(DocContext);
 
@@ -131,8 +132,12 @@ const useDocCtx = () => {
   // -------------------------------------------------------------------------
 
   const handleOpenMyDocument = async (ext: string, id: string, password: string) => {
+    dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDecrypt', value: true } });
+
     const res1 = await convertNewMutation.mutateAsync();
     const res2 = await decryptDocMutation.mutateAsync({ id, password });
+
+    dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDecrypt', value: false } });
 
     if (res2.error) return;
 
@@ -167,6 +172,8 @@ const useDocCtx = () => {
     isLoadingNew,
     isLoadingUpload,
     isLoadingDownload,
+
+    isLoadingDecrypt,
 
     handleOpenMyDocument,
     handleResetInitialDocument,

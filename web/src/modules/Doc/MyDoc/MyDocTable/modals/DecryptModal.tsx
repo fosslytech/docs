@@ -12,8 +12,7 @@ interface Props {
 }
 
 const DecryptModal: React.FC<Props> = ({ id, ext }) => {
-  const docMutation = useCommonDocMutation<DecryptDocDTO>('/api/doc/decrypt', 'POST');
-  const { handleOpenMyDocument } = useDocCtx();
+  const { handleOpenMyDocument, isLoadingDecrypt } = useDocCtx();
 
   const form = useForm({
     initialValues: {
@@ -48,7 +47,7 @@ const DecryptModal: React.FC<Props> = ({ id, ext }) => {
         {...form.getInputProps('password')}
       />
 
-      <Button fullWidth mt="lg" type="submit" loading={docMutation.isLoading}>
+      <Button fullWidth mt="lg" type="submit" loading={isLoadingDecrypt}>
         Unlock
       </Button>
     </form>

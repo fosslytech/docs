@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Dispatch } from 'react';
 import AppCalc from '@icons/products/AppCalc';
 import AppWriter from '@icons/products/AppWriter';
 import { ActionIcon, Badge, Group, Menu, Text, Tooltip, useMantineTheme } from '@mantine/core';
 import {
+  IconCopy,
   IconDots,
   IconEdit,
   IconExternalLink,
@@ -25,16 +26,23 @@ import useDocCtx from 'src/store/doc/use-doc-ctx';
 import PasswordChangeModal from './modals/PasswordChangeModal';
 import PasswordDeleteModal from './modals/PasswordDeleteModal';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
+import DuplicateModal from './modals/DuplicateModal';
 
 dayjs.extend(relativeTime);
 
-const MyDocRow: React.FC<IDocument> = ({ created_at, updated_at, id, name, ext, password }) => {
+interface Props extends IDocument {
+  setPage: Dispatch<number>;
+}
+
+const MyDocRow: React.FC<Props> = ({ created_at, updated_at, id, name, ext, password, setPage }) => {
   const { translate, content } = useGlobalCtx();
   const { handleOpenMyDocument } = useDocCtx();
 
   const theme = useMantineTheme();
 
-  const handleDocAction = (type: 'delete' | 'name' | 'passwordAdd' | 'passwordChange' | 'passwordDelete') => {
+  const handleDocAction = (
+    type: 'delete' | 'name' | 'duplicate' | 'passwordAdd' | 'passwordChange' | 'passwordDelete'
+  ) => {
     return openModal({
       title: (
         <Text size="lg" fw={600}>
@@ -42,6 +50,7 @@ const MyDocRow: React.FC<IDocument> = ({ created_at, updated_at, id, name, ext, 
             {
               delete: translate(content.pages.doc_my.modalDeleteTitle),
               name: translate(content.pages.doc_my.modalNameTitle),
+              duplicate: translate(content.pages.doc_my.modalDuplicateTitle),
               passwordAdd: translate(content.pages.doc_my.modalPasswordAddTitle),
               passwordChange: translate(content.pages.doc_my.modalPasswordChangeTitle),
               passwordDelete: translate(content.pages.doc_my.modalPasswordDeleteTitle),
@@ -51,8 +60,9 @@ const MyDocRow: React.FC<IDocument> = ({ created_at, updated_at, id, name, ext, 
       ),
       centered: true,
       children: {
-        delete: <DeleteModal id={id} />,
+        delete: <DeleteModal id={id} setPage={setPage} />,
         name: <RenameModal id={id} name={name} />,
+        duplicate: <DuplicateModal id={id} name={name} />,
         passwordAdd: <PasswordAddModal id={id} />,
         passwordChange: <PasswordChangeModal id={id} />,
         passwordDelete: <PasswordDeleteModal id={id} />,
@@ -121,6 +131,10 @@ const MyDocRow: React.FC<IDocument> = ({ created_at, updated_at, id, name, ext, 
             <Menu.Dropdown>
               <Menu.Item icon={<IconEdit size={20} />} onClick={() => handleDocAction('name')}>
                 {translate(content.pages.doc_my.actionRename)}
+              </Menu.Item>
+
+              <Menu.Item icon={<IconCopy size={20} />} onClick={() => handleDocAction('duplicate')}>
+                {translate(content.pages.doc_my.actionDuplicate)}
               </Menu.Item>
 
               {password && (

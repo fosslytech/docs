@@ -27,6 +27,11 @@ export interface DecryptDocDTO {
   password: string;
 }
 
+export interface DuplicateDocDTO {
+  id: string;
+  name: string;
+}
+
 // ---------------------------------------------------------------
 // Universal hook, used for any action on doc API
 // ---------------------------------------------------------------

@@ -5,12 +5,15 @@ import { IconEye, IconEyeOff } from '@tabler/icons-react';
 import { Editor } from '@tiptap/react';
 import React from 'react';
 import { InsertDocDTO, useCommonDocMutation } from 'src/api/doc/use-my-docs-mutation';
+import useDocCtx from 'src/store/doc/use-doc-ctx';
 
 interface Props {
   editor: Editor;
 }
 
 const SaveModal: React.FC<Props> = ({ editor }) => {
+  const { setInitialPassword, setInitialId } = useDocCtx();
+
   const docMutation = useCommonDocMutation<InsertDocDTO>('/api/doc', 'POST');
 
   const form = useForm({
@@ -25,12 +28,15 @@ const SaveModal: React.FC<Props> = ({ editor }) => {
   });
 
   const handleSaveDoc = async (values: typeof form.values) => {
-    await docMutation.mutateAsync({
+    const res = await docMutation.mutateAsync({
       ext: 'odt',
       html: editor.getHTML(),
       name: values.name,
       password: values.password,
     });
+
+    if (values.password) setInitialPassword(values.password);
+    if (res?.data) setInitialId(res.data);
 
     closeAllModals();
   };

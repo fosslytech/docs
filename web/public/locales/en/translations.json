@@ -192,6 +192,7 @@
       "unprotected": "Unprotected",
 
       "actionRename": "Rename",
+      "actionDuplicate": "Duplicate",
       "actionChangePassword": "Change password",
       "actionRemovePassword": "Remove password",
       "actionSetPassword": "Set password",
@@ -208,6 +209,10 @@
       "modalNameTitle": "Rename your document",
       "modalNameInput": "Document name",
       "modalNameBtn": "Rename",
+
+      "modalDuplicateTitle": "Duplicate document",
+      "modalDuplicateDescription": "If the document is password protected, password will be copied as well",
+      "modalDuplicateBtn": "Duplicate",
 
       "modalPasswordAddTitle": "Set document password",
       "modalPasswordAddDescription": "Remember this password, you'll need it to access the document",

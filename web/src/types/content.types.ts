@@ -150,6 +150,7 @@ export interface ITranslations {
       unprotected: string;
 
       actionRename: string;
+      actionDuplicate: string;
       actionChangePassword: string;
       actionRemovePassword: string;
       actionSetPassword: string;
@@ -166,6 +167,10 @@ export interface ITranslations {
       modalNameTitle: string;
       modalNameInput: string;
       modalNameBtn: string;
+
+      modalDuplicateTitle: string;
+      modalDuplicateDescription: string;
+      modalDuplicateBtn: string;
 
       modalPasswordAddTitle: string;
       modalPasswordAddDescription: string;
