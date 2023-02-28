@@ -5,10 +5,12 @@ import DocHeader from '../DocHeader/DocHeader';
 import StateConnecting from './StateConnecting';
 import StateRoomFull from './StateRoomFull';
 import { useOdtEditor } from './use-odt-editor';
+import useDocCtx from 'src/store/doc/use-doc-ctx';
 
-const Home = () => {
+const OdtPage = () => {
   const theme = useMantineTheme();
   const { editor, connectedUsers, isConnected, isFull } = useOdtEditor();
+  const { initialDocId } = useDocCtx();
 
   // State: Room is full
   if (isFull) return <StateRoomFull />;
@@ -62,4 +64,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default OdtPage;

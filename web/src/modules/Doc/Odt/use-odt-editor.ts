@@ -33,7 +33,7 @@ export const useOdtEditor = () => {
   const router = useRouter();
   const theme = useMantineTheme();
   const session = useSession();
-  const { initialDocContent, setInitialContent, handleResetInitialDocument } = useDocCtx();
+  const { initialDocContent, setInitialContent } = useDocCtx();
 
   const { doc, provider } = useYWebRtc(router.query.session as string, {
     maxConns: MAX_CONNS_ODT,
@@ -109,10 +109,6 @@ export const useOdtEditor = () => {
   // Remove initial content
   useNonInitialEffect(() => {
     if (initialDocContent.length) setInitialContent('');
-
-    return () => {
-      handleResetInitialDocument();
-    };
   }, [initialDocContent]);
 
   // Don't allow new connections if room is full

@@ -15,7 +15,7 @@ const BackButton = () => {
 
   return (
     <Button variant={'subtle'} leftIcon={<IconArrowLeft size={22} />} onClick={() => router.push('/doc')}>
-      {translate(content.pages.doc_odt.back)}
+      {translate(content.pages.doc_header.back)}
     </Button>
   );
 };

@@ -6,17 +6,19 @@ import useGlobalCtx from 'src/store/global/use-global-ctx';
 import MyDocRow from './MyDocRow';
 import TableTop from './TableTop';
 
-const MyDocTable = () => {
+interface Props {
+  documents: IDocument[];
+  isLoading: boolean;
+}
+
+const MyDocTable: React.FC<Props> = ({ documents, isLoading }) => {
   const { translate, content } = useGlobalCtx();
-  const { data: documents, isLoading } = useMyDocsQuery();
 
   // Pagination
   const [page, setPage] = useState<number>(1);
 
   const perPage = 5;
   const total = Math.ceil(documents?.length / perPage);
-
-  console.log(total);
 
   return (
     <>
