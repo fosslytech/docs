@@ -15,6 +15,7 @@ interface Props {
 
 const SaveButton: React.FC<Props> = ({ editor }) => {
   const { initialDocId, initialDocPassword } = useDocCtx();
+
   const docMutation = useCommonDocMutation<UpdateDocDTO>('/api/doc/html', 'PATCH');
 
   const [docState, setDocState] = useState<'dirty' | 'unsaved'>('unsaved');

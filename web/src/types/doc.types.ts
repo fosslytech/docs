@@ -25,4 +25,6 @@ export interface Doc_Context extends Base_Context<Doc_Context_Action> {
   isLoadingNew: boolean;
   isLoadingUpload: boolean;
   isLoadingDownload: boolean;
+
+  isLoadingDecrypt: boolean;
 }

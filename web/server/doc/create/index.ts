@@ -12,7 +12,6 @@ export const docApi_createDocument = async (
   // Extract data from body
   const { ext, html, name, password } = JSON.parse(req.body);
 
-  // Max 25 documents per account
   const { data: data_GET, error: error_GET } = await supabaseServerClient
     .from('documents')
     .select('id')
@@ -21,6 +20,7 @@ export const docApi_createDocument = async (
   // Handle error_GET
   if (error_GET) return res.status(400).json({ error: true, message: error_GET.message, data: null });
 
+  // Max 25 documents per account
   if (data_GET.length >= 25)
     return res.status(400).json({ error: true, message: 'Document limit reached', data: null });
 
@@ -37,10 +37,13 @@ export const docApi_createDocument = async (
 
   const { data: data_POST, error: error_POST } = await supabaseServerClient
     .from('documents')
-    .insert({ name, ext, html: ciphertext, password: passwordHash, user_id: user_id });
+    .insert({ name, ext, html: ciphertext, password: passwordHash, user_id: user_id })
+    .select('id');
 
   // Handle error_POST
   if (error_POST) return res.status(400).json({ error: true, message: error_POST.message, data: null });
 
-  res.status(200).json({ error: false, message: 'Your document was successfully created', data: data_POST });
+  res
+    .status(200)
+    .json({ error: false, message: 'Your document was successfully created', data: data_POST[0].id });
 };

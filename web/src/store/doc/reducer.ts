@@ -13,6 +13,8 @@ export const initialState: Doc_Context = {
   isLoadingNew: false,
   isLoadingUpload: false,
   isLoadingDownload: false,
+
+  isLoadingDecrypt: false,
 };
 
 export const docReducer = (state: Doc_Context, action: Doc_Context_Action): Doc_Context => {

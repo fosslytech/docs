@@ -8,7 +8,7 @@ const DocPage = () => {
   const { classes } = useStyles();
 
   return (
-    <Container size="lg" py="xl" mt={120} mb={120}>
+    <Container size="lg" py="xl" mt={60} mb={120}>
       <Title className={classes.title} align="center" mt="sm">
         {translate(content.pages.doc.title)}
       </Title>
