@@ -231,7 +231,7 @@
       "modalPasswordChangeBtn": "Change password"
     },
 
-    "doc_odt": {
+    "doc_header": {
       "back": "Go back",
       "invite": "Invite",
       "download": {
@@ -241,6 +241,25 @@
         "txt": "as .txt file",
         "html": "as .html file"
       },
+
+      "save": {
+        "btnDirty": "Sync",
+        "btnClean": "Saved",
+        "btnUnsaved": "Save",
+
+        "labelDirty": "Sync any new changes made",
+        "labelClean": "",
+        "labelUnsaved": "Save your document for later",
+
+        "fieldRequired": "This field is required",
+        "modalTitle": "Save your document",
+        "modalInput1": "Document name",
+        "modalInput2": "Document password",
+        "modalBtn": "Save"
+      }
+    },
+
+    "doc_odt": {
       "toolbarLabels": {
         "boldControlLabel": "Bold",
         "italicControlLabel": "Italic",

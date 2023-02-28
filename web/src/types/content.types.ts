@@ -188,7 +188,7 @@ export interface ITranslations {
       modalPasswordChangeInput2: string;
       modalPasswordChangeBtn: string;
     };
-    doc_odt: {
+    doc_header: {
       back: string;
       invite: string;
       download: {
@@ -198,6 +198,24 @@ export interface ITranslations {
         txt: string;
         html: string;
       };
+
+      save: {
+        btnDirty: string;
+        btnClean: string;
+        btnUnsaved: string;
+
+        labelDirty: string;
+        labelClean: string;
+        labelUnsaved: string;
+
+        fieldRequired: string;
+        modalTitle: string;
+        modalInput1: string;
+        modalInput2: string;
+        modalBtn: string;
+      };
+    };
+    doc_odt: {
       toolbarLabels: {
         boldControlLabel: string;
         italicControlLabel: string;

@@ -34,7 +34,7 @@ const DownloadButton: React.FC<Props> = ({ editor }) => {
           pr={12}
           loading={isLoadingDownload}
         >
-          {translate(content.pages.doc_odt.download.button)}
+          {translate(content.pages.doc_header.download.button)}
         </Button>
       </Menu.Target>
       <Menu.Dropdown>
@@ -42,7 +42,7 @@ const DownloadButton: React.FC<Props> = ({ editor }) => {
           icon={<IconFileText size={20} color={theme.colors.blue[6]} />}
           onClick={() => handleDownloadDocument(editor, 'odt')}
         >
-          {translate(content.pages.doc_odt.download.odt)}
+          {translate(content.pages.doc_header.download.odt)}
         </Menu.Item>
         {/* <Menu.Item
           icon={<IconFileDescription size={20} color={theme.colors.red[6]} />}
@@ -54,13 +54,13 @@ const DownloadButton: React.FC<Props> = ({ editor }) => {
           icon={<IconCode size={20} color={theme.colors.orange[6]} />}
           onClick={() => handleDownloadDocument(editor, 'html')}
         >
-          {translate(content.pages.doc_odt.download.html)}
+          {translate(content.pages.doc_header.download.html)}
         </Menu.Item>
         <Menu.Item
           icon={<IconAlignJustified size={20} color={theme.colors.green[6]} />}
           onClick={() => handleDownloadDocument(editor, 'txt')}
         >
-          {translate(content.pages.doc_odt.download.txt)}
+          {translate(content.pages.doc_header.download.txt)}
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

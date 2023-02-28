@@ -2,7 +2,7 @@ import { MantineSize, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
 // Usage example:
-// const isSm = useResponsive("max", "xs");
+// const isXs = useResponsive("max", "xs");
 
 export const useResponsive = (target: 'min' | 'max', bp: MantineSize) => {
   const theme = useMantineTheme();

@@ -18,7 +18,7 @@ const InviteButton = () => {
         leftIcon={!isXs && <IconShare size={22} />}
         onClick={() => handleShare(window.location.toString())}
       >
-        {!isXs ? translate(content.pages.doc_odt.invite) : <IconShare size={22} />}
+        {!isXs ? translate(content.pages.doc_header.invite) : <IconShare size={22} />}
       </Button>
     </Tooltip>
   );

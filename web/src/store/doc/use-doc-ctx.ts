@@ -56,6 +56,9 @@ const useDocCtx = () => {
   const handleNewDocument = async () => {
     dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingNew', value: true } });
 
+    // Clean up existing state, if another document was open before
+    if (initialDocId) dispatch({ type: 'RESET_INITIAL_DOC' });
+
     const { data } = await convertNewMutation.mutateAsync();
 
     dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingNew', value: false } });
@@ -69,6 +72,9 @@ const useDocCtx = () => {
 
   const handleUploadDocument = async (file: File, format: 'odt' | 'ods') => {
     dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingUpload', value: true } });
+
+    // Clean up existing state, if another document was open before
+    if (initialDocId) dispatch({ type: 'RESET_INITIAL_DOC' });
 
     const data = await convertUploadMutation.mutateAsync({ file, format: 'html' });
 
@@ -148,10 +154,6 @@ const useDocCtx = () => {
     router.push(`/doc/${ext}/${res1.data.roomName}`);
   };
 
-  const handleResetInitialDocument = () => {
-    return dispatch({ type: 'RESET_INITIAL_DOC' });
-  };
-
   return {
     initialDocContent,
     setInitialContent,
@@ -176,7 +178,6 @@ const useDocCtx = () => {
     isLoadingDecrypt,
 
     handleOpenMyDocument,
-    handleResetInitialDocument,
   };
 };
 

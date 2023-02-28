@@ -1,7 +1,7 @@
 export const logConsoleWarning = () => {
   console.log(`
-  ----------------------------------------------------------------
-  ----------------------------------------------------------------
+  -------------------------------------------
+  -------------------------------------------
   
     .d8888b.  888                       888    
    d88P  Y88b 888                       888    
@@ -16,15 +16,14 @@ export const logConsoleWarning = () => {
                               888              
   
   
-  
   This is a browser feature intended for 
-  developers. If someone told you to copy-paste
-  something here it's a scam and will
-  give them access to your account
+  developers. If someone told you to
+  copy-paste something here it's a scam and
+  will give them access to your account
   
-  See https://en.wikipedia.org/wiki/Self-XSS for more information.
+  See https://en.wikipedia.org/wiki/Self-XSS.
   
-  ----------------------------------------------------------------
-  ----------------------------------------------------------------
+  -------------------------------------------
+  -------------------------------------------
   `);
 };

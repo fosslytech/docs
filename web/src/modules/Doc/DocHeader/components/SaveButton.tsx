@@ -1,5 +1,5 @@
 import { Button, Group, Text, Tooltip } from '@mantine/core';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { IconCloudUpload, IconDeviceFloppy, IconRefresh } from '@tabler/icons-react';
 import { useResponsive } from '@hooks/use-responsive';
@@ -8,17 +8,20 @@ import { openModal } from '@mantine/modals';
 import SaveModal from './SaveModal';
 import { UpdateDocDTO, useCommonDocMutation } from 'src/api/doc/use-my-docs-mutation';
 import useDocCtx from 'src/store/doc/use-doc-ctx';
+import useBeforeunload from '@hooks/use-beforeunload';
+import useGlobalCtx from 'src/store/global/use-global-ctx';
 
 interface Props {
   editor: Editor;
 }
 
 const SaveButton: React.FC<Props> = ({ editor }) => {
+  const { translate, content } = useGlobalCtx();
   const { initialDocId, initialDocPassword } = useDocCtx();
 
   const docMutation = useCommonDocMutation<UpdateDocDTO>('/api/doc/html', 'PATCH');
 
-  const [docState, setDocState] = useState<'dirty' | 'unsaved'>('unsaved');
+  const docStateRef = useRef<'dirty' | 'clean' | 'unsaved'>('unsaved');
 
   const isSm = useResponsive('max', 'sm');
 
@@ -27,7 +30,7 @@ const SaveButton: React.FC<Props> = ({ editor }) => {
     return openModal({
       title: (
         <Text size="lg" fw={600}>
-          Save your document
+          {translate(content.pages.doc_header.save.modalTitle)}
         </Text>
       ),
       centered: true,
@@ -42,29 +45,53 @@ const SaveButton: React.FC<Props> = ({ editor }) => {
       id: initialDocId,
       password1: initialDocPassword,
     });
+
+    // setDocState('clean');
+
+    docStateRef.current = 'clean';
   };
 
   // Check if user opened existing doc or created new
+
   useEffect(() => {
-    if (initialDocId && docState === 'unsaved') {
-      setDocState('dirty');
+    if (initialDocId && docStateRef.current === 'unsaved') {
+      docStateRef.current = 'dirty';
     }
   }, [initialDocId]);
+
+  // Check if there are changes on document
+  useEffect(() => {
+    const handler = () => {
+      if (docStateRef.current === 'clean') docStateRef.current = 'dirty';
+    };
+
+    editor.on('update', handler);
+
+    return () => {
+      editor.off('update', handler);
+    };
+  }, []);
+
+  // Warn user if there are changes made
+  useBeforeunload(['dirty', 'unsaved'].includes(docStateRef.current));
 
   // Button content
 
   const btnText = {
-    dirty: 'Sync',
-    unsaved: 'Save',
+    dirty: translate(content.pages.doc_header.save.btnDirty),
+    clean: translate(content.pages.doc_header.save.btnClean),
+    unsaved: translate(content.pages.doc_header.save.btnUnsaved),
   };
 
   const btnLabel = {
-    dirty: 'Sync any new changes made',
-    unsaved: 'Save your document for later',
+    dirty: translate(content.pages.doc_header.save.labelDirty),
+    clean: translate(content.pages.doc_header.save.labelClean),
+    unsaved: translate(content.pages.doc_header.save.labelUnsaved),
   };
 
   const btnIcon = {
     dirty: <IconDeviceFloppy size={22} />,
+    clean: <IconDeviceFloppy size={22} />,
     unsaved: <IconCloudUpload size={22} />,
   };
 
@@ -75,14 +102,14 @@ const SaveButton: React.FC<Props> = ({ editor }) => {
 
   return (
     <Group>
-      <Tooltip label={btnLabel[docState]} position="bottom">
+      <Tooltip label={btnLabel[docStateRef.current]} position="bottom">
         <Button
-          leftIcon={!isSm && btnIcon[docState]}
-          disabled={['clean'].includes(docState)}
-          onClick={btnFunction[docState]}
+          leftIcon={!isSm && btnIcon[docStateRef.current]}
+          disabled={['clean'].includes(docStateRef.current)}
+          onClick={btnFunction[docStateRef.current]}
           loading={docMutation.isLoading}
         >
-          {btnText[docState]}
+          {btnText[docStateRef.current]}
         </Button>
       </Tooltip>
     </Group>

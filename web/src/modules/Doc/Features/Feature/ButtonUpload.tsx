@@ -11,7 +11,6 @@ const ButtonUpload: React.FC<IFeature> = (feature) => {
   const { handleUploadDocument, isLoadingUpload } = useDocCtx();
 
   const handleChange = (file: File) => {
-    console.log(file);
     handleUploadDocument(file, feature.appType);
   };
 
