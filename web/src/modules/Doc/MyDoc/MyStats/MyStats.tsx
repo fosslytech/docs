@@ -24,7 +24,7 @@ const MyStats: React.FC<Props> = ({ documents, isLoading }) => {
 
   const passwordCount = documents?.filter((d) => d.password).length;
 
-  const data: StatsRingProps[] = [
+  const data: StatsRingProps[] = documents && [
     {
       label: 'Total storage',
       icon: IconDatabase,
@@ -70,35 +70,37 @@ const MyStats: React.FC<Props> = ({ documents, isLoading }) => {
     },
   ];
 
-  const stats = data.map((stat) => {
-    const Icon = stat.icon;
+  const stats =
+    data &&
+    data.map((stat) => {
+      const Icon = stat.icon;
 
-    return (
-      <Paper withBorder radius="md" p="xs" key={stat.label}>
-        <Group>
-          <RingProgress
-            size={80}
-            thickness={8}
-            sections={stat.sections}
-            label={
-              <Center>
-                <Icon size={22} />
-              </Center>
-            }
-          />
+      return (
+        <Paper withBorder radius="md" p="xs" key={stat.label}>
+          <Group>
+            <RingProgress
+              size={80}
+              thickness={8}
+              sections={stat.sections}
+              label={
+                <Center>
+                  <Icon size={22} />
+                </Center>
+              }
+            />
 
-          <div>
-            <Text color="dimmed" size="xs" transform="uppercase" weight={700}>
-              {stat.label}
-            </Text>
-            <Text weight={700} size="xl">
-              {stat.stats}
-            </Text>
-          </div>
-        </Group>
-      </Paper>
-    );
-  });
+            <div>
+              <Text color="dimmed" size="xs" transform="uppercase" weight={700}>
+                {stat.label}
+              </Text>
+              <Text weight={700} size="xl">
+                {stat.stats}
+              </Text>
+            </div>
+          </Group>
+        </Paper>
+      );
+    });
 
   if (isLoading) return <></>;
 
