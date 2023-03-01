@@ -10,11 +10,11 @@ const StateRoomFull = () => {
   return (
     <Flex mt={80} direction="column" align="center">
       <Title mb={20} align="center">
-        {translate(content.pages.doc_odt.stateFull.title)}
+        {translate(content.pages['doc_od*'].stateFull.title)}
       </Title>
 
       <Link href="/">
-        <Button variant="light">{translate(content.pages.doc_odt.stateFull.button)}</Button>
+        <Button variant="light">{translate(content.pages['doc_od*'].stateFull.button)}</Button>
       </Link>
     </Flex>
   );

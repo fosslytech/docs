@@ -1,6 +1,6 @@
 import { Button, FileButton } from '@mantine/core';
 import { IFeature } from '@utils/resources/featuresData';
-import React from 'react';
+import React, { useState } from 'react';
 import useDocCtx from 'src/store/doc/use-doc-ctx';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
@@ -8,10 +8,14 @@ import { IconUpload } from '@tabler/icons-react';
 
 const ButtonUpload: React.FC<IFeature> = (feature) => {
   const { translate } = useGlobalCtx();
-  const { handleUploadDocument, isLoadingUpload } = useDocCtx();
+  const { handleUploadDocument } = useDocCtx();
 
-  const handleChange = (file: File) => {
-    handleUploadDocument(file, feature.appType);
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = async (file: File) => {
+    setLoading(true);
+    await handleUploadDocument(file, feature.appType);
+    setLoading(false);
   };
 
   return (
@@ -21,7 +25,7 @@ const ButtonUpload: React.FC<IFeature> = (feature) => {
           variant="default"
           leftIcon={<IconUpload size={16} />}
           onClick={() => {}}
-          loading={isLoadingUpload}
+          loading={loading}
           {...props}
         >
           {translate(feature.button1)}

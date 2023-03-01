@@ -1,0 +1,6 @@
+
+# Higher char limit for ods
+# Replace reoccurring characters to save up space
+# Prevent user from deleting the table
+# Resizing handle bug
+# handle no [session]

@@ -3,14 +3,14 @@ import { Container, useMantineTheme } from '@mantine/core';
 import Editor from './Editor/Editor';
 import DocHeader from '../common/DocHeader';
 
-import { useOdtEditor } from './use-odt-editor';
+import { useOdsEditor } from './use-ods-editor';
 import StateRoomFull from '../common/StateRoomFull';
 import StateConnecting from '../common/StateConnecting';
 import { getEditorStyles } from '../common/editorStyles';
 
 const OdtPage = () => {
   const theme = useMantineTheme();
-  const { editor, connectedUsers, isConnected, isFull } = useOdtEditor();
+  const { editor, connectedUsers, isConnected, isFull } = useOdsEditor();
 
   // State: Room is full
   if (isFull) return <StateRoomFull />;
@@ -26,10 +26,9 @@ const OdtPage = () => {
           ${getEditorStyles(theme)}
         `}
       </style>
-
       <DocHeader editor={editor} connectedUsers={connectedUsers} />
 
-      <Container size="lg" py="xl" mt={40} mb={40}>
+      <Container sx={{ minWidth: '90%' }} py="xl" mt={40} mb={40}>
         <Editor editor={editor} />
       </Container>
     </>

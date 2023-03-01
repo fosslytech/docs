@@ -10,8 +10,6 @@ export const initialState: Doc_Context = {
 
   isRoomFull: false,
 
-  isLoadingNew: false,
-  isLoadingUpload: false,
   isLoadingDownload: false,
 
   isLoadingDecrypt: false,

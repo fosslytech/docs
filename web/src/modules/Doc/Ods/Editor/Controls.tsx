@@ -1,36 +1,29 @@
 import React from 'react';
 import { RichTextEditor, useRichTextEditorContext } from '@mantine/tiptap';
 
-import { Flex, ScrollArea, Text, useMantineTheme } from '@mantine/core';
+import { Flex, ScrollArea, useMantineTheme } from '@mantine/core';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
 import {
   IconBold,
   IconItalic,
-  IconUnderline,
   IconStrikethrough,
   IconClearFormatting,
-  IconHighlight,
-  IconH1,
-  IconH2,
-  IconH3,
-  IconH4,
-  IconList,
-  IconListNumbers,
-  IconSubscript,
-  IconSuperscript,
-  IconLink,
-  IconUnlink,
   IconAlignLeft,
   IconAlignCenter,
   IconAlignJustified,
   IconAlignRight,
-  IconTable,
-  IconTableOff,
   IconColumnInsertLeft,
   IconRowInsertTop,
   IconBackspace,
-  IconCircleX,
+  IconLayoutSidebar,
+  IconLayoutNavbar,
+  IconColumnInsertRight,
+  IconRowInsertBottom,
+  IconSection,
+  IconUnderline,
+  IconLayersIntersect,
+  IconLayersSubtract,
 } from '@tabler/icons-react';
 import { getControlLabels } from '@module/Doc/common/labels';
 
@@ -39,33 +32,24 @@ const ItalicIcon = () => <IconItalic size={22} />;
 const UnderlineIcon = () => <IconUnderline size={22} />;
 const StrikethroughIcon = () => <IconStrikethrough size={22} />;
 const ClearFormattingIcon = () => <IconClearFormatting size={22} />;
-const HighlightIcon = () => <IconHighlight size={22} />;
-
-const H1Icon = () => <IconH1 size={22} />;
-const H2Icon = () => <IconH2 size={22} />;
-const H3Icon = () => <IconH3 size={22} />;
-const H4Icon = () => <IconH4 size={22} />;
-
-const BulletListIcon = () => <IconList size={22} />;
-const OrderedListIcon = () => <IconListNumbers size={22} />;
-const SubscriptIcon = () => <IconSubscript size={22} />;
-const SuperscriptIcon = () => <IconSuperscript size={22} />;
-
-const LinkIcon = () => <IconLink size={22} />;
-const LinkDismissIcon = () => <IconUnlink size={22} />;
 
 const AlignLeftIcon = () => <IconAlignLeft size={22} />;
 const AlignCenterIcon = () => <IconAlignCenter size={22} />;
 const AlignJustifyIcon = () => <IconAlignJustified size={22} />;
 const AlignRightIcon = () => <IconAlignRight size={22} />;
 
-const UnsetColorIcon = () => <IconCircleX size={22} />;
+const TableHeadRowIcon = () => <IconLayoutNavbar size={22} />;
+const TableHeadColumnIcon = () => <IconLayoutSidebar size={22} />;
+const TableHeadCellIcon = () => <IconSection size={22} />;
 
-const TableAddIcon = () => <IconTable size={22} />;
-const TableRemoveIcon = () => <IconTableOff size={22} />;
-const TableColumnAddIcon = () => <IconColumnInsertLeft size={22} />;
+const TableCellCombineIcon = () => <IconLayersIntersect size={22} />;
+const TableCellSplitIcon = () => <IconLayersSubtract size={22} />;
+
+const TableColumnBeforeAddIcon = () => <IconColumnInsertLeft size={22} />;
+const TableColumnAfterAddIcon = () => <IconColumnInsertRight size={22} />;
 const TableColumnRemoveIcon = () => <IconBackspace size={22} />;
-const TableRowAddIcon = () => <IconRowInsertTop size={22} />;
+const TableRowBeforeAddIcon = () => <IconRowInsertTop size={22} />;
+const TableRowAfterAddIcon = () => <IconRowInsertBottom size={22} />;
 const TableRowRemoveIcon = () => <IconBackspace size={22} />;
 
 const Controls = () => {
@@ -80,41 +64,10 @@ const Controls = () => {
       <Flex gap="lg" justify="center">
         <RichTextEditor.ControlsGroup>
           <RichTextEditor.Bold icon={BoldIcon} w={32} h={32} />
-
           <RichTextEditor.Italic icon={ItalicIcon} w={32} h={32} />
           <RichTextEditor.Underline icon={UnderlineIcon} w={32} h={32} />
           <RichTextEditor.Strikethrough icon={StrikethroughIcon} w={32} h={32} />
-          <RichTextEditor.Highlight
-            icon={HighlightIcon}
-            w={32}
-            h={32}
-            onClick={() => editor?.commands?.setHighlight({ color: theme.colors[theme.primaryColor][8] })}
-          />
-
           <RichTextEditor.ClearFormatting icon={ClearFormattingIcon} w={32} h={32} />
-
-          {/* <RichTextEditor.Code icon={() => <CodeFilled fontSize={20} />} w={32} h={32} /> */}
-        </RichTextEditor.ControlsGroup>
-
-        <RichTextEditor.ControlsGroup>
-          <RichTextEditor.H1 icon={H1Icon} w={32} h={32} />
-          <RichTextEditor.H2 icon={H2Icon} w={32} h={32} />
-          <RichTextEditor.H3 icon={H3Icon} w={32} h={32} />
-          <RichTextEditor.H4 icon={H4Icon} w={32} h={32} />
-        </RichTextEditor.ControlsGroup>
-
-        <RichTextEditor.ControlsGroup>
-          {/* <RichTextEditor.Blockquote />
-        <RichTextEditor.Hr /> */}
-          <RichTextEditor.BulletList icon={BulletListIcon} w={32} h={32} />
-          <RichTextEditor.OrderedList icon={OrderedListIcon} w={32} h={32} />
-          <RichTextEditor.Subscript icon={SubscriptIcon} w={32} h={32} />
-          <RichTextEditor.Superscript icon={SuperscriptIcon} w={32} h={32} />
-        </RichTextEditor.ControlsGroup>
-
-        <RichTextEditor.ControlsGroup>
-          <RichTextEditor.Link icon={LinkIcon} w={32} h={32} />
-          <RichTextEditor.Unlink icon={LinkDismissIcon} w={32} h={32} />
         </RichTextEditor.ControlsGroup>
 
         <RichTextEditor.ControlsGroup>
@@ -126,25 +79,66 @@ const Controls = () => {
 
         <RichTextEditor.ControlsGroup>
           <RichTextEditor.Control
-            onClick={() =>
-              editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: false }).run()
-            }
-            aria-label={labels.tableInsertLabel}
-            title={labels.tableInsertLabel}
+            onClick={() => editor?.chain().focus().toggleHeaderRow().run()}
+            disabled={!editor?.can().addRowAfter()}
+            aria-label={labels.headerRowLabel}
+            title={labels.headerRowLabel}
             w={32}
             h={32}
           >
-            <TableAddIcon />
+            <TableHeadRowIcon />
           </RichTextEditor.Control>
           <RichTextEditor.Control
-            onClick={() => editor?.chain().focus().deleteTable().run()}
-            disabled={!editor?.can().deleteTable()}
-            aria-label={labels.tableDeleteLabel}
-            title={labels.tableDeleteLabel}
+            onClick={() => editor?.chain().focus().toggleHeaderColumn().run()}
+            disabled={!editor?.can().deleteRow()}
+            aria-label={labels.headerColumnLabel}
+            title={labels.headerColumnLabel}
             w={32}
             h={32}
           >
-            <TableRemoveIcon />
+            <TableHeadColumnIcon />
+          </RichTextEditor.Control>
+          <RichTextEditor.Control
+            onClick={() => editor?.chain().focus().toggleHeaderCell().run()}
+            disabled={!editor?.can().deleteRow()}
+            aria-label={labels.headerCellLabel}
+            title={labels.headerCellLabel}
+            w={32}
+            h={32}
+          >
+            <TableHeadCellIcon />
+          </RichTextEditor.Control>
+
+          <RichTextEditor.Control
+            onClick={() => editor?.chain().focus().mergeCells().run()}
+            disabled={!editor?.can().deleteRow()}
+            aria-label={labels.mergeCellLabel}
+            title={labels.mergeCellLabel}
+            w={32}
+            h={32}
+          >
+            <TableCellCombineIcon />
+          </RichTextEditor.Control>
+          <RichTextEditor.Control
+            onClick={() => editor?.chain().focus().splitCell().run()}
+            disabled={!editor?.can().deleteRow()}
+            aria-label={labels.splitCellLabel}
+            title={labels.splitCellLabel}
+            w={32}
+            h={32}
+          >
+            <TableCellSplitIcon />
+          </RichTextEditor.Control>
+
+          <RichTextEditor.Control
+            onClick={() => editor?.chain().focus().addRowBefore().run()}
+            disabled={!editor?.can().addRowAfter()}
+            aria-label={labels.rowInsertBeforeLabel}
+            title={labels.rowInsertBeforeLabel}
+            w={32}
+            h={32}
+          >
+            <TableRowBeforeAddIcon />
           </RichTextEditor.Control>
           <RichTextEditor.Control
             onClick={() => editor?.chain().focus().addRowAfter().run()}
@@ -154,7 +148,7 @@ const Controls = () => {
             w={32}
             h={32}
           >
-            <TableRowAddIcon />
+            <TableRowAfterAddIcon />
           </RichTextEditor.Control>
           <RichTextEditor.Control
             onClick={() => editor?.chain().focus().deleteRow().run()}
@@ -166,6 +160,17 @@ const Controls = () => {
           >
             <TableRowRemoveIcon />
           </RichTextEditor.Control>
+
+          <RichTextEditor.Control
+            onClick={() => editor?.chain().focus().addColumnBefore().run()}
+            disabled={!editor?.can().addColumnAfter()}
+            aria-label={labels.columnInsertBeforeLabel}
+            title={labels.columnInsertBeforeLabel}
+            w={32}
+            h={32}
+          >
+            <TableColumnBeforeAddIcon />
+          </RichTextEditor.Control>
           <RichTextEditor.Control
             onClick={() => editor?.chain().focus().addColumnAfter().run()}
             disabled={!editor?.can().addColumnAfter()}
@@ -174,7 +179,7 @@ const Controls = () => {
             w={32}
             h={32}
           >
-            <TableColumnAddIcon />
+            <TableColumnAfterAddIcon />
           </RichTextEditor.Control>
           <RichTextEditor.Control
             onClick={() => editor?.chain().focus().deleteColumn().run()}
@@ -186,30 +191,6 @@ const Controls = () => {
           >
             <TableColumnRemoveIcon />
           </RichTextEditor.Control>
-        </RichTextEditor.ControlsGroup>
-
-        <RichTextEditor.ControlsGroup>
-          <RichTextEditor.ColorPicker
-            colors={[
-              '#25262b',
-              '#868e96',
-              '#fa5252',
-              '#e64980',
-              '#be4bdb',
-              '#7950f2',
-              '#4c6ef5',
-              '#228be6',
-              '#15aabf',
-              '#12b886',
-              '#40c057',
-              '#82c91e',
-              '#fab005',
-              '#fd7e14',
-            ]}
-            w={32}
-            h={32}
-          />
-          <RichTextEditor.UnsetColor icon={UnsetColorIcon} w={32} h={32} />
         </RichTextEditor.ControlsGroup>
       </Flex>
     </ScrollArea>

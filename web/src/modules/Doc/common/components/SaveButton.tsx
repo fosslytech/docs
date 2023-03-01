@@ -61,6 +61,8 @@ const SaveButton: React.FC<Props> = ({ editor }) => {
 
   // Check if there are changes on document
   useEffect(() => {
+    if (!editor) return;
+
     const handler = () => {
       if (docStateRef.current === 'clean') docStateRef.current = 'dirty';
     };

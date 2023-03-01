@@ -9,7 +9,7 @@ const StateConnecting = () => {
   return (
     <Flex mt={80} direction="column" align="center">
       <Title mb={20} align="center">
-        {translate(content.pages.doc_odt.stateConnecting.title)}
+        {translate(content.pages['doc_od*'].stateConnecting.title)}
       </Title>
 
       <Loader size={80} />

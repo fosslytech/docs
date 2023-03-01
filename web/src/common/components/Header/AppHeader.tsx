@@ -24,6 +24,9 @@ import useGlobalCtx from 'src/store/global/use-global-ctx';
 import packageJson from '../../../../package.json';
 import { Dispatch } from 'react';
 import { useSession } from '@supabase/auth-helpers-react';
+import useDetectAppType from '@module/Doc/use-detect-app-type';
+import AppWriter from '@icons/products/AppWriter';
+import AppCalc from '@icons/products/AppCalc';
 
 interface Props {
   opened: boolean;
@@ -34,13 +37,26 @@ const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
   const { translate, content } = useGlobalCtx();
   const theme = useMantineTheme();
   const colorScheme = useMantineColorScheme();
-  const router = useRouter();
   const session = useSession();
+
+  const appType = useDetectAppType();
 
   const logoColor = colorScheme.colorScheme === 'dark' ? theme.colors.gray[0] : theme.colors.gray[7];
 
   const currentLocation = typeof window !== 'undefined' && window.location.origin;
   const authUrl = process.env.NEXT_PUBLIC_AUTH_URL + '/auth/login?redirectTo=' + currentLocation + '/doc';
+
+  const getCurrentLogo = () => {
+    switch (appType) {
+      case 'odt':
+        return <AppWriter size={28} color={theme.colors.blue[6]} />;
+      case 'ods':
+        return <AppCalc size={28} color={theme.colors.green[6]} />;
+
+      default:
+        return <Logo width={28} fill={theme.colors[theme.primaryColor][6]} />;
+    }
+  };
 
   return (
     <Header height={{ base: 60, md: 70 }} p="md" px="xl">
@@ -55,15 +71,18 @@ const AppHeader: React.FC<Props> = ({ opened, setOpened }) => {
           />
         </MediaQuery>
 
-        <Flex align="center" onClick={() => router.push('/')} style={{ cursor: 'pointer' }}>
-          <Logo width={28} fill={theme.colors[theme.primaryColor][6]} />
+        <Link href={'/'}>
+          <Flex align="center" style={{ cursor: 'pointer' }}>
+            {/* {getCurrentLogo()} */}
+            <Logo width={28} fill={theme.colors[theme.primaryColor][6]} />
 
-          <MediaQuery smallerThan="xs" styles={{ display: 'none' }}>
-            <Text ml={12} fw={700} size={20} color={logoColor}>
-              {translate(content.header.appName)}
-            </Text>
-          </MediaQuery>
-        </Flex>
+            <MediaQuery smallerThan="xs" styles={{ display: 'none' }}>
+              <Text ml={12} fw={700} size={20} color={logoColor}>
+                {translate(content.header.appName)}
+              </Text>
+            </MediaQuery>
+          </Flex>
+        </Link>
 
         <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
           <Badge ml={16} variant="filled" size="lg" color="gray" tt="none" radius="sm">

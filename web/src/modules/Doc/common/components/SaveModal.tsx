@@ -1,6 +1,7 @@
 import { Button, PasswordInput, TextInput } from '@mantine/core';
 import { isNotEmpty, useForm } from '@mantine/form';
 import { closeAllModals } from '@mantine/modals';
+import useDetectAppType from '@module/Doc/use-detect-app-type';
 import { IconEye, IconEyeOff } from '@tabler/icons-react';
 import { Editor } from '@tiptap/react';
 import React from 'react';
@@ -16,6 +17,8 @@ const SaveModal: React.FC<Props> = ({ editor }) => {
 
   const docMutation = useCommonDocMutation<InsertDocDTO>('/api/doc', 'POST');
 
+  const appType = useDetectAppType();
+
   const form = useForm({
     initialValues: {
       name: '',
@@ -29,7 +32,7 @@ const SaveModal: React.FC<Props> = ({ editor }) => {
 
   const handleSaveDoc = async (values: typeof form.values) => {
     const res = await docMutation.mutateAsync({
-      ext: 'odt',
+      ext: appType || 'odt',
       html: editor.getHTML(),
       name: values.name,
       password: values.password,

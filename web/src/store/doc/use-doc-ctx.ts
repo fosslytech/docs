@@ -13,6 +13,8 @@ import {
 } from 'src/api/convert/use-convert-mutation';
 
 import { formatHtmlResponse, formatHtmlRequest } from '@fosslytech/docs-core';
+import { DEFAULT_ODS } from '@module/Doc/Ods/defaultContent';
+import { DEFAULT_ODT } from '@module/Doc/Odt/defaultContent';
 // import { localFormatHtmlRequest } from '@utils/functions/localFormatHtmlRequest';
 // import { localFormatHtmlResponse } from '@utils/functions/localFormatHtmlResponse';
 
@@ -22,8 +24,7 @@ const useDocCtx = () => {
     initialDocContent,
     initialDocPassword,
     initialDocId,
-    isLoadingNew,
-    isLoadingUpload,
+
     isLoadingDownload,
     isLoadingDecrypt,
     isRoomFull,
@@ -53,17 +54,17 @@ const useDocCtx = () => {
   // Handle new document
   // -------------------------------------------------------------------------
 
-  const handleNewDocument = async () => {
-    dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingNew', value: true } });
-
+  const handleNewDocument = async (format: 'odt' | 'ods') => {
     // Clean up existing state, if another document was open before
     if (initialDocId) dispatch({ type: 'RESET_INITIAL_DOC' });
 
+    // Set initial document content
+    if (format === 'odt') setInitialContent(DEFAULT_ODT);
+    if (format === 'ods') setInitialContent(DEFAULT_ODS);
+
     const { data } = await convertNewMutation.mutateAsync();
 
-    dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingNew', value: false } });
-
-    router.push(`/doc/odt/${data.roomName}`);
+    router.push(`/doc/${format}/${data.roomName}`);
   };
 
   // -------------------------------------------------------------------------
@@ -71,8 +72,6 @@ const useDocCtx = () => {
   // -------------------------------------------------------------------------
 
   const handleUploadDocument = async (file: File, format: 'odt' | 'ods') => {
-    dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingUpload', value: true } });
-
     // Clean up existing state, if another document was open before
     if (initialDocId) dispatch({ type: 'RESET_INITIAL_DOC' });
 
@@ -82,13 +81,10 @@ const useDocCtx = () => {
     // const formattedHtml = localFormatHtmlResponse(format, data.output);
     const formattedHtml = formatHtmlResponse(format, data.output);
 
-    if (!formattedHtml)
-      return dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingUpload', value: false } });
+    if (!formattedHtml) return;
 
     setInitialContent(formattedHtml);
-    router.push(`/doc/odt/${data.roomName}`);
-
-    dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingUpload', value: false } });
+    router.push(`/doc/${format}/${data.roomName}`);
   };
 
   // -------------------------------------------------------------------------
@@ -171,8 +167,6 @@ const useDocCtx = () => {
     isRoomFull,
     handleRoomFull,
 
-    isLoadingNew,
-    isLoadingUpload,
     isLoadingDownload,
 
     isLoadingDecrypt,

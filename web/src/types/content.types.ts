@@ -194,6 +194,7 @@ export interface ITranslations {
       download: {
         button: string;
         odt: string;
+        ods: string;
         pdf: string;
         txt: string;
         html: string;
@@ -215,7 +216,7 @@ export interface ITranslations {
         modalBtn: string;
       };
     };
-    doc_odt: {
+    'doc_od*': {
       toolbarLabels: {
         boldControlLabel: string;
         italicControlLabel: string;
@@ -247,9 +248,17 @@ export interface ITranslations {
 
         tableInsertLabel: string;
         tableDeleteLabel: string;
-        rowInsertLabel: string;
+        headerRowLabel: string;
+        headerColumnLabel: string;
+        headerCellLabel: string;
+        mergeCellLabel: string;
+        splitCellLabel: string;
+
+        rowInsertLabel1: string;
+        rowInsertLabel2: string;
         rowDeleteLabel: string;
-        columnInsertLabel: string;
+        columnInsertLabel1: string;
+        columnInsertLabel2: string;
         columnDeleteLabel: string;
 
         colorControlLabel: string;

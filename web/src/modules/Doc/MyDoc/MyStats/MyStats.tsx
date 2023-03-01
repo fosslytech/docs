@@ -47,7 +47,7 @@ const MyStats: React.FC<Props> = ({ documents, isLoading }) => {
       icon: IconFile,
       sections: [
         { value: odtCount * (100 / documents.length), color: 'blue', tooltip: `Text - ${odtCount}` },
-        // { value: odsCount * (100 / 25), color: 'green', tooltip: `Spreadsheet - ${odsCount}` },
+        { value: odsCount * (100 / documents.length), color: 'green', tooltip: `Spreadsheet - ${odsCount}` },
       ],
       stats: `${odtCount} text`,
     },

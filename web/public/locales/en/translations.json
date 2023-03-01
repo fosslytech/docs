@@ -237,6 +237,7 @@
       "download": {
         "button": "Download",
         "odt": "as .odt file",
+        "ods": "as .ods file",
         "pdf": "as .pdf file",
         "txt": "as .txt file",
         "html": "as .html file"
@@ -259,7 +260,7 @@
       }
     },
 
-    "doc_odt": {
+    "doc_od*": {
       "toolbarLabels": {
         "boldControlLabel": "Bold",
         "italicControlLabel": "Italic",
@@ -291,9 +292,17 @@
 
         "tableInsertLabel": "Insert table",
         "tableDeleteLabel": "Delete table",
-        "rowInsertLabel": "Insert row",
+        "headerRowLabel": "Toggle header row",
+        "headerColumnLabel": "Toggle header column",
+        "headerCellLabel": "Toggle header cell",
+        "mergeCellLabel": "Merge cells",
+        "splitCellLabel": "Split cells",
+
+        "rowInsertLabel1": "Insert row before",
+        "rowInsertLabel2": "Insert row after",
         "rowDeleteLabel": "Delete row",
-        "columnInsertLabel": "Insert column",
+        "columnInsertLabel1": "Insert column before",
+        "columnInsertLabel2": "Insert column after",
         "columnDeleteLabel": "Delete column",
 
         "colorControlLabel": "Set text color"

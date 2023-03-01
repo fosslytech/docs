@@ -3,12 +3,12 @@ import dynamic from 'next/dynamic';
 import AppLayout from '@layout/AppLayout';
 import { NextPageWithLayout } from '@ts/global.types';
 
-const OdtWithNoSSR = dynamic(() => import('@module/Doc/Odt/OdtPage'), {
+const OdsWithNoSSR = dynamic(() => import('@module/Doc/Ods/OdsPage'), {
   ssr: false,
 });
 
 const Page: NextPageWithLayout = () => {
-  return <OdtWithNoSSR />;
+  return <OdsWithNoSSR />;
 };
 
 Page.getLayout = (page: React.ReactElement) => {
