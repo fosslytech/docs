@@ -28,14 +28,14 @@
 
 ## Structure
 
-| Codebase            |   Description    |                     Domain                     |
-| :------------------ | :--------------: | :--------------------------------------------: |
-| [web](../web)       | Next.js web app  |  [docs.fossly.tech](https://docs.fossly.tech)  |
-| [api](../api)       |   Node.js API    | [api.odfcollab.com](https://api.odfcollab.com) |
-| [apiv2](../apiv2)   | API but with Bun |                       /                        |
-| [core](../core)     |   Shared code    |                       /                        |
-| [design](../design) |  Project assets  |                       /                        |
+| Codebase            |   Description   |                        Domain                         |
+| :------------------ | :-------------: | :---------------------------------------------------: |
+| [web](../web)       | Next.js web app |     [docs.fossly.tech](https://docs.fossly.tech)      |
+| [api](../api)       |   Node.js API   | [api-eu.fossly.tech](https://api-eu.fossly.tech/docs) |
+| [core](../core)     |   Shared code   |                           /                           |
+| [design](../design) | Project assets  |                           /                           |
 
+<!-- | [apiv2](../apiv2)   | API but with Bun |                               /                               | -->
 <!-- | [mobile](mobile)   |  Mobile app          |   /   | -->
 <!-- | [desktop](desktop) |  Desktop app         |   /   | -->
 
