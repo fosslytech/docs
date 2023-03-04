@@ -39,7 +39,6 @@ const apiHandler = (config: HandlerObject) => {
       await handler(req, res, supabaseServerClient, data_User.user.id);
     } catch (err) {
       // global error handler
-      console.log(err);
       res.status(500).json({ error: true, message: 'Something went wrong', data: null });
     }
   };

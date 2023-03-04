@@ -11,13 +11,14 @@ import {
   UpdateDocDTO,
   useCommonDocMutation,
 } from 'src/api/doc/use-my-docs-mutation';
-import {
-  useConvertDownloadMutation,
-  useConvertNewMutation,
-  useConvertUploadMutation,
-} from 'src/api/convert/use-convert-mutation';
+import { useConvertDownloadMutation, useConvertUploadMutation } from 'src/api/convert/use-convert-mutation';
 
-import { formatHtmlResponse, formatHtmlRequest } from '@fosslytech/docs-core';
+import {
+  formatHtmlResponse,
+  formatHtmlRequest,
+  minifyHtmlRequest,
+  unMinifyHtmlRequest,
+} from '@fosslytech/docs-core';
 import { DEFAULT_ODS } from '@module/Doc/Ods/defaultContent';
 import { DEFAULT_ODT } from '@module/Doc/Odt/defaultContent';
 import { closeAllModals } from '@mantine/modals';
@@ -51,7 +52,6 @@ const useDocCtx = () => {
   const updateDocMutation = useCommonDocMutation<UpdateDocDTO>('/api/doc/html', 'PATCH');
 
   // Convert API - custom
-  const convertNewMutation = useConvertNewMutation();
   const convertUploadMutation = useConvertUploadMutation();
   const convertDownloadMutation = useConvertDownloadMutation();
 
@@ -147,6 +147,9 @@ const useDocCtx = () => {
   // -------------------------------------------------------------------------
 
   const handleOpenMyDocument = async (ext: string, id: string, password: string) => {
+    // Clean up existing state, if another document was open before
+    if (initialDocId) dispatch({ type: 'RESET_INITIAL_DOC' });
+
     dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDecrypt', value: true } });
 
     const uuid = uuidv4();
@@ -157,11 +160,11 @@ const useDocCtx = () => {
     if (res2.error) return;
 
     const unMinified = {
-      // odt: editor.getHTML(),
-      // ods: editor.getHTML(),
-      // For local testing
       odt: res2.data,
-      ods: localUnMinifyOdsHtmlResponse(res2.data),
+      ods: unMinifyHtmlRequest('ods', res2.data),
+      // For local testing
+      // odt: res2.data,
+      // ods: localUnMinifyOdsHtmlResponse(res2.data),
     }[ext];
 
     if (password) setInitialPassword(password);
@@ -177,19 +180,16 @@ const useDocCtx = () => {
 
   const handleSaveMyDocument = async (editor: Editor, name: string, password: string) => {
     const html = {
-      // odt: editor.getHTML(),
-      // ods: editor.getHTML(),
-      // For local testing
       odt: editor.getHTML(),
-      ods: localMinifyOdsHtmlRequest(editor.getHTML()),
+      ods: minifyHtmlRequest('ods', editor.getHTML()),
+      // For local testing
+      // odt: editor.getHTML(),
+      // ods: localMinifyOdsHtmlRequest(editor.getHTML()),
     }[appType];
-
-    console.log(editor.getHTML().length);
-    console.log(localMinifyOdsHtmlRequest(editor.getHTML()).length);
 
     const res = await insertDocMutation.mutateAsync({
       ext: appType || 'odt',
-      html: html,
+      html,
       name: name,
       password: password,
     });
@@ -206,15 +206,15 @@ const useDocCtx = () => {
 
   const handleSyncMyDocument = async (editor: Editor) => {
     const html = {
-      // odt: editor.getHTML(),
-      // ods: editor.getHTML(),
-      // For local testing
       odt: editor.getHTML(),
-      ods: localMinifyOdsHtmlRequest(editor.getHTML()),
+      ods: minifyHtmlRequest('ods', editor.getHTML()),
+      // For local testing
+      // odt: editor.getHTML(),
+      // ods: localMinifyOdsHtmlRequest(editor.getHTML()),
     }[appType];
 
     await updateDocMutation.mutateAsync({
-      html: editor.getHTML(),
+      html,
       id: initialDocId,
       password1: initialDocPassword,
     });
