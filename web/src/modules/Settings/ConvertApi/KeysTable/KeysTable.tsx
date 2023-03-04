@@ -44,7 +44,7 @@ const KeysTable = () => {
           {!isLoading && keys && (
             <tbody>
               {keys.map((item: IApiKey) => (
-                <KeysTableRow key={item.id} {...item} value={item.key} />
+                <KeysTableRow key={item.id} {...item} />
               ))}
             </tbody>
           )}

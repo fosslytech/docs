@@ -5,7 +5,7 @@ import 'src/styles/base.css';
 import 'src/styles/editor.css';
 
 import { ColorSchemeProvider, MantineProvider } from '@mantine/core';
-import { NotificationsProvider } from '@mantine/notifications';
+import { Notifications } from '@mantine/notifications';
 import { ModalsProvider } from '@mantine/modals';
 import NProgress from '@module/NProgress/NProgress';
 
@@ -40,14 +40,16 @@ const App = ({ Component, pageProps }) => {
           >
             <QueryCTXProvider>
               <ModalsProvider>
-                <NotificationsProvider>
-                  {/* Route transition */}
-                  <NProgress />
+                {/* Route transition */}
+                <NProgress />
 
-                  <GlobalSEO />
+                {/* Toast notifications */}
+                <Notifications />
 
-                  {getLayout(<Component {...pageProps} />)}
-                </NotificationsProvider>
+                {/* Global meta tags */}
+                <GlobalSEO />
+
+                {getLayout(<Component {...pageProps} />)}
               </ModalsProvider>
             </QueryCTXProvider>
           </MantineProvider>

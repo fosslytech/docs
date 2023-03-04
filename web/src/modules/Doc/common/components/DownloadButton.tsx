@@ -89,7 +89,12 @@ const DownloadButton: React.FC<Props> = ({ editor }) => {
   };
 
   return (
-    <Menu transition="fade" position="bottom-start" width={180} withinPortal>
+    <Menu
+      transitionProps={{ transition: 'fade', duration: 150 }}
+      position="bottom-start"
+      width={180}
+      withinPortal
+    >
       <Menu.Target>
         <Button
           leftIcon={!isSm && <IconCloudDownload size={22} />}
@@ -103,7 +108,11 @@ const DownloadButton: React.FC<Props> = ({ editor }) => {
       <Menu.Dropdown>
         {appType &&
           menuItems[appType].map((item) => (
-            <Menu.Item icon={item.icon} onClick={() => handleDownloadDocument(editor, item.type)}>
+            <Menu.Item
+              key={item.type}
+              icon={item.icon}
+              onClick={() => handleDownloadDocument(editor, item.type)}
+            >
               {translate(item.text)}
             </Menu.Item>
           ))}

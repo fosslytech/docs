@@ -15,7 +15,6 @@ export interface IFeature {
   button2: string;
   icon: React.FC<{ size?: number; color?: string }>;
   accept: string;
-  badge: string;
   appType: 'odt' | 'ods';
 }
 
@@ -28,7 +27,6 @@ export const getFeaturesData = (content: ITranslations): IFeature[] => [
     button2: content.pages.doc.cards[0].button2,
     icon: AppWriter,
     accept: `${getContentType('odt')}`,
-    badge: content.pages.doc.cards[0].badge,
     appType: 'odt',
   },
   {
@@ -39,7 +37,6 @@ export const getFeaturesData = (content: ITranslations): IFeature[] => [
     button2: content.pages.doc.cards[1].button2,
     icon: AppCalc,
     accept: `${getContentType('ods')}`,
-    badge: content.pages.doc.cards[1].badge,
     appType: 'ods',
   },
   // {

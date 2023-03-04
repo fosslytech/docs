@@ -14,7 +14,7 @@ interface ILangData {
   image: string;
 }
 
-const getLangData = (content: ITranslations): ILangData[] => [
+const getThemeData = (content: ITranslations): ILangData[] => [
   {
     label: content.pages.settings.general.selectThemeOptions.mantine,
     value: 'Mantine',
@@ -33,7 +33,7 @@ const ThemeSelect = () => {
   const [opened, setOpened] = useState<boolean>(false);
   const { classes } = useStyles({ opened });
 
-  const data = getLangData(content);
+  const data = getThemeData(content);
 
   const selected = data.find((l) => l.value === appTheme);
 

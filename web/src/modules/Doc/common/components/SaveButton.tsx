@@ -10,6 +10,7 @@ import { UpdateDocDTO, useCommonDocMutation } from 'src/api/doc/use-my-docs-muta
 import useDocCtx from 'src/store/doc/use-doc-ctx';
 import useBeforeunload from '@hooks/use-beforeunload';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
+import useDetectAppType from '@module/Doc/use-detect-app-type';
 
 interface Props {
   editor: Editor;
@@ -17,7 +18,7 @@ interface Props {
 
 const SaveButton: React.FC<Props> = ({ editor }) => {
   const { translate, content } = useGlobalCtx();
-  const { initialDocId, initialDocPassword } = useDocCtx();
+  const { initialDocId, handleSyncMyDocument } = useDocCtx();
 
   const docMutation = useCommonDocMutation<UpdateDocDTO>('/api/doc/html', 'PATCH');
 
@@ -40,13 +41,7 @@ const SaveButton: React.FC<Props> = ({ editor }) => {
 
   // If state is "dirty"
   const handleUpdateDoc = async () => {
-    await docMutation.mutateAsync({
-      html: editor.getHTML(),
-      id: initialDocId,
-      password1: initialDocPassword,
-    });
-
-    // setDocState('clean');
+    await handleSyncMyDocument(editor);
 
     docStateRef.current = 'clean';
   };

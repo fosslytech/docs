@@ -2,10 +2,15 @@ import { DocContext } from './CTX';
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
 
-import { ISupportedOutputExtensions } from '@ts/global.types';
+import { IAppType, ISupportedOutputExtensions } from '@ts/global.types';
 import { Editor } from '@tiptap/react';
 import useDownload from '@hooks/use-download';
-import { DecryptDocDTO, useCommonDocMutation } from 'src/api/doc/use-my-docs-mutation';
+import {
+  DecryptDocDTO,
+  InsertDocDTO,
+  UpdateDocDTO,
+  useCommonDocMutation,
+} from 'src/api/doc/use-my-docs-mutation';
 import {
   useConvertDownloadMutation,
   useConvertNewMutation,
@@ -15,8 +20,13 @@ import {
 import { formatHtmlResponse, formatHtmlRequest } from '@fosslytech/docs-core';
 import { DEFAULT_ODS } from '@module/Doc/Ods/defaultContent';
 import { DEFAULT_ODT } from '@module/Doc/Odt/defaultContent';
+import { closeAllModals } from '@mantine/modals';
+import { localMinifyOdsHtmlRequest, localUnMinifyOdsHtmlResponse } from '@utils/functions/localMinifyHtml';
 // import { localFormatHtmlRequest } from '@utils/functions/localFormatHtmlRequest';
 // import { localFormatHtmlResponse } from '@utils/functions/localFormatHtmlResponse';
+
+import { v4 as uuidv4 } from 'uuid';
+import useDetectAppType from '@module/Doc/use-detect-app-type';
 
 const useDocCtx = () => {
   const {
@@ -33,9 +43,12 @@ const useDocCtx = () => {
   const { jsFileDownload } = useDownload();
 
   const router = useRouter();
+  const appType = useDetectAppType();
 
   // Doc API - supabase
   const decryptDocMutation = useCommonDocMutation<DecryptDocDTO>('/api/doc/decrypt', 'POST', false);
+  const insertDocMutation = useCommonDocMutation<InsertDocDTO>('/api/doc', 'POST');
+  const updateDocMutation = useCommonDocMutation<UpdateDocDTO>('/api/doc/html', 'PATCH');
 
   // Convert API - custom
   const convertNewMutation = useConvertNewMutation();
@@ -54,7 +67,7 @@ const useDocCtx = () => {
   // Handle new document
   // -------------------------------------------------------------------------
 
-  const handleNewDocument = async (format: 'odt' | 'ods') => {
+  const handleNewDocument = async (format: IAppType) => {
     // Clean up existing state, if another document was open before
     if (initialDocId) dispatch({ type: 'RESET_INITIAL_DOC' });
 
@@ -62,16 +75,16 @@ const useDocCtx = () => {
     if (format === 'odt') setInitialContent(DEFAULT_ODT);
     if (format === 'ods') setInitialContent(DEFAULT_ODS);
 
-    const { data } = await convertNewMutation.mutateAsync();
+    const uuid = uuidv4();
 
-    router.push(`/doc/${format}/${data.roomName}`);
+    router.push(`/doc/${format}/${uuid}`);
   };
 
   // -------------------------------------------------------------------------
   // Handle document upload
   // -------------------------------------------------------------------------
 
-  const handleUploadDocument = async (file: File, format: 'odt' | 'ods') => {
+  const handleUploadDocument = async (file: File, format: IAppType) => {
     // Clean up existing state, if another document was open before
     if (initialDocId) dispatch({ type: 'RESET_INITIAL_DOC' });
 
@@ -136,18 +149,75 @@ const useDocCtx = () => {
   const handleOpenMyDocument = async (ext: string, id: string, password: string) => {
     dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDecrypt', value: true } });
 
-    const res1 = await convertNewMutation.mutateAsync();
+    const uuid = uuidv4();
     const res2 = await decryptDocMutation.mutateAsync({ id, password });
 
     dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDecrypt', value: false } });
 
     if (res2.error) return;
 
+    const unMinified = {
+      // odt: editor.getHTML(),
+      // ods: editor.getHTML(),
+      // For local testing
+      odt: res2.data,
+      ods: localUnMinifyOdsHtmlResponse(res2.data),
+    }[ext];
+
     if (password) setInitialPassword(password);
-    setInitialContent(res2.data);
+    setInitialContent(unMinified);
     setInitialId(id);
 
-    router.push(`/doc/${ext}/${res1.data.roomName}`);
+    router.push(`/doc/${ext}/${uuid}`);
+  };
+
+  // -------------------------------------------------------------------------
+  // Handle save my document
+  // -------------------------------------------------------------------------
+
+  const handleSaveMyDocument = async (editor: Editor, name: string, password: string) => {
+    const html = {
+      // odt: editor.getHTML(),
+      // ods: editor.getHTML(),
+      // For local testing
+      odt: editor.getHTML(),
+      ods: localMinifyOdsHtmlRequest(editor.getHTML()),
+    }[appType];
+
+    console.log(editor.getHTML().length);
+    console.log(localMinifyOdsHtmlRequest(editor.getHTML()).length);
+
+    const res = await insertDocMutation.mutateAsync({
+      ext: appType || 'odt',
+      html: html,
+      name: name,
+      password: password,
+    });
+
+    if (password) setInitialPassword(password);
+    if (res?.data) setInitialId(res.data);
+
+    closeAllModals();
+  };
+
+  // -------------------------------------------------------------------------
+  // Handle sync my document
+  // -------------------------------------------------------------------------
+
+  const handleSyncMyDocument = async (editor: Editor) => {
+    const html = {
+      // odt: editor.getHTML(),
+      // ods: editor.getHTML(),
+      // For local testing
+      odt: editor.getHTML(),
+      ods: localMinifyOdsHtmlRequest(editor.getHTML()),
+    }[appType];
+
+    await updateDocMutation.mutateAsync({
+      html: editor.getHTML(),
+      id: initialDocId,
+      password1: initialDocPassword,
+    });
   };
 
   return {
@@ -172,6 +242,8 @@ const useDocCtx = () => {
     isLoadingDecrypt,
 
     handleOpenMyDocument,
+    handleSaveMyDocument,
+    handleSyncMyDocument,
   };
 };
 

@@ -4,8 +4,8 @@ export default createStyles((theme) => ({
   inner: {
     display: 'flex',
     justifyContent: 'space-between',
-    paddingTop: theme.spacing.xl * 4,
-    paddingBottom: theme.spacing.xl * 4,
+    paddingTop: `calc(${theme.spacing.xl} * 4)`,
+    paddingBottom: `calc(${theme.spacing.xl} * 4)`,
 
     [theme.fn.smallerThan('md')]: {
       paddingTop: theme.spacing.xl,
@@ -15,7 +15,7 @@ export default createStyles((theme) => ({
 
   content: {
     maxWidth: 510,
-    marginRight: theme.spacing.xl * 3,
+    marginRight: `calc(${theme.spacing.xl} * 3)`,
 
     [theme.fn.smallerThan('md')]: {
       maxWidth: '100%',

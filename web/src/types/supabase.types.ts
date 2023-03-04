@@ -12,7 +12,7 @@ export interface IDocument {
 export interface IApiKey {
   id: string;
   user_id: string;
-  key: string;
+  value: string;
   created_at: string;
 }
 export interface ISupabase {

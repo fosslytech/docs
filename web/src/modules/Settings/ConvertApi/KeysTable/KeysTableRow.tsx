@@ -13,11 +13,7 @@ import useGlobalCtx from 'src/store/global/use-global-ctx';
 
 dayjs.extend(relativeTime);
 
-interface Props extends IApiKey {
-  value: string;
-}
-
-const KeysTableRow: React.FC<Props> = ({ created_at, value, id }) => {
+const KeysTableRow: React.FC<IApiKey> = ({ created_at, value, id }) => {
   const { translate, content } = useGlobalCtx();
 
   // Handle delete key
@@ -48,7 +44,7 @@ const KeysTableRow: React.FC<Props> = ({ created_at, value, id }) => {
       <td>{dayjs(created_at).fromNow()}</td>
 
       <td>
-        <Menu transition="pop" withArrow position="bottom-end">
+        <Menu withArrow position="bottom-end">
           <Menu.Target>
             <ActionIcon variant="light" size="lg">
               <IconDots size={20} />

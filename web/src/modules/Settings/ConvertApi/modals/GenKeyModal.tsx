@@ -1,8 +1,6 @@
-import useToast from '@hooks/use-toast';
-import { Button, Group, Text, TextInput, ThemeIcon } from '@mantine/core';
-import { useClipboard } from '@mantine/hooks';
+import { ActionIcon, Button, CopyButton, Group, Text, TextInput, Tooltip } from '@mantine/core';
 import { closeAllModals } from '@mantine/modals';
-import { IconCopy, IconKey } from '@tabler/icons-react';
+import { IconCheck, IconCopy, IconKey } from '@tabler/icons-react';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
 
 interface Props {
@@ -11,16 +9,9 @@ interface Props {
 
 const GenKeyModal: React.FC<Props> = ({ value }) => {
   const { translate, content } = useGlobalCtx();
-  const clipboard = useClipboard();
-  const toast = useToast();
 
   const handleClose = async () => {
     closeAllModals();
-  };
-
-  const handleCopy = () => {
-    clipboard.copy(value);
-    toast.send('API key copied', '');
   };
 
   return (
@@ -32,9 +23,15 @@ const GenKeyModal: React.FC<Props> = ({ value }) => {
       <Group>
         <TextInput icon={<IconKey size={20} />} defaultValue={value} sx={{ flex: 1 }} />
 
-        <ThemeIcon onClick={handleCopy} size={36} color="gray" sx={{ cursor: 'pointer' }}>
-          <IconCopy size={24} />
-        </ThemeIcon>
+        <CopyButton value={value} timeout={2000}>
+          {({ copied, copy }) => (
+            <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position="right">
+              <ActionIcon size="lg" color={copied ? 'teal' : 'gray'} onClick={copy}>
+                {copied ? <IconCheck size={22} /> : <IconCopy size={22} />}
+              </ActionIcon>
+            </Tooltip>
+          )}
+        </CopyButton>
       </Group>
 
       <Button mt="xl" fullWidth onClick={handleClose}>

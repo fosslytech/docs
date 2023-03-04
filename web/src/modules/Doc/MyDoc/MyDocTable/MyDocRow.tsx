@@ -122,7 +122,7 @@ const MyDocRow: React.FC<Props> = ({ created_at, updated_at, id, name, ext, pass
             </ActionIcon>
           </Tooltip>
 
-          <Menu transition="pop" withArrow position="bottom-end">
+          <Menu withArrow position="bottom-end">
             <Menu.Target>
               <ActionIcon variant="light" size="lg">
                 <IconDots size={20} />

@@ -19,12 +19,6 @@ const Feature: React.FC<IFeature> = (feature) => {
         <Text size="xl" weight={600} ml={6} c={theme.colors.gray[2]}>
           {translate(feature.title)}
         </Text>
-
-        <div style={{ flex: 1 }}></div>
-
-        <Badge color={feature.color} size="lg" variant="dot">
-          {translate(feature.badge)}
-        </Badge>
       </Flex>
 
       <Divider size={2} color={theme.colors[feature.color][6]} w={40} my={10} />

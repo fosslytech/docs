@@ -13,11 +13,9 @@ interface Props {
 }
 
 const SaveModal: React.FC<Props> = ({ editor }) => {
-  const { setInitialPassword, setInitialId } = useDocCtx();
+  const { handleSaveMyDocument } = useDocCtx();
 
   const docMutation = useCommonDocMutation<InsertDocDTO>('/api/doc', 'POST');
-
-  const appType = useDetectAppType();
 
   const form = useForm({
     initialValues: {
@@ -31,17 +29,7 @@ const SaveModal: React.FC<Props> = ({ editor }) => {
   });
 
   const handleSaveDoc = async (values: typeof form.values) => {
-    const res = await docMutation.mutateAsync({
-      ext: appType || 'odt',
-      html: editor.getHTML(),
-      name: values.name,
-      password: values.password,
-    });
-
-    if (values.password) setInitialPassword(values.password);
-    if (res?.data) setInitialId(res.data);
-
-    closeAllModals();
+    handleSaveMyDocument(editor, values.name, values.password);
   };
 
   return (

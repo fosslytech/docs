@@ -39,7 +39,7 @@ const TableTop: React.FC<Props> = ({ documents, page, setPage, total }) => {
 
         <div style={{ flex: 1 }}></div>
 
-        {documents && total > 1 && <Pagination page={page} onChange={setPage} total={total} size="md" />}
+        {documents && total > 1 && <Pagination value={page} onChange={setPage} total={total} size="md" />}
       </Flex>
 
       <Divider />

@@ -9,7 +9,7 @@ export const keyApi_createApiKey = async (
   user_id: string
 ) => {
   // Generate key
-  const apiKey = uuidv4();
+  const value = uuidv4();
 
   // Max 3 keys per account
   const { data: data_GET, error: error_GET } = await supabaseServerClient
@@ -17,15 +17,16 @@ export const keyApi_createApiKey = async (
     .select('id')
     .match({ user_id });
 
+  // Handle error_GET
+  if (error_GET) return res.status(400).json({ error: true, message: error_GET.message, data: null });
+
   if (data_GET.length === 3)
     return res.status(400).json({ error: true, message: 'API keys limit reached', data: null });
 
-  const { error: error_POST } = await supabaseServerClient
-    .from('api_keys')
-    .insert({ key: apiKey, user_id: user_id });
+  const { error: error_POST } = await supabaseServerClient.from('api_keys').insert({ value, user_id });
 
   // Handle error_POST
   if (error_POST) return res.status(400).json({ error: true, message: error_POST.message, data: null });
 
-  res.status(200).json({ error: false, message: 'Your API key was successfully created', data: apiKey });
+  res.status(200).json({ error: false, message: 'Your API key was successfully created', data: value });
 };

@@ -9,7 +9,7 @@ export const keyApi_selectApiKey = async (
 ) => {
   const { data: data_GET, error: error_GET } = await supabaseServerClient
     .from('api_keys')
-    .select('id, key, created_at')
+    .select('id, value, created_at')
     .match({ user_id });
 
   // Handle error_GET
@@ -18,7 +18,7 @@ export const keyApi_selectApiKey = async (
   const returnData = data_GET.map((k) => ({
     id: k.id,
     created_at: k.created_at,
-    key: `${k.key.substr(0, 8)}-****-****-****-************`,
+    value: `${k.value.substr(0, 8)}-****-****-****-************`,
   }));
 
   res.status(200).json({ error: false, message: 'API keys retrieved', data: returnData });

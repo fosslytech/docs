@@ -51,5 +51,7 @@ export type IAppTheme = 'Mantine' | 'Catppuccin' | 'Material';
 
 export type IAppFont = 'Roboto' | 'Source Code Pro' | 'Inter' | 'Montserrat';
 
+export type IAppType = 'odt' | 'ods';
+
 export type ISupportedInputExtensions = 'html' | 'txt' | 'odt' | 'ods';
 export type ISupportedOutputExtensions = 'html' | 'txt' | 'odt' | 'ods' | 'pdf';

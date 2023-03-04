@@ -28,12 +28,13 @@
 
 ## Structure
 
-| Codebase            |   Description   |                        Domain                         |
-| :------------------ | :-------------: | :---------------------------------------------------: |
-| [web](../web)       | Next.js web app |     [docs.fossly.tech](https://docs.fossly.tech)      |
-| [api](../api)       |   Node.js API   | [api-eu.fossly.tech](https://api-eu.fossly.tech/docs) |
-| [core](../core)     |   Shared code   |                           /                           |
-| [design](../design) | Project assets  |                           /                           |
+| Codebase                |    Description     |                        Domain                         |
+| :---------------------- | :----------------: | :---------------------------------------------------: |
+| [web](../web)           |  Next.js web app   |     [docs.fossly.tech](https://docs.fossly.tech)      |
+| [api](../api)           |    Node.js API     | [api-eu.fossly.tech](https://api-eu.fossly.tech/docs) |
+| [core](../core)         |    Shared code     |                           /                           |
+| [design](../design)     |   Project assets   |                           /                           |
+| [supabase](../supabase) | Supabase functions |                           /                           |
 
 <!-- | [apiv2](../apiv2)   | API but with Bun |                               /                               | -->
 <!-- | [mobile](mobile)   |  Mobile app          |   /   | -->
@@ -41,7 +42,8 @@
 
 ## Features
 
-- Writer **BETA** - online collaborative text editor
+- Writer - online collaborative text editor
+- Calc - online collaborative spreadsheet editor
 
 ## Branches
 

@@ -133,7 +133,6 @@ export interface ITranslations {
         description: string;
         button1: string;
         button2: string;
-        badge: string;
       }[];
     };
     doc_my: {

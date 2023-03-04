@@ -66,7 +66,7 @@ const MyStats: React.FC<Props> = ({ documents, isLoading }) => {
           tooltip: `Unprotected - ${documents.length - passwordCount}`,
         },
       ],
-      stats: `${passwordCount} / ${documents.length}`,
+      stats: `${calculatePercentage(passwordCount, documents.length)}% protected`,
     },
   ];
 

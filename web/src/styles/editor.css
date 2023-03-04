@@ -31,11 +31,6 @@
 .ProseMirror table th > * {
   margin-bottom: 0;
 }
-.ProseMirror table th {
-  font-weight: bold;
-  text-align: left;
-  background-color: #f1f3f5;
-}
 
 .tableWrapper {
   overflow-x: auto;

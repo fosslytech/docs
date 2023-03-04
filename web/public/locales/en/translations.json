@@ -140,36 +140,31 @@
           "title": "Writer",
           "description": "Create new text document",
           "button1": "Open",
-          "button2": "New",
-          "badge": "Beta"
+          "button2": "New"
         },
         {
           "title": "Calc",
           "description": "Create new spreadsheet",
           "button1": "Open",
-          "button2": "New",
-          "badge": "Alpha"
+          "button2": "New"
         },
         {
           "title": "Impress",
           "description": "Impress presentation",
           "button1": "Open",
-          "button2": "New",
-          "badge": "Alpha"
+          "button2": "New"
         },
         {
           "title": "Math",
           "description": "Math formula",
           "button1": "Open",
-          "button2": "New",
-          "badge": "Alpha"
+          "button2": "New"
         },
         {
           "title": "Draw",
           "description": "Draw Drawing",
           "button1": "Open",
-          "button2": "New",
-          "badge": "Alpha"
+          "button2": "New"
         }
       ]
     },
