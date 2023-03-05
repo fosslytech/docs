@@ -6,11 +6,9 @@ import { useResponsive } from '@hooks/use-responsive';
 import { Editor } from '@tiptap/react';
 import { openModal } from '@mantine/modals';
 import SaveModal from './SaveModal';
-import { UpdateDocDTO, useCommonDocMutation } from 'src/api/doc/use-my-docs-mutation';
 import useDocCtx from 'src/store/doc/use-doc-ctx';
 import useBeforeunload from '@hooks/use-beforeunload';
 import useGlobalCtx from 'src/store/global/use-global-ctx';
-import useDetectAppType from '@module/Doc/use-detect-app-type';
 
 interface Props {
   editor: Editor;
@@ -19,8 +17,7 @@ interface Props {
 const SaveButton: React.FC<Props> = ({ editor }) => {
   const { translate, content } = useGlobalCtx();
   const { initialDocId, handleSyncMyDocument } = useDocCtx();
-
-  const docMutation = useCommonDocMutation<UpdateDocDTO>('/api/doc/html', 'PATCH');
+  const [isLoading, setLoading] = useState(false);
 
   const docStateRef = useRef<'dirty' | 'clean' | 'unsaved'>('unsaved');
 
@@ -41,7 +38,9 @@ const SaveButton: React.FC<Props> = ({ editor }) => {
 
   // If state is "dirty"
   const handleUpdateDoc = async () => {
+    setLoading(true);
     await handleSyncMyDocument(editor);
+    setLoading(false);
 
     docStateRef.current = 'clean';
   };
@@ -104,7 +103,7 @@ const SaveButton: React.FC<Props> = ({ editor }) => {
           leftIcon={!isSm && btnIcon[docStateRef.current]}
           disabled={['clean'].includes(docStateRef.current)}
           onClick={btnFunction[docStateRef.current]}
-          loading={docMutation.isLoading}
+          loading={isLoading}
         >
           {btnText[docStateRef.current]}
         </Button>

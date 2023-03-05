@@ -11,16 +11,15 @@ export const GlobalCTXProvider = ({ children }) => {
   const [state, dispatch] = useReducer(globalReducer, initialState);
 
   // Save/Init state from localStorage
-  useCachedContext('ctx_global', state, dispatch);
+  useCachedContext('ctx_global', { ...state, openBanner: '' }, dispatch);
 
   return (
     <GlobalContext.Provider
       value={{
         ...state,
-
+        dispatch,
         // Dynamically get initial value for translations
         content: require(`../../../public/locales/${locale}/translations.json`),
-        dispatch,
       }}
     >
       {children}

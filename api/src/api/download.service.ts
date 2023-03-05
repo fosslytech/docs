@@ -18,11 +18,16 @@ const convertAsync = promisify(libre.convert);
 
 const prepareDownloadFunction = async (req: Request) => {
   const { text } = JSON.parse(req.payload as string);
-  const { to: extOut } = req.query;
+  const { to: extOut } = req.query as { to: string };
 
   if (!text || !extOut) return 'Invalid request';
 
   const uuid = uuidv4();
+
+  const filters = {
+    odt: undefined,
+    ods: 'calc8',
+  }[extOut];
 
   // Breaks with pm2
   // const outputPath = path.join(process.cwd(), `/temp/${uuid}.${extOut}`);
@@ -32,7 +37,7 @@ const prepareDownloadFunction = async (req: Request) => {
   // Convert to given format
   // ----------------------------------------------------------------------------------------
 
-  let convertBuff = await convertAsync(text, extOut, undefined);
+  let convertBuff = await convertAsync(text, extOut, filters);
 
   await writeFileAsync(outputPath, convertBuff);
 

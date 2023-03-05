@@ -1,4 +1,5 @@
 import { unMinifyOdsHtmlResponse } from "./ods/unMinifyOdsHtmlResponse";
+import { unMinifyOdtHtmlResponse } from "./odt/unMinifyOdtHtmlResponse";
 
 export const unMinifyHtmlRequest = (
   format: "odt" | "ods",
@@ -6,7 +7,7 @@ export const unMinifyHtmlRequest = (
 ): string => {
   switch (format) {
     case "odt":
-      return html;
+      return unMinifyOdtHtmlResponse(html);
 
     case "ods":
       return unMinifyOdsHtmlResponse(html);

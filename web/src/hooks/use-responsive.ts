@@ -6,7 +6,7 @@ import { useMediaQuery } from '@mantine/hooks';
 
 export const useResponsive = (target: 'min' | 'max', bp: MantineSize) => {
   const theme = useMantineTheme();
-  const matches = useMediaQuery(`(${target}-width: ${theme.breakpoints[bp]}px)`);
+  const matches = useMediaQuery(`(${target}-width: ${theme.breakpoints[bp]})`);
 
   return matches;
 };

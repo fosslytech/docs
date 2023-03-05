@@ -1,11 +1,8 @@
 import { Button, PasswordInput, TextInput } from '@mantine/core';
 import { isNotEmpty, useForm } from '@mantine/form';
-import { closeAllModals } from '@mantine/modals';
-import useDetectAppType from '@module/Doc/use-detect-app-type';
 import { IconEye, IconEyeOff } from '@tabler/icons-react';
 import { Editor } from '@tiptap/react';
-import React from 'react';
-import { InsertDocDTO, useCommonDocMutation } from 'src/api/doc/use-my-docs-mutation';
+import React, { useState } from 'react';
 import useDocCtx from 'src/store/doc/use-doc-ctx';
 
 interface Props {
@@ -14,8 +11,7 @@ interface Props {
 
 const SaveModal: React.FC<Props> = ({ editor }) => {
   const { handleSaveMyDocument } = useDocCtx();
-
-  const docMutation = useCommonDocMutation<InsertDocDTO>('/api/doc', 'POST');
+  const [isLoading, setLoading] = useState(false);
 
   const form = useForm({
     initialValues: {
@@ -29,7 +25,9 @@ const SaveModal: React.FC<Props> = ({ editor }) => {
   });
 
   const handleSaveDoc = async (values: typeof form.values) => {
-    handleSaveMyDocument(editor, values.name, values.password);
+    setLoading(true);
+    await handleSaveMyDocument(editor, values.name, values.password);
+    setLoading(false);
   };
 
   return (
@@ -53,7 +51,7 @@ const SaveModal: React.FC<Props> = ({ editor }) => {
         }}
         {...form.getInputProps('password')}
       />
-      <Button fullWidth mt="lg" type="submit" loading={docMutation.isLoading}>
+      <Button fullWidth mt="lg" type="submit" loading={isLoading}>
         Save
       </Button>
     </form>

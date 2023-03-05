@@ -22,7 +22,6 @@ import {
 import { DEFAULT_ODS } from '@module/Doc/Ods/defaultContent';
 import { DEFAULT_ODT } from '@module/Doc/Odt/defaultContent';
 import { closeAllModals } from '@mantine/modals';
-import { localMinifyOdsHtmlRequest, localUnMinifyOdsHtmlResponse } from '@utils/functions/localMinifyHtml';
 // import { localFormatHtmlRequest } from '@utils/functions/localFormatHtmlRequest';
 // import { localFormatHtmlResponse } from '@utils/functions/localFormatHtmlResponse';
 
@@ -109,7 +108,7 @@ const useDocCtx = () => {
 
     // For local development/testing
     // const formattedHtml = localFormatHtmlRequest('odt', editor.getHTML());
-    const formattedHtml = formatHtmlRequest('odt', editor.getHTML());
+    const formattedHtml = formatHtmlRequest(appType || 'odt', editor.getHTML());
 
     switch (format) {
       case 'html':
@@ -160,11 +159,8 @@ const useDocCtx = () => {
     if (res2.error) return;
 
     const unMinified = {
-      odt: res2.data,
+      odt: unMinifyHtmlRequest('odt', res2.data),
       ods: unMinifyHtmlRequest('ods', res2.data),
-      // For local testing
-      // odt: res2.data,
-      // ods: localUnMinifyOdsHtmlResponse(res2.data),
     }[ext];
 
     if (password) setInitialPassword(password);
@@ -180,11 +176,8 @@ const useDocCtx = () => {
 
   const handleSaveMyDocument = async (editor: Editor, name: string, password: string) => {
     const html = {
-      odt: editor.getHTML(),
+      odt: minifyHtmlRequest('odt', editor.getHTML()),
       ods: minifyHtmlRequest('ods', editor.getHTML()),
-      // For local testing
-      // odt: editor.getHTML(),
-      // ods: localMinifyOdsHtmlRequest(editor.getHTML()),
     }[appType];
 
     const res = await insertDocMutation.mutateAsync({
@@ -206,11 +199,8 @@ const useDocCtx = () => {
 
   const handleSyncMyDocument = async (editor: Editor) => {
     const html = {
-      odt: editor.getHTML(),
+      odt: minifyHtmlRequest('odt', editor.getHTML()),
       ods: minifyHtmlRequest('ods', editor.getHTML()),
-      // For local testing
-      // odt: editor.getHTML(),
-      // ods: localMinifyOdsHtmlRequest(editor.getHTML()),
     }[appType];
 
     await updateDocMutation.mutateAsync({

@@ -3,12 +3,15 @@ import React from 'react';
 import { DocCTXProvider } from './doc/CTX';
 import { YjsCTXProvider } from './yjs/CTX';
 import { GlobalCTXProvider } from './global/CTX';
+import { BannerCTXProvider } from './banner/CTX';
 
 const JoinedCTXProvider: React.FC<IFC> = ({ children }) => {
   return (
     <GlobalCTXProvider>
       <YjsCTXProvider>
-        <DocCTXProvider>{children}</DocCTXProvider>
+        <DocCTXProvider>
+          <BannerCTXProvider>{children}</BannerCTXProvider>
+        </DocCTXProvider>
       </YjsCTXProvider>
     </GlobalCTXProvider>
   );

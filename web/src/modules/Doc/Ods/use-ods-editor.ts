@@ -84,6 +84,7 @@ export const useOdsEditor = () => {
         resizable: true,
         cellMinWidth: 100,
         lastColumnResizable: false,
+        allowTableNodeSelection: false,
       }),
       TableRow,
       TableHeader,
