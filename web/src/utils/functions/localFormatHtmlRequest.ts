@@ -22,12 +22,21 @@ const formatOdtHtmlRequest = (html: string): string => {
   return formattedHtml;
 };
 
+const formatOdsHtmlRequest = (html: string): string => {
+  const formattedHtml = html;
+
+  return formattedHtml;
+};
+
 export const localFormatHtmlRequest = (format: string, html: string) => {
   switch (format) {
     case 'odt':
       return formatOdtHtmlRequest(html);
 
+    case 'ods':
+      return formatOdsHtmlRequest(html);
+
     default:
-      break;
+      return html;
   }
 };

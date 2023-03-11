@@ -51,10 +51,10 @@ export const useOdsEditor = () => {
   const username = ghName || glName;
 
   const connectedUsers = Array.from(provider.awareness.getStates(), ([id, { cursor, user }]) => ({
-    name: user?.name || 'Anon',
-    color: user?.color || theme.colors.blue[6],
-    colorName: user?.colorName || 'blue',
-    avatarUrl: user?.avatarUrl || '',
+    name: user?.name,
+    color: user?.color,
+    colorName: user?.colorName,
+    avatarUrl: user?.avatarUrl,
   }));
 
   const roomFull = connectedUsers?.length > MAX_CONNS_ODS;
@@ -72,10 +72,10 @@ export const useOdsEditor = () => {
       CollaborationCursor.configure({
         provider: provider,
         user: {
-          name: username,
+          name: username || 'Anon',
           color: theme.colors[userColor][6],
-          colorName: userColor,
-          avatarUrl: avatarUrl,
+          colorName: userColor || 'blue',
+          avatarUrl: avatarUrl || '',
         },
       }),
 

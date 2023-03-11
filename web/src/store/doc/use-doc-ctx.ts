@@ -27,6 +27,7 @@ import { closeAllModals } from '@mantine/modals';
 
 import { v4 as uuidv4 } from 'uuid';
 import useDetectAppType from '@module/Doc/use-detect-app-type';
+import useToast from '@hooks/use-toast';
 
 const useDocCtx = () => {
   const {
@@ -42,6 +43,7 @@ const useDocCtx = () => {
 
   const { jsFileDownload } = useDownload();
 
+  const toast = useToast();
   const router = useRouter();
   const appType = useDetectAppType();
 
@@ -93,7 +95,7 @@ const useDocCtx = () => {
     // const formattedHtml = localFormatHtmlResponse(format, data.output);
     const formattedHtml = formatHtmlResponse(format, data.output);
 
-    if (!formattedHtml) return;
+    if (!formattedHtml) return toast.send('Error processing request', 'Try again with another input file');
 
     setInitialContent(formattedHtml);
     router.push(`/doc/${format}/${data.roomName}`);
