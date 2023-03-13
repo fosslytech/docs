@@ -1,8 +1,10 @@
+import { IExtension } from '../src/config';
+
 interface Args {
   inputPath: string;
   outputDir: string;
-  extIn: 'html' | 'odt' | 'ods';
-  extOut: 'html' | 'odt' | 'ods';
+  extIn: IExtension;
+  extOut: IExtension;
 }
 
 const getCommand = (args: Args): [string, ...string[]] => {

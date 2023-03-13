@@ -1,7 +1,7 @@
 import { Context } from 'elysia';
 import { v4 as uuidv4 } from 'uuid';
 import { sofficeConvert } from '../../lib/soffice';
-import { __dirname } from '../config';
+import { IExtension, __dirname } from '../config';
 import path from 'path';
 
 // POST - /convert
@@ -9,9 +9,9 @@ export const handleConvert = async (ctx: Context) => {
   const { query, body } = ctx;
 
   const { file } = body as { file: Blob };
-  const { from: extIn, to: extOut } = query as { from: 'html' | 'odt' | 'ods'; to: 'html' | 'odt' | 'ods' };
+  const { from: extIn, to: extOut } = query as { from: IExtension; to: IExtension };
 
-  if (!file || !extOut) return 'Invalid request';
+  if (!file || !extOut || !extIn) return 'Invalid request';
 
   const uuid = uuidv4();
 
@@ -26,7 +26,7 @@ export const handleConvert = async (ctx: Context) => {
 
   await Bun.write(inputPath, file);
 
-  sofficeConvert({ extIn, extOut, inputPath, outputDir });
+  await sofficeConvert({ extIn, extOut, inputPath, outputDir });
 
   const result = await Bun.file(path.join(outputDir, `/${uuid}.${extOut}`)).text();
 

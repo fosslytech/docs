@@ -13,7 +13,6 @@
     "@elysiajs/cors": "^0.1.0",
     "@elysiajs/cron": "^0.1.0",
     "@elysiajs/static": "^0.2.0",
-    "@fosslytech/docs-core": "^1.4.0",
     "@supabase/supabase-js": "^2.10.0",
     "@types/uuid": "^9.0.1",
     "elysia": "rc",

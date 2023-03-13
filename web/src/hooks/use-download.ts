@@ -9,10 +9,15 @@ const useDownload = () => {
     const element = document.createElement('a');
 
     // If download local
-    if (text) element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    if (text) {
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    }
 
     // If download from API
-    if (url) element.setAttribute('href', url);
+    if (url) {
+      element.setAttribute('href', url);
+      element.setAttribute('target', '_blank');
+    }
 
     element.setAttribute('download', filename);
 

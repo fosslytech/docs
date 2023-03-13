@@ -27,14 +27,14 @@ Bun API runs locally on [http://localhost:4001](http://localhost:4001)
 
 ## How it Works
 
-Convert API is only used to convert documents to desired formats and doesn't store anything on the server, it works by using the libreoffice --convert-to API.
+Convert API is only used to convert documents to desired formats by using the libreoffice --convert-to API. <br />
+Converted documents are stored in /temp directory and wiped with a cron job every 30 minutes
 
 Endpoints:
 
 - **/** -> Hello World!
-- **/convert** -> Converts documents ( html, odf, pdf )
-- **/pre-download** -> Converts a file and saves in /temp
-- **/download** -> Downloads a file and removes it from /temp
+- **/convert** -> Converts documents ( .od\* -> raw html )
+- **/download** -> Downloads a file ( raw html -> .od\* )
 
 <br />
 <hr />

@@ -89,7 +89,9 @@ const useDocCtx = () => {
     // Clean up existing state, if another document was open before
     if (initialDocId) dispatch({ type: 'RESET_INITIAL_DOC' });
 
-    const data = await convertUploadMutation.mutateAsync({ file, format: 'html' });
+    const data = await convertUploadMutation.mutateAsync({ file, extIn: format, extOut: 'html' });
+
+    if (!data?.output) return toast.send('Error processing request', 'Try again with another input file');
 
     // For local development/testing
     // const formattedHtml = localFormatHtmlResponse(format, data.output);
@@ -109,7 +111,7 @@ const useDocCtx = () => {
     dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDownload', value: true } });
 
     // For local development/testing
-    // const formattedHtml = localFormatHtmlRequest('odt', editor.getHTML());
+    // const formattedHtml = localFormatHtmlRequest(appType || 'odt', editor.getHTML());
     const formattedHtml = formatHtmlRequest(appType || 'odt', editor.getHTML());
 
     switch (format) {
@@ -126,14 +128,14 @@ const useDocCtx = () => {
         break;
 
       case 'pdf':
-        await convertDownloadMutation.mutateAsync({ text: formattedHtml, to: format });
+        await convertDownloadMutation.mutateAsync({ text: formattedHtml, extOut: format, extIn: 'html' });
 
         dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDownload', value: false } });
         break;
 
       case 'odt':
       case 'ods':
-        await convertDownloadMutation.mutateAsync({ text: formattedHtml, to: format });
+        await convertDownloadMutation.mutateAsync({ text: formattedHtml, extOut: format, extIn: 'html' });
 
         dispatch({ type: 'SET_LOADING', payload: { key: 'isLoadingDownload', value: false } });
         break;

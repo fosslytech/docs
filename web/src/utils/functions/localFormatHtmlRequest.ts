@@ -23,7 +23,39 @@ const formatOdtHtmlRequest = (html: string): string => {
 };
 
 const formatOdsHtmlRequest = (html: string): string => {
-  const formattedHtml = html;
+  const formattedHtml = html
+    // Remove tbody
+    .replace(/<tbody>/g, '')
+    .replace(/<\/tbody>/g, '')
+
+    // strong -> b
+    .replace(/<strong/g, '<b')
+    .replace(/<\/strong>/g, '</b>')
+
+    // em -> i
+    .replace(/<em/g, '<i')
+    .replace(/<\/em>/g, '</i>')
+
+    // th -> td
+    .replace(/<th/g, '<td')
+    .replace(/<\/th>/g, '</td>')
+
+    // Add attributes to table
+    .replace(/<table>/, '<table cellspacing="0" border="0"><colgroup span="2" width="85"></colgroup>')
+
+    // Left, center & right align doesn't work,
+    // we need:          <td ... align="center">...</td>
+    // tiptap uses:      <td ...><p style="text-align: center">...</p></td>
+    .replace(
+      /<td\s+colspan="(\d+)"\s+rowspan="(\d+)"><p(?:\s+style="text-align:\s*(\w+)")?>([^<]*)<\/p><\/td>/gi,
+      (match, colspan, rowspan, align, content) => {
+        align = align || 'right';
+
+        return `<td colspan="${colspan}" rowspan="${rowspan}" align="${align}" ${
+          content ? `sdval="${content}"` : ''
+        } sdnum="1033;">${content ? content : '<br>'}</td>`;
+      }
+    );
 
   return formattedHtml;
 };

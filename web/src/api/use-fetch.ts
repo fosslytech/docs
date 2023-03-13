@@ -12,8 +12,8 @@ const useFetch = () => {
 
     const contentType = res.headers.get('content-type')!;
 
-    if (contentType.startsWith('application/json;')) return res.json();
-    if (contentType.startsWith('text/')) return res.text();
+    if (contentType?.startsWith('application/json')) return res.json();
+    if (contentType?.startsWith('text/')) return res.text();
 
     return res;
   };

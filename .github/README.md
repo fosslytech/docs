@@ -12,8 +12,9 @@
 
 <p align="center">
     <img align="center" alt="Next JS" src="https://img.shields.io/badge/nextjs-%23000000.svg?style=for-the-badge&logo=next.js&logoColor=white"/>
-    <img align="center" alt="NodeJS" src="https://img.shields.io/badge/node.js-%2343853D.svg?style=for-the-badge&logo=node.js&logoColor=white" />
+    <!-- <img align="center" alt="Expo" src="https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37"/> -->
     <img align="center" alt="Supabase" src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" />
+    <img align="center" alt="Bun" src="https://img.shields.io/badge/Bun-%23000000.svg?style=for-the-badge&logo=bun&logoColor=black&color=white" />
 </p>
 
 <br />
@@ -31,12 +32,11 @@
 | Codebase                |    Description     |                        Domain                         |
 | :---------------------- | :----------------: | :---------------------------------------------------: |
 | [web](../web)           |  Next.js web app   |     [docs.fossly.tech](https://docs.fossly.tech)      |
-| [api](../api)           |    Node.js API     | [api-eu.fossly.tech](https://api-eu.fossly.tech/docs) |
+| [apiv2](../apiv2)       |    Bun REST API    | [api-eu.fossly.tech](https://api-eu.fossly.tech/docs) |
 | [core](../core)         |    Shared code     |                           /                           |
 | [design](../design)     |   Project assets   |                           /                           |
 | [supabase](../supabase) | Supabase functions |                           /                           |
 
-<!-- | [apiv2](../apiv2)   | API but with Bun |                               /                               | -->
 <!-- | [mobile](mobile)   |  Mobile app          |   /   | -->
 <!-- | [desktop](desktop) |  Desktop app         |   /   | -->
 
